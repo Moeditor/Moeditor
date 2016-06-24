@@ -1,0 +1,34 @@
+{
+  "name": "moeditor",
+  "version": "0.0.1",
+  "description": "Your all-purpose markdown editor",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Menci/Moeditor.git"
+  },
+  "keywords": [
+    "markdown",
+    "editor"
+  ],
+  "author": "Menci",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Menci/Moeditor/issues"
+  },
+  "homepage": "https://github.com/Menci/Moeditor#readme",
+  "devDependencies": {
+    "asyncawait": "^1.0.3",
+    "codemirror": "^5.16.0",
+    "electron-prebuilt": "^1.2.0",
+    "electron-rebuild": "^1.1.5",
+    "jquery": "^3.0.0",
+    "katex": "^0.6.0",
+    "marked": "^0.3.5",
+    "mathjax-node": "^0.5.1"
+  }
+}

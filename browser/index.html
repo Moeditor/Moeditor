@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Moeditor</title>
+
+		<script>
+		window.$ = window.jQuery = require("jquery");
+		</script>
+
+        <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #editor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 50%;
+            height: auto;
+            overflow: auto;
+        }
+
+        #editor textarea {
+            width: 0;
+            height: 0;
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #editor * {
+            font-family: "Roboto Mono", "Noto Sans CJK SC", "Source Han Sans SC" !important;
+        }
+
+        #editor .CodeMirror {
+            width: 100%;
+            height: 100%;
+        }
+
+        #previewer-wrapper {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            right: 0;
+            bottom: 0;
+            width: 50%;
+            height: auto;
+            overflow: auto;
+        }
+
+        #previewer {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .cm-s-default .cm-header {
+            color: inherit !important;
+        }
+
+        .cm-header-1 { font-size: 2em; }
+        .cm-header-2 { font-size: 1.75em; }
+        .cm-header-3 { font-size: 1.5em; }
+        .cm-header-4 { font-size: 1.3em; }
+        .cm-header-5 { font-size: 1.2em; }
+        .cm-header-6 { font-size: 1.15em; }
+        .cm-quote { color: #90a959; }
+
+        .CodeMirror-scroll {
+            padding: 15px;
+            height: calc(100% - 30px) !important;
+            width: calc(100% - 15px) !important;
+        }
+
+        .CodeMirror {
+            line-height: 1.5 !important;
+        }
+        </style>
+
+        <link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="../node_modules/katex/dist/katex.min.css">
+        <link rel="stylesheet" href="base16-light.css">
+        <link rel="stylesheet" href="preview.css">
+
+        <script src="../node_modules/codemirror/lib/codemirror.js"></script>
+        <script src="../node_modules/codemirror/mode/markdown/markdown.js"></script>
+        <script src="../node_modules/codemirror/mode/stex/stex.js"></script>
+        <script src="../node_modules/codemirror/mode/gfm/gfm.js"></script>
+        <script src="../node_modules/codemirror/addon/mode/overlay.js"></script>
+        <script src="../node_modules/codemirror/addon/mode/multiplex.js"></script>
+        <script src="../node_modules/codemirror/addon/scroll/simplescrollbars.js"></script>
+        <script src="CodeMirror/continuelist.js"></script>
+
+        <script src="../node_modules/marked/lib/marked.js"></script>
+
+        <script src="../node_modules/katex/dist/katex.min.js"></script>
+
+        <script type="text/javascript" src="moe-document.js"></script>
+        <script type="text/javascript" src="moe-math.js"></script>
+    </head>
+    <body>
+        <div id="editor">
+            <textarea>### Moeditor
+Your all-purpose markdown editor.
+
+Let's begin with a list.
+
+* One
+* Two
+* Three
+* Four
+
+And **Bold** text and *italic* text.
+
+Some `code` here:
+
+```cpp
+#include <Wang Mengdi>
+```
+
+And it supports LaTex!
+
+$$
+\begin{aligned}
+x &= \sum\limits_{i = 1} ^ {100} i \\
+&= 5050
+\end{aligned}
+$$</textarea>
+        </div>
+        <div id="previewer-wrapper">
+            <div id="previewer">
+            <!--iframe src="previewer.html" frameBorder="0"></iframe-->
+            </div>
+        </div>
+    </body>
+</html>
