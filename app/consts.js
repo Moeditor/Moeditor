@@ -8,5 +8,5 @@ const app = require('electron').app,
 module.exports = {
     name: "Moeditor",
     path: appPath,
-    scaleFactor: 1.5
+    scaleFactor: 1
 };
