@@ -26,14 +26,16 @@ $(function() {
         extraKeys: { 'Enter': 'newlineAndIndentContinueMarkdownList' }
     });
 
-    editor.on('change', function() {
+	const onchange = function() {
         const content = editor.getValue();
         var mathRenderer = new MoeditorMathRenderer(content);
         const replaced = mathRenderer.replace();
         const html = marked(replaced);
         $('#previewer').html(mathRenderer.render(html));
         // document.querySelector('iframe').contentWindow.document.body.innerHTML(marked(content));
-    });
+    };
+    editor.on('change', onchange);
+	onchange();
 
     var synced = $('.CodeMirror-vscrollbar, #previewer-wrapper');
     synced.on('scroll', function(e) {
