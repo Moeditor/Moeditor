@@ -7,5 +7,6 @@ var moeApp = null;
 
 app.on("ready", function () {
     moeApp = new MoeditorApplication();
+    global.moeApp = moeApp;
 	moeApp.run();
 });

@@ -1,5 +1,7 @@
 'use strict';
 
+const MoeditorFile = require('../app/moe-file.js');
+
 $(function() {
     CodeMirror.defineMode('mathdown', function(config) {
         var options = [];
@@ -16,6 +18,12 @@ $(function() {
         return CodeMirror.multiplexingMode.apply(CodeMirror, [CodeMirror.getMode(config, 'gfm')].concat([].slice.call(options)));
     });
 
+    var w = require('electron').remote.getCurrentWindow();
+    if (typeof w.moeditorWindow.fileName !== 'undefined') {
+        var content = MoeditorFile.read(w.moeditorWindow.fileName, '');
+        document.querySelector('#editor textarea').innerText = content;
+    }
+
     var editor = CodeMirror.fromTextArea(document.querySelector('#editor textarea'), {
         lineNumbers: false,
         mode: 'mathdown',
@@ -28,14 +36,17 @@ $(function() {
 
 	const onchange = function() {
         const content = editor.getValue();
+        w.moeditorWindow.content = content;
+        // console.log(w.moeditorWindow.content);
+        w.moeditorWindow.changed = true;
         var mathRenderer = new MoeditorMathRenderer(content);
         const replaced = mathRenderer.replace();
         const html = marked(replaced);
         $('#previewer').html(mathRenderer.render(html));
-        // document.querySelector('iframe').contentWindow.document.body.innerHTML(marked(content));
     };
     editor.on('change', onchange);
 	onchange();
+    w.moeditorWindow.changed = false;
 
     var synced = $('.CodeMirror-vscrollbar, #previewer-wrapper');
     synced.on('scroll', function(e) {
