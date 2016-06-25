@@ -1,0 +1,46 @@
+#titlebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 25px;
+    z-index: 2147483647;
+    background: rgba(0, 0, 0, 0);
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+}
+
+#titlebar img {
+    cursor: default;
+    -webkit-app-region: no-drag;
+}
+
+#titlebar .button {
+    position: absolute;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    cursor: default;
+    -webkit-app-region: no-drag;
+}
+
+#titlebar .button.hover {
+    background-color: rgba(196, 196, 196, 0.4);
+}
+
+#titlebar .button:active {
+    background-color: rgba(168, 168, 168, 0.5);
+}
+
+#titlebar .button-close {
+    left: 5px;
+}
+
+#titlebar .button-maximize {
+    right: 5px;
+}
+
+#titlebar .button-minimize {
+    right: 28px;
+}

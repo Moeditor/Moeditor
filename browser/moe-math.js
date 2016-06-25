@@ -124,7 +124,7 @@ class MoeditorMathRenderer {
         }
     }
 
-    static randerWithCache(o) {
+    static renderWithCache(o) {
         if (o.display) {
             if (typeof renderedDisplay[o.content] === 'undefined') {
                 renderedDisplay[o.content] = MoeditorMathRenderer.renderWithoutCache(o);
@@ -140,7 +140,7 @@ class MoeditorMathRenderer {
 
     render(s) {
         for (const key in this.matched) {
-            s = s.replace(key, MoeditorMathRenderer.randerWithCache(this.matched[key]));
+            s = s.replace(key, MoeditorMathRenderer.renderWithCache(this.matched[key]));
         }
 
         return s;

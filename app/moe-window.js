@@ -14,7 +14,8 @@ class MoeditorWindow {
             height: 600 * Consts.scaleFactor,
             webPreferences: {
                 zoomFactor: Consts.scaleFactor
-            }
+            },
+            frame: false
         });
         this.window.loadURL('file://' + Consts.path + '/browser/index.html');
         this.window.webContents.openDevTools();

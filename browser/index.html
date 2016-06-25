@@ -56,6 +56,7 @@
         }
 
         #previewer {
+            padding-top: 25px;
             padding-left: 20px;
             padding-right: 20px;
         }
@@ -74,6 +75,7 @@
 
         .CodeMirror-scroll {
             padding: 15px;
+            padding-top: 30px;
             height: calc(100% - 30px) !important;
             width: calc(100% - 15px) !important;
         }
@@ -82,6 +84,9 @@
             line-height: 1.5 !important;
         }
         </style>
+
+        <link rel="stylesheet" href="moe-titlebar.css">
+        <script type="text/javascript" src="moe-titlebar.js"></script>
 
         <link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">
         <link rel="stylesheet" href="../node_modules/katex/dist/katex.min.css">
@@ -105,6 +110,18 @@
         <script type="text/javascript" src="moe-math.js"></script>
     </head>
     <body>
+        <div id="titlebar">
+            <div class="button button-close">
+                <img src="titlebar/close.svg">
+            </div>
+            <div class="button button-maximize">
+                <img class="button-img-maximize" src="titlebar/maximize.svg">
+                <img style="display: none; " class="button-img-restore" src="titlebar/restore.svg">
+            </div>
+            <div class="button button-minimize">
+                <img src="titlebar/minimize.svg">
+            </div>
+        </div>
         <div id="editor">
             <textarea>### Moeditor
 Your all-purpose markdown editor.
