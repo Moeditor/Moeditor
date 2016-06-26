@@ -95,6 +95,7 @@ class MoeditorMathRenderer {
 
                 last = null;
                 res += holder;
+                continue;
             } else last = c;
 
             if (c != '$') res += c;
