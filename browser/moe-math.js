@@ -19,7 +19,7 @@
 
 'use strict';
 
-const await = require('asyncawait/await');
+// const await = require('asyncawait/await');
 
 var renderedInline = new Array(), renderedDisplay = new Array();
 var mathjax = null;
