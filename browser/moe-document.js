@@ -73,4 +73,7 @@ $(function() {
        var percentage = this.scrollTop / (this.scrollHeight - this.offsetHeight);
        other.scrollTop = percentage * (other.scrollHeight - other.offsetHeight);
     });
+
+	const remote = require('electron').remote;
+	remote.getCurrentWindow().show();
 });

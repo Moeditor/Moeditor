@@ -36,7 +36,8 @@ class MoeditorWindow {
             webPreferences: {
                 zoomFactor: Consts.scaleFactor
             },
-            frame: false
+            frame: false,
+			show: false
         });
         this.window.moeditorWindow = this;
 
