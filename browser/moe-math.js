@@ -112,6 +112,7 @@ class MoeditorMathRenderer {
             escape.innerText = e;
             return '<div style="display: inline-block; color: #e22; ">' + escape.innerHTML + '</div>';
 
+			/*
             if (mathjax == null) {
                 mathjax = (function(document, window) { return require("mathjax-node/lib/mj-single.js"); })(null, null);
 
@@ -141,6 +142,7 @@ class MoeditorMathRenderer {
             }));
 
             return res;
+			*/
         }
     }
 
