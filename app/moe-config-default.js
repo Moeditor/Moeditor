@@ -2,7 +2,6 @@
  *  This file is part of Moeditor.
  *
  *  Copyright (c) 2016 Menci <huanghaorui301@gmail.com>
- *  Copyright (c) 2015 Thomas Brouard (for codes from Abricotine)
  *
  *  Moeditor is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -20,13 +19,7 @@
 
 'use strict';
 
-const app = require('electron').app,
-      pathModule = require('path'),
-      pkg = require('../package.json'),
-      appPath = app.getAppPath();
-
 module.exports = {
-    name: "Moeditor",
-    path: appPath,
-    scaleFactor: 1
+    'debug': false,
+    'scale-factor': 1.0
 };

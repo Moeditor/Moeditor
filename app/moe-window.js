@@ -21,8 +21,7 @@
 
 const BrowserWindow = require('electron').BrowserWindow,
       dialog = require('electron').dialog,
-      MoeditorAction = require('./moe-action'),
-      Consts = require('./consts');
+      MoeditorAction = require('./moe-action');
 
 class MoeditorWindow {
 	constructor(fileName) {
@@ -31,10 +30,10 @@ class MoeditorWindow {
         this.changed = false;
 		this.window = new BrowserWindow({
             autoHideMenuBar: true,
-            width: 900 * Consts.scaleFactor,
-            height: 600 * Consts.scaleFactor,
+            width: 900 * Config.get('scale-factor'),
+            height: 600 * Config.get('scale-factor'),
             webPreferences: {
-                zoomFactor: Consts.scaleFactor
+                zoomFactor: Config.get('scale-factor')
             },
             frame: false,
 			show: false
@@ -42,9 +41,11 @@ class MoeditorWindow {
         this.window.moeditorWindow = this;
 
         this.registerEvents();
+        this.window.loadURL('file://' + Const.path + '/browser/index.html');
 
-        this.window.loadURL('file://' + Consts.path + '/browser/index.html');
-        this.window.webContents.openDevTools();
+        if (Flag.debug | Config.get('debug')) {
+            this.window.webContents.openDevTools();
+        }
 	}
 
     registerEvents() {

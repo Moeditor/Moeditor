@@ -39,8 +39,17 @@ class MoeditorApplication {
 	}
 
 	run() {
+        global.Const = require('./moe-const');
+
+        const Configstore = require('configstore');
+        global.Config = new Configstore(Const.name, require('./moe-config-default'));
+
+        global.Flag = new Object();
+
         console.log(process.argv);
         var docs = process.argv.filter(function (s) {
+            if (s == '--debug') Flag.debug = true;
+
             try {
                 return s.substring(0, 2) !== '--' && MoeditorFile.isTextFile(s);
             } catch (e) {
