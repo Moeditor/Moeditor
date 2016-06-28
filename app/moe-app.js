@@ -65,7 +65,7 @@ class MoeditorApplication {
 
     registerShortcuts() {
         shortcut.register('Ctrl + N', () => {
-            this.open();
+            MoeditorAction.openNew();
         });
 
         shortcut.register('Ctrl + O', () => {

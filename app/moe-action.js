@@ -23,6 +23,10 @@ const {dialog} = require('electron'),
       MoeditorFile = require('./moe-file');
 
 class MoeditorAction {
+    static openNew() {
+        moeApp.open();
+    }
+
     static open() {
         const files = dialog.showOpenDialog({properties: ['openFile', 'multiSelections']});
 

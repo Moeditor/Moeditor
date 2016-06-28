@@ -74,6 +74,19 @@ $(function() {
        other.scrollTop = percentage * (other.scrollHeight - other.offsetHeight);
     });
 
+    // workaround for the .button is still :hover after maximize window
+    $('#editor #cover #cover-bottom .button-bottom').mouseover(function() {
+        $(this).addClass('hover');
+    }).mouseout(function() {
+        $(this).removeClass('hover');
+    }).click(function() {
+        var s = $(this).data('action');
+        const MoeditorAction = require('electron').remote.require('../app/moe-action');
+        if (s == 'new') MoeditorAction.openNew();
+        else if (s == 'open') MoeditorAction.open();
+        else if (s == 'save') MoeditorAction.save();
+    });
+
 	const remote = require('electron').remote;
 	remote.getCurrentWindow().show();
 });
