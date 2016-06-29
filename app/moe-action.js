@@ -30,6 +30,8 @@ class MoeditorAction {
     static open() {
         const files = dialog.showOpenDialog({properties: ['openFile', 'multiSelections']});
 
+        if (typeof files == 'undefined') return;
+
         for (var file of files) {
             moeApp.open(file);
         }
