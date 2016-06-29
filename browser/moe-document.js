@@ -57,7 +57,7 @@ $(function() {
         var percentage = self.scrollTop / (self.scrollHeight - self.offsetHeight);
         other.scrollTop = percentage * (other.scrollHeight - other.offsetHeight);
 
-        if (percentage == 1) $('.cover-bottom').addClass('cover-nobackground');
+        if (percentage >= 1) $('.cover-bottom').addClass('cover-nobackground');
         else $('.cover-bottom.cover-nobackground').removeClass('cover-nobackground');
     }
 
