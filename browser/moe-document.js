@@ -93,6 +93,12 @@ $(function() {
         else if (s == 'save') MoeditorAction.save();
     });
 
-	const remote = require('electron').remote;
-	remote.getCurrentWindow().show();
+    const s = require('electron').shell;
+
+    $("#previewer").on('click', 'a', function(e) {
+        e.preventDefault();
+        s.openExternal(this.href);
+    });
+
+    w.show();
 });
