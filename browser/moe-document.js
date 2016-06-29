@@ -21,6 +21,8 @@
 
 const MoeditorFile = require('../app/moe-file.js');
 
+var moeApp = require('electron').remote.getCurrentWindow().moeditorApplication;
+
 $(function() {
     CodeMirror.defineMode('mathdown', function(config) {
         var options = [];

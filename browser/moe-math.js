@@ -21,8 +21,8 @@
 
 // const await = require('asyncawait/await');
 
-var renderedInline = new Array(), renderedDisplay = new Array();
-var mathjax = null;
+var renderedInline = new Array(), renderedDisplay = new Array(), rendering = new Array(), renderID = 0;
+var mathjax = moeApp.mathjax;
 
 class MoeditorMathRenderer {
     constructor(s) {
@@ -104,45 +104,33 @@ class MoeditorMathRenderer {
         return res;
     }
 
+    static enqueue(o) {
+        var id = renderID;
+        renderID++;
+
+        mathjax.typeset({
+            math: o.content,
+            format: o.display ? "TeX" : "inline-TeX",
+            svg: true,
+        }, function (data) {
+            var res = data.errors ? data.errors.toString() : data.svg;
+            if (o.display) {
+                res = '<div style="width: 100%; text-align: center">' + res + '</div>';
+            }
+
+            if (o.display) renderedDisplay[o.content] = res;
+            else renderedInline[o.content] = res;
+            $('.mj-rendering-' + id.toString()).html(res);
+        });
+
+        return '<span class="mj-rendering-' + id.toString() + '"></span>';
+    }
+
     static renderWithoutCache(o) {
         try {
             return katex.renderToString(o.content, { displayMode: o.display });
         } catch(e) {
-            var escape = document.createElement('textarea');
-            escape.innerText = e;
-            return '<div style="display: inline-block; color: #e22; ">' + escape.innerHTML + '</div>';
-
-			/*
-            if (mathjax == null) {
-                mathjax = (function(document, window) { return require("mathjax-node/lib/mj-single.js"); })(null, null);
-
-                mathjax.config({
-                    MathJax: {
-                        tex2jax: {
-                            processEscapes: true
-                        }
-                    }
-                });
-
-                mathjax.start();
-            }
-
-            var res = 'error';
-
-            await (mathjax.typeset({
-                math: o.content,
-                format: o.display ? "TeX" : "inline-TeX",
-                html: true,
-            }, function (data) {
-                if (!data.errors) {
-                    res = data.html;
-                } else {
-                    res = data.errors.toString();
-                }
-            }));
-
-            return res;
-			*/
+            return this.enqueue(o);
         }
     }
 

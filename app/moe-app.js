@@ -28,6 +28,9 @@ const MoeditorWindow = require('./moe-window'),
 class MoeditorApplication {
 	constructor() {
 		this.windows = new Array();
+
+        // workaround for `speech-rule-engine` doesn't support both DOM and node.js
+        this.mathjax = require('./moe-mathjax');
 	}
 
     open() {
