@@ -53,7 +53,15 @@ $(function() {
         extraKeys: { 'Enter': 'newlineAndIndentContinueMarkdownList' }
     });
 
-	const onchange = function() {
+    const onscroll = function(self, other) {
+        var percentage = self.scrollTop / (self.scrollHeight - self.offsetHeight);
+        other.scrollTop = percentage * (other.scrollHeight - other.offsetHeight);
+
+        if (percentage == 1) $('.cover-bottom').addClass('cover-nobackground');
+        else $('.cover-bottom.cover-nobackground').removeClass('cover-nobackground');
+    }
+
+    const onchange = function() {
         const content = editor.getValue();
         w.moeditorWindow.content = content;
         // console.log(w.moeditorWindow.content);
@@ -62,17 +70,15 @@ $(function() {
         const replaced = mathRenderer.replace();
         const html = marked(replaced);
         $('#previewer').html(mathRenderer.render(html));
+
+        onscroll($('.CodeMirror-vscrollbar')[0], $('#previewer-wrapper')[0]);
     };
     editor.on('change', onchange);
-	onchange();
+    onchange();
     w.moeditorWindow.changed = false;
 
-    var synced = $('.CodeMirror-vscrollbar, #previewer-wrapper');
-    synced.on('scroll', function(e) {
-       var other = synced.not(this).off('scroll')[0];
-       var percentage = this.scrollTop / (this.scrollHeight - this.offsetHeight);
-       other.scrollTop = percentage * (other.scrollHeight - other.offsetHeight);
-    });
+    $('.CodeMirror-vscrollbar').on('scroll', function(e) { $('#previewer-wrapper').off('scroll'), onscroll(this, $('#previewer-wrapper')[0]); });
+    $('#previewer-wrapper').on('scroll', function(e) { $('.CodeMirror-vscrollbar').off('scroll'), onscroll(this, $('.CodeMirror-vscrollbar')[0]); });
 
     // workaround for the .button is still :hover after maximize window
     $('#left-panel .cover .cover-bottom .button-bottom').mouseover(function() {

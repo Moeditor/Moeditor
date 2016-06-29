@@ -32,6 +32,7 @@ html, body {
     bottom: 0;
     width: 50%;
     height: 100%;
+    background-color: rgb(245, 245, 245);
 }
 
 #right-panel {
@@ -105,6 +106,10 @@ html, body {
     -webkit-app-region: no-drag;
 }
 
+.cover-nobackground {
+    background: transparent !important;
+}
+
 #left-panel .cover .cover-bottom .button-bottom {
     font-family: "Roboto", "Noto Sans", "Helvetica", "Ubuntu", "Arial" !important;
     display: inline-block;
@@ -153,7 +158,7 @@ html, body {
 
 #previewer {
     padding-top: 25px;
-    padding-bottom: 45px;
+    padding-bottom: 30px;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -171,11 +176,14 @@ html, body {
 .cm-quote { color: #90a959; }
 
 .CodeMirror-scroll {
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
     padding: 15px;
     padding-top: 30px;
-    padding-bottom: 45px !important;
-    height: calc(100% - 75px) !important;
-    width: calc(100% - 15px) !important;
+    padding-bottom: 0 !important;
+    height: calc(100% - 60px) !important;
+    width: calc(100% - 24px) !important;
 }
 
 .CodeMirror-vscrollbar {
