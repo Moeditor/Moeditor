@@ -1,0 +1,156 @@
+/*
+ *  This file is part of Moeditor.
+ *
+ *  Copyright (c) 2016 Menci <huanghaorui301@gmail.com>
+ *
+ *  Moeditor is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Moeditor is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#editor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    height: auto;
+    overflow: auto;
+}
+
+#editor textarea {
+    width: 0;
+    height: 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#editor #cover {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+#editor #cover #cover-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    z-index: 1000;
+    background: linear-gradient(to bottom, rgb(245, 245, 245) 70%, transparent);
+}
+
+#editor #cover #cover-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    z-index: 1000;
+    background: linear-gradient(to top, rgb(245, 245, 245) 60%, transparent);
+    -webkit-app-region: no-drag;
+}
+
+#editor #cover #cover-bottom .button-bottom {
+    font-family: "Roboto", "Noto Sans", "Helvetica", "Ubuntu", "Arial" !important;
+    display: inline-block;
+    pointer-events: auto;
+    height: 14px;
+    margin-top: 19px;
+    margin-bottom: 0;
+    line-height: 14px;
+    padding: 4px;
+    padding-bottom: 4px;
+    color: #a5a5a5;
+    font-size: 11px;
+}
+
+#editor #cover #cover-bottom .button-bottom:first-child {
+    margin-left: 15px;
+}
+
+#editor #cover #cover-bottom .button-bottom.hover {
+    background-color: rgba(196, 196, 196, 0.2);
+}
+
+#editor #cover #cover-bottom .button-bottom:active {
+    background-color: rgba(168, 168, 168, 0.3);
+}
+
+#editor * {
+    font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace, 'Noto Sans CJK SC', 'Source Han Sans SC' !important;
+}
+
+#editor .CodeMirror {
+    width: 100%;
+    height: 100%;
+}
+
+#previewer-wrapper {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: auto;
+    overflow: auto;
+}
+
+#previewer {
+    padding-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.cm-s-default .cm-header {
+    color: inherit !important;
+}
+
+.cm-header-1 { font-size: 2em; }
+.cm-header-2 { font-size: 1.75em; }
+.cm-header-3 { font-size: 1.5em; }
+.cm-header-4 { font-size: 1.3em; }
+.cm-header-5 { font-size: 1.2em; }
+.cm-header-6 { font-size: 1.15em; }
+.cm-quote { color: #90a959; }
+
+.CodeMirror-scroll {
+    padding: 15px;
+    padding-top: 30px;
+    padding-bottom: 45px !important;
+    height: calc(100% - 75px) !important;
+    width: calc(100% - 15px) !important;
+}
+
+.CodeMirror-vscrollbar {
+    z-index: 1000000 !important;
+}
+
+.CodeMirror {
+    line-height: 1.5 !important;
+}
