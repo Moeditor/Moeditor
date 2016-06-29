@@ -118,7 +118,7 @@ html, body {
     bottom: 0;
     width: 50%;
     height: auto;
-    overflow: auto;
+    overflow: hidden;
 }
 
 #previewer {
