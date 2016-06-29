@@ -75,7 +75,7 @@ $(function() {
     });
 
     // workaround for the .button is still :hover after maximize window
-    $('#editor #cover #cover-bottom .button-bottom').mouseover(function() {
+    $('#left-panel .cover .cover-bottom .button-bottom').mouseover(function() {
         $(this).addClass('hover');
     }).mouseout(function() {
         $(this).removeClass('hover');
