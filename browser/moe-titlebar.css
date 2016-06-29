@@ -31,6 +31,7 @@
 }
 
 #titlebar img {
+    position: absolute;
     cursor: default;
     -webkit-app-region: no-drag;
 }
