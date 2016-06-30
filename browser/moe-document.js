@@ -19,9 +19,11 @@
 
 'use strict';
 
-const MoeditorFile = require('../app/moe-file.js');
+const MoeditorFile = require('../app/moe-file'),
+      MoeditorPreview = require('./moe-preview');
 
-var moeApp = require('electron').remote.getCurrentWindow().moeditorApplication;
+var w = require('electron').remote.getCurrentWindow();
+var moeApp = w.moeditorApplication;
 
 $(function() {
     CodeMirror.defineMode('mathdown', function(config) {
@@ -39,7 +41,6 @@ $(function() {
         return CodeMirror.multiplexingMode.apply(CodeMirror, [CodeMirror.getMode(config, 'gfm')].concat([].slice.call(options)));
     });
 
-    var w = require('electron').remote.getCurrentWindow();
     if (typeof w.moeditorWindow.fileName !== 'undefined') {
         var content = MoeditorFile.read(w.moeditorWindow.fileName, '');
         document.querySelector('#editor textarea').innerText = content;
@@ -63,20 +64,11 @@ $(function() {
         else $('.cover-bottom.cover-nobackground').removeClass('cover-nobackground');
     }
 
-    const onchange = function() {
-        const content = editor.getValue();
-        w.moeditorWindow.content = content;
-        // console.log(w.moeditorWindow.content);
-        w.moeditorWindow.changed = true;
-        var mathRenderer = new MoeditorMathRenderer(content);
-        const replaced = mathRenderer.replace();
-        const html = marked(replaced);
-        $('#previewer').html(mathRenderer.render(html));
-
-        onscroll($('.CodeMirror-vscrollbar')[0], $('#previewer-wrapper')[0]);
+    const onchange = function(cm, obj) {
+        MoeditorPreview(cm, obj, onscroll);
     };
     editor.on('change', onchange);
-    onchange();
+    MoeditorPreview(editor, null, onscroll);
     w.moeditorWindow.changed = false;
 
     $('.CodeMirror-vscrollbar').on('scroll', function(e) { $('#previewer-wrapper').off('scroll'), onscroll(this, $('#previewer-wrapper')[0]); });
