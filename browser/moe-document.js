@@ -56,23 +56,14 @@ $(function() {
         extraKeys: { 'Enter': 'newlineAndIndentContinueMarkdownList' }
     });
 
-    const onscroll = function(self, other) {
-        var percentage = self.scrollTop / (self.scrollHeight - self.offsetHeight);
-        other.scrollTop = percentage * (other.scrollHeight - other.offsetHeight);
-
-        if (percentage >= 1) $('.cover-bottom').addClass('cover-nobackground');
-        else $('.cover-bottom.cover-nobackground').removeClass('cover-nobackground');
-    }
+    const scroll = require('./moe-scroll');
 
     const onchange = function(cm, obj) {
-        MoeditorPreview(cm, obj, onscroll);
+        MoeditorPreview(cm, obj, scroll);
     };
     editor.on('change', onchange);
-    MoeditorPreview(editor, null, onscroll);
+    MoeditorPreview(editor, null, scroll);
     w.moeditorWindow.changed = false;
-
-    $('.CodeMirror-vscrollbar').on('scroll', function(e) { $('#previewer-wrapper').off('scroll'), onscroll(this, $('#previewer-wrapper')[0]); });
-    $('#previewer-wrapper').on('scroll', function(e) { $('.CodeMirror-vscrollbar').off('scroll'), onscroll(this, $('.CodeMirror-vscrollbar')[0]); });
 
     // workaround for the .button is still :hover after maximize window
     $('#left-panel .cover .cover-bottom .button-bottom').mouseover(function() {

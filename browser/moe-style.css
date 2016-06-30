@@ -26,26 +26,19 @@ html, body {
 }
 
 #left-panel {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
+    float: left;
     width: 50%;
     height: 100%;
     background-color: rgb(245, 245, 245);
 }
 
 #right-panel {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    float: right;
     width: 50%;
     height: 100%;
 }
 
 #editor {
-    position: absolute;
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -60,11 +53,10 @@ html, body {
 }
 
 .cover {
-    position: absolute;
+    position: fixed;
     pointer-events: none;
     top: 0;
-    left: 0;
-    width: 100%;
+    width: 50%;
     height: 100%;
     -webkit-user-select: none;
     cursor: default;
@@ -87,6 +79,14 @@ html, body {
     width: 100%;
     height: 45px;
     z-index: 1000;
+}
+
+#left-panel .cover {
+    left: 0;
+}
+
+#right-panel .cover {
+    right: 0;
 }
 
 #right-panel .cover .cover-top {
@@ -146,14 +146,9 @@ html, body {
 }
 
 #previewer-wrapper {
-    position: absolute;;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
+    width: calc(100% + 6px);
+    height: 100%;
+    overflow-y: scroll;
 }
 
 #previewer {
