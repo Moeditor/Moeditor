@@ -20,6 +20,11 @@
 'use strict';
 
 var updatePreview = false, updatePreviewRunning = false;
+const MoeditorHighlight = require('./moe-highlight');
+
+marked.setOptions({
+    highlight: MoeditorHighlight
+});
 
 module.exports = function (cm, obj, onscroll) {
     function updateSync() {
