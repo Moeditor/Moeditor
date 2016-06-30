@@ -21,7 +21,10 @@
 
 // const await = require('asyncawait/await');
 
-var renderedInline = new Array(), renderedDisplay = new Array(), rendering = new Array(), renderID = 0;
+var LRUCache = require('lrucache');
+var renderedInline = LRUCache(512), renderedDisplay = LRUCache(512);
+
+var renderID = 0;
 var mathjax = moeApp.mathjax;
 
 class MoeditorMathRenderer {
@@ -118,8 +121,7 @@ class MoeditorMathRenderer {
                 res = '<div style="width: 100%; text-align: center">' + res + '</div>';
             }
 
-            if (o.display) renderedDisplay[o.content] = res;
-            else renderedInline[o.content] = res;
+            (o.display ? renderedDisplay : renderedInline).set(o.content, res);
             $('.mj-rendering-' + id.toString()).html(res);
         });
 
@@ -135,23 +137,22 @@ class MoeditorMathRenderer {
     }
 
     static renderWithCache(o) {
-        if (o.display) {
-            if (typeof renderedDisplay[o.content] === 'undefined') {
-                renderedDisplay[o.content] = MoeditorMathRenderer.renderWithoutCache(o);
-            }
-            return renderedDisplay[o.content];
-        } else {
-            if (typeof renderedInline[o.content] === 'undefined') {
-                renderedInline[o.content] = MoeditorMathRenderer.renderWithoutCache(o);
-            }
-            return renderedInline[o.content];
-        }
+        var cache = o.display ? renderedDisplay : renderedInline;
+        var res = cache.get(o.content);
+        if (res === undefined) {
+            res = MoeditorMathRenderer.renderWithoutCache(o);
+            cache.set(o.content, res);
+            return res;
+        } else return res;
     }
 
     render(s) {
         for (const key in this.matched) {
             s = s.replace(key, MoeditorMathRenderer.renderWithCache(this.matched[key]));
         }
+
+        // console.log(renderedInline.info());
+        // console.log(renderedDisplay.info());
 
         return s;
     }
