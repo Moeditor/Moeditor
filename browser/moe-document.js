@@ -53,7 +53,7 @@ $(function() {
         // scrollbarStyle: "simple",
         theme: 'base16-light',
         lineWrapping: true,
-        extraKeys: { 'Enter': 'newlineAndIndentContinueMarkdownList' }
+        extraKeys: { 'Enter': 'newlineAndIndentContinueMarkdownList', Home: 'goLineLeft', End: 'goLineRight' }
     });
 
     const scroll = require('./moe-scroll');
