@@ -27,29 +27,31 @@ marked.setOptions({
 });
 
 module.exports = function (cm, obj, onscroll) {
-    function updateSync() {
+    function updateAsync() {
+        updatePreview = false;
+        updatePreviewRunning = true;
+
         const content = cm.getValue();
         w.moeditorWindow.content = content;
         // console.log(w.moeditorWindow.content);
         w.moeditorWindow.changed = true;
         var mathRenderer = new MoeditorMathRenderer(content);
         const replaced = mathRenderer.replace();
-        const html = marked(replaced);
-        $('#previewer').html(mathRenderer.render(html));
+        const html = marked(replaced, function(err, val) {
+            mathRenderer.render(val, function(val) {
+                $('#previewer').html(val);
+                onscroll($('.CodeMirror-vscrollbar')[0], $('#previewer-wrapper')[0]);
 
-        onscroll($('.CodeMirror-vscrollbar')[0], $('#previewer-wrapper')[0]);
+                updatePreviewRunning = false;
+
+                if (updatePreview) setTimeout(updateAsync, 0);
+            });
+        });
     }
 
     updatePreview = true;
 
     if (!updatePreviewRunning) {
-        updatePreviewRunning = true;
-        setTimeout(function () {
-            while (updatePreview) {
-                updatePreview = false;
-                updateSync();
-            }
-            updatePreviewRunning = false;
-        }, 0);
+        setTimeout(updateAsync, 0);
     }
 }

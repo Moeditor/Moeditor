@@ -24,7 +24,6 @@
 var LRUCache = require('lrucache');
 var renderedInline = LRUCache(512), renderedDisplay = LRUCache(512);
 
-var renderID = 0;
 var mathjax = moeApp.mathjax;
 
 class MoeditorMathRenderer {
@@ -107,14 +106,13 @@ class MoeditorMathRenderer {
         return res;
     }
 
-    static enqueue(o) {
-        var id = renderID;
-        renderID++;
+    enqueue(key, o) {
+        var self = this;
 
         mathjax.typeset({
             math: o.content,
             format: o.display ? "TeX" : "inline-TeX",
-            svg: true,
+            svg: true
         }, function (data) {
             var res = data.errors ? data.errors.toString() : data.svg;
             if (o.display) {
@@ -122,38 +120,55 @@ class MoeditorMathRenderer {
             }
 
             (o.display ? renderedDisplay : renderedInline).set(o.content, res);
-            $('.mj-rendering-' + id.toString()).html(res);
+            self.rendered(key, res);
         });
-
-        return '<span class="mj-rendering-' + id.toString() + '"></span>';
     }
 
-    static renderWithoutCache(o) {
-        try {
-            return katex.renderToString(o.content, { displayMode: o.display });
-        } catch(e) {
-            return this.enqueue(o);
-        }
+    renderWithoutCache(key, o) {
+        var self = this;
+        setTimeout(function() {
+            try {
+                var res = katex.renderToString(o.content, { displayMode: o.display });
+                (o.display ? renderedDisplay : renderedInline).set(o.content, res);
+                self.rendered(key, res);
+            } catch(e) {
+                self.enqueue(key, o);
+            }
+        }, 0);
     }
 
     static renderWithCache(o) {
         var cache = o.display ? renderedDisplay : renderedInline;
-        var res = cache.get(o.content);
-        if (res === undefined) {
-            res = MoeditorMathRenderer.renderWithoutCache(o);
-            cache.set(o.content, res);
-            return res;
-        } else return res;
+        return cache.get(o.content);
     }
 
-    render(s) {
-        for (const key in this.matched) {
-            s = s.replace(key, MoeditorMathRenderer.renderWithCache(this.matched[key]));
+    render(s, cb) {
+        this.s = s;
+        this.rendered = function(key, res) {
+            this.cnt--;
+            this.s = this.s.replace(key, res);
+            if (this.cnt == 0 && this.ready) {
+                this.ready = false;
+                cb(this.s);
+            }
         }
 
-        // console.log(renderedInline.info());
-        // console.log(renderedDisplay.info());
+        this.cnt = 0;
+        this.ready = false;
+        for (const key in this.matched) {
+            var res = MoeditorMathRenderer.renderWithCache(this.matched[key]);
+            if (res === undefined) {
+                this.cnt++;
+                this.renderWithoutCache(key, this.matched[key]);
+            } else {
+                this.s = this.s.replace(key, res);
+            }
+        }
+        this.ready = true;
 
-        return s;
+        if (this.cnt == 0 && this.ready) {
+            this.ready = false;
+            cb(this.s);
+        }
     }
 }
