@@ -59,11 +59,14 @@ $(function() {
     const scroll = require('./moe-scroll');
 
     const onchange = function(cm, obj) {
-        MoeditorPreview(cm, obj, scroll);
+        MoeditorPreview(cm, obj, function() {
+            scroll($('.CodeMirror-vscrollbar')[0], $('#previewer-wrapper')[0]);
+        });
     };
     editor.on('change', onchange);
-    MoeditorPreview(editor, null, scroll);
-    w.moeditorWindow.changed = false;
+    MoeditorPreview(editor, null, function() {
+        w.moeditorWindow.changed = false;
+    });
 
     // workaround for the .button is still :hover after maximize window
     $('#left-panel .cover .cover-bottom .button-bottom').mouseover(function() {

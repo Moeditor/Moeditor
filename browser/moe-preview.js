@@ -26,7 +26,7 @@ marked.setOptions({
     highlight: MoeditorHighlight
 });
 
-module.exports = function (cm, obj, onscroll) {
+module.exports = function (cm, obj, cb) {
     function updateAsync() {
         updatePreview = false;
         updatePreviewRunning = true;
@@ -40,7 +40,7 @@ module.exports = function (cm, obj, onscroll) {
         const html = marked(replaced, function(err, val) {
             mathRenderer.render(val, function(val) {
                 $('#previewer').html(val);
-                onscroll($('.CodeMirror-vscrollbar')[0], $('#previewer-wrapper')[0]);
+                cb();
 
                 updatePreviewRunning = false;
 
