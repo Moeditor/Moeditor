@@ -112,7 +112,8 @@ class MoeditorMathRenderer {
         mathjax.typeset({
             math: o.content,
             format: o.display ? "TeX" : "inline-TeX",
-            svg: true
+            svg: true,
+            width: 0
         }, function (data) {
             var res = data.errors ? data.errors.toString() : data.svg;
             if (o.display) {
