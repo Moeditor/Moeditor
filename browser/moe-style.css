@@ -111,7 +111,7 @@ html, body {
 }
 
 #left-panel .cover .cover-bottom .button-bottom {
-    font-family: "Roboto", "Noto Sans", "Helvetica", "Ubuntu", "Arial" !important;
+    font-family: "Roboto", "Noto Sans", "Helvetica", "Ubuntu", "Sogoe UI" !important;
     display: inline-block;
     pointer-events: auto;
     height: 14px;
@@ -137,7 +137,7 @@ html, body {
 }
 
 #editor * {
-    font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace, 'Noto Sans CJK SC', 'Source Han Sans SC' !important;
+    font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace, 'Noto Sans CJK SC', 'Source Han Sans SC', 'Microsoft Yahei' !important;
 }
 
 #editor .CodeMirror {
