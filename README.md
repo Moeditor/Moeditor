@@ -22,5 +22,5 @@ cnpm start
 
 ### Todo
 * ~~File I/O~~
-* MathJax fallback on rendering equations with KaTex
+* ~~MathJax fallback on rendering equations with KaTex~~
 * Many things ...
