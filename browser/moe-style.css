@@ -188,3 +188,12 @@ html, body {
 .CodeMirror {
     line-height: 1.5 !important;
 }
+
+.CodeMirror-cursors {
+    transition: opacity 500ms ease-in-out;
+}
+
+.CodeMirror-cursors[style="visibility: hidden;"] {
+    opacity: 0 !important;
+    visibility: visible !important;
+}
