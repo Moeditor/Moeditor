@@ -30,3 +30,10 @@ app.on("ready", function () {
     global.moeApp = moeApp;
 	moeApp.run();
 });
+
+app.on('window-all-closed', function () {
+	if (process.platform !== 'darwin') {
+		app.quit()
+	}
+})
+
