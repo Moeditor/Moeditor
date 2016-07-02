@@ -30,7 +30,7 @@ class MoeditorWindow {
         this.changed = false;
 		this.window = new BrowserWindow({
             autoHideMenuBar: true,
-            width: 900 * Config.get('scale-factor'),
+            width: 1000 * Config.get('scale-factor'),
             height: 600 * Config.get('scale-factor'),
             webPreferences: {
                 zoomFactor: Config.get('scale-factor')

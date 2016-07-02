@@ -152,10 +152,11 @@ html, body {
 }
 
 #previewer {
-    padding-top: 25px;
+    padding-top: 40px;
     padding-bottom: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 45px;
+    padding-right: 40px;
+    font-size: 15 !important;
 }
 
 .cm-s-default .cm-header {
@@ -174,11 +175,12 @@ html, body {
     overflow: hidden !important;
     overflow-x: hidden !important;
     overflow-y: scroll !important;
-    padding: 15px;
-    padding-top: 30px;
+    padding-left: 45px;
+    padding-right: 20px;
+    padding-top: 40px;
     padding-bottom: 0 !important;
-    height: calc(100% - 60px) !important;
-    width: calc(100% - 24px) !important;
+    height: calc(100% - 70px) !important;
+    width: calc(100% - 45px - 20px - 24px + 30px) !important;
 }
 
 .CodeMirror-vscrollbar {
@@ -186,7 +188,8 @@ html, body {
 }
 
 .CodeMirror {
-    line-height: 1.5 !important;
+    font-size: 15px;
+    line-height: 1.6 !important;
 }
 
 .CodeMirror-cursors {
