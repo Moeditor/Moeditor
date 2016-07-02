@@ -28,12 +28,18 @@ var moeApp = null;
 app.on("ready", function () {
     moeApp = new MoeditorApplication();
     global.moeApp = moeApp;
+    global.app = app;
 	moeApp.run();
 });
 
 app.on('window-all-closed', function () {
 	if (process.platform !== 'darwin') {
-		app.quit()
+		app.quit();
 	}
-})
+});
 
+app.on('activate', function () {
+    if (moeApp.windows.length == 0) {
+        moeApp.open();
+    }
+});

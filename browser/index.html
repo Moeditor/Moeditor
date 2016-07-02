@@ -24,7 +24,8 @@
 
 		<script>
 		window.$ = window.jQuery = require("jquery");
-		</script>
+        window.document.querySelector('html').classList.add(process.platform)
+        </script>
 
         <link rel="stylesheet" href="../node_modules/highlight.js/styles/github.css">
         <link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">

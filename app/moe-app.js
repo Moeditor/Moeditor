@@ -44,6 +44,8 @@ class MoeditorApplication {
 	run() {
         global.Const = require('./moe-const');
 
+        app.setName(Const.name);
+
         const Configstore = require('configstore');
         global.Config = new Configstore(Const.name, require('./moe-config-default'));
 
@@ -61,10 +63,33 @@ class MoeditorApplication {
         });
 
         if (docs.length == 0) this.open();
-		else for (var i = 0; i < docs.length; i++) this.open(docs[i]);
+		else for (var i = 0; i < docs.length; i++) {
+            app.addRecentDocument(docs[i]);
+            this.open(docs[i]);
+        }
 
-        this.registerShortcuts();
+        if (process.platform === 'darwin') this.registerAppMenu();
+        else this.registerShortcuts();
 	}
+
+    registerAppMenu() {
+        require('./moe-menu')(
+            {
+                fileNew: (w) => {
+                    MoeditorAction.openNew();
+                },
+                fileOpen: (w) => {
+                    MoeditorAction.open();
+                },
+                fileSave: (w) => {
+                    MoeditorAction.save(w);
+                },
+                fileSaveAs: (w) => {
+                    MoeditorAction.saveAs(w);
+                }
+            }
+        );
+    }
 
     registerShortcuts() {
         shortcut.register('Ctrl + N', () => {

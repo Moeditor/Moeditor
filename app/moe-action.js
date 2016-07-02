@@ -33,6 +33,7 @@ class MoeditorAction {
         if (typeof files == 'undefined') return;
 
         for (var file of files) {
+            app.addRecentDocument(file);
             moeApp.open(file);
         }
     }
@@ -44,21 +45,12 @@ class MoeditorAction {
         if (typeof w.moeditorWindow == 'undefined') return false;
 
         if (typeof w.moeditorWindow.fileName == 'undefined' || w.moeditorWindow.fileName == '') {
-            const fileName = dialog.showSaveDialog(w);
-            if (typeof fileName == 'undefined') return false;
-            try {
-                // console.log(w.moeditorWindow.content);
-                MoeditorFile.write(fileName, w.moeditorWindow.content);
-                w.moeditorWindow.fileName = fileName;
-                w.moeditorWindow.changed = false;
-            } catch(e) {
-                console.log('Can\'t save file: ' + e.toString());
-                return false;
-            }
+            MoeditorAction.saveAs(w);
         } else {
             try {
                 MoeditorFile.write(w.moeditorWindow.fileName, w.moeditorWindow.content);
                 w.moeditorWindow.changed = false;
+                app.addRecentDocument(w.moeditorWindow.fileName);
             } catch(e) {
                 console.log('Can\'t save file: ' + e.toString());
                 return false;
@@ -66,6 +58,24 @@ class MoeditorAction {
         }
 
         return true;
+    }
+
+    static saveAs(w) {
+        if (typeof w == 'undefined') w = require('electron').BrowserWindow.getFocusedWindow();
+        if (typeof w.moeditorWindow == 'undefined') return false;
+
+        const fileName = dialog.showSaveDialog(w);
+        if (typeof fileName == 'undefined') return false;
+        try {
+            // console.log(w.moeditorWindow.content);
+            MoeditorFile.write(fileName, w.moeditorWindow.content);
+            w.moeditorWindow.fileName = fileName;
+            w.moeditorWindow.changed = false;
+            app.addRecentDocument(fileName);
+        } catch(e) {
+            console.log('Can\'t save file: ' + e.toString());
+            return false;
+        }
     }
 }
 

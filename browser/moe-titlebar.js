@@ -18,6 +18,8 @@
  */
 
 $(function() {
+    if (process.platform === 'darwin') return;
+
     $('#titlebar img').on('dragstart', function(e) {
         e.preventDefault();
     });

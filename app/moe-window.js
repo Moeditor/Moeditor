@@ -28,16 +28,20 @@ class MoeditorWindow {
         this.fileName = fileName;
         this.content = '';
         this.changed = false;
-		this.window = new BrowserWindow({
+        var conf = {
             autoHideMenuBar: true,
             width: 1000 * Config.get('scale-factor'),
             height: 600 * Config.get('scale-factor'),
             webPreferences: {
                 zoomFactor: Config.get('scale-factor')
             },
-            frame: false,
 			show: false
-        });
+        };
+
+        if (process.platform == 'darwin') conf.titleBarStyle = 'hidden-inset';
+        else conf.frame = false;
+
+		this.window = new BrowserWindow(conf);
         this.window.moeditorWindow = this;
         this.window.moeditorApplication = moeApp;
 
@@ -66,6 +70,9 @@ class MoeditorWindow {
                     if (!MoeditorAction.save(this)) e.preventDefault();
                 } else if (choice == 2) e.preventDefault();
             }
+
+            const index = moeApp.windows.indexOf(this.moeditorWindow);
+            if (index !== -1) moeApp.windows.splice(index, 1);
         });
     }
 }
