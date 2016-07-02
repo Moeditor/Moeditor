@@ -51,7 +51,7 @@ class MoeditorApplication {
 
         global.Flag = new Object();
 
-        console.log(process.argv);
+        // console.log(process.argv);
         var docs = process.argv.filter(function (s) {
             if (s == '--debug') Flag.debug = true;
 
@@ -61,6 +61,8 @@ class MoeditorApplication {
                 return false;
             }
         });
+
+        if (typeof this.osxOpenFile === 'string') docs.append(this.osxOpenFile);
 
         if (docs.length == 0) this.open();
 		else for (var i = 0; i < docs.length; i++) {

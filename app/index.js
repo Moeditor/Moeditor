@@ -23,10 +23,11 @@
 const app = require('electron').app,
       MoeditorApplication = require('./moe-app');
 
-var moeApp = null;
+var moeApp = null, openFile = null;
 
 app.on("ready", function () {
     moeApp = new MoeditorApplication();
+    if (openFile !== null) moeApp.osxOpenFile = openFile;
     global.moeApp = moeApp;
     global.app = app;
 	moeApp.run();
@@ -36,6 +37,13 @@ app.on('window-all-closed', function () {
 	if (process.platform !== 'darwin') {
 		app.quit();
 	}
+});
+
+app.on('open-file', function(e, file) {
+    console.log(file);
+    console.log(process.type);
+    if (moeApp === null) openFile = file;
+    else moeApp.open(file);
 });
 
 app.on('activate', function () {
