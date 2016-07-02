@@ -62,7 +62,7 @@ class MoeditorApplication {
             }
         });
 
-        if (typeof this.osxOpenFile === 'string') docs.append(this.osxOpenFile);
+        if (typeof this.osxOpenFile === 'string') docs.push(this.osxOpenFile);
 
         if (docs.length == 0) this.open();
 		else for (var i = 0; i < docs.length; i++) {
