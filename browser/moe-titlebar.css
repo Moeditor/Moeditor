@@ -57,8 +57,8 @@
 }
 
 html.win32 #titlebar img {
-    margin-top: 13px;
-    margin-left: 22.5px;
+    margin-top: 8.5px;
+    margin-left: 16.5px;
 }
 
 html.darwin #titlebar .button {
@@ -99,8 +99,8 @@ html.linux #titlebar .button-minimize {
 
 html.win32 #titlebar .button {
     top: 0px;
-    width: 57px;
-    height: 38px;
+    width: 45px;
+    height: 29px;
 }
 
 html.win32 #titlebar .button.hover {
@@ -128,9 +128,9 @@ html.win32 #titlebar .button-close.hover img, html.win32 #titlebar .button-close
 }
 
 html.win32 #titlebar .button-maximize {
-    right: 57px;
+    right: 45px;
 }
 
 html.win32 #titlebar .button-minimize {
-    right: 114px;
+    right: 90px;
 }
