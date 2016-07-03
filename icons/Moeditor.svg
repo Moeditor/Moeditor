@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="48"
+   height="48"
+   id="svg2"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Moeditor.svg">
+  <defs
+     id="defs7">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4135">
+      <stop
+         style="stop-color:#dadada;stop-opacity:1"
+         offset="0"
+         id="stop4137" />
+      <stop
+         style="stop-color:#fafafa;stop-opacity:1"
+         offset="1"
+         id="stop4139" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4135"
+       id="linearGradient4145"
+       x1="10.199939"
+       y1="89.742332"
+       x2="10.453781"
+       y2="50.192291"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter4367">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(119,119,119)"
+         result="flood"
+         id="feFlood4369" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite4371" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="0.3"
+         result="blur"
+         id="feGaussianBlur4373" />
+      <feOffset
+         dx="0"
+         dy="0"
+         result="offset"
+         id="feOffset4375" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite4377" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter4337">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(119,119,119)"
+         result="flood"
+         id="feFlood4339" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite4341" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="1.5"
+         result="blur"
+         id="feGaussianBlur4343" />
+      <feOffset
+         dx="0"
+         dy="0"
+         result="offset"
+         id="feOffset4345" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite4347" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1024"
+     id="namedview31"
+     showgrid="true"
+     inkscape:zoom="13.906433"
+     inkscape:cx="18.557834"
+     inkscape:cy="22.826786"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g3005"
+     showguides="true"
+     inkscape:snap-to-guides="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4151" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="matrix(0.18333333,0,0,0.18333333,2.0000004,37.2)"
+     id="g3005">
+    <path
+       d="m 30,70 a 20,20 0 1 1 -40,0 20,20 0 1 1 40,0 z"
+       transform="matrix(6,0,0,6,60,-492)"
+       id="path2995-1-0"
+       style="fill-opacity:1;stroke:none;fill:url(#linearGradient4145);stroke-opacity:1;stroke-width:0.04545455;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter4367)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4514"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:218.18182373px;line-height:125%;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#282828;fill-opacity:0.91764706;fill-rule:nonzero;stroke:none;stroke-width:5.4545455;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;filter:url(#filter4337);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 110.02537,-87.437507 -7.80467,31.0293 28.07224,0 7.61914,-31.0293 -3.47851,0 -24.4082,0 z m 2.65625,-38.115233 6.77148,0 -7.96289,31.777343 27.97656,0 8.03907,-31.777343 6.64257,0 -7.88672,31.777343 24.64846,0 0,6.33789 -26.28713,0 -7.61718,31.0293 25.09962,0 0,6.26172 -26.73634,0 -7.96289,31.699223 -6.63672,0 7.88867,-31.699223 -28.05661,0 -7.886721,31.699223 -6.69922,0 7.96289,-31.699223 -24.88867,0 0,-6.26172 26.35156,0 7.802731,-31.0293 -25.425771,0 0,-6.33789 27.052721,0 7.81053,-31.777343 z"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
