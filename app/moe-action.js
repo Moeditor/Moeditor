@@ -28,7 +28,15 @@ class MoeditorAction {
     }
 
     static open() {
-        const files = dialog.showOpenDialog({properties: ['openFile', 'multiSelections']});
+        const files = dialog.showOpenDialog(
+            {
+                properties: ['openFile', 'multiSelections'],
+                filters: [
+                    { name: 'Markdown Documents', extensions: [ 'md', 'mkd', 'markdown' ] },
+                    { name: 'All Files', extensions: [ '*' ] }
+                ]
+            }
+        );
 
         if (typeof files == 'undefined') return;
 
@@ -64,7 +72,14 @@ class MoeditorAction {
         if (typeof w == 'undefined') w = require('electron').BrowserWindow.getFocusedWindow();
         if (typeof w.moeditorWindow == 'undefined') return false;
 
-        const fileName = dialog.showSaveDialog(w);
+        const fileName = dialog.showSaveDialog(w,
+            {
+                filters: [
+                    { name: 'Markdown Documents', extensions: ['md', 'mkd', 'markdown' ] },
+                    { name: 'All Files', extensions: [ '*' ] }
+                ]
+            }
+        );
         if (typeof fileName == 'undefined') return false;
         try {
             // console.log(w.moeditorWindow.content);
