@@ -60,14 +60,25 @@
             <div id="drag-left"></div>
             <div id="drag-right"></div>
             <div class="button button-close">
-                <img src="titlebar/close.svg">
+                <script>
+                if (process.platform === 'win32') document.write('<img src="titlebar/caption-buttons.svg#close">');
+                else if (process.platform === 'linux') document.write('<img src="titlebar/close.svg">');
+                </script>
             </div>
             <div class="button button-maximize">
-                <img class="button-img-maximize" src="titlebar/maximize.svg">
-                <img style="display: none; " class="button-img-restore" src="titlebar/restore.svg">
+                <script>
+                if (process.platform === 'win32') document.write('<img class="button-img-maximize" src="titlebar/caption-buttons.svg#maximize">');
+                else if (process.platform === 'linux') document.write('<img class="button-img-maximize" src="titlebar/maximize.svg">');
+
+                if (process.platform === 'win32') document.write('<img style="display: none; " class="button-img-restore" src="titlebar/caption-buttons.svg#restore">');
+                else if (process.platform === 'linux') document.write('<img style="display: none; " class="button-img-restore" src="titlebar/restore.svg">');
+                </script>
             </div>
             <div class="button button-minimize">
-                <img src="titlebar/minimize.svg">
+                <script>
+                if (process.platform === 'win32') document.write('<img src="titlebar/caption-buttons.svg#minimize">');
+                else if (process.platform === 'linux') document.write('<img src="titlebar/minimize.svg">');
+                </script>
             </div>
         </div>
         <div id="left-panel">

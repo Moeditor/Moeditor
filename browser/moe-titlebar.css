@@ -23,7 +23,7 @@
     left: 0;
     right: 0;
     width: 100%;
-    height: 35px;
+    height: 38px;
     z-index: 100000;
     background: rgba(0, 0, 0, 0);
     -webkit-user-select: none;
@@ -56,35 +56,81 @@
     -webkit-app-region: no-drag;
 }
 
+html.win32 #titlebar img {
+    margin-top: 13px;
+    margin-left: 22.5px;
+}
+
 html.darwin #titlebar .button {
     display: none;
 }
 
 #titlebar .button {
     position: absolute;
-    top: 5px;
-    width: 16px;
-    height: 16px;
     cursor: default;
     -webkit-app-region: no-drag;
 }
 
-#titlebar .button.hover {
+html.linux #titlebar .button {
+    top: 5px;
+    width: 16px;
+    height: 16px;
+}
+
+html.linux #titlebar .button.hover {
     background-color: rgba(196, 196, 196, 0.4);
 }
 
-#titlebar .button:active {
+html.linux #titlebar .button:active {
     background-color: rgba(168, 168, 168, 0.5);
 }
 
-#titlebar .button-close {
+html.linux #titlebar .button-close {
     left: 5px;
 }
 
-#titlebar .button-maximize {
+html.linux #titlebar .button-maximize {
     right: 5px;
 }
 
-#titlebar .button-minimize {
+html.linux #titlebar .button-minimize {
     right: 28px;
+}
+
+html.win32 #titlebar .button {
+    top: 0px;
+    width: 57px;
+    height: 38px;
+}
+
+html.win32 #titlebar .button.hover {
+    background-color: rgba(196, 196, 196, 0.4);
+}
+
+html.win32 #titlebar .button:active {
+    background-color: rgba(168, 168, 168, 0.5);
+}
+
+html.win32 #titlebar .button-close {
+    right: 0px;
+}
+
+html.win32 #titlebar .button-close.hover {
+    background-color: #e81123;
+}
+
+html.win32 #titlebar .button-close:active {
+    background-color: rgba(232, 17, 35, 0.6);
+}
+
+html.win32 #titlebar .button-close.hover img, html.win32 #titlebar .button-close:active img {
+    -webkit-filter: invert(100%);
+}
+
+html.win32 #titlebar .button-maximize {
+    right: 57px;
+}
+
+html.win32 #titlebar .button-minimize {
+    right: 114px;
 }
