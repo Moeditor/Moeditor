@@ -11,8 +11,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   width="48"
-   height="48"
+   width="128"
+   height="128"
    id="svg2"
    inkscape:version="0.91 r13725"
    sodipodi:docname="Moeditor.svg">
@@ -40,7 +40,7 @@
        y2="50.192291"
        gradientUnits="userSpaceOnUse" />
     <filter
-       style="color-interpolation-filters:sRGB;"
+       style="color-interpolation-filters:sRGB"
        inkscape:label="Drop Shadow"
        id="filter4367">
       <feFlood
@@ -72,7 +72,7 @@
          id="feComposite4377" />
     </filter>
     <filter
-       style="color-interpolation-filters:sRGB;"
+       style="color-interpolation-filters:sRGB"
        inkscape:label="Drop Shadow"
        id="filter4337">
       <feFlood
@@ -117,13 +117,13 @@
      inkscape:window-height="1024"
      id="namedview31"
      showgrid="true"
-     inkscape:zoom="13.906433"
-     inkscape:cx="18.557834"
-     inkscape:cy="22.826786"
+     inkscape:zoom="4.9166665"
+     inkscape:cx="22.926065"
+     inkscape:cy="64.486396"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g3005"
+     inkscape:current-layer="svg2"
      showguides="true"
      inkscape:snap-to-guides="true">
     <inkscape:grid
@@ -138,18 +138,18 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="matrix(0.18333333,0,0,0.18333333,2.0000004,37.2)"
+     transform="matrix(0.48888889,0,0,0.48888889,5.3333334,99.2)"
      id="g3005">
     <path
        d="m 30,70 a 20,20 0 1 1 -40,0 20,20 0 1 1 40,0 z"
        transform="matrix(6,0,0,6,60,-492)"
        id="path2995-1-0"
-       style="fill-opacity:1;stroke:none;fill:url(#linearGradient4145);stroke-opacity:1;stroke-width:0.04545455;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter4367)"
+       style="fill:url(#linearGradient4145);fill-opacity:1;stroke:none;stroke-width:0.04545455;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4367)"
        inkscape:connector-curvature="0" />
     <path
        id="path4514"
