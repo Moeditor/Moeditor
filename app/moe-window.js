@@ -43,7 +43,6 @@ class MoeditorWindow {
 
 		this.window = new BrowserWindow(conf);
         this.window.moeditorWindow = this;
-        this.window.moeditorApplication = moeApp;
 
         this.registerEvents();
         this.window.loadURL('file://' + Const.path + '/browser/index.html');

@@ -30,6 +30,7 @@ app.on("ready", function () {
     if (openFile !== null) moeApp.osxOpenFile = openFile;
     global.moeApp = moeApp;
     global.app = app;
+    app.moeApp = moeApp;
 	moeApp.run();
 });
 

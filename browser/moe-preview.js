@@ -21,8 +21,12 @@
 
 var updatePreview = false, updatePreviewRunning = false;
 const MoeditorHighlight = require('./moe-highlight');
+const MoeditorMathRenderer = require('./moe-math');
+const MoeMark = require('./moemark');
+const jQuery = require('jquery');
 
-marked.setOptions({
+MoeMark.setOptions({
+    math: true,
     highlight: MoeditorHighlight
 });
 
@@ -33,19 +37,42 @@ module.exports = function (cm, obj, cb) {
 
         const content = cm.getValue();
         w.moeditorWindow.content = content;
-        // console.log(w.moeditorWindow.content);
         w.moeditorWindow.changed = true;
-        var mathRenderer = new MoeditorMathRenderer(content);
-        const replaced = mathRenderer.replace();
-        const html = marked(replaced, function(err, val) {
-            mathRenderer.render(val, function(val) {
-                $('#previewer').html(val);
-                cb();
 
-                updatePreviewRunning = false;
+        var mathCnt = 0, mathID = 0, math = new Array();
+        var rendering = true, rendered = null;
 
-                if (updatePreview) setTimeout(updateAsync, 0);
-            });
+        function finish() {
+            for (var i in math) {
+                rendered.find('#math-' + i).html(math[i]);
+            }
+            $('#previewer').html(rendered.html());
+            cb();
+
+            updatePreviewRunning = false;
+            if (updatePreview) setTimeout(updateAsync, 0);
+        }
+
+        MoeMark(content, {
+            mathRenderer: function(str, display) {
+                var res = MoeditorMathRenderer.tryRender(str, display);
+                if (res !== undefined) {
+                    return res;
+                } else {
+                    mathCnt++, mathID++;
+                    var id = 'math-' + mathID;
+                    var res = '<span id="' + id + '"></span>'
+                    MoeditorMathRenderer.render(str, display, function(res, id) {
+                        math[id] = res;
+                        if (!--mathCnt && !rendering) finish();
+                    }, mathID);
+                    return res;
+                }
+            }
+        }, function(err, val) {
+            rendered = jQuery(jQuery.parseHTML('<span>' + val + '</span>'));
+            rendering = false;
+            if (!mathCnt) finish();
         });
     }
 
