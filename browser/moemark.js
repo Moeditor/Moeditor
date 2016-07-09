@@ -168,6 +168,8 @@ Lexer.prototype.lex = function(src) {
  */
 
 Lexer.prototype.token = function(src, top, bq) {
+  if (this.options.lineNumber && this.lineNumber === undefined) this.lineNumber = 1;
+
   var src = src.replace(/^ +$/gm, '')
     , next
     , loose
@@ -177,56 +179,67 @@ Lexer.prototype.token = function(src, top, bq) {
     , item
     , space
     , i
-    , l;
+    , l
+    , cnt;
 
   while (src) {
     // newline
     if (cap = this.rules.newline.exec(src)) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
       if (cap[0].length > 1) {
         this.tokens.push({
-          type: 'space'
+          type: 'space',
+          lineNumber: this.options.lineNumber ? (this.lineNumber += cnt) - cnt : undefined
         });
       }
+      continue;
     }
 
     // code
     if (cap = this.rules.code.exec(src)) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
       cap = cap[0].replace(/^ {4}/gm, '');
       this.tokens.push({
         type: 'code',
         text: !this.options.pedantic
           ? cap.replace(/\n+$/, '')
-          : cap
+          : cap,
+        lineNumber: this.options.lineNumber ? (this.lineNumber += cnt) - cnt : undefined
       });
       continue;
     }
 
     // fences (gfm)
     if (cap = this.rules.fences.exec(src)) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
       this.tokens.push({
         type: 'code',
         lang: cap[2],
-        text: cap[3] || ''
+        text: cap[3] || '',
+        lineNumber: this.options.lineNumber ? (this.lineNumber += cnt) - cnt : undefined
       });
       continue;
     }
 
     // heading
     if (cap = this.rules.heading.exec(src)) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
       this.tokens.push({
         type: 'heading',
         depth: cap[1].length,
-        text: cap[2]
+        text: cap[2],
+        lineNumber: this.options.lineNumber ? (this.lineNumber += cnt) - cnt : undefined
       });
       continue;
     }
 
     // table no leading pipe (gfm)
     if (top && (cap = this.rules.nptable.exec(src))) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
 
       item = {
@@ -252,6 +265,7 @@ Lexer.prototype.token = function(src, top, bq) {
         item.cells[i] = item.cells[i].split(/ *\| */);
       }
 
+      if (this.options.lineNumber) item.lineNumber = (this.lineNumber += cnt) - cnt;
       this.tokens.push(item);
 
       continue;
@@ -259,40 +273,48 @@ Lexer.prototype.token = function(src, top, bq) {
 
     // lheading
     if (cap = this.rules.lheading.exec(src)) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
       this.tokens.push({
         type: 'heading',
         depth: cap[2] === '=' ? 1 : 2,
-        text: cap[1]
+        text: cap[1],
+        lineNumber: this.options.lineNumber ? (this.lineNumber += cnt) - cnt : undefined
       });
       continue;
     }
 
     // displaymath
     if (cap = this.rules.displaymath.exec(src)) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
       this.tokens.push({
         type: 'displaymath',
-        text: cap[1]
+        text: cap[1],
+        lineNumber: this.options.lineNumber ? (this.lineNumber += cnt) - cnt : undefined
       });
       continue;
     }
 
     // hr
     if (cap = this.rules.hr.exec(src)) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
       this.tokens.push({
-        type: 'hr'
+        type: 'hr',
+        lineNumber: this.options.lineNumber ? (this.lineNumber += cnt) - cnt : undefined
       });
       continue;
     }
 
     // blockquote
     if (cap = this.rules.blockquote.exec(src)) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
 
       this.tokens.push({
-        type: 'blockquote_start'
+        type: 'blockquote_start',
+        lineNumber: this.options.lineNumber ? this.lineNumber : undefined
       });
 
       cap = cap[0].replace(/^ *> ?/gm, '');
@@ -311,12 +333,14 @@ Lexer.prototype.token = function(src, top, bq) {
 
     // list
     if (cap = this.rules.list.exec(src)) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
       bull = cap[2];
 
       this.tokens.push({
         type: 'list_start',
-        ordered: bull.length > 1
+        ordered: bull.length > 1,
+        lineNumber: this.options.lineNumber ? this.lineNumber : undefined
       });
 
       // Get each top-level item.
@@ -385,6 +409,7 @@ Lexer.prototype.token = function(src, top, bq) {
 
     // html
     if (cap = this.rules.html.exec(src)) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
       this.tokens.push({
         type: this.options.sanitize
@@ -392,23 +417,27 @@ Lexer.prototype.token = function(src, top, bq) {
           : 'html',
         pre: !this.options.sanitizer
           && (cap[1] === 'pre' || cap[1] === 'script' || cap[1] === 'style'),
-        text: cap[0]
+        text: cap[0],
+        lineNumber: this.options.lineNumber ? (this.lineNumber += cnt) - cnt : undefined
       });
       continue;
     }
 
     // def
     if ((!bq && top) && (cap = this.rules.def.exec(src))) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
       this.tokens.links[cap[1].toLowerCase()] = {
         href: cap[2],
-        title: cap[3]
+        title: cap[3],
+        lineNumber: this.options.lineNumber ? (this.lineNumber += cnt) - cnt : undefined
       };
       continue;
     }
 
     // table (gfm)
     if (top && (cap = this.rules.table.exec(src))) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
 
       item = {
@@ -436,6 +465,7 @@ Lexer.prototype.token = function(src, top, bq) {
           .split(/ *\| */);
       }
 
+      if (this.options.lineNumber) item.lineNumber = (this.lineNumber += cnt) - cnt;
       this.tokens.push(item);
 
       continue;
@@ -443,12 +473,14 @@ Lexer.prototype.token = function(src, top, bq) {
 
     // top-level paragraph
     if (top && (cap = this.rules.paragraph.exec(src))) {
+      if (this.options.lineNumber) cnt = count(cap[0], '\n');
       src = src.substring(cap[0].length);
       this.tokens.push({
         type: 'paragraph',
         text: cap[1].charAt(cap[1].length - 1) === '\n'
           ? cap[1].slice(0, -1)
-          : cap[1]
+          : cap[1],
+          lineNumber: this.options.lineNumber ? (this.lineNumber += cnt) - cnt : undefined
       });
       continue;
     }
@@ -456,10 +488,12 @@ Lexer.prototype.token = function(src, top, bq) {
     // text
     if (cap = this.rules.text.exec(src)) {
       // Top-level should never reach here.
+      if (this.options.lineNumber) cnt = 1; // count(cap[0], '\n');
       src = src.substring(cap[0].length);
       this.tokens.push({
         type: 'text',
-        text: cap[0]
+        text: cap[0],
+        lineNumber: this.options.lineNumber ? (this.lineNumber += cnt) - cnt : undefined
       });
       continue;
     }
@@ -843,19 +877,19 @@ Renderer.prototype.heading = function(text, level, raw) {
 };
 
 Renderer.prototype.math = function(text, display) {
-    if (this.options.mathRenderer) {
-      return this.options.mathRenderer(text, display);
-    }
+  if (this.options.mathRenderer) {
+    return this.options.mathRenderer(text, display);
+  }
 
-    if (display) {
-      return '<div class="displaymath">'
-        + escape(text, true)
-        + '\n</div>';
-    } else {
-      return '<span class="inlinemath">'
-        + escape(text, true)
-        + '\n</span>';
-    }
+  if (display) {
+    return '<div class="displaymath">'
+      + escape(text, true)
+      + '\n</div>';
+  } else {
+    return '<span class="inlinemath">'
+      + escape(text, true)
+      + '\n</span>';
+  }
 };
 
 Renderer.prototype.displaymath = function(text) {
@@ -1036,24 +1070,28 @@ Parser.prototype.parseText = function() {
 Parser.prototype.tok = function() {
   switch (this.token.type) {
     case 'space': {
-      return '';
+      return addLineNumber('', this.token);
     }
     case 'hr': {
-      return this.renderer.hr();
+      return addLineNumber(this.renderer.hr(), this.token);
     }
     case 'heading': {
-      return this.renderer.heading(
-        this.inline.output(this.token.text),
-        this.token.depth,
-        this.token.text);
+      return addLineNumber(
+        this.renderer.heading(
+          this.inline.output(this.token.text),
+          this.token.depth,
+          this.token.text
+        ), this.token);
     }
     case 'displaymath': {
-      return this.renderer.displaymath(this.token.text);
+      return addLineNumber(this.renderer.displaymath(this.token.text), this.token);
     }
     case 'code': {
-      return this.renderer.code(this.token.text,
-        this.token.lang,
-        this.token.escaped);
+      return addLineNumber(
+        this.renderer.code(this.token.text,
+          this.token.lang,
+          this.token.escaped
+        ), this.token);
     }
     case 'table': {
       var header = ''
@@ -1062,7 +1100,8 @@ Parser.prototype.tok = function() {
         , row
         , cell
         , flags
-        , j;
+        , j
+        , bakToken = this.token;
 
       // header
       cell = '';
@@ -1088,58 +1127,60 @@ Parser.prototype.tok = function() {
 
         body += this.renderer.tablerow(cell);
       }
-      return this.renderer.table(header, body);
+      return addLineNumber(this.renderer.table(header, body), bakToken);
     }
     case 'blockquote_start': {
-      var body = '';
+      var body = '', bakToken = this.token;
 
       while (this.next().type !== 'blockquote_end') {
         body += this.tok();
       }
 
-      return this.renderer.blockquote(body);
+      return addLineNumber(this.renderer.blockquote(body), bakToken);
     }
     case 'list_start': {
       var body = ''
-        , ordered = this.token.ordered;
+        , ordered = this.token.ordered
+        , bakToken = this.token;
 
       while (this.next().type !== 'list_end') {
         body += this.tok();
       }
 
-      return this.renderer.list(body, ordered);
+      return addLineNumber(this.renderer.list(body, ordered), bakToken);
     }
     case 'list_item_start': {
-      var body = '';
+      var body = '', bakToken = this.token;
 
       while (this.next().type !== 'list_item_end') {
         body += this.token.type === 'text'
-          ? this.parseText()
+          ? addLineNumber(this.parseText(), this.token)
           : this.tok();
       }
 
-      return this.renderer.listitem(body);
+      return addLineNumber(this.renderer.listitem(body), bakToken);
     }
     case 'loose_item_start': {
-      var body = '';
+      var body = '', bakToken = this.token;
 
       while (this.next().type !== 'list_item_end') {
         body += this.tok();
       }
 
-      return this.renderer.listitem(body);
+      return addLineNumber(this.renderer.listitem(body), bakToken);
     }
     case 'html': {
       var html = !this.token.pre && !this.options.pedantic
         ? this.inline.output(this.token.text)
-        : this.token.text;
-      return this.renderer.html(html);
+        : this.token.text
+      , bakToken = this.token;
+      return addLineNumber(this.renderer.html(html), bakToken);
     }
     case 'paragraph': {
-      return this.renderer.paragraph(this.inline.output(this.token.text));
+      return addLineNumber(this.renderer.paragraph(this.inline.output(this.token.text)), this.token);
     }
     case 'text': {
-      return this.renderer.paragraph(this.parseText());
+      return addLineNumber(this.renderer.paragraph(this.parseText()), this.token);
     }
   }
 };
@@ -1180,6 +1221,17 @@ function replace(regex, opt) {
     regex = regex.replace(name, val);
     return self;
   };
+}
+
+function count(str, chr) {
+  var res = 0;
+  for (var i = 0; i < str.length; ++i) if (str[i] == chr) res++;
+  return res;
+}
+
+function addLineNumber(str, token) {
+  if (token.lineNumber !== undefined) return '<span data-linenumber="' + token.lineNumber + '">' + str + '</span>';
+  else return str;
 }
 
 function noop() {}
@@ -1302,6 +1354,7 @@ MoeMark.setOptions = function(opt) {
 };
 
 MoeMark.defaults = {
+  lineNumber: true,
   gfm: true,
   math: true,
   tables: true,

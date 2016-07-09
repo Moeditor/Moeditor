@@ -46,6 +46,15 @@ module.exports = function (cm, obj, cb) {
             for (var i in math) {
                 rendered.find('#math-' + i).html(math[i]);
             }
+
+            var set = new Set();
+            rendered.find('[data-linenumber]').each(function() {
+                set.add(parseInt($(this).data('linenumber')));
+            });
+            window.lineNumbers = (Array.from(set)).sort(function(a, b) { return a - b; });
+            console.log(window.lineNumbers);
+            window.lastScrollLineNumber = undefined;
+
             $('#previewer').html(rendered.html());
             cb();
 
