@@ -31,6 +31,7 @@ function lookup(a, x) {
 }
 
 function editorToPreview() {
+    if (window.lineNumbers.length == 0) return;
     var self = $('.CodeMirror-vscrollbar')[0], other = $('#previewer-wrapper')[0];
     const percentage = self.scrollTop / (self.scrollHeight - self.offsetHeight);
     if (percentage >= 1) {
