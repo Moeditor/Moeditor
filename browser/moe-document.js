@@ -23,7 +23,7 @@ const MoeditorFile = require('../app/moe-file'),
       MoeditorPreview = require('./moe-preview');
 
 var w = require('electron').remote.getCurrentWindow();
-var moeApp = w.moeditorApplication;
+var moeApp = require('electron').remote.app.moeApp;
 
 $(function() {
     CodeMirror.defineMode('mathdown', function(config) {
@@ -53,7 +53,8 @@ $(function() {
         // scrollbarStyle: "simple",
         theme: 'base16-light',
         lineWrapping: true,
-        extraKeys: { 'Enter': 'newlineAndIndentContinueMarkdownList', Home: 'goLineLeft', End: 'goLineRight' }
+        extraKeys: { 'Enter': 'newlineAndIndentContinueMarkdownList', Home: 'goLineLeft', End: 'goLineRight' },
+        tabSize: moeApp.config.get('tab-size')
     });
 
     const scroll = require('./moe-scroll');

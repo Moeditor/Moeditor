@@ -21,5 +21,6 @@
 
 module.exports = {
     'debug': false,
-    'scale-factor': 1.0
+    'scale-factor': 1.0,
+    'tab-size': 4
 };

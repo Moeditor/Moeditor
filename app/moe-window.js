@@ -31,10 +31,10 @@ class MoeditorWindow {
         var conf = {
 	          icon: __dirname + "../icons/Moeditor.ico",
             autoHideMenuBar: true,
-            width: 1000 * Config.get('scale-factor'),
-            height: 600 * Config.get('scale-factor'),
+            width: 1000 * moeApp.config.get('scale-factor'),
+            height: 600 * moeApp.config.get('scale-factor'),
             webPreferences: {
-                zoomFactor: Config.get('scale-factor')
+                zoomFactor: moeApp.config.get('scale-factor')
             },
 			show: false
         };
@@ -48,7 +48,7 @@ class MoeditorWindow {
         this.registerEvents();
         this.window.loadURL('file://' + Const.path + '/browser/index.html');
 
-        if (Flag.debug | Config.get('debug')) {
+        if (moeApp.flag.debug | moeApp.config.get('debug')) {
             this.window.webContents.openDevTools();
         }
 	}
