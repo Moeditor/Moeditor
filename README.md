@@ -5,7 +5,7 @@ Built with Electron.
 
 [Download here](https://github.com/Moeditor/Moeditor/releases)
 
-### Screenshots
+### Screenshot
 ![Moeditor](screenshots/Moeditor.png)
 
 ### Building
@@ -14,7 +14,7 @@ npm install
 npm start
 ```
 
-In China, you may want to use cnpm to replace npm to get higher downloading speed.
+In China, you may want to replace npm with cnpm for a faster download speed.
 
 ```bash
 npm install cnpm -g --registry=https://registry.npm.taobao.org
