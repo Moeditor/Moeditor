@@ -33,7 +33,7 @@ class MoeditorApplication {
         // workaround for `speech-rule-engine` doesn't support both DOM and node.js
         this.mathjax = require('./moe-mathjax');
         this.locale = new MoeditorLocale();
-
+        global.locale = this.locale // For Render Process
 	}
 
     open() {
