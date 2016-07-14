@@ -47,9 +47,9 @@ class MoeditorApplication {
         app.setName(Const.name);
 
         const Configstore = require('configstore');
-        global.Config = new Configstore(Const.name, require('./moe-config-default'));
+        this.config = new Configstore(Const.name, require('./moe-config-default'));
 
-        global.Flag = new Object();
+        this.flag = new Object();
 
         // console.log(process.argv);
         var docs = process.argv.filter(function (s) {
