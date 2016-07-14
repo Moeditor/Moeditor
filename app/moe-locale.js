@@ -26,7 +26,10 @@ class MoeditorLocale {
 		this.locale = "en";
 		osLocale((err, locale) => {
 			if (!err) {
-				this.locale = locale.substr(0, locale.indexOf('_')); // Not location, only language (en_US => en)
+				var loc = locale.substr(0, locale.indexOf('_')); // Not location, only language (en_US => en)
+				if (strings[loc] != 'undefined') {
+					this.locale = loc;
+				}
 			}
 		});
 	}
