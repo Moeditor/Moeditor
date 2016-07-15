@@ -47,13 +47,13 @@ class MoeditorApplication {
         app.setName(Const.name);
 
         const Configstore = require('configstore');
-        global.Config = new Configstore(Const.name, require('./moe-config-default'));
+        this.config = new Configstore(Const.name, require('./moe-config-default'));
 
-        global.Flag = new Object();
+        this.flag = new Object();
 
         // console.log(process.argv);
         var docs = process.argv.filter(function (s) {
-            if (s == '--debug') Flag.debug = true;
+            if (s == '--debug') moeApp.flag.debug = true;
 
             try {
                 return s.substring(0, 2) !== '--' && MoeditorFile.isTextFile(s);
