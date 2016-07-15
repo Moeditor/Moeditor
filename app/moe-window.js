@@ -29,7 +29,7 @@ class MoeditorWindow {
         this.content = '';
         this.changed = false;
         var conf = {
-	          icon: __dirname + "../icons/Moeditor.ico",
+            icon: __dirname + "../icons/Moeditor.ico",
             autoHideMenuBar: true,
             width: 1000 * moeApp.config.get('scale-factor'),
             height: 600 * moeApp.config.get('scale-factor'),
@@ -60,9 +60,9 @@ class MoeditorWindow {
                     this,
                     {
                         type: 'question',
-                        buttons: ['Yes', 'No', 'Cancel'],
-                        title: 'Confirm',
-                        message: 'Save changes to file?'
+                        buttons: [moeApp.locale.get("yes"), moeApp.locale.get("no"), moeApp.locale.get("cancel")],
+                        title: moeApp.locale.get("confirm"),
+                        message: moeApp.locale.get("savequestion")
                     }
                 );
 
