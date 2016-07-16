@@ -32,6 +32,7 @@
     "configstore": "^2.0.0",
     "mathjax-node": "^0.5.1",
     "lrucache": "^1.0.2",
-    "highlight.js": "^9.5.0"
+    "highlight.js": "^9.5.0",
+    "os-locale": "^1.4.0"
   }
 }

@@ -23,7 +23,8 @@
 const MoeditorWindow = require('./moe-window'),
       MoeditorAction = require('./moe-action'),
       MoeditorFile = require('./moe-file'),
-      shortcut = require('electron-localshortcut');
+      shortcut = require('electron-localshortcut'),
+      MoeditorLocale = require('./moe-locale');
 
 class MoeditorApplication {
 	constructor() {
@@ -31,6 +32,7 @@ class MoeditorApplication {
 
         // workaround for `speech-rule-engine` doesn't support both DOM and node.js
         this.mathjax = require('./moe-mathjax');
+        this.locale = new MoeditorLocale();
 	}
 
     open() {

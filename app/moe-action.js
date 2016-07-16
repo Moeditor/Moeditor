@@ -32,8 +32,8 @@ class MoeditorAction {
             {
                 properties: ['openFile', 'multiSelections'],
                 filters: [
-                    { name: 'Markdown Documents', extensions: [ 'md', 'mkd', 'markdown' ] },
-                    { name: 'All Files', extensions: [ '*' ] }
+                    { name: moeApp.locale.get("markdownDocuments"), extensions: [ 'md', 'mkd', 'markdown' ] },
+                    { name: moeApp.locale.get("allFiles"), extensions: [ '*' ] }
                 ]
             }
         );
@@ -75,8 +75,8 @@ class MoeditorAction {
         const fileName = dialog.showSaveDialog(w,
             {
                 filters: [
-                    { name: 'Markdown Documents', extensions: ['md', 'mkd', 'markdown' ] },
-                    { name: 'All Files', extensions: [ '*' ] }
+                    { name: moeApp.locale.get("markdownDocuments"), extensions: ['md', 'mkd', 'markdown' ] },
+                    { name: moeApp.locale.get("allFiles"), extensions: [ '*' ] }
                 ]
             }
         );
