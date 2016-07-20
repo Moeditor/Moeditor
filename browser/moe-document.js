@@ -54,7 +54,8 @@ $(function() {
         theme: 'base16-light',
         lineWrapping: true,
         extraKeys: { 'Enter': 'newlineAndIndentContinueMarkdownList', Home: 'goLineLeft', End: 'goLineRight' },
-        tabSize: moeApp.config.get('tab-size')
+        tabSize: moeApp.config.get('tab-size'),
+        viewportMargin: Infinity
     });
 
     const scroll = require('./moe-scroll');

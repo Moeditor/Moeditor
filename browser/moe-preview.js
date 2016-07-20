@@ -48,12 +48,12 @@ module.exports = function (cm, obj, cb) {
             }
 
             var set = new Set();
-            rendered.find('[data-linenumber]').each(function() {
-                set.add(parseInt($(this).data('linenumber')));
+            rendered.find('moemark-linenumber').each(function() {
+                set.add(parseInt($(this).attr('i')));
             });
             window.lineNumbers = (Array.from(set)).sort(function(a, b) { return a - b; });
-            console.log(window.lineNumbers);
-            window.lastScrollLineNumber = undefined;
+            // console.log(window.lineNumbers);
+            window.scrollMap = undefined;
 
             $('#previewer').html(rendered.html());
             cb();

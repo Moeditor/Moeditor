@@ -1230,7 +1230,7 @@ function count(str, chr) {
 }
 
 function addLineNumber(str, token) {
-  if (token.lineNumber !== undefined) return '<span data-linenumber="' + token.lineNumber + '">' + str + '</span>';
+  if (token.lineNumber !== undefined && str !== '') return '<moemark-linenumber i="' + token.lineNumber + '">' + str + '</moemark-linenumber>';
   else return str;
 }
 

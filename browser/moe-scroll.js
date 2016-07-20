@@ -30,40 +30,78 @@ function lookup(a, x) {
     return l;
 }
 
-function editorToPreview() {
-    if (window.lineNumbers.length == 0) return;
-    var self = $('.CodeMirror-vscrollbar')[0], other = $('#previewer-wrapper')[0];
+var previewer = document.getElementById('previewer'), previewerWrapper = document.getElementById('previewer-wrapper');
+var editorScroll = $('.CodeMirror-vscrollbar')[0], previewerScroll = previewerWrapper;
+function getLineNumberTags() {
+    // from http://stackoverflow.com/questions/9496427/get-elements-by-attribute-when-queryselectorall-is-not-available-without-using-l
+    var a = previewer.getElementsByTagName('moemark-linenumber');
+    window.lineNumberTags = new Array(window.lineNumbers.length);
+
+    for (var i = 0; i < a.length; i++) {
+        var x = a[i].getAttribute('i');
+        if (typeof window.lineNumberTags[x] === 'undefined') {
+            window.lineNumberTags[x] = a[i];
+        }
+    }
+}
+
+function buildScrollMap() {
+    getLineNumberTags();
+    window.scrollMap = new Array(2);
+    window.scrollMap[0] = new Array(window.lineNumbers.length + 1);
+    window.scrollMap[1] = new Array(window.lineNumbers.length + 1);
+    const topOffset = previewer.getBoundingClientRect().top;
+    for (var i = 0; i < window.lineNumbers.length; i++) {
+        window.scrollMap[0][i] = window.editor.heightAtLine(window.lineNumbers[i], 'local');
+        window.scrollMap[1][i] = window.lineNumberTags[window.lineNumbers[i]].getBoundingClientRect().top - topOffset;
+    }
+    window.scrollMap[0][window.lineNumbers.length] = editorScroll.scrollHeight - editorScroll.clientHeight;
+    window.scrollMap[1][window.lineNumbers.length] = previewerWrapper.scrollHeight - previewerWrapper.clientHeight;
+    window.scrollMap[0][0] = window.scrollMap[1][0] = 0;
+}
+
+function mapValue(x, a, b) {
+    const pos = lookup(a, x);
+    return (x - a[pos - 1]) / (a[pos] - a[pos - 1]) * (b[pos] - b[pos - 1]) + b[pos - 1];
+}
+
+function checkScrollToBottom(self, other) {
     const percentage = self.scrollTop / (self.scrollHeight - self.offsetHeight);
     if (percentage >= 1) {
         $('.cover-bottom').addClass('cover-nobackground');
         other.scrollTop = other.scrollHeight;
+        return true;
     } else $('.cover-bottom.cover-nobackground').removeClass('cover-nobackground');
-
-    const lineNumber = window.editor.lineAtHeight(window.editor.getScrollInfo().top, 'local');
-    const index = lookup(window.lineNumbers, lineNumber);
-    const matchedLineNumber = window.lineNumbers[index];
-
-    const top = window.lineNumbers[index == 0 ? index : index - 1];
-    const bottom = matchedLineNumber;
-
-    const topPosSelf = window.editor.heightAtLine(top, 'local');
-    const bottomPosSelf = window.editor.heightAtLine(bottom, 'local');
-
-    const topPosOther = other.scrollTop + $('[data-linenumber=' + top + ']').offset().top;
-    const bottomPosOther = other.scrollTop + $('[data-linenumber=' + bottom + ']').offset().top;
-
-    const target = (window.editor.getScrollInfo().top - topPosSelf) / (bottomPosSelf - topPosSelf) * (bottomPosOther - topPosOther) + topPosOther;
-    other.scrollTop = target;
+    return false;
 }
 
+function editorToPreviewer() {
+    if (window.lineNumbers.length == 0) return;
+    if (window.scrollMap === undefined) buildScrollMap();
+
+    if (checkScrollToBottom(editorScroll, previewerScroll)) return;
+
+    var target = mapValue(editorScroll.scrollTop, window.scrollMap[0], window.scrollMap[1]);
+    previewerScroll.scrollTop = target;
+}
+
+function previewerToEditor() {
+    if (window.lineNumbers.length == 0) return;
+    if (window.scrollMap === undefined) buildScrollMap();
+
+    if (checkScrollToBottom(previewerScroll, editorScroll)) return;
+
+    var target = mapValue(previewerScroll.scrollTop, window.scrollMap[1], window.scrollMap[0]);
+    editorScroll.scrollTop = target;
+}
+
+var editor = $('#editor');
 $('.CodeMirror-vscrollbar').on('scroll', function(e) {
-    console.log(e);
-    editorToPreview();
+    if (editor.is(':hover')) editorToPreviewer();
 });
 
-$('#previewer-wrapper').on('mousewheel', function(e) {
-    $('.CodeMirror-vscrollbar').scrollTop($('.CodeMirror-vscrollbar').scrollTop() + e.originalEvent.deltaY);
-    return false;
+$('#previewer-wrapper').on('scroll', function(e) {
+    if ($(this).is(':hover')) previewerToEditor();
 });
 
-module.exports = editorToPreview;
+module.exports = editorToPreviewer;
