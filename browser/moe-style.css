@@ -32,6 +32,12 @@ html, body {
     background-color: rgb(245, 245, 245);
 }
 
+
+.left-panel-zen-mode {
+  width: 100% !important;
+}
+
+
 #right-panel {
     float: right;
     width: 50%;
