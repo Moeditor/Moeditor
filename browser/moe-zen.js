@@ -17,9 +17,44 @@
  *  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
  */
 
-$(function(){
-  $('#button-bottom-zen').click(function(){
-      $("#right-panel").toggle();
-      $('#left-panel').toggleClass('left-panel-zen-mode')
-  })
+'use strict';
+
+document.addEventListener('DOMContentLoaded', function() {
+    const zenButton = document.getElementById('button-bottom-zen');
+    const rightPanel = document.getElementById('right-panel');
+    const leftPanel = document.getElementById('left-panel');
+    const bottomLeftBackground = document.getElementById('cover-bottom-background-left');
+    const bottomRightBackground = document.getElementById('cover-bottom-background-right');
+
+    function setZenMode(f) {
+        if (f) {
+            rightPanel.style.right = '-50%';
+            leftPanel.style.width = '100%';
+            bottomRightBackground.style.right = '-50%';
+            bottomLeftBackground.style.width = '100%';
+        } else {
+            rightPanel.style.right = '';
+            leftPanel.style.width = '';
+            bottomRightBackground.style.right = '';
+            bottomLeftBackground.style.width = '';
+        }
+        window.zenMode = f;
+        moeApp.config.set('zen-mode', f);
+    }
+
+    if (moeApp.config.get('zen-mode')) setZenMode(true);
+    else setZenMode(false);
+
+    zenButton.addEventListener('click', function() {
+        if (window.zenMode) {
+            setZenMode(false);
+            window.updatePreview();
+        } else {
+            setZenMode(true);
+        }
+    });
+
+    leftPanel.addEventListener('transitionend', function() {
+        editor.refresh();
+    });
 });

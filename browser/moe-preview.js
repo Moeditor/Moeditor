@@ -36,8 +36,10 @@ module.exports = function (cm, obj, cb) {
         updatePreviewRunning = true;
 
         const content = cm.getValue();
-        w.moeditorWindow.content = content;
-        w.moeditorWindow.changed = true;
+        if (w.moeditorWindow.content !== content) {
+            w.moeditorWindow.content = content;
+            w.moeditorWindow.changed = true;
+        }
 
         var mathCnt = 0, mathID = 0, math = new Array();
         var rendering = true, rendered = null;

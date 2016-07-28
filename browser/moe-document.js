@@ -19,14 +19,12 @@
 
 'use strict';
 
-var w, moeApp;
+var w  = require('electron').remote.getCurrentWindow()
+var moeApp = require('electron').remote.app.moeApp;
 
 $(function() {
     const MoeditorFile = require('../app/moe-file'),
           MoeditorPreview = require('./moe-preview');
-
-    w = require('electron').remote.getCurrentWindow();
-    moeApp = require('electron').remote.app.moeApp;
 
     CodeMirror.defineMode('mathdown', function(config) {
         var options = [];
@@ -63,6 +61,7 @@ $(function() {
     const scroll = require('./moe-scroll');
 
     const onchange = function(cm, obj) {
+        if (window.zenMode) return;
         MoeditorPreview(cm, obj, function() {
             scroll();
         });
@@ -73,6 +72,7 @@ $(function() {
     });
 
     window.editor = editor;
+    window.updatePreview = function() { onchange(editor, null); };
 
     // workaround for the .button is still :hover after maximize window
     $('#cover-bottom .button-bottom').mouseover(function() {

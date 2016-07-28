@@ -106,22 +106,20 @@ html, body {
 }
 
 #left-panel {
-    float: left;
+    position: absolute;
+    left: 0;
     width: 50%;
-    height: 100%;
+    height: calc(100% - 25px);
     background-color: rgb(245, 245, 245);
+    transition: all 500ms ease-in-out;
 }
-
-
-.left-panel-zen-mode {
-  width: 100% !important;
-}
-
 
 #right-panel {
-    float: right;
+    position: absolute;
+    right: 0;
     width: 50%;
-    height: 100%;
+    height: calc(100% - 25px);
+    transition: all 500ms ease-in-out;
 }
 
 #editor {
@@ -188,6 +186,24 @@ html, body {
     -webkit-app-region: no-drag;
 }
 
+#cover-bottom #cover-bottom-background-left {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgb(245, 245, 245);
+    transition: all 500ms ease-in-out;
+}
+
+#cover-bottom #cover-bottom-background-right {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    transition: all 500ms ease-in-out;
+}
+
 #cover-bottom .button-bottom {
     display: inline-block;
     pointer-events: auto;
@@ -197,19 +213,20 @@ html, body {
 }
 
 #cover-bottom-left {
-    background: rgb(245, 245, 245);
-    float: left;
+    position: absolute;
+    left: 0;
     width: calc(50% - 10px);
     height: 100%;
     padding-left: 10px;
 }
 
 #cover-bottom-right {
-    background: #fff;
-    float: right;
+    position: absolute;
+    right: 0;
     width: calc(50% - 10px);
     height: 100%;
     padding-right: 10px;
+    text-align: right;
 }
 
 #cover-bottom .button-bottom.hover {
