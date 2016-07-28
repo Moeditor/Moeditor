@@ -41,6 +41,13 @@ module.exports = function (cm, obj, cb) {
             w.moeditorWindow.changed = true;
         }
 
+        if (window.zenMode) {
+            updatePreviewRunning = false;
+            if (updatePreview) setTimeout(updateAsync, 0);
+            cb();
+            return;
+        }
+
         var mathCnt = 0, mathID = 0, math = new Array();
         var rendering = true, rendered = null;
 

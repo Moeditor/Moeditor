@@ -61,7 +61,6 @@ $(function() {
     const scroll = require('./moe-scroll');
 
     const onchange = function(cm, obj) {
-        if (window.zenMode) return;
         MoeditorPreview(cm, obj, function() {
             scroll();
         });
