@@ -19,13 +19,15 @@
 
 'use strict';
 
-const MoeditorFile = require('../app/moe-file'),
-      MoeditorPreview = require('./moe-preview');
-
-var w = require('electron').remote.getCurrentWindow();
-var moeApp = require('electron').remote.app.moeApp;
+var w, moeApp;
 
 $(function() {
+    const MoeditorFile = require('../app/moe-file'),
+          MoeditorPreview = require('./moe-preview');
+
+    w = require('electron').remote.getCurrentWindow();
+    moeApp = require('electron').remote.app.moeApp;
+
     CodeMirror.defineMode('mathdown', function(config) {
         var options = [];
         var ref = [['$$', '$$'], ['$', '$'], ['\\[', '\\]'], ['\\(', '\\)']];
@@ -73,16 +75,18 @@ $(function() {
     window.editor = editor;
 
     // workaround for the .button is still :hover after maximize window
-    $('#left-panel .cover .cover-bottom .button-bottom').mouseover(function() {
+    $('#cover-bottom .button-bottom').mouseover(function() {
         $(this).addClass('hover');
     }).mouseout(function() {
         $(this).removeClass('hover');
     }).click(function() {
         var s = $(this).data('action');
-        const MoeditorAction = require('electron').remote.require('../app/moe-action');
+        if (s === 'menu') MoeditorSideMenu.open();
+
+        /*const MoeditorAction = require('electron').remote.require('../app/moe-action');
         if (s == 'new') MoeditorAction.openNew();
         else if (s == 'open') MoeditorAction.open();
-        else if (s == 'save') MoeditorAction.save();
+        else if (s == 'save') MoeditorAction.save();*/
     });
 
     const s = require('electron').shell;

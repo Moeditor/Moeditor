@@ -21,7 +21,7 @@
     "url": "https://github.com/Menci/Moeditor/issues"
   },
   "homepage": "https://github.com/Menci/Moeditor#readme",
-  "devDependencies": {
+  "dependencies": {
     "codemirror": "^5.17.0",
     "electron-prebuilt": "^1.2.7",
     "electron-rebuild": "^1.1.5",
@@ -33,6 +33,7 @@
     "mathjax-node": "^0.5.1",
     "lrucache": "^1.0.2",
     "highlight.js": "^9.5.0",
-    "os-locale": "^1.4.0"
+    "os-locale": "^1.4.0",
+    "font-awesome": "^4.6.3"
   }
 }

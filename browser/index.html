@@ -30,9 +30,11 @@
         <link rel="stylesheet" href="../node_modules/highlight.js/styles/github.css">
         <link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">
         <link rel="stylesheet" href="../node_modules/katex/dist/katex.min.css">
+        <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="base16-light.css">
         <link rel="stylesheet" href="preview.css">
 
+        <link rel="stylesheet" href="fonts/moe-fonts.css">
         <link rel="stylesheet" href="moe-style.css">
 
         <link rel="stylesheet" href="moe-scrollbar.css">
@@ -53,6 +55,7 @@
         <script type="text/javascript" src='moe-zen.js'></script>
         <script type="text/javascript" src="moe-document.js"></script>
         <script type="text/javascript" src="moe-localize.js"></script>
+        <script type="text/javascript" src="moe-sidemenu.js"></script>
     </head>
     <body>
         <div id="titlebar">
@@ -80,30 +83,47 @@
                 </script>
             </div>
         </div>
-        <div id="left-panel">
-            <div id="editor">
-                <textarea></textarea>
-            </div>
-            <div class="cover">
-                <div class="cover-top"></div>
-                <div class="cover-bottom">
-                    <div class="button-bottom" id="button-bottom-new" data-action="new">NEW</div>
-                    <div class="button-bottom" id="button-bottom-open" data-action="open">OPEN</div>
-                    <div class="button-bottom" id="button-bottom-save" data-action="save">SAVE</div>
-                    <a   class="button-bottom" id="button-bottom-zen"><div>ZEN</div></a>
-                </div>
-            </div>
+        <div id="side-menu">
+            <div id="logo">MOEDITOR</div>
+            <ul>
+                <li data-action="new">New</li>
+                <li data-action="open">Open</li>
+                <li data-action="save">Save</li>
+                <li data-action="save-as">Save as</li>
+                <li class="break"></li>
+                <li data-action="about">About</li>
+            </ul>
         </div>
+        <div id="main">
+            <div id="side-menu-cover"></div>
+            <div id="main-container">
+                <div id="left-panel">
+                    <div id="editor">
+                        <textarea></textarea>
+                    </div>
+                    <div class="cover-top"></div>
+                </div>
 
-        <div id="right-panel">
-            <div id="previewer-wrapper">
-                <div id="previewer">
-                <!--iframe src="previewer.html" frameBorder="0"></iframe-->
+                <div id="right-panel">
+                    <div id="previewer-wrapper">
+                        <div id="previewer">
+                        <!--iframe src="previewer.html" frameBorder="0"></iframe-->
+                        </div>
+                    </div>
+                    <div class="cover-top"></div>
                 </div>
             </div>
-            <div class="cover">
-                <div class="cover-top"></div>
-                <div class="cover-bottom"></div>
+            <div id="cover-bottom">
+                <div id="cover-bottom-left">
+                    <div class="button-bottom" id="button-bottom-menu">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div id="cover-bottom-right">
+                    <div class="button-bottom" id="button-bottom-menu">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

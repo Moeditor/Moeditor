@@ -25,6 +25,86 @@ html, body {
     overflow: hidden;
 }
 
+#side-menu {
+    width: 300px;
+    margin-left: -300px;
+    height: 100%;
+    background: #fafafa;
+    transition: all 500ms ease-in-out;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+#side-menu #logo {
+    font-family: Raleway;
+    font-size: 35px;
+    font-weight: lighter;
+    letter-spacing: 10px;
+    text-align: center;
+    color: #666;
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 30px;
+}
+
+#side-menu ul {
+    margin-top: 10px;
+    padding: 0;
+    color: #444;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+#side-menu li {
+    font-family: Roboto;
+    list-style-type: none;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 30px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+#side-menu li:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+#side-menu li:active {
+    background-color: rgb(222, 222, 222);
+}
+
+#side-menu li.break {
+    height: 10px;
+    pointer-events: none;
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 10px;
+}
+
+#side-menu-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1000001;
+    background: rgba(77, 77, 77, 0.2);
+    transition: all 500ms ease-in-out;
+    pointer-events: none;
+    opacity: 0;
+}
+
+#main {
+    transition: all 500ms ease-in-out;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#main-container {
+    height: calc(100% - 25px);
+}
+
 #left-panel {
     float: left;
     width: 50%;
@@ -59,7 +139,7 @@ html, body {
 }
 
 .cover {
-    position: fixed;
+    position: absolute;
     pointer-events: none;
     top: 0;
     width: 50%;
@@ -69,77 +149,75 @@ html, body {
     z-index: 1000;
 }
 
-.cover .cover-top {
+.cover-top {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    width: 50%;
     height: 45px;
     z-index: 1000;
 }
 
-.cover .cover-bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 45px;
-    z-index: 1000;
-}
-
-#left-panel .cover {
+#left-panel .cover-top {
     left: 0;
 }
 
-#right-panel .cover {
+#right-panel .cover-top {
     right: 0;
 }
 
-#right-panel .cover .cover-top {
+#right-panel .cover-top {
     background: linear-gradient(to bottom, #fff 70%, transparent);
 }
 
-#right-panel .cover .cover-bottom {
-    background: linear-gradient(to top, #fff 60%, transparent);
-}
-
-#left-panel .cover .cover-top {
+#left-panel .cover-top {
     background: linear-gradient(to bottom, rgb(245, 245, 245) 70%, transparent);
-}
-
-#left-panel .cover .cover-bottom {
-    background: linear-gradient(to top, rgb(245, 245, 245) 60%, transparent);
-    -webkit-app-region: no-drag;
 }
 
 .cover-nobackground {
     background: transparent !important;
 }
 
-#left-panel .cover .cover-bottom .button-bottom {
-    font-family: "Roboto", "Noto Sans", "Helvetica", "Ubuntu", "Sogoe UI" !important;
+#cover-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    z-index: 1000;
+    border-top: 1px solid rgba(128, 128, 128, 0.3);
+    -webkit-app-region: no-drag;
+}
+
+#cover-bottom .button-bottom {
     display: inline-block;
     pointer-events: auto;
-    height: 14px;
-    margin-top: 19px;
-    margin-bottom: 0;
-    line-height: 14px;
-    padding: 4px;
-    padding-bottom: 4px;
-    color: #a5a5a5;
-    font-size: 11px;
+    color: #b3b3b3;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-#left-panel .cover .cover-bottom .button-bottom:first-child {
-    margin-left: 15px;
+#cover-bottom-left {
+    background: rgb(245, 245, 245);
+    float: left;
+    width: calc(50% - 10px);
+    height: 100%;
+    padding-left: 10px;
 }
 
-#left-panel .cover .cover-bottom .button-bottom.hover {
-    background-color: rgba(196, 196, 196, 0.2);
+#cover-bottom-right {
+    background: #fff;
+    float: right;
+    width: calc(50% - 10px);
+    height: 100%;
+    padding-right: 10px;
 }
 
-#left-panel .cover .cover-bottom .button-bottom:active {
-    background-color: rgba(168, 168, 168, 0.3);
+#cover-bottom .button-bottom.hover {
+    color: #cecece;
+}
+
+#cover-bottom .button-bottom:active {
+    color: #dcdcdc;
 }
 
 #editor * {
@@ -155,11 +233,12 @@ html, body {
     width: calc(100% + 6px);
     height: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
     background-color: #fff;
 }
 
 #previewer {
-    padding-top: 40px;
+    padding-top: 35px;
     padding-bottom: 30px;
     padding-left: 45px;
     padding-right: 40px;
@@ -184,9 +263,8 @@ html, body {
     overflow-y: scroll !important;
     padding-left: 45px;
     padding-right: 20px;
-    padding-top: 40px;
-    padding-bottom: 0 !important;
-    height: calc(100% - 70px) !important;
+    margin-top: 35px;
+    height: calc(100% - 35px);
     width: calc(100% - 45px - 20px - 24px + 30px) !important;
 }
 

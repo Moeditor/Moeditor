@@ -28,6 +28,7 @@
     background: rgba(0, 0, 0, 0);
     -webkit-user-select: none;
     cursor: default;
+    pointer-events: none;
 }
 
 #titlebar #drag-left {
@@ -68,6 +69,7 @@ html.darwin #titlebar .button {
 #titlebar .button {
     position: absolute;
     cursor: default;
+    pointer-events: all;
     -webkit-app-region: no-drag;
 }
 
