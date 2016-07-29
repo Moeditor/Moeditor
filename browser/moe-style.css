@@ -131,19 +131,21 @@ html, body {
 }
 
 #editor.zen-mode.zen-mode-thin {
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
+    width: calc(100% / 3);
+    margin-left: calc(100% / 3);
+    margin-right: calc(100% / 3);
 }
 
 #editor.zen-mode.zen-mode-medium {
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: calc(100% / 2);
+    margin-left: calc(100% / 4);
+    margin-right: calc(100% / 4);
 }
 
 #editor.zen-mode.zen-mode-wide {
-    width: 100%;
+    width: calc((100% / 3) * 2);
+    margin-left: calc(100% / 6);
+    margin-right: calc(100% / 6);
 }
 
 #editor.zen-mode.zen-mode-thin .CodeMirror-scroll, #editor.zen-mode.zen-mode-medium .CodeMirror-scroll {
