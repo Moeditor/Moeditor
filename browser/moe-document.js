@@ -66,9 +66,11 @@ $(function() {
         });
     };
     editor.on('change', onchange);
-    MoeditorPreview(editor, null, function() {
-        w.moeditorWindow.changed = false;
-    });
+    setTimeout(function() {
+        MoeditorPreview(editor, null, function() {
+            w.moeditorWindow.changed = false;
+        });
+    }, 0);
 
     window.editor = editor;
     window.updatePreview = function() { onchange(editor, null); };

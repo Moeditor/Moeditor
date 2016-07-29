@@ -41,7 +41,7 @@ module.exports = function (cm, obj, cb) {
             w.moeditorWindow.changed = true;
         }
 
-        if (window.zenMode) {
+        if (window.editMode !== 'preview') {
             updatePreviewRunning = false;
             if (updatePreview) setTimeout(updateAsync, 0);
             cb();

@@ -1,0 +1,67 @@
+/*
+ *  This file is part of Moeditor.
+ *
+ *  Copyright (c) 2016 Menci <huanghaorui301@gmail.com>
+ *
+ *  Moeditor is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Moeditor is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#popup-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+#popup-layer .popup-menu {
+    outline: none;
+    position: fixed;
+    pointer-events: all;
+    cursor: default;
+    -webkit-user-select: none;
+    display: none;
+}
+
+#popup-layer .popup-menu ul {
+    padding-left: 0;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: #fafafa;
+}
+
+#popup-layer .popup-menu ul li {
+    list-style-type: none;
+    height: 20px;
+    line-height: 20px;
+    padding: 10px;
+    letter-spacing: 1px;
+    color: #444;
+    font-family: Roboto;
+}
+
+#popup-layer .popup-menu ul li:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+#popup-layer .popup-menu ul li:active {
+    background-color: rgb(222, 222, 222);
+}
+
+#popup-layer .popup-menu ul li .fa {
+    margin-right: 8px;
+    opacity: 0;
+}

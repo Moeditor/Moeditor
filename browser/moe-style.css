@@ -119,6 +119,7 @@ html, body {
     right: 0;
     width: 50%;
     height: calc(100% - 25px);
+    background-color: #fff;
     transition: all 500ms ease-in-out;
 }
 
@@ -126,6 +127,35 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: auto;
+    transition: all 500ms ease-in-out;
+}
+
+#editor.zen-mode.zen-mode-thin {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#editor.zen-mode.zen-mode-medium {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#editor.zen-mode.zen-mode-wide {
+    width: 100%;
+}
+
+#editor.zen-mode.zen-mode-thin .CodeMirror-scroll, #editor.zen-mode.zen-mode-medium .CodeMirror-scroll {
+    padding-left: 0;
+    padding-right: 0;
+    width: calc(100% + 30px) !important;
+}
+
+#editor.zen-mode.zen-mode-wide .CodeMirror-scroll {
+    padding-left: 25px;
+    padding-right: 30px;
+    width: calc(100% - 25px - 30px - 24px + 30px) !important;
 }
 
 #editor textarea {
@@ -239,6 +269,7 @@ html, body {
 
 #editor * {
     font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace, 'Noto Sans CJK SC', 'Source Han Sans SC', 'Microsoft Yahei' !important;
+    transition: all 500ms ease-in-out;
 }
 
 #editor .CodeMirror {
@@ -283,6 +314,7 @@ html, body {
     margin-top: 35px;
     height: calc(100% - 35px);
     width: calc(100% - 45px - 20px - 24px + 30px) !important;
+    transition: all 500ms ease-in-out;
 }
 
 .CodeMirror-vscrollbar {

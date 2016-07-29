@@ -76,6 +76,10 @@ function checkScrollToBottom(self, other) {
 }
 
 function editorToPreviewer() {
+    if (window.editMode !== 'preview') {
+        window.scrollMap = undefined;
+        return;
+    }
     if (window.lineNumbers.length == 0) return;
     if (window.scrollMap === undefined) buildScrollMap();
 
@@ -86,6 +90,10 @@ function editorToPreviewer() {
 }
 
 function previewerToEditor() {
+    if (window.editMode !== 'preview') {
+        window.scrollMap = undefined;
+        return;
+    }
     if (window.lineNumbers.length == 0) return;
     if (window.scrollMap === undefined) buildScrollMap();
 
