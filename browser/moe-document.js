@@ -58,6 +58,8 @@ $(function() {
         viewportMargin: Infinity
     });
 
+    editor.focus();
+
     const scroll = require('./moe-scroll');
 
     const onchange = function(cm, obj) {

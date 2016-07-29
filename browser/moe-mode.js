@@ -79,10 +79,11 @@ document.addEventListener('DOMContentLoaded', function() {
         setMode(it.attributes['data-name'].value);
     })
 
-    leftPanel.addEventListener('transitionend', function(e) {
-        if (e.target === leftPanel && e.propertyName === 'width') {
-            window.editor.refresh();
-            if (window.editMode === 'preview') window.updatePreview();
-        }
+    editor.addEventListener('transitionend', function(e) {
+        if (e.target === editor && e.propertyName === 'width') window.editor.refresh();
+    });
+
+    rightPanel.addEventListener('transitionend', function(e) {
+        if (e.target === rightPanel && e.propertyName === 'right') window.updatePreview();
     });
 });

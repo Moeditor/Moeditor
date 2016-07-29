@@ -148,16 +148,10 @@ html, body {
     margin-right: calc(100% / 6);
 }
 
-#editor.zen-mode.zen-mode-thin .CodeMirror-scroll, #editor.zen-mode.zen-mode-medium .CodeMirror-scroll {
+#editor.zen-mode .CodeMirror-scroll {
     padding-left: 0;
     padding-right: 0;
     width: calc(100% + 30px) !important;
-}
-
-#editor.zen-mode.zen-mode-wide .CodeMirror-scroll {
-    padding-left: 25px;
-    padding-right: 30px;
-    width: calc(100% - 25px - 30px - 24px + 30px) !important;
 }
 
 #editor textarea {
