@@ -92,6 +92,26 @@ class MoeditorAction {
             return false;
         }
     }
+
+    static exportAsHTML(w, s) {
+        if (typeof w == 'undefined') w = require('electron').BrowserWindow.getFocusedWindow();
+        if (typeof w.moeditorWindow == 'undefined') return false;
+
+        const fileName = dialog.showSaveDialog(w,
+            {
+                filters: [
+                    { name: moeApp.locale.get("htmlDocuments"), extensions: ['htm', 'html'] },
+                ]
+            }
+        );
+        if (typeof fileName == 'undefined') return false;
+        try {
+            MoeditorFile.write(fileName, s);
+        } catch(e) {
+            console.log('Can\'t save file: ' + e.toString());
+            return false;
+        }
+    }
 }
 
 module.exports = MoeditorAction;

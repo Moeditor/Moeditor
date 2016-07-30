@@ -25,6 +25,8 @@ const BrowserWindow = require('electron').BrowserWindow,
 
 class MoeditorWindow {
 	constructor(fileName) {
+        moeApp.newWindow = this;
+
         this.fileName = fileName;
         this.content = '';
         this.changed = false;

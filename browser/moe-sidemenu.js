@@ -52,14 +52,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     sideMenu.querySelector('li[data-action=open]').addEventListener('click', function() {
-        MoeditorAction.open();
+        MoeditorAction.open(w.window);
     });
 
     sideMenu.querySelector('li[data-action=save]').addEventListener('click', function() {
-        MoeditorAction.save();
+        MoeditorAction.save(w.window);
     });
 
     sideMenu.querySelector('li[data-action=save-as]').addEventListener('click', function() {
-        MoeditorAction.saveAs();
+        MoeditorAction.saveAs(w.window);
+    });
+
+    sideMenu.querySelector('li[data-action=export-as-html]').addEventListener('click', function() {
+        const MoeditorExport = require('./moe-export');
+        MoeditorAction.exportAsHTML(w.window, MoeditorExport.html());
     });
 });

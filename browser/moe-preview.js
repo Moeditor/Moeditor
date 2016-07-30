@@ -36,9 +36,9 @@ module.exports = function (cm, obj, cb) {
         updatePreviewRunning = true;
 
         const content = cm.getValue();
-        if (w.moeditorWindow.content !== content) {
-            w.moeditorWindow.content = content;
-            w.moeditorWindow.changed = true;
+        if (w.content !== content) {
+            w.content = content;
+            w.changed = true;
         }
 
         if (window.editMode !== 'preview') {

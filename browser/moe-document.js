@@ -19,8 +19,8 @@
 
 'use strict';
 
-var w  = require('electron').remote.getCurrentWindow()
-var moeApp = require('electron').remote.app.moeApp;
+window.moeApp = require('electron').remote.app.moeApp;
+window.w = moeApp.newWindow;
 
 $(function() {
     const MoeditorFile = require('../app/moe-file'),
@@ -41,8 +41,8 @@ $(function() {
         return CodeMirror.multiplexingMode.apply(CodeMirror, [CodeMirror.getMode(config, 'gfm')].concat([].slice.call(options)));
     });
 
-    if (typeof w.moeditorWindow.fileName !== 'undefined') {
-        var content = MoeditorFile.read(w.moeditorWindow.fileName, '');
+    if (typeof w.fileName !== 'undefined') {
+        var content = MoeditorFile.read(w.fileName, '');
         document.querySelector('#editor textarea').innerText = content;
     }
 
@@ -70,7 +70,7 @@ $(function() {
     editor.on('change', onchange);
     setTimeout(function() {
         MoeditorPreview(editor, null, function() {
-            w.moeditorWindow.changed = false;
+            w.changed = false;
         });
     }, 0);
 
@@ -85,11 +85,6 @@ $(function() {
     }).click(function() {
         var s = $(this).data('action');
         if (s === 'menu') MoeditorSideMenu.open();
-
-        /*const MoeditorAction = require('electron').remote.require('../app/moe-action');
-        if (s == 'new') MoeditorAction.openNew();
-        else if (s == 'open') MoeditorAction.open();
-        else if (s == 'save') MoeditorAction.save();*/
     });
 
     const s = require('electron').shell;
@@ -99,5 +94,5 @@ $(function() {
         s.openExternal(this.href);
     });
 
-    w.show();
+    w.window.show();
 });

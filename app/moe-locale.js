@@ -52,6 +52,8 @@ const strings = {
 		confirm: "Confirm",
 		savequestion: "Save changes to file?",
 		markdownDocuments: "Markdown Documents",
+        htmlDocuments: "HTML Documents",
+        pdfDocuments: "PDF Documents",
 		allFiles: "All Files"
 	},
 	"de": {
@@ -64,6 +66,8 @@ const strings = {
 		confirm: "Bestätigen",
 		savequestion: "Änderungen speichern?",
 		markdownDocuments: "Markdown Dokumente",
+        htmlDocuments: "HTML Documents",
+        pdfDocuments: "PDF Documents",
 		allFiles: "Alle Dateien"
 	}
 }

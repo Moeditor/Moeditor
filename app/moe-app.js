@@ -29,6 +29,7 @@ const MoeditorWindow = require('./moe-window'),
 class MoeditorApplication {
 	constructor() {
 		this.windows = new Array();
+        this.newWindow = null;
 
         // workaround for `speech-rule-engine` doesn't support both DOM and node.js
         this.mathjax = require('./moe-mathjax');
@@ -50,6 +51,7 @@ class MoeditorApplication {
 
         const Configstore = require('configstore');
         this.config = new Configstore(Const.name, require('./moe-config-default'));
+        this.Const = Const;
 
         this.flag = new Object();
 
