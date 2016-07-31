@@ -53,6 +53,18 @@ class MoeditorFile {
     static write(fileName, content) {
         return fs.writeFileSync(fileName, content);
     }
+
+    static writeAsync(fileName, content, cb) {
+        return fs.writeFile(fileName, content, cb);
+    }
+
+    static remove(fileName) {
+        try {
+            fs.unlinkSync(fileName);
+        } catch(e) {
+            ;
+        }
+    }
 }
 
 module.exports = MoeditorFile;

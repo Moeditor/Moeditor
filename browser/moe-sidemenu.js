@@ -65,6 +65,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     sideMenu.querySelector('li[data-action=export-as-html]').addEventListener('click', function() {
         const MoeditorExport = require('./moe-export');
-        MoeditorAction.exportAsHTML(w.window, MoeditorExport.html());
+        MoeditorAction.exportAsHTML(w.window, function(cb) {
+            MoeditorExport.html(cb);
+        });
+    });
+
+    sideMenu.querySelector('li[data-action=export-as-pdf]').addEventListener('click', function() {
+        const MoeditorExport = require('./moe-export');
+        MoeditorAction.exportAsPDF(w.window, function(cb) {
+            MoeditorExport.pdf(cb);
+        });
     });
 });

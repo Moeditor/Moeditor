@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<body>
+    <script>
+        const ipcRenderer = require('electron').ipcRenderer;
+        ipcRenderer.on('export-pdf', function(e, content) {
+            document.querySelector('html').innerHTML = content.s;
+            setTimeout(function() {
+                ipcRenderer.send('ready-export-pdf', content.path);
+            }, 0);
+        });
+    </script>
+</body>
+</html>

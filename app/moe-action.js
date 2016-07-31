@@ -93,9 +93,9 @@ class MoeditorAction {
         }
     }
 
-    static exportAsHTML(w, s) {
+    static exportAsHTML(w, f) {
         if (typeof w == 'undefined') w = require('electron').BrowserWindow.getFocusedWindow();
-        if (typeof w.moeditorWindow == 'undefined') return false;
+        if (typeof w.moeditorWindow == 'undefined') return;
 
         const fileName = dialog.showSaveDialog(w,
             {
@@ -104,13 +104,38 @@ class MoeditorAction {
                 ]
             }
         );
-        if (typeof fileName == 'undefined') return false;
-        try {
-            MoeditorFile.write(fileName, s);
-        } catch(e) {
-            console.log('Can\'t save file: ' + e.toString());
-            return false;
-        }
+        if (typeof fileName == 'undefined') return;
+        f(function(s) {
+            try {
+                MoeditorFile.write(fileName, s);
+                const {shell} = require('electron');
+                shell.openItem(fileName);
+            } catch(e) {
+                console.log('Can\'t save file: ' + e.toString());
+            }
+        });
+    }
+
+    static exportAsPDF(w, f) {
+        if (typeof w == 'undefined') w = require('electron').BrowserWindow.getFocusedWindow();
+        if (typeof w.moeditorWindow == 'undefined') return;
+
+        const fileName = dialog.showSaveDialog(w,
+            {
+                filters: [
+                    { name: moeApp.locale.get("pdfDocuments"), extensions: ['pdf'] },
+                ]
+            }
+        );
+        if (typeof fileName == 'undefined') return;
+        f(function(s) {
+            try {
+                const exportPDF = require('./moe-pdf');
+                exportPDF({ s: s, path: fileName });
+            } catch(e) {
+                console.log('Can\'t save file: ' + e.toString());
+            }
+        });
     }
 }
 

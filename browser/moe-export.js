@@ -21,27 +21,105 @@
 
 const MoeditorFile = require('../app/moe-file');
 
-function exportHTML() {
-    const s = document.getElementById('previewer').innerHTML.toString().split('moemark-linenumber').join('span');
-    const doc = document.implementation.createHTMLDocument();
-    const head = doc.querySelector('head');
-    const meta = doc.createElement('meta');
-    meta.setAttribute('charset', 'utf-8');
-    head.appendChild(meta);
-    const stylePreview = doc.createElement('style');
-    stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/browser/preview.css', '').toString().replace('#previewer ', '');
-    head.appendChild(stylePreview);
-    if (s.indexOf('katex') !== -1) {
-        const linkKaTeX = doc.createElement('link');
-        linkKaTeX.setAttribute('rel', 'stylesheet');
-        linkKaTeX.setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css');
-        head.appendChild(linkKaTeX);
+function render(s, type, cb) {
+    const MoeditorHighlight = require('./moe-highlight');
+    const MoeditorMathRenderer = require('./moe-math');
+    const MoeMark = require('./moemark');
+    const jQuery = require('jquery');
+
+    var math = new Array(), rendering = true, mathCnt = 0, mathID = 0, rendered = null, haveMath = false, haveCode = false;
+
+    MoeMark.setOptions({
+        math: true,
+        highlight: function(code, lang) {
+            haveCode = true;
+            return MoeditorHighlight(code, lang);
+        }
+    });
+
+    function finish() {
+        for (var i in math) {
+            rendered.find('#math-' + i).html(math[i]);
+        }
+        cb(rendered.html(), haveMath, haveCode);
     }
-    const body = doc.querySelector('body');
-    body.innerHTML = s;
-    return '<!doctype html>\n<html>\n' + doc.querySelector('html').innerHTML + '\n</html>';
+
+    MoeMark(s, {
+        mathRenderer: function(s, display) {
+            haveMath = true;
+            mathCnt++, mathID++;
+            var id = 'math-' + mathID;
+            var res = '<span id="' + id + '"></span>'
+            MoeditorMathRenderer.renderForExport(type, s, display, function(res, id) {
+                math[id] = res;
+                if (!--mathCnt && !rendering) finish();
+            }, mathID);
+            return res;
+        }
+    }, function(err, val) {
+        rendered = jQuery(jQuery.parseHTML('<span>' + val + '</span>'));
+        rendering = false;
+        if (!mathCnt) finish();
+    });
+}
+
+function html(cb) {
+    render(w.content, 'html', function(res, haveMath, haveCode) {
+        res = res.split('moemark-linenumber').join('span');
+        const doc = document.implementation.createHTMLDocument();
+        const head = doc.querySelector('head');
+        const meta = doc.createElement('meta');
+        meta.setAttribute('charset', 'utf-8');
+        head.appendChild(meta);
+        const stylePreview = doc.createElement('style');
+        stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/browser/preview.css', '').toString().split('#previewer ').join('');
+        head.appendChild(stylePreview);
+        if (haveCode) {
+            const styleHLJS = doc.createElement('style');
+            styleHLJS.innerHTML = MoeditorFile.read(moeApp.Const.path + '/node_modules/highlight.js/styles/github.css', '').toString();
+            head.appendChild(styleHLJS);
+        }
+        const body = doc.querySelector('body');
+        body.innerHTML = res;
+        cb('<!doctype html>\n<html>\n' + doc.querySelector('html').innerHTML + '\n</html>');
+    });
+}
+
+function pdf(cb) {
+    render(w.content, 'pdf', function(res, haveMath, haveCode) {
+        res = res.split('moemark-linenumber').join('span');
+        const doc = document.implementation.createHTMLDocument();
+        const head = doc.querySelector('head');
+        const meta = doc.createElement('meta');
+        meta.setAttribute('charset', 'utf-8');
+        head.appendChild(meta);
+        const stylePreview = doc.createElement('style');
+        stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/browser/preview.css', '').toString().split('#previewer ').join('') + '*{overflow: visible !important;}';
+        head.appendChild(stylePreview);
+        if (haveCode) {
+            const styleHLJS = doc.createElement('style');
+            styleHLJS.innerHTML = MoeditorFile.read(moeApp.Const.path + '/node_modules/highlight.js/styles/github.css', '').toString();
+            head.appendChild(styleHLJS);
+        }
+        if (haveMath) {
+            const styleMathJax = doc.createElement('style');
+            styleMathJax.innerHTML = MoeditorFile.read(moeApp.Const.path + '/browser/mathjax.css', '').toString().split('../node_modules').join('file://' + moeApp.Const.path + '/node_modules');
+            head.appendChild(styleMathJax);
+        }
+        const body = doc.querySelector('body');
+        body.innerHTML = res + ' \
+<script> \
+    const ipcRenderer = require(\'electron\').ipcRenderer; \
+    window.onload = (function() { \
+        ipcRenderer.send(\'ready-export-pdf\'); \
+    }); \
+</script> \
+        ';
+        cb(doc.querySelector('html').innerHTML);
+    });
 }
 
 module.exports = {
-    html: exportHTML
+    html: html,
+    pdf: pdf
 };
