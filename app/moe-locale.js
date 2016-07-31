@@ -35,7 +35,8 @@ class MoeditorLocale {
 	}
 
 	get(str) {
-		return strings[this.locale][str];
+        if (typeof strings[this.locale][str] !== 'string') return strings['en'][str];
+		else return strings[this.locale][str];
 	}
 }
 
@@ -66,8 +67,6 @@ const strings = {
 		confirm: "Bestätigen",
 		savequestion: "Änderungen speichern?",
 		markdownDocuments: "Markdown Dokumente",
-        htmlDocuments: "HTML Documents",
-        pdfDocuments: "PDF Documents",
 		allFiles: "Alle Dateien"
 	}
 }
