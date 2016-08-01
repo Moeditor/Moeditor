@@ -35,7 +35,7 @@ class MoeditorLocale {
 	}
 
 	get(str) {
-        if (typeof strings[this.locale][str] !== 'string') return strings['en'][str];
+        if (typeof strings[this.locale] === 'undefined' || typeof strings[this.locale][str] === 'undefined') return strings['en'][str];
 		else return strings[this.locale][str];
 	}
 }

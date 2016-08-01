@@ -24,9 +24,8 @@ const MoeditorWindow = require('./moe-window'),
       MoeditorAction = require('./moe-action'),
       MoeditorFile = require('./moe-file'),
       shortcut = require('electron-localshortcut'),
-      MoeditorLocale = require('./moe-locale');
-
-require('./moe-about');
+      MoeditorLocale = require('./moe-locale'),
+      MoeditorAbout = require('./moe-about');
 
 class MoeditorApplication {
 	constructor() {
@@ -67,7 +66,7 @@ class MoeditorApplication {
         });
 
         if (moeApp.flag.about) {
-            require('./moe-about')();
+            MoeditorAbout();
             return;
         }
 
@@ -100,6 +99,15 @@ class MoeditorApplication {
                 },
                 fileSaveAs: (w) => {
                     MoeditorAction.saveAs(w);
+                },
+                fileExportHTML: (w) => {
+                    w.webContents.send('action-export-html');
+                },
+                fileExportPDF: (w) => {
+                    w.webContents.send('action-export-pdf');
+                },
+                about: (w) => {
+                    MoeditorAbout();
                 }
             }
         );

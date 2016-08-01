@@ -50,7 +50,7 @@
     padding: 10px;
     letter-spacing: 1px;
     color: #444;
-    font-family: Roboto;
+    font-family: Roboto, Helvetica, 'Sogoe UI', Arial, sans-serif;;
 }
 
 #popup-layer .popup-menu ul li:hover {

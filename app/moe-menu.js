@@ -51,6 +51,25 @@ module.exports = function(cb) {
                     click(item, w) {
                         cb.fileSaveAs(w);
                     }
+                },{
+                    type: 'separator'
+                },{
+                    label: 'Export',
+                    submenu: [
+                        {
+                            label: 'HTML...',
+                            accelerator: 'Command + Option + E',
+                            click(item, w) {
+                                cb.fileExportHTML(w);
+                            }
+                        }, {
+                            label: 'PDF...',
+                            accelerator: 'Command + Option + P',
+                            click(item, w) {
+                                cb.fileExportPDF(w);
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -137,7 +156,10 @@ module.exports = function(cb) {
             label: name,
             submenu: [
                 {
-                    role: 'about'
+                    label: 'About Moeditor',
+                    click() {
+                        cb.about();
+                    }
                 },
                 {
                     type: 'separator'
