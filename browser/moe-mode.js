@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     for (const it of modeMenuItems) it.addEventListener('click', function() {
         setMode(it.attributes['data-name'].value);
+        window.editor.focus();
     })
 
     editor.addEventListener('transitionend', function(e) {

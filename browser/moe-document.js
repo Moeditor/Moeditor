@@ -94,5 +94,10 @@ $(function() {
         s.openExternal(this.href);
     });
 
+    const leftPanel = document.getElementById('left-panel');
+    leftPanel.addEventListener('click', function(e) {
+        if (e.target === leftPanel) editor.focus();
+    })
+
     w.window.show();
 });
