@@ -31,23 +31,7 @@
     pointer-events: none;
 }
 
-#titlebar #drag-left {
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: calc(50% - 6px);
-    height: 100%;
-    -webkit-app-region: drag;
-}
-
-#titlebar #drag-right {
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
+#titlebar .drag {
     -webkit-app-region: drag;
 }
 
@@ -99,6 +83,10 @@ html.linux #titlebar .button-minimize {
     right: 28px;
 }
 
+html.linux #titlebar .button-minimize.button-minimize-no-maximize {
+    right: 5px;
+}
+
 html.win32 #titlebar .button {
     top: 0px;
     width: 45px;
@@ -135,4 +123,8 @@ html.win32 #titlebar .button-maximize {
 
 html.win32 #titlebar .button-minimize {
     right: 90px;
+}
+
+html.win32 #titlebar .button-minimize.button-minimize-no-maximize {
+    right: 45px;
 }

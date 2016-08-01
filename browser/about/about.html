@@ -1,0 +1,81 @@
+<!--
+  This file is part of Moeditor.
+
+  Copyright (c) 2016 Menci <huanghaorui301@gmail.com>
+
+  Moeditor is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Moeditor is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <base href="../index.html">
+        <title>About Moeditor</title>
+
+		<script>
+		window.$ = window.jQuery = require("jquery");
+        window.document.querySelector('html').classList.add(process.platform)
+        </script>
+
+        <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="about/moe-about.css">
+        <link rel="stylesheet" href="fonts/moe-fonts.css">
+        <link rel="stylesheet" href="moe-titlebar.css">
+        <script type="text/javascript" src="moe-titlebar.js"></script>
+    </head>
+    <body>
+        <div id="titlebar">
+            <div class="drag" style="width: 100%; height: 100%; "></div>
+            <div class="button button-close">
+                <script>
+                if (process.platform === 'win32') document.write('<img src="titlebar/caption-buttons.svg#close">');
+                else if (process.platform === 'linux') document.write('<img src="titlebar/close.svg">');
+                </script>
+            </div>
+            <div class="button button-minimize button-minimize-no-maximize">
+                <script>
+                if (process.platform === 'win32') document.write('<img src="titlebar/caption-buttons.svg#minimize">');
+                else if (process.platform === 'linux') document.write('<img src="titlebar/minimize.svg">');
+                </script>
+            </div>
+        </div>
+        <div id="main">
+            <div id="logo">
+                <img src="../icons/Moeditor.svg">
+                <div id="logo-name">MOEDITOR</div>
+                <div id="logo-author"><i class="fa fa-code" aria-hidden="true" style="zoom: 1.17; "></i> WITH <i class="fa fa-heart" aria-hidden="true" style="zoom: 0.99; "></i> BY <a>Menci</a> and <a href="https://github.com/Moeditor/Moeditor/graphs/contributors">other contributors</a></div>
+            </div>
+            <div id="description">Your all-purpose markdown editor.</div>
+            <div id="version">
+            version <script>
+            document.write(require('../../package.json').version);
+            </script>
+            </div>
+            <div id="links">
+            <a href="https://github.com/Moeditor/Moeditor"><i class="fa fa-github" aria-hidden="true" style="zoom: 1; "></i></a>
+            <a href="https://moeditor.github.io"><i class="fa fa-home" aria-hidden="true" style="zoom: 1; "></i></a>
+            <a href="https://github.com/Moeditor/Moeditor/issues"><i class="fa fa-bug" aria-hidden="true" style="zoom: 1; "></i></a>
+            </div>
+        </div>
+        <script>
+        const s = require('electron').shell;
+        const links = document.querySelectorAll('a');
+        for (var a of links) a.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (this.href) s.openExternal(this.href);
+        });
+        </script>
+    </body>
+</html>

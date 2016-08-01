@@ -62,8 +62,8 @@
     </head>
     <body>
         <div id="titlebar">
-            <div id="drag-left"></div>
-            <div id="drag-right"></div>
+            <div class="drag" id="drag-left" style="z-index: -1; position: absolute; top: 0; left: 0; width: calc(50% - 6px); height: 100%; "></div>
+            <div class="drag" id="drag-right" style="z-index: -1; position: absolute; top: 0; right: 0; width: 50%; height: 100%;"></div>
             <div class="button button-close">
                 <script>
                 if (process.platform === 'win32') document.write('<img src="titlebar/caption-buttons.svg#close">');

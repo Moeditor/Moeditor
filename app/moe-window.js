@@ -31,7 +31,7 @@ class MoeditorWindow {
         this.content = '';
         this.changed = false;
         var conf = {
-            icon: __dirname + "../icons/Moeditor.ico",
+            icon: Const.path + "/icons/Moeditor.ico",
             autoHideMenuBar: true,
             width: 1000 * moeApp.config.get('scale-factor'),
             height: 600 * moeApp.config.get('scale-factor'),

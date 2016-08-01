@@ -76,4 +76,9 @@ document.addEventListener('DOMContentLoaded', function() {
             MoeditorExport.pdf(cb);
         });
     });
+
+    sideMenu.querySelector('li[data-action=about]').addEventListener('click', function() {
+        const ipcRenderer = require('electron').ipcRenderer;
+        ipcRenderer.send('show-about-window');
+    });
 });

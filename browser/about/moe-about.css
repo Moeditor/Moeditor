@@ -1,0 +1,97 @@
+/*
+*  This file is part of Moeditor.
+*
+*  Copyright (c) 2016 Menci <huanghaorui301@gmail.com>
+*
+*  Moeditor is free software: you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation, either version 3 of the License, or
+*  (at your option) any later version.
+*
+*  Moeditor is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*  GNU General Public License for more details.
+*
+*  You should have received a copy of the GNU General Public License
+*  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
+*/
+
+body {
+    background-color: #fbfbfb;
+    margin: 0;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+#main {
+    margin-top: 30px;
+}
+
+#logo {
+    margin-left: 40px;
+    height: 128px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    width: calc(100% - 90px);
+}
+
+#logo img {
+    position: fixed;
+}
+
+#logo #logo-name {
+    font-family: Raleway;
+    font-size: 65px;
+    font-weight: lighter;
+    letter-spacing: 10px;
+    position: fixed;
+    color: #666;
+    left: 195px;
+    top: 45px;
+}
+
+#logo #logo-author {
+    font-family: Raleway;
+    font-size: 13px;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    position: fixed;
+    color: #666;
+    left: 293px;
+    top: 120px;
+}
+
+a {
+    color: #4183c4;
+    text-decoration: blink;
+}
+
+a[href] {
+    cursor: pointer;
+}
+
+#description {
+    color: #666;
+    font-family: monospace;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#version {
+    color: #999;
+    font-family: monospace;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#links {
+    text-align: center;
+    margin-top: 19px;
+    font-family: monospace;
+    letter-spacing: 2px;
+}
+
+#links a {
+    color: #666;
+}

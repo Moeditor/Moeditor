@@ -26,13 +26,12 @@ const MoeditorWindow = require('./moe-window'),
       shortcut = require('electron-localshortcut'),
       MoeditorLocale = require('./moe-locale');
 
+require('./moe-about');
+
 class MoeditorApplication {
 	constructor() {
 		this.windows = new Array();
         this.newWindow = null;
-
-        // workaround for `speech-rule-engine` doesn't support both DOM and node.js
-        this.mathjax = require('./moe-mathjax');
         this.locale = new MoeditorLocale();
 	}
 
@@ -58,6 +57,7 @@ class MoeditorApplication {
         // console.log(process.argv);
         var docs = process.argv.filter(function (s) {
             if (s == '--debug') moeApp.flag.debug = true;
+            else if (s == '--about') moeApp.flag.about = true;
 
             try {
                 return s.substring(0, 2) !== '--' && MoeditorFile.isTextFile(s);
@@ -65,6 +65,14 @@ class MoeditorApplication {
                 return false;
             }
         });
+
+        if (moeApp.flag.about) {
+            require('./moe-about')();
+            return;
+        }
+
+        // workaround for `speech-rule-engine` doesn't support both DOM and node.js
+        this.mathjax = require('./moe-mathjax');
 
         if (typeof this.osxOpenFile === 'string') docs.push(this.osxOpenFile);
 
