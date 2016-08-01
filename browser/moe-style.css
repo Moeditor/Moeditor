@@ -57,7 +57,7 @@ html, body {
 }
 
 #side-menu li {
-    font-family: Roboto;
+    font-family: Roboto, Helvetica, 'Sogoe UI', Arial, sans-serif;;
     list-style-type: none;
     height: 50px;
     line-height: 50px;

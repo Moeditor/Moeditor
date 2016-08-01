@@ -119,6 +119,24 @@ function pdf(cb) {
     });
 }
 
+var flag = false;
+if (!flag) {
+    flag = true;
+    const ipcRenderer = require('electron').ipcRenderer;
+    const MoeditorAction = require('electron').remote.require('../app/moe-action');
+    ipcRenderer.on('action-export-html', function() {
+        MoeditorAction.exportAsHTML(w.window, function(cb) {
+            html(cb);
+        });
+    });
+
+    ipcRenderer.on('action-export-pdf', function() {
+        MoeditorAction.exportAsPDF(w.window, function(cb) {
+            pdf(cb);
+        });
+    });
+}
+
 module.exports = {
     html: html,
     pdf: pdf
