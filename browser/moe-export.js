@@ -24,7 +24,7 @@ const MoeditorFile = require('../app/moe-file');
 function render(s, type, cb) {
     const MoeditorHighlight = require('./moe-highlight');
     const MoeditorMathRenderer = require('./moe-math');
-    const MoeMark = require('./moemark');
+    const MoeMark = require('moemark');
     const jQuery = require('jquery');
 
     var math = new Array(), rendering = true, mathCnt = 0, mathID = 0, rendered = null, haveMath = false, haveCode = false;

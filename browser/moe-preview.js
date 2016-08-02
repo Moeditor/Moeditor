@@ -22,7 +22,7 @@
 var updatePreview = false, updatePreviewRunning = false;
 const MoeditorHighlight = require('./moe-highlight');
 const MoeditorMathRenderer = require('./moe-math');
-const MoeMark = require('./moemark');
+const MoeMark = require('moemark');
 const jQuery = require('jquery');
 
 MoeMark.setOptions({
