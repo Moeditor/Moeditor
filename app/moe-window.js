@@ -47,6 +47,8 @@ class MoeditorWindow {
 		this.window = new BrowserWindow(conf);
         this.window.moeditorWindow = this;
 
+        if (fileName) this.window.setRepresentedFilename(fileName);
+
         this.registerEvents();
         this.window.loadURL('file://' + Const.path + '/browser/index.html');
 

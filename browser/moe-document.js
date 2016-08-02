@@ -71,6 +71,7 @@ $(function() {
     setTimeout(function() {
         MoeditorPreview(editor, null, function() {
             w.changed = false;
+            w.window.setDocumentEdited(false);
         });
     }, 0);
 

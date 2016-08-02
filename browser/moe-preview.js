@@ -39,6 +39,7 @@ module.exports = function (cm, obj, cb) {
         if (w.content !== content) {
             w.content = content;
             w.changed = true;
+            w.window.setDocumentEdited(true);
         }
 
         if (window.editMode !== 'preview') {
