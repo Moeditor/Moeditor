@@ -1,6 +1,6 @@
 {
   "name": "moeditor",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Your all-purpose markdown editor",
   "main": "app/index.js",
   "scripts": {
