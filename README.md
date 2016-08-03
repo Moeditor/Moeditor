@@ -1,14 +1,20 @@
-### Moeditor
+# Moeditor
 Your all-purpose markdown editor.
 
 Built with Electron.
 
-[Download here](https://github.com/Moeditor/Moeditor/releases)
+Visit our [homepage](https://moeditor.github.io/) or download [releases](https://github.com/Moeditor/Moeditor/releases).
 
-### Screenshot
-![Moeditor](screenshots/Moeditor.png)
+# Screenshot
+![Moeditor Main](screenshots/main.png)
 
-### Building
+![Moeditor Side Menu](screenshots/side-menu.png)
+
+![Moeditor About](screenshots/about.png)
+
+![Moeditor Zen Mode](screenshots/zen-mode.png)
+
+# Building
 ```bash
 npm install
 npm start
@@ -22,7 +28,10 @@ cnpm install
 cnpm start
 ```
 
-### Todo
-* ~~File I/O~~
-* ~~MathJax fallback on rendering equations with KaTex~~
-* Many things ...
+# Todo
+* Preference settings dialog
+* Custom themes
+* Spell check
+* Better UI/UX
+* \* Document manager
+* \* Web publisher
