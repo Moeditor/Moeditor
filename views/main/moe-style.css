@@ -157,6 +157,17 @@ html, body {
     width: calc(100% + 30px) !important;
 }
 
+#editor.focus .CodeMirror-line {
+    transition: opacity 150ms;
+    opacity: 0.3;
+}
+
+#editor.focus .CodeMirror-activeline .CodeMirror-line {
+    opacity: 1;
+}
+
+.CodeMirror-activeline-background { background: none; }
+
 #editor textarea {
     width: 0;
     height: 0;
@@ -239,6 +250,8 @@ html, body {
     color: #b3b3b3;
     font-size: 14px;
     margin-top: 5px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 #cover-bottom-left {

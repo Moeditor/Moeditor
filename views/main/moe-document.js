@@ -55,7 +55,8 @@ $(function() {
         lineWrapping: true,
         extraKeys: { 'Enter': 'newlineAndIndentContinueMarkdownList', Home: 'goLineLeft', End: 'goLineRight' },
         tabSize: moeApp.config.get('tab-size'),
-        viewportMargin: Infinity
+        viewportMargin: Infinity,
+        styleActiveLine: true
     });
 
     editor.focus();
@@ -98,7 +99,13 @@ $(function() {
     const leftPanel = document.getElementById('left-panel');
     leftPanel.addEventListener('click', function(e) {
         if (e.target === leftPanel) editor.focus();
-    })
+    });
+
+    if (moeApp.config.get('focus-mode') === true) document.getElementById('editor').classList.add('focus');
+    document.getElementById('button-bottom-focus').addEventListener('click', function() {
+        document.getElementById('editor').classList.toggle('focus');
+        moeApp.config.set('focus-mode', document.getElementById('editor').classList.contains('focus'));
+    });
 
     w.window.show();
 });

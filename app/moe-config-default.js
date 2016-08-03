@@ -23,5 +23,6 @@ module.exports = {
     'debug': false,
     'scale-factor': 1.0,
     'tab-size': 4,
-    'edit-mode': 'preview'
+    'edit-mode': 'preview',
+    'focus-mode': false
 };
