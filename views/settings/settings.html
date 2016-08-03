@@ -1,0 +1,81 @@
+<!--
+  This file is part of Moeditor.
+
+  Copyright (c) 2016 Menci <huanghaorui301@gmail.com>
+
+  Moeditor is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Moeditor is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <base href="../href.html">
+        <title>Moeditor Settings</title>
+
+		<script>
+		window.$ = window.jQuery = require("jquery");
+        window.document.querySelector('html').classList.add(process.platform)
+        </script>
+
+        <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="settings/moe-settings.css">
+
+        <link rel="stylesheet" href="fonts/moe-fonts.css">
+        <link rel="stylesheet" href="settings/moe-tabview.css">
+        <script type="text/javascript" src="settings/moe-tabview.js"></script>
+        <link rel="stylesheet" href="titlebar/moe-titlebar.css">
+        <script type="text/javascript" src="titlebar/moe-titlebar.js"></script>
+    </head>
+    <body>
+        <div id="titlebar">
+            <div class="drag" style="width: 100%; height: 100%; "></div>
+            <div class="button button-close">
+                <script>
+                if (process.platform === 'win32') document.write('<img src="titlebar/caption-buttons.svg#close">');
+                else if (process.platform === 'linux') document.write('<img src="titlebar/close.svg">');
+                </script>
+            </div>
+            <div class="button button-minimize button-minimize-no-maximize">
+                <script>
+                if (process.platform === 'win32') document.write('<img src="titlebar/caption-buttons.svg#minimize">');
+                else if (process.platform === 'linux') document.write('<img src="titlebar/minimize.svg">');
+                </script>
+            </div>
+        </div>
+        <div id="main">
+            <div class="tabview">
+                <div class="bar">
+                    <div class="item selected" data-tab="general">
+                        <div class="image"><i class="fa fa-cog" aria-hidden="true"></i></div>
+                        <div class="text">General</div>
+                    </div>
+                    <div class="item" data-tab="edit">
+                        <div class="image"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                        <div class="text">Edit</div>
+                    </div>
+                    <div class="item" data-tab="appearance">
+                        <div class="image"><i class="fa fa-paint-brush" aria-hidden="true"></i></div>
+                        <div class="text">Appearance</div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div style="display: block; " class="panel" data-tab="general"><div class="placeholder">This is general settings.</div></div>
+                    <div class="panel" data-tab="edit"><div class="placeholder">This is edit settings.</div></div>
+                    <div class="panel" data-tab="appearance"><div class="placeholder">This is appearance settings.</div></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

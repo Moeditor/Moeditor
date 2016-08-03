@@ -25,7 +25,8 @@ const MoeditorWindow = require('./moe-window'),
       MoeditorFile = require('./moe-file'),
       shortcut = require('electron-localshortcut'),
       MoeditorLocale = require('./moe-locale'),
-      MoeditorAbout = require('./moe-about');
+      MoeditorAbout = require('./moe-about'),
+      MoeditorSettings = require('./moe-settings');
 
 class MoeditorApplication {
 	constructor() {
@@ -57,6 +58,7 @@ class MoeditorApplication {
         var docs = process.argv.filter(function (s) {
             if (s == '--debug') moeApp.flag.debug = true;
             else if (s == '--about') moeApp.flag.about = true;
+            else if (s == '--settings') moeApp.flag.settings = true;
 
             try {
                 return s.substring(0, 2) !== '--' && MoeditorFile.isTextFile(s);
@@ -67,6 +69,11 @@ class MoeditorApplication {
 
         if (moeApp.flag.about) {
             MoeditorAbout();
+            return;
+        }
+
+        if (moeApp.flag.settings) {
+            MoeditorSettings();
             return;
         }
 
