@@ -35,6 +35,9 @@ html, body {
     padding-bottom: 45px;
     -webkit-user-select: none;
     cursor: default;
+    z-index: 1;
+    position: absolute;
+    border-right: 1px solid #ccc;
 }
 
 #side-menu #logo {

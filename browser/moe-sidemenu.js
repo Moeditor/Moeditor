@@ -25,20 +25,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const sideMenuButton = document.getElementById('button-bottom-menu');
     const sideMenu = document.getElementById('side-menu');
     const sideMenuCover = document.getElementById('side-menu-cover');
-    const main = document.getElementById('main');
 
     function showMenu() {
         sideMenu.style.marginLeft = '0';
         sideMenuCover.style.opacity = '1';
         sideMenuCover.style.pointerEvents = 'all';
-        main.style.left = '300px';
     }
 
     function hideMenu() {
         sideMenu.style.marginLeft = '-300px';
         sideMenuCover.style.opacity = '0';
         sideMenuCover.style.pointerEvents = 'none';
-        main.style.left = '0';
     }
 
     sideMenuCover.addEventListener('click', hideMenu);
