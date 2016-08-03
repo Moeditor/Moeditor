@@ -326,7 +326,7 @@ html, body {
 
 .CodeMirror {
     font-size: 14px;
-    line-height: 1.8 !important;
+    line-height: 2 !important;
 }
 
 .CodeMirror pre {
