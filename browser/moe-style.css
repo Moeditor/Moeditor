@@ -290,7 +290,7 @@ html, body {
     padding-bottom: 30px;
     padding-left: 45px;
     padding-right: 40px;
-    font-size: 15 !important;
+    font-size: 14 !important;
 }
 
 .cm-s-default .cm-header {
@@ -322,8 +322,12 @@ html, body {
 }
 
 .CodeMirror {
-    font-size: 15px;
-    line-height: 1.6 !important;
+    font-size: 14px;
+    line-height: 1.8 !important;
+}
+
+.CodeMirror pre {
+    color: #373737;
 }
 
 .CodeMirror-cursors {
