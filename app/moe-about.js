@@ -40,7 +40,7 @@ function showAboutWindow() {
     else conf.frame = false;
 
     aboutWindow = new BrowserWindow(conf);
-    aboutWindow.loadURL('file://' + Const.path + '/browser/about/about.html');
+    aboutWindow.loadURL('file://' + Const.path + '/views/about/about.html');
     if (moeApp.flag.debug | moeApp.config.get('debug')) aboutWindow.webContents.openDevTools();
     aboutWindow.webContents.on('dom-ready', function() {
         aboutWindow.show();

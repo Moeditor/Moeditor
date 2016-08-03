@@ -21,6 +21,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Moeditor</title>
+        <base href="../href.html">
 
 		<script>
 		window.$ = window.jQuery = require("jquery");
@@ -31,16 +32,16 @@
         <link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">
         <link rel="stylesheet" href="../node_modules/katex/dist/katex.min.css">
         <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="base16-light.css">
-        <link rel="stylesheet" href="preview.css">
+        <link rel="stylesheet" href="main/base16-light.css">
+        <link rel="stylesheet" href="main/preview.css">
 
         <link rel="stylesheet" href="fonts/moe-fonts.css">
-        <link rel="stylesheet" href="moe-style.css">
+        <link rel="stylesheet" href="main/moe-style.css">
 
-        <link rel="stylesheet" href="moe-scrollbar.css">
-        <link rel="stylesheet" href="moe-titlebar.css">
-        <link rel="stylesheet" href="moe-popmenu.css">
-        <script type="text/javascript" src="moe-titlebar.js"></script>
+        <link rel="stylesheet" href="main/moe-scrollbar.css">
+        <link rel="stylesheet" href="main/moe-popmenu.css">
+        <link rel="stylesheet" href="titlebar/moe-titlebar.css">
+        <script type="text/javascript" src="titlebar/moe-titlebar.js"></script>
 
         <script src="../node_modules/codemirror/lib/codemirror.js"></script>
         <script src="../node_modules/codemirror/mode/markdown/markdown.js"></script>
@@ -49,16 +50,16 @@
         <script src="../node_modules/codemirror/addon/mode/overlay.js"></script>
         <script src="../node_modules/codemirror/addon/mode/multiplex.js"></script>
         <script src="../node_modules/codemirror/addon/scroll/simplescrollbars.js"></script>
-        <script src="CodeMirror/continuelist.js"></script>
+        <script src="main/CodeMirror/continuelist.js"></script>
 
         <script src="../node_modules/katex/dist/katex.min.js"></script>
 
-        <script type="text/javascript" src="moe-document.js"></script>
-        <script type="text/javascript" src="moe-localize.js"></script>
-        <script type="text/javascript" src="moe-sidemenu.js"></script>
-        <script type="text/javascript" src="moe-popmenu.js"></script>
-        <script type="text/javascript" src='moe-mode.js'></script>
-        <script type="text/javascript" src='moe-export.js'></script>
+        <script type="text/javascript" src="main/moe-document.js"></script>
+        <script type="text/javascript" src="main/moe-localize.js"></script>
+        <script type="text/javascript" src="main/moe-sidemenu.js"></script>
+        <script type="text/javascript" src="main/moe-popmenu.js"></script>
+        <script type="text/javascript" src='main/moe-mode.js'></script>
+        <script type="text/javascript" src='main/moe-export.js'></script>
     </head>
     <body>
         <div id="titlebar">

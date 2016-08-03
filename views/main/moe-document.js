@@ -23,7 +23,7 @@ window.moeApp = require('electron').remote.app.moeApp;
 window.w = moeApp.newWindow;
 
 $(function() {
-    const MoeditorFile = require('../app/moe-file'),
+    const MoeditorFile = require('../../app/moe-file'),
           MoeditorPreview = require('./moe-preview');
 
     CodeMirror.defineMode('mathdown', function(config) {

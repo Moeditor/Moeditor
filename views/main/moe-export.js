@@ -19,7 +19,7 @@
 
 'use strict'
 
-const MoeditorFile = require('../app/moe-file');
+const MoeditorFile = require('../../app/moe-file');
 
 function render(s, type, cb) {
     const MoeditorHighlight = require('./moe-highlight');
@@ -123,7 +123,7 @@ var flag = false;
 if (!flag) {
     flag = true;
     const ipcRenderer = require('electron').ipcRenderer;
-    const MoeditorAction = require('electron').remote.require('../app/moe-action');
+    const MoeditorAction = require('electron').remote.require('./moe-action');
     ipcRenderer.on('action-export-html', function() {
         MoeditorAction.exportAsHTML(w.window, function(cb) {
             html(cb);

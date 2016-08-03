@@ -19,7 +19,7 @@
 
 'use strict';
 
-const MoeditorAction = require('electron').remote.require('../app/moe-action');
+const MoeditorAction = require('electron').remote.require('./moe-action');
 
 document.addEventListener('DOMContentLoaded', function() {
     const sideMenuButton = document.getElementById('button-bottom-menu');
@@ -77,5 +77,10 @@ document.addEventListener('DOMContentLoaded', function() {
     sideMenu.querySelector('li[data-action=about]').addEventListener('click', function() {
         const ipcRenderer = require('electron').ipcRenderer;
         ipcRenderer.send('show-about-window');
+    });
+
+    sideMenu.querySelector('li[data-action=settings]').addEventListener('click', function() {
+        const ipcRenderer = require('electron').ipcRenderer;
+        ipcRenderer.send('show-settings-window');
     });
 });

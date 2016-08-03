@@ -50,7 +50,7 @@ class MoeditorWindow {
         if (fileName) this.window.setRepresentedFilename(fileName);
 
         this.registerEvents();
-        this.window.loadURL('file://' + Const.path + '/browser/index.html');
+        this.window.loadURL('file://' + Const.path + '/views/main/index.html');
 
         if (moeApp.flag.debug | moeApp.config.get('debug')) {
             this.window.webContents.openDevTools();
