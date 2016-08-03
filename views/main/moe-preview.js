@@ -24,6 +24,7 @@ const MoeditorHighlight = require('./moe-highlight');
 const MoeditorMathRenderer = require('./moe-math');
 const MoeMark = require('moemark');
 const jQuery = require('jquery');
+const SVGFixer = require('./svgfixer');
 
 MoeMark.setOptions({
     math: true,
@@ -66,6 +67,8 @@ module.exports = function (cm, obj, cb) {
             window.scrollMap = undefined;
 
             $('#previewer').html(rendered.html());
+            SVGFixer(document.getElementById('previewer'));
+
             cb();
 
             updatePreviewRunning = false;
