@@ -126,6 +126,24 @@ html, body {
     transition: all 500ms ease-in-out;
 }
 
+#main.read-mode #left-panel {
+    left: -50%;
+    width: 50%;
+}
+
+#main.read-mode #right-panel {
+    width: 100%;
+}
+
+#main.write-mode #left-panel {
+    width: 100%;
+}
+
+#main.write-mode #right-panel {
+    right: -50%;
+    width: 50%;
+}
+
 #editor {
     width: 100%;
     height: 100%;
@@ -133,19 +151,19 @@ html, body {
     transition: all 500ms ease-in-out;
 }
 
-#editor.write-mode.write-mode-thin {
+#main.write-mode.write-mode-thin #editor {
     width: calc(100% / 3);
     margin-left: calc(100% / 3);
     margin-right: calc(100% / 3);
 }
 
-#editor.write-mode.write-mode-medium {
+#main.write-mode.write-mode-medium #editor {
     width: calc(100% / 2);
     margin-left: calc(100% / 4);
     margin-right: calc(100% / 4);
 }
 
-#editor.write-mode.write-mode-wide {
+#main.write-mode.write-mode-wide #editor {
     width: calc((100% / 3) * 2);
     margin-left: calc(100% / 6);
     margin-right: calc(100% / 6);
@@ -211,6 +229,10 @@ html, body {
     background: linear-gradient(to bottom, rgb(245, 245, 245) 70%, transparent);
 }
 
+#main.read-mode #right-panel .cover-top {
+    right: 6px;
+}
+
 .cover-nobackground {
     background: transparent !important;
 }
@@ -242,6 +264,22 @@ html, body {
     height: 100%;
     background: #fff;
     transition: all 500ms ease-in-out;
+}
+
+#main.read-mode #cover-bottom-background-left {
+    left: -50%;
+}
+
+#main.read-mode #cover-bottom-background-right {
+    width: 100%;
+}
+
+#main.write-mode #cover-bottom-background-left {
+    width: 100%;
+}
+
+#main.write-mode #cover-bottom-background-right {
+    right: -50%;
 }
 
 #cover-bottom .button-bottom {
@@ -307,6 +345,34 @@ html, body {
     padding-left: 45px;
     padding-right: 40px;
     font-size: 14 !important;
+    transition: all 500ms ease-in-out;
+}
+
+#main.read-mode #previewer {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#main.read-mode #previewer-wrapper {
+    width: calc(100%);
+}
+
+#main.read-mode.read-mode-thin #previewer {
+    width: calc(100% / 3);
+    margin-left: calc(100% / 3);
+    margin-right: calc(100% / 3);
+}
+
+#main.read-mode.read-mode-medium #previewer {
+    width: calc(100% / 2);
+    margin-left: calc(100% / 4);
+    margin-right: calc(100% / 4);
+}
+
+#main.read-mode.read-mode-wide #previewer {
+    width: calc((100% / 3) * 2);
+    margin-left: calc(100% / 6);
+    margin-right: calc(100% / 6);
 }
 
 .cm-s-default .cm-header {

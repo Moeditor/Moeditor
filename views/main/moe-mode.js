@@ -20,45 +20,46 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function() {
+    const main = document.getElementById('main');
     const modeButton = document.getElementById('button-bottom-mode');
     const rightPanel = document.getElementById('right-panel');
-    const leftPanel = document.getElementById('left-panel');
-    const bottomLeftBackground = document.getElementById('cover-bottom-background-left');
-    const bottomRightBackground = document.getElementById('cover-bottom-background-right');
     const modeMenu = document.getElementById('popup-menu-mode');
     const modeMenuItems = modeMenu.getElementsByTagName('li');
     const editor = document.getElementById('editor');
+    const previewer = document.getElementById('previewer');
 
     function setMode(m) {
-        function setWriteMode(f) {
-            if (f) {
-                rightPanel.style.right = '-50%';
-                leftPanel.style.width = '100%';
-                bottomRightBackground.style.right = '-50%';
-                bottomLeftBackground.style.width = '100%';
-                editor.classList.add('write-mode');
-            } else {
-                rightPanel.style.right = '';
-                leftPanel.style.width = '';
-                bottomRightBackground.style.right = '';
-                bottomLeftBackground.style.width = '';
+        function setBaseMode(m) {
+            if (m === 'write') {
+                main.classList.add('write-mode');
+            } else if (m === 'read') {
+                main.classList.add('read-mode');
             }
         }
 
-        editor.className = '';
+        main.className = '';
 
         if (m === 'write-wide') {
-            setWriteMode(true);
-            editor.classList.add('write-mode-wide');
+            setBaseMode('write');
+            main.classList.add('write-mode-wide');
         } else if (m === 'write-medium') {
-            setWriteMode(true);
-            editor.classList.add('write-mode-medium');
+            setBaseMode('write');
+            main.classList.add('write-mode-medium');
         } else if (m === 'write-narrow') {
-            setWriteMode(true);
-            editor.classList.add('write-mode-thin');
-        } else {
-            setWriteMode(false);
+            setBaseMode('write');
+            main.classList.add('write-mode-thin');
+        } else if (m === 'preview') {
+            setBaseMode('preview');
             m = 'preview';
+        } else if (m === 'read-wide') {
+            setBaseMode('read');
+            main.classList.add('read-mode-wide');
+        } else if (m === 'read-medium') {
+            setBaseMode('read');
+            main.classList.add('read-mode-medium');
+        } else if (m === 'read-narrow') {
+            setBaseMode('read');
+            main.classList.add('read-mode-thin');
         }
 
         if (window.editMode === m) return;
@@ -85,6 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     rightPanel.addEventListener('transitionend', function(e) {
-        if (e.target === rightPanel && e.propertyName === 'right') window.updatePreview();
+        if (e.target === rightPanel && (window.editMode.startsWith('read') || window.editMode.startsWith('preview'))) window.updatePreview();
     });
 });

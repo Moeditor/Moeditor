@@ -43,7 +43,7 @@ module.exports = function (cm, obj, cb) {
             w.window.setDocumentEdited(true);
         }
 
-        if (window.editMode !== 'preview') {
+        if (!window.editMode.startsWith('preview') && !window.editMode.startsWith('read')) {
             updatePreviewRunning = false;
             if (updatePreview) setTimeout(updateAsync, 0);
             cb();
