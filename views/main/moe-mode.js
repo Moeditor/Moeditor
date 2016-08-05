@@ -20,6 +20,7 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function() {
+    const titlebar = document.getElementById('titlebar');
     const main = document.getElementById('main');
     const modeButton = document.getElementById('button-bottom-mode');
     const rightPanel = document.getElementById('right-panel');
@@ -68,6 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         window.editMode = m;
         moeApp.config.set('edit-mode', m);
+
+        titlebar.className = main.className;
     }
 
     setMode(moeApp.config.get('edit-mode'));

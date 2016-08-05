@@ -151,22 +151,22 @@ html, body {
     transition: all 500ms ease-in-out;
 }
 
-#main.write-mode.write-mode-thin #editor {
-    width: calc(100% / 3);
-    margin-left: calc(100% / 3);
-    margin-right: calc(100% / 3);
+#main.write-mode.write-mode-thin .CodeMirror-scroll {
+    width: calc(100% / 3 + 6px) !important;
+    padding-left: calc(100% / 3) !important;
+    padding-right: calc(100% / 3) !important;
 }
 
-#main.write-mode.write-mode-medium #editor {
-    width: calc(100% / 2);
-    margin-left: calc(100% / 4);
-    margin-right: calc(100% / 4);
+#main.write-mode.write-mode-medium .CodeMirror-scroll {
+    width: calc(100% / 2 + 6px) !important;
+    padding-left: calc(100% / 4) !important;
+    padding-right: calc(100% / 4) !important;
 }
 
-#main.write-mode.write-mode-wide #editor {
-    width: calc((100% / 3) * 2);
-    margin-left: calc(100% / 6);
-    margin-right: calc(100% / 6);
+#main.write-mode.write-mode-wide .CodeMirror-scroll {
+    width: calc((100% / 3) * 2 + 6px) !important;
+    padding-left: calc(100% / 6) !important;
+    padding-right: calc(100% / 6) !important;
 }
 
 #editor.write-mode .CodeMirror-scroll {
@@ -403,6 +403,12 @@ html, body {
     z-index: 1000000 !important;
 }
 
+#main.write-mode .CodeMirror-vscrollbar {
+    position: fixed !important;
+    right: 0px !important;
+    bottom: 25px !important;
+}
+
 .CodeMirror {
     font-size: 14px;
     line-height: 2 !important;
@@ -419,4 +425,35 @@ html, body {
 .CodeMirror-cursors[style="visibility: hidden;"] {
     opacity: 0 !important;
     visibility: visible !important;
+}
+
+.CodeMirror-lines {
+    overflow-x: hidden;
+}
+
+#drag-left {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(50% - 6px);
+    height: 100%;
+}
+
+#drag-right {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+}
+
+#titlebar.read-mode #drag-left, #titlebar.write-mode #drag-left {
+    width: calc(100% - 6px);
+}
+
+#titlebar.read-mode #drag-right, #titlebar.write-mode #drag-right {
+    width: 0;
+    right: 0;
 }
