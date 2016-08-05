@@ -56,7 +56,8 @@ $(function() {
         extraKeys: { 'Enter': 'newlineAndIndentContinueMarkdownList', Home: 'goLineLeft', End: 'goLineRight' },
         tabSize: moeApp.config.get('tab-size'),
         viewportMargin: Infinity,
-        styleActiveLine: true
+        styleActiveLine: true,
+        showCursorWhenSelecting: true
     });
 
     editor.focus();
