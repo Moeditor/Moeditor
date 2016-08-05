@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const editor = document.getElementById('editor');
 
     function setMode(m) {
-        function setZenMode(f) {
+        function setWriteMode(f) {
             if (f) {
                 rightPanel.style.right = '-50%';
                 leftPanel.style.width = '100%';
                 bottomRightBackground.style.right = '-50%';
                 bottomLeftBackground.style.width = '100%';
-                editor.classList.add('zen-mode');
+                editor.classList.add('write-mode');
             } else {
                 rightPanel.style.right = '';
                 leftPanel.style.width = '';
@@ -47,17 +47,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         editor.className = '';
 
-        if (m === 'zen-wide') {
-            setZenMode(true);
-            editor.classList.add('zen-mode-wide');
-        } else if (m === 'zen-medium') {
-            setZenMode(true);
-            editor.classList.add('zen-mode-medium');
-        } else if (m === 'zen-narrow') {
-            setZenMode(true);
-            editor.classList.add('zen-mode-thin');
+        if (m === 'write-wide') {
+            setWriteMode(true);
+            editor.classList.add('write-mode-wide');
+        } else if (m === 'write-medium') {
+            setWriteMode(true);
+            editor.classList.add('write-mode-medium');
+        } else if (m === 'write-narrow') {
+            setWriteMode(true);
+            editor.classList.add('write-mode-thin');
         } else {
-            setZenMode(false);
+            setWriteMode(false);
             m = 'preview';
         }
 
