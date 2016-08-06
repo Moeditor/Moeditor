@@ -47,3 +47,34 @@ body {
     height: 100%;
     line-height: 260px;
 }
+
+.panel {
+    padding: 20px;
+    color: #666;
+    font-family: Roboto, Helvetica, 'Sogoe UI', Arial, sans-serif;
+    letter-spacing: 0.5px;
+    font-size: 13.33333px;
+}
+
+.panel tr {
+    height: 40px;
+}
+
+select, input {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    outline: none;
+    height: 25px;
+    width: 100%;
+    font-family: Roboto, Helvetica, 'Sogoe UI', Arial, sans-serif;
+    color: #666;
+    box-sizing: border-box;
+}
+
+select:hover, input:hover, select:active, input:active {
+    border: 1px solid #bbb;
+}
+
+input {
+    padding-left: 3px;
+}

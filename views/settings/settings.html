@@ -67,7 +67,34 @@
                     </div>
                 </div>
                 <div class="content">
-                    <div class="panel" data-tab="edit"><div class="placeholder">This is edit settings.</div></div>
+                    <div class="panel" data-tab="edit" style="display: block; ">
+                        <table width="80%" align="center">
+                            <tr>
+                                <td width="40%">Editor Font</td>
+                                <td width="60%">
+                                    <select id="input-editor-font">
+                                        <option value="monospace">Monospace</option>
+                                        <option value="serif">Serif</option>
+                                        <option value="sans">Sans</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="40%">Editor Color Theme</td>
+                                <td width="60%">
+                                    <select id="input-editor-color-theme">
+                                        <option value="base16-light">Base16 Light</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="40%">Editor Line Height</td>
+                                <td width="60%">
+                                    <input type="text" id="input-editor-line-height" value="2">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                     <div class="panel" data-tab="appearance"><div class="placeholder">This is appearance settings.</div></div>
                 </div>
             </div>
