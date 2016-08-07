@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
 
         <link rel="stylesheet" href="settings/moe-settings.css">
+        <script type="text/javascript" src="settings/moe-settings.js"></script>
 
         <link rel="stylesheet" href="fonts/moe-fonts.css">
         <link rel="stylesheet" href="settings/moe-tabview.css">
@@ -61,10 +62,10 @@
                         <div class="image"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
                         <div class="text">Edit</div>
                     </div>
-                    <div class="item" data-tab="appearance">
+                    <!--div class="item" data-tab="appearance">
                         <div class="image"><i class="fa fa-paint-brush" aria-hidden="true"></i></div>
                         <div class="text">Appearance</div>
-                    </div>
+                    </div-->
                 </div>
                 <div class="content">
                     <div class="panel" data-tab="edit" style="display: block; ">
@@ -72,7 +73,7 @@
                             <tr>
                                 <td width="40%">Editor Font</td>
                                 <td width="60%">
-                                    <select id="input-editor-font">
+                                    <select class="settings-item" data-key="editor-font">
                                         <option value="monospace">Monospace</option>
                                         <option value="serif">Serif</option>
                                         <option value="sans">Sans</option>
@@ -82,7 +83,7 @@
                             <tr>
                                 <td width="40%">Editor Color Theme</td>
                                 <td width="60%">
-                                    <select id="input-editor-color-theme">
+                                    <select class="settings-item" data-key="editor-theme">
                                         <option value="base16-light">Base16 Light</option>
                                     </select>
                                 </td>
@@ -90,12 +91,12 @@
                             <tr>
                                 <td width="40%">Editor Line Height</td>
                                 <td width="60%">
-                                    <input type="text" id="input-editor-line-height" value="2">
+                                    <input class="settings-item" type="text" data-key="editor-line-height" value="2">
                                 </td>
                             </tr>
                         </table>
                     </div>
-                    <div class="panel" data-tab="appearance"><div class="placeholder">This is appearance settings.</div></div>
+                    <!--div class="panel" data-tab="appearance"><div class="placeholder">This is appearance settings.</div></div-->
                 </div>
             </div>
         </div>

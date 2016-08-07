@@ -318,11 +318,22 @@ html, body {
 }
 
 #editor * {
-    font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace, 'Noto Sans CJK SC', 'Source Han Sans SC', 'Microsoft Yahei' !important;
     transition: all 500ms ease-in-out;
 }
 
-.CodeMirror-wrap {
+body[settings-editor-font="monospace"] #editor * {
+    font-family: monospace, 'Noto Sans CJK SC', 'Source Han Sans SC' !important;
+}
+
+body[settings-editor-font="serif"] #editor  * {
+    font-family: serif, 'Noto Sans CJK SC', 'Source Han Sans SC' !important;
+}
+
+body[settings-editor-font="sans"] #editor  * {
+    font-family: sans-serif, 'Noto Sans CJK SC', 'Source Han Sans SC' !important;
+}
+
+.CodeMirror-wrap, .CodeMirror pre, .CodeMirror span, .CodeMirror-vscrollbar div, .CodeMirror-measure {
     transition: none !important;
 }
 
@@ -411,7 +422,6 @@ html, body {
 
 .CodeMirror {
     font-size: 14px;
-    line-height: 2 !important;
 }
 
 .CodeMirror pre {
@@ -456,4 +466,8 @@ html, body {
 #titlebar.read-mode #drag-right, #titlebar.write-mode #drag-right {
     width: 0;
     right: 0;
+}
+
+.notransition * {
+    transition: none !important;
 }

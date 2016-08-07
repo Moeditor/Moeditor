@@ -90,6 +90,8 @@ class MoeditorApplication {
 
         if (process.platform === 'darwin') this.registerAppMenu();
         else this.registerShortcuts();
+
+        this.listenSettingChanges();
 	}
 
     registerAppMenu() {
@@ -135,6 +137,15 @@ class MoeditorApplication {
 
         shortcut.register('Ctrl + Shift + S', () => {
             MoeditorAction.saveAs();
+        });
+    }
+
+    listenSettingChanges() {
+        const ipcMain = require('electron').ipcMain;
+        ipcMain.on('setting-changed', function(e, arg) {
+            for (const window of moeApp.windows) {
+                window.window.webContents.send('setting-changed', arg);
+            }
         });
     }
 }

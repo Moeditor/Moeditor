@@ -51,7 +51,7 @@ $(function() {
         mode: 'mathdown',
         matchBrackets: true,
         // scrollbarStyle: "simple",
-        theme: 'base16-light',
+        theme: moeApp.config.get('editor-theme'),
         lineWrapping: true,
         extraKeys: { 'Enter': 'newlineAndIndentContinueMarkdownList', Home: 'goLineLeft', End: 'goLineRight' },
         tabSize: moeApp.config.get('tab-size'),
@@ -107,6 +107,8 @@ $(function() {
         document.getElementById('editor').classList.toggle('focus');
         moeApp.config.set('focus-mode', document.getElementById('editor').classList.contains('focus'));
     });
+
+    require('./moe-settings');
 
     w.window.show();
 });
