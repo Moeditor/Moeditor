@@ -322,15 +322,15 @@ html, body {
 }
 
 body[settings-editor-font="monospace"] #editor * {
-    font-family: monospace, 'Noto Sans CJK SC', 'Source Han Sans SC' !important;
+    font-family: monospace !important;
 }
 
 body[settings-editor-font="serif"] #editor  * {
-    font-family: serif, 'Noto Sans CJK SC', 'Source Han Sans SC' !important;
+    font-family: serif !important;
 }
 
 body[settings-editor-font="sans"] #editor  * {
-    font-family: sans-serif, 'Noto Sans CJK SC', 'Source Han Sans SC' !important;
+    font-family: sans-serif !important;
 }
 
 .CodeMirror-wrap, .CodeMirror pre, .CodeMirror span, .CodeMirror-vscrollbar div, .CodeMirror-measure {
