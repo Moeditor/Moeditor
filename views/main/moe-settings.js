@@ -36,6 +36,14 @@ function setEditorTheme(val) {
     codemirror.classList.add('cm-s-' + val);
 }
 
+function setEditorFontSize(val) {
+    codemirror.classList.add('notransition');
+    codemirror.style.fontSize = val + 'px';
+    codemirror.offsetHeight;
+    codemirror.classList.remove('notransition');
+    window.editor.refresh();
+}
+
 function setEditorLineHeight(val) {
     codemirror.classList.add('notransition');
     codemirror.style.lineHeight = val;
@@ -46,6 +54,7 @@ function setEditorLineHeight(val) {
 
 setEditorFont(moeApp.config.get('editor-font'));
 setEditorTheme(moeApp.config.get('editor-theme'));
+setEditorFontSize(moeApp.config.get('editor-font-size'));
 setEditorLineHeight(moeApp.config.get('editor-line-height'));
 
 const ipcRenderer = require('electron').ipcRenderer;
@@ -54,6 +63,8 @@ ipcRenderer.on('setting-changed', function(e, arg) {
         setEditorFont(arg.val);
     } else if (arg.key === 'editor-theme') {
         setEditorTheme(arg.val);
+    } else if (arg.key === 'editor-font-size') {
+        setEditorFontSize(arg.val);
     } else if (arg.key === 'editor-line-height') {
         setEditorLineHeight(arg.val);
     }
