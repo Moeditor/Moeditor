@@ -78,3 +78,8 @@ select:hover, input:hover, select:active, input:active {
 input {
     padding-left: 3px;
 }
+
+html.darwin input {
+    padding-left: 7px;
+    border-radius: 5px;
+}
