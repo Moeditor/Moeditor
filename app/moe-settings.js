@@ -36,7 +36,7 @@ function showSettingsWindow() {
         show: false
     };
 
-    if (process.platform == 'darwin') conf.titleBarStyle = 'hidden-inset';
+    if (process.platform == 'darwin') conf.titleBarStyle = 'hidden';
     else conf.frame = false;
 
     settingsWindow = new BrowserWindow(conf);
