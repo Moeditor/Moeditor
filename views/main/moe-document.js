@@ -23,8 +23,7 @@ window.moeApp = require('electron').remote.app.moeApp;
 window.w = moeApp.newWindow;
 
 $(function() {
-    const MoeditorFile = require('../../app/moe-file'),
-          MoeditorPreview = require('./moe-preview');
+    const MoeditorPreview = require('./moe-preview');
 
     CodeMirror.defineMode('mathdown', function(config) {
         var options = [];
@@ -41,10 +40,7 @@ $(function() {
         return CodeMirror.multiplexingMode.apply(CodeMirror, [CodeMirror.getMode(config, 'gfm')].concat([].slice.call(options)));
     });
 
-    if (typeof w.fileName !== 'undefined') {
-        var content = MoeditorFile.read(w.fileName, '');
-        document.querySelector('#editor textarea').innerText = content;
-    }
+    document.querySelector('#editor textarea').innerText = w.content;
 
     var editor = CodeMirror.fromTextArea(document.querySelector('#editor textarea'), {
         lineNumbers: false,

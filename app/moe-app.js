@@ -26,7 +26,8 @@ const MoeditorWindow = require('./moe-window'),
       shortcut = require('electron-localshortcut'),
       MoeditorLocale = require('./moe-locale'),
       MoeditorAbout = require('./moe-about'),
-      MoeditorSettings = require('./moe-settings');
+      MoeditorSettings = require('./moe-settings'),
+      path = require('path');
 
 class MoeditorApplication {
 	constructor() {
@@ -35,12 +36,15 @@ class MoeditorApplication {
         this.locale = new MoeditorLocale();
 	}
 
-    open() {
-        this.windows.push(new MoeditorWindow(''));
-    }
-
 	open(fileName) {
-		this.windows.push(new MoeditorWindow(fileName));
+        if (typeof fileName === 'undefined') {
+            var directory = this.config.get('last-directory');
+            if (!MoeditorFile.isDirectory(directory)) directory = '';
+            if (!directory) directory = process.cwd();
+            this.windows.push(new MoeditorWindow(directory));
+        } else {
+            this.windows.push(new MoeditorWindow(fileName));
+        }
 	}
 
 	run() {
@@ -54,14 +58,15 @@ class MoeditorApplication {
 
         this.flag = new Object();
 
-        // console.log(process.argv);
-        var docs = process.argv.filter(function (s) {
+        const a = process.argv;
+        a.shift();
+        var docs = a.filter(function (s) {
             if (s == '--debug') moeApp.flag.debug = true;
             else if (s == '--about') moeApp.flag.about = true;
             else if (s == '--settings') moeApp.flag.settings = true;
 
             try {
-                return s.substring(0, 2) !== '--' && MoeditorFile.isTextFile(s);
+                return s.substring(0, 2) !== '--' && (MoeditorFile.isTextFile(s) || MoeditorFile.isDirectory(s));
             } catch (e) {
                 return false;
             }
@@ -84,7 +89,8 @@ class MoeditorApplication {
 
         if (docs.length == 0) this.open();
 		else for (var i = 0; i < docs.length; i++) {
-            app.addRecentDocument(docs[i]);
+            docs[i] = path.resolve(docs[i]);
+            this.addRecentDocument(docs[i]);
             this.open(docs[i]);
         }
 
@@ -147,6 +153,15 @@ class MoeditorApplication {
                 window.window.webContents.send('setting-changed', arg);
             }
         });
+    }
+
+    addRecentDocument(path) {
+        if (MoeditorFile.isDirectory(path)) {
+            this.config.set('last-directory', path);
+        } else {
+            this.config.set('last-directory', require('path').dirname(path));
+        }
+        app.addRecentDocument(path);
     }
 }
 

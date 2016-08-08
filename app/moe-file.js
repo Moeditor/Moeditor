@@ -42,6 +42,14 @@ class MoeditorFile {
         }
     }
 
+    static isDirectory(fileName) {
+        try {
+            return fs.lstatSync(fileName).isDirectory();
+        } catch (e) {
+            return false;
+        }
+    }
+
     static read(fileName, empty) {
         try {
             return fs.readFileSync(fileName);

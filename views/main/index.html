@@ -40,6 +40,7 @@
 
         <link rel="stylesheet" href="main/moe-scrollbar.css">
         <link rel="stylesheet" href="main/moe-popmenu.css">
+        <link rel="stylesheet" href="main/moe-treeview.css">
         <link rel="stylesheet" href="titlebar/moe-titlebar.css">
         <script type="text/javascript" src="titlebar/moe-titlebar.js"></script>
 
@@ -59,6 +60,7 @@
         <script type="text/javascript" src="main/moe-document.js"></script>
         <script type="text/javascript" src="main/moe-localize.js"></script>
         <script type="text/javascript" src="main/moe-sidemenu.js"></script>
+        <script type="text/javascript" src="main/moe-treeview.js"></script>
         <script type="text/javascript" src="main/moe-popmenu.js"></script>
         <script type="text/javascript" src='main/moe-mode.js'></script>
         <script type="text/javascript" src='main/moe-export.js'></script>
@@ -104,8 +106,29 @@
                 <li data-action="about">About</li>
             </ul>
         </div>
+        <div id="file-tree" class="tree-view">
+            <div class="tree-view-item tree-view-item-template">
+                <div class="tree-view-thisitem">
+                    <div class="tree-view-caret">
+                        <i class="tree-view-caret-right fa fa-caret-right" aria-hidden="true"></i>
+                        <i class="tree-view-caret-down fa fa-caret-down" aria-hidden="true"></i>
+                    </div>
+                    <div class="tree-view-icon">
+                        <i class="tree-view-icon-dir fa fa-folder-o" aria-hidden="true"></i>
+                        <i class="tree-view-icon-file fa fa-file-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="tree-view-text">
+                    </div>
+                </div>
+                <div class="tree-view-subitems">
+                </div>
+            </div>
+            <div class="tree-view-items">
+            </div>
+        </div>
         <div id="main">
             <div id="side-menu-cover"></div>
+            <div id="file-tree-cover"></div>
             <div id="main-container">
                 <div id="left-panel">
                     <div id="editor">
@@ -129,6 +152,9 @@
                 <div id="cover-bottom-left">
                     <div class="button-bottom" id="button-bottom-menu">
                         <i class="fa fa-bars" aria-hidden="true"></i>
+                    </div>
+                    <div class="button-bottom" id="button-bottom-file-tree">
+                        <i class="fa fa-folder-o" aria-hidden="true"></i>
                     </div>
                 </div>
                 <div id="cover-bottom-right">

@@ -60,7 +60,7 @@ class MoeditorAction {
                 w.moeditorWindow.changed = false;
                 w.moeditorWindow.window.setDocumentEdited(false);
                 w.moeditorWindow.window.setRepresentedFilename(w.moeditorWindow.fileName);
-                app.addRecentDocument(w.moeditorWindow.fileName);
+                moeApp.addRecentDocument(w.moeditorWindow.fileName);
             } catch(e) {
                 console.log('Can\'t save file: ' + e.toString());
                 return false;
@@ -88,7 +88,7 @@ class MoeditorAction {
             MoeditorFile.write(fileName, w.moeditorWindow.content);
             w.moeditorWindow.fileName = fileName;
             w.moeditorWindow.changed = false;
-            app.addRecentDocument(fileName);
+            moeApp.addRecentDocument(fileName);
             w.moeditorWindow.window.setDocumentEdited(false);
             w.moeditorWindow.window.setRepresentedFilename(fileName);
         } catch(e) {
