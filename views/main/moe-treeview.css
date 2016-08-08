@@ -1,0 +1,103 @@
+/*
+ *  This file is part of Moeditor.
+ *
+ *  Copyright (c) 2016 Menci <huanghaorui301@gmail.com>
+ *
+ *  Moeditor is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Moeditor is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#file-tree {
+    width: 250px;
+    margin-left: -250px;
+    height: calc(100% - 45px);
+    background: #fafafa;
+    transition: all 500ms ease-in-out;
+    padding-top: 45px;
+    -webkit-user-select: none;
+    cursor: default;
+    z-index: 1;
+    position: absolute;
+    border-right: 1px solid #ccc;
+    overflow: scroll;
+}
+
+.tree-view-thisitem {
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    white-space: nowrap;
+}
+
+.tree-view-thisitem:hover {
+    background-color: #ededed;
+}
+
+.tree-view-thisitem:active {
+    background-color: #eee;
+}
+
+.tree-view-subitems {
+    width: auto;
+}
+
+.tree-view-item-template {
+    display: none;
+}
+
+.tree-view-caret {
+    display: inline-block;
+    line-height: 30px;
+    padding-right: 5px;
+    box-sizing: border-box;
+    width: 12px;
+}
+
+.tree-view-caret .fa, .tree-view-icon .fa {
+    vertical-align: middle;
+    font-size: 13px;
+}
+
+.tree-view-item[data-isdir="false"] > .tree-view-thisitem > .tree-view-caret > * {
+    display: none;
+}
+
+.tree-view-item[data-expanded="true"] > .tree-view-thisitem > .tree-view-caret > .tree-view-caret-right {
+    display: none;
+}
+
+.tree-view-item[data-expanded="false"] > .tree-view-thisitem > .tree-view-caret > .tree-view-caret-down {
+    display: none;
+}
+
+.tree-view-icon {
+    display: inline-block;
+    line-height: 30px;
+}
+
+.tree-view-item[data-isdir="true"] > .tree-view-thisitem > .tree-view-icon > .tree-view-icon-file {
+    display: none;
+}
+
+.tree-view-item[data-isdir="false"] > .tree-view-thisitem > .tree-view-icon > .tree-view-icon-dir {
+    display: none;
+}
+
+.tree-view-text {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 30px;
+    padding-left: 6px;
+    vertical-align: top;
+    font-family: Roboto, Helvetica, 'Sogoe UI', Arial, sans-serif;;
+}

@@ -84,7 +84,7 @@ html, body {
     margin-bottom: 10px;
 }
 
-#side-menu-cover {
+#side-menu-cover, #file-tree-cover {
     position: absolute;
     width: 100%;
     height: 100%;

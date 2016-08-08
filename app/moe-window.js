@@ -21,14 +21,23 @@
 
 const BrowserWindow = require('electron').BrowserWindow,
       dialog = require('electron').dialog,
-      MoeditorAction = require('./moe-action');
+      MoeditorAction = require('./moe-action'),
+      MoeditorFile = require('./moe-file');
 
 class MoeditorWindow {
-	constructor(fileName) {
+	constructor(path) {
         moeApp.newWindow = this;
 
-        this.fileName = fileName;
-        this.content = '';
+        if (MoeditorFile.isDirectory(path)) {
+            this.directory = path
+            this.fileName = '';
+            this.content = '';
+        } else {
+            this.directory = require('path').dirname(path);
+            this.fileName = path;
+            this.content = MoeditorFile.read(path);
+        }
+
         this.changed = false;
         var conf = {
             icon: Const.path + "/icons/Moeditor.ico",
@@ -46,8 +55,6 @@ class MoeditorWindow {
 
 		this.window = new BrowserWindow(conf);
         this.window.moeditorWindow = this;
-
-        if (fileName) this.window.setRepresentedFilename(fileName);
 
         this.registerEvents();
         this.window.loadURL('file://' + Const.path + '/views/main/index.html');
