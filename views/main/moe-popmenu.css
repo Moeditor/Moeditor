@@ -65,3 +65,9 @@
     margin-right: 8px;
     opacity: 0;
 }
+
+#popup-menu-mode {
+    width: 202px;
+    top: calc(100% - 320px);
+    left: calc(100% - 202px);
+}
