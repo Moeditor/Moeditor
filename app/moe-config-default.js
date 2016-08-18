@@ -28,6 +28,5 @@ module.exports = {
     'editor-font': 'monospace',
     'editor-theme': 'base16-light',
     'editor-font-size': 14,
-    'editor-line-height': 2,
-    'windows': []
+    'editor-line-height': 2
 };
