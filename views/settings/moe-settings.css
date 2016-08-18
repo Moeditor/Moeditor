@@ -43,7 +43,7 @@ body {
     text-align: center;
     color: #666;
     font-size: 13px;
-    font-family: Roboto, Helvetica, 'Sogoe UI', Arial, sans-serif;
+    font-family: Roboto, Helvetica, 'Segoe UI', Arial, sans-serif;
     height: 100%;
     line-height: 260px;
 }
@@ -51,7 +51,7 @@ body {
 .panel {
     padding: 20px;
     color: #666;
-    font-family: Roboto, Helvetica, 'Sogoe UI', Arial, sans-serif;
+    font-family: Roboto, Helvetica, 'Segoe UI', Arial, sans-serif;
     letter-spacing: 0.5px;
     font-size: 13.33333px;
 }
@@ -66,7 +66,7 @@ select, input {
     outline: none;
     height: 25px;
     width: 100%;
-    font-family: Roboto, Helvetica, 'Sogoe UI', Arial, sans-serif;
+    font-family: Roboto, Helvetica, 'Segoe UI', Arial, sans-serif;
     color: #666;
     box-sizing: border-box;
 }
