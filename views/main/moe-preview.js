@@ -28,6 +28,7 @@ const SVGFixer = require('./svgfixer');
 
 MoeMark.setOptions({
     math: true,
+    lineNumber: true,
     highlight: MoeditorHighlight
 });
 
