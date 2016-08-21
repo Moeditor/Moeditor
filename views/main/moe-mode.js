@@ -30,11 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const previewer = document.getElementById('previewer');
 
     function setMode(m) {
-        function setBaseMode(m) {
-            if (m === 'write') {
+        function setBaseMode(bm) {
+            if (bm === 'write') {
                 main.classList.add('write-mode');
-            } else if (m === 'read') {
+                moeApp.config.set('edit-mode-write', m);
+            } else if (bm === 'read') {
                 main.classList.add('read-mode');
+                moeApp.config.set('edit-mode-read', m);
             }
         }
 
@@ -83,6 +85,11 @@ document.addEventListener('DOMContentLoaded', function() {
         setMode(it.attributes['data-name'].value);
         window.editor.focus();
     })
+
+    require('electron').ipcRenderer.on('change-edit-mode', (e, arg) => {
+        if (arg === 'read' || arg === 'write') setMode(moeApp.config.get('edit-mode-' + arg));
+        else setMode('preview');
+    });
 
     editor.addEventListener('transitionend', function(e) {
         if (e.target === editor && e.propertyName === 'width') window.editor.refresh();

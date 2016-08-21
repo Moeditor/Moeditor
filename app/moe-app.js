@@ -122,6 +122,15 @@ class MoeditorApplication {
                 fileExportPDF: (w) => {
                     w.webContents.send('action-export-pdf');
                 },
+                modeToRead: (w) => {
+                    w.webContents.send('change-edit-mode', 'read');
+                },
+                modeToWrite: (w) => {
+                    w.webContents.send('change-edit-mode', 'write');
+                },
+                modeToPreview: (w) => {
+                    w.webContents.send('change-edit-mode', 'preview');
+                },
                 about: (w) => {
                     MoeditorAbout();
                 }
@@ -145,6 +154,23 @@ class MoeditorApplication {
         shortcut.register('Ctrl + Shift + S', () => {
             MoeditorAction.saveAs();
         });
+
+        shortcut.register('Ctrl + Shift + R', () => {
+            let w = require('electron').BrowserWindow.getFocusedWindow();
+            if (w) w.webContents.send('change-edit-mode', 'read');
+        });
+
+        shortcut.register('Ctrl + Shift + G', () => {
+            let w = require('electron').BrowserWindow.getFocusedWindow();
+            if (w) w.webContents.send('change-edit-mode', 'write');
+        });
+
+        /*
+        shortcut.register('Ctrl + Shift + P', () => {
+            let w = require('electron').BrowserWindow.getFocusedWindow();
+            if (w) w.webContents.send('change-edit-mode', 'preview');
+        });
+        */
     }
 
     listenSettingChanges() {

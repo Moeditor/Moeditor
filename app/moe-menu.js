@@ -103,6 +103,35 @@ module.exports = function(cb) {
                 {
                     role: 'selectall'
                 },
+                {
+                    type: 'separator'
+                },
+                {
+                    label: 'Mode',
+                    submenu: [
+                        {
+                            label: 'Read',
+                            accelerator: 'Command + Option + R',
+                            click(item, focusedWindow) {
+                                if (focusedWindow) cb.modeToRead(focusedWindow);
+                            }
+                        },
+                        {
+                            label: 'Write',
+                            accelerator: 'Command + Option + G',
+                            click(item, focusedWindow) {
+                                if (focusedWindow) cb.modeToWrite(focusedWindow);
+                            }
+                        },
+                        {
+                            label: 'Preview',
+                            // accelerator: 'Command + Option + P', // It's been used for `Export PDF`.
+                            click(item, focusedWindow) {
+                                if (focusedWindow) cb.modeToPreview(focusedWindow);
+                            }
+                        }
+                    ]
+                }
             ]
         },
         {

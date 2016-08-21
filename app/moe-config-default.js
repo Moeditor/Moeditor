@@ -24,6 +24,8 @@ module.exports = {
     'scale-factor': 1.0,
     'tab-size': 4,
     'edit-mode': 'preview',
+    'edit-mode-read': 'read-mode-wide',
+    'edit-mode-write': 'write-mode-wide',
     'focus-mode': false,
     'editor-font': 'monospace',
     'editor-theme': 'base16-light',
