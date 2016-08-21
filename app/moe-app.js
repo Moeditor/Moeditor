@@ -38,10 +38,7 @@ class MoeditorApplication {
 
 	open(fileName) {
         if (typeof fileName === 'undefined') {
-            var directory = this.config.get('last-directory');
-            if (!MoeditorFile.isDirectory(directory)) directory = '';
-            if (!directory) directory = process.cwd();
-            this.windows.push(new MoeditorWindow(directory));
+            this.windows.push(new MoeditorWindow(process.cwd()));
         } else {
             this.windows.push(new MoeditorWindow(fileName));
         }
@@ -183,11 +180,6 @@ class MoeditorApplication {
     }
 
     addRecentDocument(path) {
-        if (MoeditorFile.isDirectory(path)) {
-            this.config.set('last-directory', path);
-        } else {
-            this.config.set('last-directory', require('path').dirname(path));
-        }
         app.addRecentDocument(path);
     }
 }

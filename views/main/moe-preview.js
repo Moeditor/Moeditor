@@ -25,6 +25,8 @@ const MoeditorMathRenderer = require('./moe-math');
 const MoeMark = require('moemark');
 const jQuery = require('jquery');
 const SVGFixer = require('./svgfixer');
+const path = require('path');
+const url = require('url');
 
 MoeMark.setOptions({
     math: true,
@@ -59,10 +61,21 @@ module.exports = function (cm, obj, cb) {
                 rendered.find('#math-' + i).html(math[i]);
             }
 
+            let imgs = rendered.find('img');
+            for (let img of imgs) {
+                let src = img.getAttribute('src');
+                if (url.parse(src).protocol === null) {
+                    if (!path.isAbsolute(src)) src = path.resolve(w.directory, src);
+                    src = url.resolve('file://', src);
+                }
+                img.setAttribute('src', src);
+            }
+
             var set = new Set();
             rendered.find('moemark-linenumber').each(function() {
                 set.add(parseInt($(this).attr('i')));
             });
+
             window.lineNumbers = (Array.from(set)).sort(function(a, b) { return a - b; });
             // console.log(window.lineNumbers);
             window.scrollMap = undefined;
