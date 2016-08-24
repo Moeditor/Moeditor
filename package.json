@@ -26,14 +26,16 @@
     "configstore": "^2.0.0",
     "electron": "^1.3.3",
     "electron-localshortcut": "^0.6.1",
+    "flowchart.js": "^1.6.3",
     "font-awesome": "^4.6.3",
     "highlight.js": "^9.6.0",
     "jquery": "^3.1.0",
+    "js-sequence-diagrams": "^1000000.0.6",
     "katex": "^0.6.0",
     "lrucache": "^1.0.2",
     "mathjax-node": "^0.5.1",
     "mime": "^1.3.4",
-    "moemark": "^0.3.6",
+    "moemark": "^0.3.7",
     "os-locale": "^1.4.0"
   }
 }

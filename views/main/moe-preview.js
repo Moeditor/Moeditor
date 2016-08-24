@@ -22,6 +22,7 @@
 var updatePreview = false, updatePreviewRunning = false;
 const MoeditorHighlight = require('./moe-highlight');
 const MoeditorMathRenderer = require('./moe-math');
+const MoeditorUMLRenderer = require('./moe-uml');
 const MoeMark = require('moemark');
 const jQuery = require('jquery');
 const SVGFixer = require('./svgfixer');
@@ -31,7 +32,9 @@ const url = require('url');
 MoeMark.setOptions({
     math: true,
     lineNumber: true,
-    highlight: MoeditorHighlight
+    highlight: MoeditorHighlight,
+    umlchart: true,
+    umlRenderer: MoeditorUMLRenderer
 });
 
 module.exports = function (cm, obj, cb) {
