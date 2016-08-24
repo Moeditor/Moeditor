@@ -35,7 +35,7 @@ class MoeditorLocale {
 	}
 
 	get(str) {
-        if (typeof strings[this.locale] === 'undefined' || typeof strings[this.locale][str] === 'undefined') return strings['en'][str];
+		if (typeof strings[this.locale] === 'undefined' || typeof strings[this.locale][str] === 'undefined') return strings['en'][str];
 		else return strings[this.locale][str];
 	}
 }
@@ -53,8 +53,8 @@ const strings = {
 		confirm: "Confirm",
 		savequestion: "Save changes to file?",
 		markdownDocuments: "Markdown Documents",
-        htmlDocuments: "HTML Documents",
-        pdfDocuments: "PDF Documents",
+		htmlDocuments: "HTML Documents",
+		pdfDocuments: "PDF Documents",
 		allFiles: "All Files"
 	},
 	"de": {
@@ -68,5 +68,19 @@ const strings = {
 		savequestion: "Änderungen speichern?",
 		markdownDocuments: "Markdown Dokumente",
 		allFiles: "Alle Dateien"
+	},
+	"pt": {
+		new: "NOVO",
+		open: "ABRIR",
+		save: "SALVAR",
+		yes: "Sim",
+		no: "Não",
+		cancel: "Cancelar",
+		confirm: "Confirmar",
+		savequestion: "Salvar as alterações no arquivo?",
+		markdownDocuments: "Documentos Markdown",
+		htmlDocuments: "Documentos HTML",
+		pdfDocuments: "Documentos PDF",
+		allFiles: "Todos Arquivos"
 	}
 }
