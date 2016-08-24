@@ -57,6 +57,19 @@
 
         <script src="../node_modules/katex/dist/katex.min.js"></script>
 
+        <!-- Mathjax config -->
+        <script src="../node_modules/mathjax/MathJax.js?config=TeX-AMS-MML_SVG"></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                tex2jax: {
+                    preview: "none",
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    processEscapes: true
+                },
+                messageStyle: "none"
+            });
+        </script>
+
         <script type="text/javascript" src="main/moe-document.js"></script>
         <script type="text/javascript" src="main/moe-localize.js"></script>
         <script type="text/javascript" src="main/moe-sidemenu.js"></script>

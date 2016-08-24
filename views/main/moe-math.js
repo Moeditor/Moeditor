@@ -43,6 +43,20 @@ module.exports = class MoeditorMathRenderer {
     }
 
     static render(str, display, cb, info) {
+        /*let div = document.createElement('div');
+        div.innerText = (display ? '$$' : '$') + str + (display ? '$$' : '$');
+        div.style.display = 'none';
+        document.body.appendChild(div);
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
+        MathJax.Hub.Queue(() => {
+            let res = div.querySelector('svg').outerHTML;
+            if (display) {
+                res = '<div style="width: 100%; text-align: center">' + res + '</div>';
+            }
+            cb(res, info);
+            document.body.removeChild(div);
+        });
+        return;*/
         mathjax.typeset({
             math: str,
             format: display ? "TeX" : "inline-TeX",
