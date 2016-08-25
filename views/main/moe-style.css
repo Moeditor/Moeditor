@@ -471,3 +471,8 @@ body[settings-editor-font="sans"] #editor  * {
 .notransition * {
     transition: none !important;
 }
+
+.biu-instance {
+    -webkit-app-region: no-drag;
+    font-family: Roboto, Helvetica, 'Segoe UI', Arial, sans-serif;
+}

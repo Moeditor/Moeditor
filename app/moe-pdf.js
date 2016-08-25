@@ -23,9 +23,9 @@ const {BrowserWindow, ipcMain, shell} = require('electron');
 const os = require('os');
 const path = require('path');
 const MoeditorFile = require('./moe-file');
-var workerWindow, fileName, tmp;
+var workerWindow, fileName, tmp, errorHandler;
 
-function exportPDF(content) {
+function exportPDF(content, cb) {
     workerWindow = new BrowserWindow({ show: false });
 
     function randString(n) {
@@ -47,6 +47,7 @@ function exportPDF(content) {
     tmp = path.join(os.tmpdir(), 'Moeditor-export-' + randString(10) + '.html');
     MoeditorFile.write(tmp, content.s);
     fileName = content.path;
+    errorHandler = cb;
 
     workerWindow.loadURL('file://' + tmp);
     // workerWindow.webContents.openDevTools();
@@ -55,10 +56,14 @@ function exportPDF(content) {
 ipcMain.on('ready-export-pdf', function(event) {
     workerWindow.webContents.printToPDF({}, function (error, data) {
         MoeditorFile.writeAsync(fileName, data, function (error) {
-            shell.openItem(fileName);
-            workerWindow.destroy();
-            workerWindow = undefined;
-            MoeditorFile.remove(tmp);
+            console.log(error);
+            if (error) errorHandler(error);
+            else {
+                shell.openItem(fileName);
+                workerWindow.destroy();
+                workerWindow = undefined;
+                MoeditorFile.remove(tmp);
+            }
         })
     })
 });

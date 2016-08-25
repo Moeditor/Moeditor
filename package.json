@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Menci/Moeditor#readme",
   "dependencies": {
+    "biu.js": "^1.2.0",
     "codemirror": "^5.18.2",
     "configstore": "^2.0.0",
     "electron": "^1.3.3",

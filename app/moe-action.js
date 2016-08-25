@@ -47,8 +47,6 @@ class MoeditorAction {
     }
 
     static save(w) {
-        // TODO: alert on failed and not on user cancel.
-
         if (typeof w == 'undefined') w = require('electron').BrowserWindow.getFocusedWindow();
         if (typeof w.moeditorWindow == 'undefined') return false;
 
@@ -60,8 +58,10 @@ class MoeditorAction {
                 w.moeditorWindow.changed = false;
                 w.moeditorWindow.window.setDocumentEdited(false);
                 w.moeditorWindow.window.setRepresentedFilename(w.moeditorWindow.fileName);
+                w.moeditorWindow.window.webContents.send('pop-message', { type: 'success', content: 'Saved successfully.' });
                 moeApp.addRecentDocument(w.moeditorWindow.fileName);
-            } catch(e) {
+            } catch (e) {
+                w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: 'Can\'t save file, ' + e.toString() });
                 console.log('Can\'t save file: ' + e.toString());
                 return false;
             }
@@ -84,14 +84,15 @@ class MoeditorAction {
         );
         if (typeof fileName == 'undefined') return false;
         try {
-            // console.log(w.moeditorWindow.content);
             MoeditorFile.write(fileName, w.moeditorWindow.content);
             w.moeditorWindow.fileName = fileName;
             w.moeditorWindow.changed = false;
             moeApp.addRecentDocument(fileName);
             w.moeditorWindow.window.setDocumentEdited(false);
             w.moeditorWindow.window.setRepresentedFilename(fileName);
-        } catch(e) {
+            w.moeditorWindow.window.webContents.send('pop-message', { type: 'success', content: 'Saved successfully.' });
+        } catch (e) {
+            w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: 'Can\'t save file, ' + e.toString() });
             console.log('Can\'t save file: ' + e.toString());
             return false;
         }
@@ -111,11 +112,13 @@ class MoeditorAction {
         if (typeof fileName == 'undefined') return;
         f(function(s) {
             try {
+                w.moeditorWindow.window.webContents.send('pop-message', { type: 'info', content: 'Exporting as HTML, please wait ...' });
                 MoeditorFile.write(fileName, s);
                 const {shell} = require('electron');
                 shell.openItem(fileName);
-            } catch(e) {
-                console.log('Can\'t save file: ' + e.toString());
+            } catch (e) {
+                console.log('Can\'t export as HTML: ' + e.toString());
+                w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: 'Can\'t export as HTML, ' + e.toString() });
             }
         });
     }
@@ -133,11 +136,16 @@ class MoeditorAction {
         );
         if (typeof fileName == 'undefined') return;
         f(function(s) {
+            let errorHandler = (e) => {
+                console.log('Can\'t export as PDF: ' + e.toString());
+                w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: 'Can\'t export as PDF, ' + e.toString() });
+            }
             try {
+                w.moeditorWindow.window.webContents.send('pop-message', { type: 'info', content: 'Exporting as PDF, please wait ...' });
                 const exportPDF = require('./moe-pdf');
-                exportPDF({ s: s, path: fileName });
-            } catch(e) {
-                console.log('Can\'t save file: ' + e.toString());
+                exportPDF({ s: s, path: fileName }, errorHandler);
+            } catch (e) {
+                errorHandler(e);
             }
         });
     }
