@@ -73,14 +73,16 @@ a[href] {
 
 #description {
     color: #666;
-    font-family: monospace;
+    font-family: 'Bitstream Vera Sans Mono', Menlo, 'Consolas', monospace;
+    font-size: 13px;
     text-align: center;
     margin-top: 20px;
 }
 
 #version {
     color: #999;
-    font-family: monospace;
+    font-family: 'Bitstream Vera Sans Mono', Menlo, 'Consolas', monospace;
+    font-size: 13px;
     text-align: center;
     margin-top: 20px;
 }
@@ -88,7 +90,6 @@ a[href] {
 #links {
     text-align: center;
     margin-top: 19px;
-    font-family: monospace;
     letter-spacing: 2px;
 }
 
