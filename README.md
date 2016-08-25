@@ -20,6 +20,17 @@ npm install
 npm start
 ```
 
+# Development
+1. Add `--debug` to the command line args:
+```bash
+npm install
+npm start -- --debug
+```
+
+2. Set `debug` to `true` in the config. The config file is stored in `~/.config/configstore/Moeditor.json`.
+
+3. `Ctrl` + `Shift` + `I` in Linux / Windows or `Command` + `Option` + `I` in OS X / macOS to toggle devtools for a window.
+
 In China, you may want to replace npm with cnpm for a faster download speed.
 
 ```bash
