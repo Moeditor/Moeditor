@@ -49,8 +49,14 @@ $(function() {
         // scrollbarStyle: "simple",
         theme: moeApp.config.get('editor-theme'),
         lineWrapping: true,
-        extraKeys: { 'Enter': 'newlineAndIndentContinueMarkdownList', Home: 'goLineLeft', End: 'goLineRight' },
+        extraKeys: {
+            Enter: 'newlineAndIndentContinueMarkdownList',
+            Home: 'goLineLeft',
+            End: 'goLineRight',
+            'Shift-Tab': 'indentLess'
+        },
         tabSize: moeApp.config.get('tab-size'),
+        indentUnit: moeApp.config.get('tab-size'),
         viewportMargin: Infinity,
         styleActiveLine: true,
         showCursorWhenSelecting: true
