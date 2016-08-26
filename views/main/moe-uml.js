@@ -37,7 +37,6 @@ function renderSequence(str) {
     diagram.drawSVG(div, { theme: 'simple' });
     let res = div.innerHTML;
     div.innerHTML = '';
-    console.log(div);
     return res;
 }
 
@@ -46,7 +45,6 @@ function renderFlow(str) {
     diagram.drawSVG(div);
     let res = div.innerHTML;
     div.innerHTML = '';
-    console.log(div);
     return res;
 }
 

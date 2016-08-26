@@ -36,7 +36,6 @@ $(function() {
                 mode: CodeMirror.getMode(config, 'stex')
             });
         }
-        console.log('mathdown', options);
         return CodeMirror.multiplexingMode.apply(CodeMirror, [CodeMirror.getMode(config, 'gfm')].concat([].slice.call(options)));
     });
 
