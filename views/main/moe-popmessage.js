@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ipcRenderer.on('pop-message', (e, arg) => {
         if (arg.type === 'error') arg.type = 'danger';
-        biu(arg.content, { type: arg.type, autoHide: false, pop: true, closeButton: '<i class="fa fa-close"></i>' });
+        biu(arg.content, { type: arg.type, autoHide: true, pop: true, closeButton: '<i class="fa fa-close"></i>' });
 
         // workaround for #electron/electron/6970
         for (let drag of drags) {
