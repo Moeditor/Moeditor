@@ -22,10 +22,11 @@
 var LRUCache = require('lrucache');
 var rendered = LRUCache(1024);
 
-var mathjax = require('electron').remote.app.moeApp.mathjax;
+var mathjax = null;
 
 module.exports = class MoeditorMathRenderer {
     static renderForExport(type, str, display, cb, info) {
+        if (mathjax === null) mathjax = require('electron').remote.require('./moe-mathjax');
         mathjax.typeset({
             math: str,
             format: display ? "TeX" : "inline-TeX",
@@ -42,20 +43,33 @@ module.exports = class MoeditorMathRenderer {
         });
     }
 
-    static render(str, display, cb, info) {
-        mathjax.typeset({
-            math: str,
-            format: display ? "TeX" : "inline-TeX",
-            svg: true,
-            width: 0
-        }, function (data) {
-            var res = data.errors ? data.errors.toString() : data.svg;
-            if (display) {
-                res = '<div style="width: 100%; text-align: center">' + res + '</div>';
-            }
+    static renderMany(a, cb) {
+        if (a == []) {
+            cb(a);
+            return;
+        }
+        let div = document.createElement('div');
+        div.style.display = 'none';
+        document.body.appendChild(div);
+        for (let id in a) {
+            let span = document.createElement('span');
+            span.innerText = (a[id].display ? '$$' : '$') + a[id].s + (a[id].display ? '$$' : '$');
+            span.id = id;
+            div.appendChild(span);
+        }
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+        MathJax.Hub.Queue(() => {
+            for (let id in a) {
+                let span = div.querySelector('#' + id);
+                a[id].res = (span.querySelector('svg') || span.querySelector('.MathJax_SVG')).outerHTML;
+                if (a[id].display) {
+                    a[id].res = '<div style="width: 100%; text-align: center">' + a[id].res + '</div>';
+                }
+                rendered.set((a[id].display ? 'd' : 'i') + a[id].s, a[id].res);
 
-            rendered.set((display ? 'd' : 'i') + str, res);
-            cb(res, info);
+            }
+            document.body.removeChild(div);
+            cb(a);
         });
     }
 

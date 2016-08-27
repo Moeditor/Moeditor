@@ -33,6 +33,9 @@ module.exports = function(document) {
         * Note: we're assuming the `xlink` prefix for the XLink namespace!
         */
         .filter(function(element) {
+            if (element.getAttribute('href') !== null) {
+                element.setAttribute('xlink:href', element.getAttribute('href'));
+            }
             return (element.getAttribute("xlink:href").indexOf("#") === 0);
         })
 
@@ -44,6 +47,10 @@ module.exports = function(document) {
         */
         .forEach(function(element) {
             element.setAttribute("xlink:href", baseUrl + element.getAttribute("xlink:href"));
+            if (element.getAttribute('href') !== null) {
+                element.setAttribute('href', element.getAttribute('xlink:href'));
+                element.removeAttribute('xlink:href');
+            }
         });
 
 }

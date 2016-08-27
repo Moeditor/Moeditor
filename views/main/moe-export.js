@@ -72,7 +72,7 @@ function html(cb) {
         meta.setAttribute('charset', 'utf-8');
         head.appendChild(meta);
         const stylePreview = doc.createElement('style');
-        stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/browser/preview.css', '').toString().split('#previewer ').join('');
+        stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/views/main/preview.css', '').toString().split('#previewer ').join('');
         head.appendChild(stylePreview);
         if (haveCode) {
             const styleHLJS = doc.createElement('style');
@@ -94,7 +94,7 @@ function pdf(cb) {
         meta.setAttribute('charset', 'utf-8');
         head.appendChild(meta);
         const stylePreview = doc.createElement('style');
-        stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/browser/preview.css', '').toString().split('#previewer ').join('') + '*{overflow: visible !important;}';
+        stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/views/main/preview.css', '').toString().split('#previewer ').join('') + '*{overflow: visible !important;}';
         head.appendChild(stylePreview);
         if (haveCode) {
             const styleHLJS = doc.createElement('style');
@@ -103,7 +103,7 @@ function pdf(cb) {
         }
         if (haveMath) {
             const styleMathJax = doc.createElement('style');
-            styleMathJax.innerHTML = MoeditorFile.read(moeApp.Const.path + '/browser/mathjax.css', '').toString().split('../node_modules').join('file://' + moeApp.Const.path + '/node_modules');
+            styleMathJax.innerHTML = MoeditorFile.read(moeApp.Const.path + '/views/main/mathjax.css', '').toString().split('../node_modules').join('file://' + moeApp.Const.path + '/node_modules');
             head.appendChild(styleMathJax);
         }
         const body = doc.querySelector('body');

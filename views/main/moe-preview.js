@@ -24,7 +24,6 @@ const MoeditorHighlight = require('./moe-highlight');
 const MoeditorMathRenderer = require('./moe-math');
 const MoeditorUMLRenderer = require('./moe-uml');
 const MoeMark = require('moemark');
-const jQuery = require('jquery');
 const SVGFixer = require('./svgfixer');
 const path = require('path');
 const url = require('url');
@@ -59,39 +58,6 @@ module.exports = function (cm, obj, cb) {
         var mathCnt = 0, mathID = 0, math = new Array();
         var rendering = true, rendered = null;
 
-        function finish() {
-            for (var i in math) {
-                rendered.find('#math-' + i).html(math[i]);
-            }
-
-            let imgs = rendered.find('img');
-            for (let img of imgs) {
-                let src = img.getAttribute('src');
-                if (url.parse(src).protocol === null) {
-                    if (!path.isAbsolute(src)) src = path.resolve(w.directory, src);
-                    src = url.resolve('file://', src);
-                }
-                img.setAttribute('src', src);
-            }
-
-            var set = new Set();
-            rendered.find('moemark-linenumber').each(function() {
-                set.add(parseInt($(this).attr('i')));
-            });
-
-            window.lineNumbers = (Array.from(set)).sort(function(a, b) { return a - b; });
-            // console.log(window.lineNumbers);
-            window.scrollMap = undefined;
-
-            $('#previewer').html(rendered.html());
-            SVGFixer(document.getElementById('previewer'));
-
-            cb();
-
-            updatePreviewRunning = false;
-            if (updatePreview) setTimeout(updateAsync, 0);
-        }
-
         MoeMark(content, {
             mathRenderer: function(str, display) {
                 var res = MoeditorMathRenderer.tryRender(str, display);
@@ -101,17 +67,48 @@ module.exports = function (cm, obj, cb) {
                     mathCnt++, mathID++;
                     var id = 'math-' + mathID;
                     var res = '<span id="' + id + '"></span>'
-                    MoeditorMathRenderer.render(str, display, function(res, id) {
-                        math[id] = res;
-                        if (!--mathCnt && !rendering) finish();
-                    }, mathID);
+                    math[id] = { s: str, display: display };
                     return res;
                 }
             }
         }, function(err, val) {
-            rendered = jQuery(jQuery.parseHTML('<span>' + val + '</span>'));
-            rendering = false;
-            if (!mathCnt) finish();
+            rendered = document.createElement('span');
+            rendered.innerHTML = val;
+            console.log(math);
+            MoeditorMathRenderer.renderMany(math, (math) => {
+                console.log(math);
+                for (let id in math) rendered.querySelector('#' + id).innerHTML = math[id].res;
+
+                let imgs = rendered.querySelectorAll('img') || [];
+                for (let img of imgs) {
+                    let src = img.getAttribute('src');
+                    if (url.parse(src).protocol === null) {
+                        if (!path.isAbsolute(src)) src = path.resolve(w.directory, src);
+                        src = url.resolve('file://', src);
+                    }
+                    img.setAttribute('src', src);
+                }
+
+                var set = new Set();
+                let lineNumbers = rendered.querySelectorAll('moemark-linenumber') || [];
+                for (let elem of lineNumbers) {
+                    set.add(parseInt(elem.getAttribute('i')));
+                }
+
+                window.lineNumbers = (Array.from(set)).sort(function(a, b) { return a - b; });
+                console.log(window.lineNumbers);
+                window.scrollMap = undefined;
+
+                document.getElementById('previewer').innerHTML = rendered.innerHTML;
+                SVGFixer(document.getElementById('previewer'));
+
+                if (!window.xyz) window.xyz = rendered.innerHTML;
+
+                cb();
+
+                updatePreviewRunning = false;
+                if (updatePreview) setTimeout(updateAsync, 0);
+            });
         });
     }
 

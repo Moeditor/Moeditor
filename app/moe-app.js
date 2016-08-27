@@ -80,9 +80,6 @@ class MoeditorApplication {
             return;
         }
 
-        // workaround for `speech-rule-engine` doesn't support both DOM and node.js
-        this.mathjax = require('./moe-mathjax');
-
         if (typeof this.osxOpenFile === 'string') docs.push(this.osxOpenFile);
 
         if (docs.length == 0) this.open();
