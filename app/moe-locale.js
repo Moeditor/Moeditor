@@ -106,6 +106,58 @@ const strings = {
 
         "version": "version"
 	},
+    "zh_CN": {
+        "New": "新建",
+        "Open": "打开",
+        "Save": "保存",
+        "Save as": "另存为",
+        "Export as HTML": "导出为 HTML",
+        "Export as PDF": "导出为 PDF",
+        "Settings": "设置",
+        "About": "关于",
+
+        "Menu": "菜单",
+        "Directory": "目录",
+        "Toggle focus mode": "切换专注模式",
+        "Edit mode": "编辑模式",
+
+        "Write Mode": "写作模式",
+        "Read Mode": "阅读模式",
+        "Preview Mode": "预览模式",
+        "Wide": "宽",
+        "Medium": "中等",
+        "Narrow": "窄",
+
+        "Yes": "是",
+        "No": "否",
+        "Cancel": "取消",
+        "Confirm": "询问",
+
+        "Save changes to file?": "将修改保存到文件？",
+
+        "Markdown Documents": "Markdown 文档",
+        "HTML Documents": "HTML 文档",
+        "PDF Documents": "PDF 文档",
+        "All Files": "所有文件",
+        "Saved successfully.": "保存成功。",
+        "Can't save file": "无法保存文件",
+        "Exporting as HTML, please wait ...": "正在导出为 HTML，请稍候 ...",
+        "Exporting as PDF, please wait ...": "正在导出为 PDF，请稍候 ...",
+        "Can't export as HTML": "无法导出为 HTML",
+        "Can't export as PDF": "无法导出为 PDF",
+
+        "Edit": "编辑",
+        "Appearance": "外观",
+        "Render": "渲染",
+        "Font": "字体",
+        "Font Size": "字体大小",
+        "Line Height": "行高",
+        "Color Theme": "颜色主题",
+        "TeX Math Expressions": "TeX 数学表达式",
+        "UML Diagrams": "UML 图表",
+
+        "version": "版本"
+    },
 	"de": {
         "Yes": "Ja",
         "No": "Nein",
