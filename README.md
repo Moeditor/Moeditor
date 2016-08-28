@@ -28,6 +28,18 @@ cnpm install
 cnpm start
 ```
 
+# Debugging
+There's three ways to open the [Chromium Developer Tools](https://developer.chrome.com/devtools).
+
+* Add `--debug` to the command line args:
+```bash
+npm start -- --debug
+```
+
+* Set `debug` to `true` in the config. The config file is stored in `~/.config/configstore/Moeditor.json` (for every system).
+
+* `Ctrl` + `Shift` + `I` in Linux / Windows or `Command` + `Option` + `I` in OS X / macOS to toggle devtools for a window.
+
 # Todo
 * Preference settings dialog
 * Custom themes
