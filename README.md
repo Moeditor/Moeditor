@@ -72,4 +72,4 @@ Some node modules are licensed under other free software license.
 The `Raleway` font is licensed under the OFL open font license.
 
 # Known Bug(s)
-#31
+Issue #31.
