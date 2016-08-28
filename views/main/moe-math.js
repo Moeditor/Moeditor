@@ -61,7 +61,7 @@ module.exports = class MoeditorMathRenderer {
         MathJax.Hub.Queue(() => {
             for (let id in a) {
                 let span = div.querySelector('#' + id);
-                a[id].res = (span.querySelector('svg') || span.querySelector('.MathJax_SVG')).outerHTML;
+                a[id].res = (span.querySelector('svg') || span).outerHTML;
                 if (a[id].display) {
                     a[id].res = '<div style="width: 100%; text-align: center">' + a[id].res + '</div>';
                 }
