@@ -2,6 +2,7 @@
  *  This file is part of Moeditor.
  *
  *  Copyright (c) 2016 Menci <huanghaorui301@gmail.com>
+ *  Copyright (c) 2016 Wamadahama
  *
  *  Moeditor is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

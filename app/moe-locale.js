@@ -2,6 +2,8 @@
 *  This file is part of Moeditor.
 *
 *  Copyright (c) 2016 Menci <huanghaorui301@gmail.com>
+*  Copyright (c) 2016 lucaschimweg
+*  Copyright (c) 2016 douglaseccker
 *
 *  Moeditor is free software: you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
@@ -15,6 +17,13 @@
 *
 *  You should have received a copy of the GNU General Public License
 *  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
+*
+*  The translation providers:
+*   - en: Menci
+*   - zh_CN: Menci
+*   - de: lucaschimweg
+*   - pt: douglaseccker
+*
 */
 
 'use strict'
