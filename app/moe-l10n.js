@@ -24,6 +24,20 @@
 *   - de: lucaschimweg
 *   - pt: douglaseccker
 *
+*  If you want to help translate this app, please copy the `en` items of the
+*  `strings` constant as the template, and fill each item with the translated
+*  string.
+*
+*  If you are translating this app to a new language, please add the language to
+*  `MoeditorLocale.getLanguages()`.
+*
+*  You can translate for a language (e.g. en) or a language with specified
+*  region (e.g. zh_CN). The app will choose the language with specified region
+*  first, fallback to only language when the former is unavailable, and fallback
+*  to English when they are all unavailable.
+*
+*  Send a PR to us after translating.
+*
 */
 
 'use strict'
