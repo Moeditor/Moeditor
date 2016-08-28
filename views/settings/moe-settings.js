@@ -29,9 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const key = item.getAttribute('data-key');
         const oldVal = moeApp.config.get(key);
         if (item.tagName === 'SELECT' || item.tagName === 'INPUT' || item.tagName === 'TEXTAREA') {
-            item.value = oldVal;
+            if (item.tagName === 'INPUT' && item.type === 'checkbox') item.checked = oldVal;
+            else item.value = oldVal;
             item.addEventListener('change', function() {
-                const val = item.value;
+                let val;
+                if (item.tagName === 'INPUT' && item.type === 'checkbox') val = item.checked;
+                else val = item.value;
                 console.log(key + ': ' + val);
                 moeApp.config.set(key, val);
                 ipcRenderer.send('setting-changed', { key: key, val: val });

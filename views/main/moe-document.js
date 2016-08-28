@@ -29,7 +29,7 @@ $(function() {
 
     var editor = CodeMirror.fromTextArea(document.querySelector('#editor textarea'), {
         lineNumbers: false,
-        mode: 'gfm_math',
+        mode: moeApp.config.get('math') ? 'gfm_math' : 'gfm',
         matchBrackets: true,
         // scrollbarStyle: "simple",
         theme: moeApp.config.get('editor-theme'),

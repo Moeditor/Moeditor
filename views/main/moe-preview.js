@@ -55,6 +55,10 @@ module.exports = function (cm, obj, cb) {
             return;
         }
 
+        MoeMark.setOptions({
+            math: moeApp.config.get('math')
+        });
+
         var mathCnt = 0, mathID = 0, math = new Array();
         var rendering = true, rendered = null;
 

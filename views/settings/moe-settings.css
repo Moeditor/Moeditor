@@ -71,6 +71,12 @@ select, input {
     box-sizing: border-box;
 }
 
+input[type=checkbox] {
+    height: initial;
+    width: initial;
+    vertical-align: middle;
+}
+
 select:hover, input:hover, select:active, input:active {
     border: 1px solid #bbb;
 }

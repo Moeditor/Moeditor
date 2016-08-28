@@ -52,6 +52,13 @@ function setEditorLineHeight(val) {
     window.editor.refresh();
 }
 
+function setMath(val) {
+    if (val.toString() === 'true') window.editor.setOption('mode', 'gfm_math');
+    else window.editor.setOption('mode', 'gfm');
+    window.editor.refresh();
+    window.updatePreview();
+}
+
 setEditorFont(moeApp.config.get('editor-font'));
 setEditorTheme(moeApp.config.get('editor-theme'));
 setEditorFontSize(moeApp.config.get('editor-font-size'));
@@ -67,5 +74,7 @@ ipcRenderer.on('setting-changed', function(e, arg) {
         setEditorFontSize(arg.val);
     } else if (arg.key === 'editor-line-height') {
         setEditorLineHeight(arg.val);
+    } else if (arg.key === 'math') {
+        setMath(arg.val);
     }
 });
