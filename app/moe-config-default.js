@@ -27,7 +27,7 @@ module.exports = {
     'edit-mode-read': 'read-mode-wide',
     'edit-mode-write': 'write-mode-wide',
     'focus-mode': false,
-    'editor-font': 'monospace',
+    'editor-font': 'default',
     'editor-theme': 'base16-light',
     'editor-font-size': 14,
     'editor-line-height': 2,

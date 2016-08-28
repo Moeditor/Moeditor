@@ -104,6 +104,8 @@ const strings = {
         "TeX Math Expressions":"TeX Math Expressions",
         "UML Diagrams": "UML Diagrams",
 
+        "Default": "Default",
+
         "version": "version"
 	},
     "zh_CN": {
@@ -155,6 +157,8 @@ const strings = {
         "Color Theme": "颜色主题",
         "TeX Math Expressions": "TeX 数学表达式",
         "UML Diagrams": "UML 图表",
+
+        "Default": "默认",
 
         "version": "版本"
     },

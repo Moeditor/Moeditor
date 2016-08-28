@@ -321,6 +321,14 @@ html, body {
     transition: all 500ms ease-in-out;
 }
 
+body[settings-editor-font="default"] #editor * {
+    font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Liberation Mono', 'Dejavu Mans Mono', monospace !important;
+}
+
+html[lang="zh_CN"] body[settings-editor-font="default"] #editor * {
+    font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Liberation Mono', 'Dejavu Mans Mono', monospace, 'Noto Sans CJK SC', 'Source Han Sans SC', 'Microsoft Yahei' !important;
+}
+
 body[settings-editor-font="monospace"] #editor * {
     font-family: monospace !important;
 }
