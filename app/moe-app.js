@@ -34,8 +34,6 @@ class MoeditorApplication {
 	constructor() {
 		this.windows = new Array();
         this.newWindow = null;
-        this.locale = new MoeditorLocale();
-        global.__ = str => this.locale.get(str);
 	}
 
 	open(fileName) {
@@ -54,6 +52,9 @@ class MoeditorApplication {
         const Configstore = require('configstore');
         this.config = new Configstore(Const.name, require('./moe-config-default'));
         this.Const = Const;
+
+        this.locale = new MoeditorLocale();
+        global.__ = str => this.locale.get(str);
 
         this.flag = new Object();
 
@@ -78,6 +79,7 @@ class MoeditorApplication {
         }
 
         if (moeApp.flag.settings) {
+            this.listenSettingChanges();
             MoeditorSettings();
             return;
         }
@@ -172,8 +174,8 @@ class MoeditorApplication {
     listenSettingChanges() {
         const ipcMain = require('electron').ipcMain;
         ipcMain.on('setting-changed', function(e, arg) {
-            for (const window of moeApp.windows) {
-                window.window.webContents.send('setting-changed', arg);
+            for (const window of require('electron').BrowserWindow.getAllWindows()) {
+                window.webContents.send('setting-changed', arg);
             }
         });
     }

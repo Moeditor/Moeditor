@@ -28,6 +28,8 @@
         window.document.querySelector('html').classList.add(process.platform)
         </script>
 
+        <script type="text/javascript" src="moe-localize.js"></script>
+
         <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
 
         <link rel="stylesheet" href="settings/moe-settings.css">
@@ -38,8 +40,6 @@
         <script type="text/javascript" src="settings/moe-tabview.js"></script>
         <link rel="stylesheet" href="titlebar/moe-titlebar.css">
         <script type="text/javascript" src="titlebar/moe-titlebar.js"></script>
-
-        <script type="text/javascript" src="moe-localize.js"></script>
     </head>
     <body>
         <div id="titlebar">
@@ -60,7 +60,11 @@
         <div id="main">
             <div class="tabview">
                 <div class="bar">
-                    <div class="item selected" data-tab="edit">
+                    <div class="item selected" data-tab="general">
+                        <div class="image"><i class="fa fa-cog" aria-hidden="true"></i></div>
+                        <div class="text l10n">General</div>
+                    </div>
+                    <div class="item" data-tab="edit">
                         <div class="image"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
                         <div class="text l10n">Edit</div>
                     </div>
@@ -74,7 +78,19 @@
                     </div>
                 </div>
                 <div class="content">
-                    <div class="panel" data-tab="edit" style="display: block; ">
+                    <div class="panel" data-tab="general" style="display: block; ">
+                        <table width="80%" align="center">
+                            <tr>
+                                <td width="40%" class="l10n">Language</td>
+                                <td width="60%">
+                                    <select class="settings-item" data-key="locale">
+                                        <option value="default" class="l10n">System Default</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="panel" data-tab="edit">
                         <table width="80%" align="center">
                             <tr>
                                 <td width="40%" class="l10n">Font</td>

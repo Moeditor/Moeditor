@@ -32,32 +32,56 @@ const osLocale = require('os-locale');
 
 class MoeditorLocale {
 	constructor() {
-		this.locale = "en";
-		osLocale((err, locale) => {
-			if (!err) {
-                let loc = locale;
-                if (typeof strings[loc] !== 'undefined') {
-                    this.locale = loc;
-                } else {
-                    loc = loc.substr(0, loc.indexOf('_'));
-    				if (typeof strings[loc] !== 'undefined') {
-    					this.locale = loc;
-    				}
-                }
-			}
-		});
+        if (moeApp.config.get('locale') !== 'default') {
+            this.locale = moeApp.config.get('locale');
+        } else {
+            this.locale = 'default';
+        }
+
+        this.sysLocale = osLocale.sync();
+        if (typeof strings[this.sysLocale] === 'undefined') {
+            this.sysLocale = this.sysLocale.substr(0, this.sysLocale.indexOf('_'));
+            if (typeof strings[this.sysLocale] === 'undefined') {
+                this.sysLocale = '';
+            }
+        }
+
+        if (this.locale === 'default') {
+            this.locale = this.sysLocale;
+        }
 	}
+
+    setLocale(locale) {
+        this.locale = locale;
+        if (this.locale === 'default') {
+            this.locale = this.sysLocale;
+        }
+    }
 
 	get(str) {
         let res;
 		if (typeof strings[this.locale] === 'undefined' || typeof strings[this.locale][str] === 'undefined') {
             res = strings['en'][str];
-            console.log('Localization of "' + str + '" failed, falling back to English.');
+            console.log('Localization of "' + str + '" in "' + this.locale + '" failed, falling back to English.');
         } else {
             res = strings[this.locale][str];
         }
         return res;
 	}
+
+    getLanguages() {
+        let languages = {
+            "en": "English",
+            "zh_CN": "Simplified Chinese",
+            "de": "German",
+            "pt": "Portuguese"
+        };
+        for (let language in languages) {
+            const localized = this.get(languages[language]);
+            if (languages[language] !== localized) languages[language] = localized + ' (' + languages[language] + ')';
+        }
+        return languages;
+    }
 }
 
 module.exports = MoeditorLocale;
@@ -103,9 +127,11 @@ const strings = {
         "Can't export as HTML": "Can't export as HTML",
         "Can't export as PDF": "Can't export as PDF",
 
+        "General": "General",
         "Edit": "Edit",
         "Appearance": "Appearance",
         "Render": "Render",
+        "Language": "Language",
         "Font": "Editor Font",
         "Font Size": "Font Size",
         "Line Height": "Line Height",
@@ -114,8 +140,14 @@ const strings = {
         "UML Diagrams": "UML Diagrams",
 
         "Default": "Default",
+        "System Default": "System Default",
 
-        "version": "version"
+        "version": "version",
+
+        "English": "English",
+        "Simplified Chinese": "Simplified Chinese",
+        "German": "German",
+        "Portuguese": "Portuguese"
 	},
     "zh_CN": {
         "New": "新建",
@@ -157,9 +189,11 @@ const strings = {
         "Can't export as HTML": "无法导出为 HTML",
         "Can't export as PDF": "无法导出为 PDF",
 
+        "General": "通用",
         "Edit": "编辑",
         "Appearance": "外观",
         "Render": "渲染",
+        "Language": "语言",
         "Font": "字体",
         "Font Size": "字体大小",
         "Line Height": "行高",
@@ -168,8 +202,14 @@ const strings = {
         "UML Diagrams": "UML 图表",
 
         "Default": "默认",
+        "System Default": "系统默认",
 
-        "version": "版本"
+        "version": "版本",
+
+        "English": "英文",
+        "Simplified Chinese": "简体中文",
+        "German": "德语",
+        "Portuguese": "葡萄牙语"
     },
 	"de": {
         "Yes": "Ja",

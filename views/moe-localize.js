@@ -18,24 +18,57 @@
 *  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
 */
 
-window.addEventListener('DOMContentLoaded', function () {
+window.localized = [];
+function localize() {
     document.querySelector('html').setAttribute('lang', moeApp.locale.locale);
-	let l10n = require('electron').remote.getGlobal('__');
+	let l10n = moeApp.locale.get;
 
     let elements;
 
     elements = document.getElementsByClassName('l10n') || [];
     for (let e of elements) {
+        let text = e.getAttribute('data-origin-text');
+        if (!text) {
+            if (e.tagName.toUpperCase() === 'OPTION') {
+                text = e.text;
+            } else {
+                text = e.innerText;
+            }
+            e.setAttribute('data-origin-text', text);
+        }
+
+        text = l10n(text) || text;
+
         if (e.tagName.toUpperCase() === 'OPTION') {
-            e.text = l10n(e.text);
+            e.text = text;
         } else {
-            e.innerText = l10n(e.innerText);
+            e.innerText = text;
         }
     }
 
     elements = document.getElementsByClassName('l10n-title') || [];
-    console.log(elements);
     for (let e of elements) {
-        e.setAttribute('title', l10n(e.getAttribute('title')));
+        let title = e.getAttribute('data-origin-title');
+        if (!title) {
+            title = e.getAttribute('title');
+            e.setAttribute('data-origin-title', title);
+        }
+
+        title = l10n(title);
+
+        e.setAttribute('title', title);
     }
-}, false);
+
+    if (window.localized !== []) {
+        for (let f of window.localized) f();
+        window.localized = [];
+    }
+};
+
+window.addEventListener('DOMContentLoaded', localize);
+
+require('electron').ipcRenderer.on('setting-changed', (e, arg) => {
+    if (arg.key === 'locale') {
+        localize();
+    }
+});

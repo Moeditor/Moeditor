@@ -20,6 +20,7 @@
 'use strict';
 
 module.exports = {
+    'locale': 'default',
     'debug': false,
     'scale-factor': 1.0,
     'tab-size': 4,

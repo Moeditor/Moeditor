@@ -25,7 +25,8 @@
 
 		<script>
 		window.$ = window.jQuery = require("jquery");
-        window.document.querySelector('html').classList.add(process.platform)
+        window.document.querySelector('html').classList.add(process.platform);
+        window.moeApp = require('electron').remote.app.moeApp;
         </script>
 
         <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">

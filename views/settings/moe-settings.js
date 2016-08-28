@@ -22,6 +22,35 @@
 document.addEventListener('DOMContentLoaded', function() {
     window.moeApp = require('electron').remote.app.moeApp;
 
+    window.localized.push(() => {
+        const selectLocale = document.querySelector('select[data-key=locale]');
+        const languages = moeApp.locale.getLanguages();
+        for (let lang in languages) {
+            let option = document.createElement('option');
+            option.value = lang;
+            option.text = languages[lang];
+            selectLocale.appendChild(option);
+            console.log(moeApp.locale.sysLocale);
+            if (lang === moeApp.locale.sysLocale) {
+                selectLocale.firstElementChild.text += ' - ' + languages[lang];
+            }
+        }
+        const oldVal = moeApp.config.get('locale');
+        selectLocale.value = oldVal;
+        selectLocale.addEventListener('change', () => {
+            moeApp.locale.setLocale(selectLocale.value);
+            window.localized.push(() => {
+                const languages = moeApp.locale.getLanguages();
+                for (let lang in languages) {
+                    selectLocale.querySelector('[value="' + lang + '"]').text = languages[lang];
+                    if (lang === moeApp.locale.sysLocale) {
+                        selectLocale.firstElementChild.text += ' - ' + languages[lang];
+                    }
+                }
+            });
+        });
+    });
+
     const ipcRenderer = require('electron').ipcRenderer;
 
     const items = document.getElementsByClassName('settings-item');
