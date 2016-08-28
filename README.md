@@ -5,6 +5,16 @@ Built with Electron.
 
 Visit our [homepage](https://moeditor.github.io/) or download [releases](https://github.com/Moeditor/Moeditor/releases).
 
+# Features
+* GitHub Flavored Markdown
+* TeX math expressions
+* UML diagrams
+* Read/Write/Preview mode
+* Custom font / line height / font size
+* Auto reload
+* Localization
+* Focus mode
+
 # Screenshot
 ![Moeditor Main](screenshots/main.png)
 
@@ -41,9 +51,25 @@ npm start -- --debug
 * `Ctrl` + `Shift` + `I` in Linux / Windows or `Command` + `Option` + `I` in OS X / macOS to toggle devtools for a window.
 
 # Todo
-* Preference settings dialog
-* Custom themes
-* Spell check
-* Better UI/UX
-* \* Document manager
-* \* Web publisher
+* [ ] Custom themes
+* [ ] Spell check
+* [ ] UI/UX
+
+# Localization
+Moeditor will auto detect your system language and use the localization.
+
+You can set language manually in the Settings window.
+
+Now the app supports English, Chinese and *incomplete* German, Portuguese.
+
+**Help us** if you can translate this app. Please follow the guide in `app/moe-l10n.js`.
+
+# License
+Moeditor itself is licensed under the **GPL v3** license.
+
+Some node modules are licensed under other free software license.
+
+The `Raleway` font is licensed under the OFL open font license.
+
+# Known Bug(s)
+#31
