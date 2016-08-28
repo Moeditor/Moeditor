@@ -32,11 +32,11 @@ class MoeditorWindow {
         if (MoeditorFile.isDirectory(path)) {
             this.directory = path
             this.fileName = '';
-            this.content = '';
+            this.fileContent = this.content = '';
         } else {
             this.directory = require('path').dirname(path);
             this.fileName = path;
-            this.content = MoeditorFile.read(path);
+            this.fileContent = this.content = MoeditorFile.read(path).toString();
         }
 
         this.changed = false;

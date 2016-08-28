@@ -21,7 +21,7 @@
 window.localized = [];
 function localize() {
     document.querySelector('html').setAttribute('lang', moeApp.locale.locale);
-	let l10n = moeApp.locale.get;
+	window.__ = moeApp.locale.get;
 
     let elements;
 
@@ -37,7 +37,7 @@ function localize() {
             e.setAttribute('data-origin-text', text);
         }
 
-        text = l10n(text) || text;
+        text = __(text) || text;
 
         if (e.tagName.toUpperCase() === 'OPTION') {
             e.text = text;
@@ -54,7 +54,7 @@ function localize() {
             e.setAttribute('data-origin-title', title);
         }
 
-        title = l10n(title);
+        title = __(title);
 
         e.setAttribute('title', title);
     }

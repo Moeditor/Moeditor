@@ -56,6 +56,7 @@ class MoeditorAction {
         } else {
             try {
                 MoeditorFile.write(w.moeditorWindow.fileName, w.moeditorWindow.content);
+                w.moeditorWindow.fileContent = w.moeditorWindow.content;
                 w.moeditorWindow.changed = false;
                 w.moeditorWindow.window.setDocumentEdited(false);
                 w.moeditorWindow.window.setRepresentedFilename(w.moeditorWindow.fileName);
@@ -86,6 +87,7 @@ class MoeditorAction {
         if (typeof fileName == 'undefined') return false;
         try {
             MoeditorFile.write(fileName, w.moeditorWindow.content);
+            w.moeditorWindow.fileContent = w.moeditorWindow.content;
             w.moeditorWindow.fileName = fileName;
             w.moeditorWindow.changed = false;
             moeApp.addRecentDocument(fileName);

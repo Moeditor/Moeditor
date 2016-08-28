@@ -115,6 +115,7 @@ const strings = {
         "Confirm": "Confirm",
 
         "Save changes to file?": "Save changes to file?",
+        "File changed by another program, reload?": "File changed by another program, reload?",
 
         "Markdown Documents": "Markdown Documents",
         "HTML Documents": "HTML Documents",
@@ -132,6 +133,7 @@ const strings = {
         "Appearance": "Appearance",
         "Render": "Render",
         "Language": "Language",
+        "Reload when file changed": "Reload when file changed",
         "Font": "Editor Font",
         "Font Size": "Font Size",
         "Line Height": "Line Height",
@@ -147,7 +149,11 @@ const strings = {
         "English": "English",
         "Simplified Chinese": "Simplified Chinese",
         "German": "German",
-        "Portuguese": "Portuguese"
+        "Portuguese": "Portuguese",
+
+        "Auto": "Auto",
+        "Prompt": "Prompt",
+        "Never": "Never"
 	},
     "zh_CN": {
         "New": "新建",
@@ -177,6 +183,7 @@ const strings = {
         "Confirm": "询问",
 
         "Save changes to file?": "将修改保存到文件？",
+        "File changed by another program, reload?": "文件被另一程序修改，是否重新加载？",
 
         "Markdown Documents": "Markdown 文档",
         "HTML Documents": "HTML 文档",
@@ -194,6 +201,7 @@ const strings = {
         "Appearance": "外观",
         "Render": "渲染",
         "Language": "语言",
+        "Reload when file changed": "当文件被修改时，重新加载",
         "Font": "字体",
         "Font Size": "字体大小",
         "Line Height": "行高",
@@ -209,7 +217,11 @@ const strings = {
         "English": "英文",
         "Simplified Chinese": "简体中文",
         "German": "德语",
-        "Portuguese": "葡萄牙语"
+        "Portuguese": "葡萄牙语",
+
+        "Auto": "自动",
+        "Prompt": "询问",
+        "Never": "从不"
     },
 	"de": {
         "Yes": "Ja",

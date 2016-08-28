@@ -51,21 +51,21 @@ $(function() {
 
     const scroll = require('./moe-scroll');
 
-    const onchange = function(cm, obj) {
-        MoeditorPreview(cm, obj, function() {
+    window.updatePreview = (force) => {
+        MoeditorPreview(editor, force, () => {
             scroll();
         });
     };
-    editor.on('change', onchange);
-    setTimeout(function() {
-        MoeditorPreview(editor, null, function() {
-            w.changed = false;
-            w.window.setDocumentEdited(false);
-        });
+
+    editor.on('change', (editor, obj) => {
+        window.updatePreview(false)
+    });
+
+    setTimeout(() => {
+        window.updatePreview(true);
     }, 0);
 
     window.editor = editor;
-    window.updatePreview = function() { onchange(editor, null); };
 
     // workaround for the .button is still :hover after maximize window
     $('#cover-bottom .button-bottom').mouseover(function() {

@@ -33,5 +33,6 @@ module.exports = {
     'editor-font-size': 14,
     'editor-line-height': 2,
     'math': true,
-    'uml-diagrams': true
+    'uml-diagrams': true,
+    'auto-reload': 'auto'
 };

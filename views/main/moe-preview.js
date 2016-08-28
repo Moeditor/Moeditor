@@ -36,12 +36,19 @@ MoeMark.setOptions({
     umlRenderer: MoeditorUMLRenderer
 });
 
-module.exports = function (cm, obj, cb) {
+module.exports = function (cm, force, cb) {
     function updateAsync() {
         updatePreview = false;
         updatePreviewRunning = true;
 
         const content = cm.getValue();
+        if (w.content === content && !force) {
+            updatePreviewRunning = false;
+            if (updatePreview) setTimeout(updateAsync, 0);
+            cb();
+            return;
+        }
+
         if (w.content !== content) {
             w.content = content;
             w.changed = true;
