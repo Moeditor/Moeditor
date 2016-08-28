@@ -56,7 +56,8 @@ module.exports = function (cm, obj, cb) {
         }
 
         MoeMark.setOptions({
-            math: moeApp.config.get('math')
+            math: moeApp.config.get('math'),
+            umlchart: moeApp.config.get('uml-diagrams')
         });
 
         var mathCnt = 0, mathID = 0, math = new Array();

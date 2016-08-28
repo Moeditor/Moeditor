@@ -59,6 +59,10 @@ function setMath(val) {
     window.updatePreview();
 }
 
+function setUMLDiagrams(val) {
+    window.updatePreview();
+}
+
 setEditorFont(moeApp.config.get('editor-font'));
 setEditorTheme(moeApp.config.get('editor-theme'));
 setEditorFontSize(moeApp.config.get('editor-font-size'));
@@ -76,5 +80,7 @@ ipcRenderer.on('setting-changed', function(e, arg) {
         setEditorLineHeight(arg.val);
     } else if (arg.key === 'math') {
         setMath(arg.val);
+    } else if (arg.key === 'uml-diagrams') {
+        setUMLDiagrams(arg.val);
     }
 });

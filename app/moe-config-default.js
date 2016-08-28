@@ -31,5 +31,6 @@ module.exports = {
     'editor-theme': 'base16-light',
     'editor-font-size': 14,
     'editor-line-height': 2,
-    'math': true
+    'math': true,
+    'uml-diagrams': true
 };
