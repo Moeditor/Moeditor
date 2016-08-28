@@ -73,7 +73,7 @@ function html(cb) {
         meta.setAttribute('charset', 'utf-8');
         head.appendChild(meta);
         const stylePreview = doc.createElement('style');
-        stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/views/main/preview.css', '').toString().split('#previewer ').join('');
+        stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/views/main/preview.css', '').toString().split('#previewer').join('body');
         head.appendChild(stylePreview);
         if (haveCode) {
             const styleHLJS = doc.createElement('style');
@@ -95,7 +95,7 @@ function pdf(cb) {
         meta.setAttribute('charset', 'utf-8');
         head.appendChild(meta);
         const stylePreview = doc.createElement('style');
-        stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/views/main/preview.css', '').toString().split('#previewer ').join('') + '*{overflow: visible !important;}';
+        stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/views/main/preview.css', '').toString().split('#previewer').join('body') + '*{overflow: visible !important;}';
         head.appendChild(stylePreview);
         if (haveCode) {
             const styleHLJS = doc.createElement('style');
