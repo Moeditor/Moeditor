@@ -38,6 +38,8 @@
         <script type="text/javascript" src="settings/moe-tabview.js"></script>
         <link rel="stylesheet" href="titlebar/moe-titlebar.css">
         <script type="text/javascript" src="titlebar/moe-titlebar.js"></script>
+
+        <script type="text/javascript" src="moe-localize.js"></script>
     </head>
     <body>
         <div id="titlebar">
@@ -60,22 +62,22 @@
                 <div class="bar">
                     <div class="item selected" data-tab="edit">
                         <div class="image"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
-                        <div class="text">Edit</div>
+                        <div class="text l10n">Edit</div>
                     </div>
                     <div class="item" data-tab="appearance">
                         <div class="image"><i class="fa fa-paint-brush" aria-hidden="true"></i></div>
-                        <div class="text">Appearance</div>
+                        <div class="text l10n">Appearance</div>
                     </div>
                     <div class="item" data-tab="render">
                         <div class="image"><i class="fa fa-magic" aria-hidden="true"></i></div>
-                        <div class="text">Render</div>
+                        <div class="text l10n">Render</div>
                     </div>
                 </div>
                 <div class="content">
                     <div class="panel" data-tab="edit" style="display: block; ">
                         <table width="80%" align="center">
                             <tr>
-                                <td width="40%">Editor Font</td>
+                                <td width="40%" class="l10n">Font</td>
                                 <td width="60%">
                                     <select class="settings-item" data-key="editor-font">
                                         <option value="monospace">Monospace</option>
@@ -85,13 +87,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td width="40%">Editor Font Size</td>
+                                <td width="40%" class="l10n">Font Size</td>
                                 <td width="60%">
                                     <input class="settings-item" type="text" data-key="editor-font-size" value="14">
                                 </td>
                             </tr>
                             <tr>
-                                <td width="40%">Editor Line Height</td>
+                                <td width="40%" class="l10n">Line Height</td>
                                 <td width="60%">
                                     <input class="settings-item" type="text" data-key="editor-line-height" value="2">
                                 </td>
@@ -101,7 +103,7 @@
                     <div class="panel" data-tab="appearance">
                         <table width="80%" align="center">
                             <tr>
-                                <td width="40%">Editor Color Theme</td>
+                                <td width="40%" class="l10n">Color Theme</td>
                                 <td width="60%">
                                     <select class="settings-item" data-key="editor-theme">
                                         <option value="base16-light">Base16 Light</option>
@@ -113,13 +115,13 @@
                     <div class="panel" data-tab="render">
                         <table width="80%" align="center">
                             <tr>
-                                <td width="40%">TeX Math Expressions</td>
+                                <td width="40%" class="l10n">TeX Math Expressions</td>
                                 <td width="60%">
                                     <input type="checkbox" class="settings-item" data-key="math">
                                 </td>
                             </tr>
                             <tr>
-                                <td width="40%">UML Diagrams</td>
+                                <td width="40%" class="l10n">UML Diagrams</td>
                                 <td width="60%">
                                     <input type="checkbox" class="settings-item" data-key="uml-diagrams">
                                 </td>

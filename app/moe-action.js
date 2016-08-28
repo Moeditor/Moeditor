@@ -32,8 +32,8 @@ class MoeditorAction {
             {
                 properties: ['openFile', 'multiSelections'],
                 filters: [
-                    { name: moeApp.locale.get("markdownDocuments"), extensions: [ 'md', 'mkd', 'markdown' ] },
-                    { name: moeApp.locale.get("allFiles"), extensions: [ '*' ] }
+                    { name: __("Markdown Documents"), extensions: [ 'md', 'mkd', 'markdown' ] },
+                    { name: __("All Files"), extensions: [ '*' ] }
                 ]
             }
         );
@@ -58,10 +58,10 @@ class MoeditorAction {
                 w.moeditorWindow.changed = false;
                 w.moeditorWindow.window.setDocumentEdited(false);
                 w.moeditorWindow.window.setRepresentedFilename(w.moeditorWindow.fileName);
-                w.moeditorWindow.window.webContents.send('pop-message', { type: 'success', content: 'Saved successfully.' });
+                w.moeditorWindow.window.webContents.send('pop-message', { type: 'success', content: __('Saved successfully.') });
                 moeApp.addRecentDocument(w.moeditorWindow.fileName);
             } catch (e) {
-                w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: 'Can\'t save file, ' + e.toString() });
+                w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: __('Can\'t save file') + ', ' + e.toString() });
                 console.log('Can\'t save file: ' + e.toString());
                 return false;
             }
@@ -77,8 +77,8 @@ class MoeditorAction {
         const fileName = dialog.showSaveDialog(w,
             {
                 filters: [
-                    { name: moeApp.locale.get("markdownDocuments"), extensions: ['md', 'mkd', 'markdown' ] },
-                    { name: moeApp.locale.get("allFiles"), extensions: [ '*' ] }
+                    { name: __("Markdown Documents"), extensions: ['md', 'mkd', 'markdown' ] },
+                    { name: __("All Files"), extensions: [ '*' ] }
                 ]
             }
         );
@@ -90,9 +90,9 @@ class MoeditorAction {
             moeApp.addRecentDocument(fileName);
             w.moeditorWindow.window.setDocumentEdited(false);
             w.moeditorWindow.window.setRepresentedFilename(fileName);
-            w.moeditorWindow.window.webContents.send('pop-message', { type: 'success', content: 'Saved successfully.' });
+            w.moeditorWindow.window.webContents.send('pop-message', { type: 'success', content: __('Saved successfully.') });
         } catch (e) {
-            w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: 'Can\'t save file, ' + e.toString() });
+            w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: __('Can\'t save file') + ', ' + e.toString() });
             console.log('Can\'t save file: ' + e.toString());
             return false;
         }
@@ -105,20 +105,20 @@ class MoeditorAction {
         const fileName = dialog.showSaveDialog(w,
             {
                 filters: [
-                    { name: moeApp.locale.get("htmlDocuments"), extensions: ['htm', 'html'] },
+                    { name: __("HTML Documents"), extensions: ['html', 'htm'] },
                 ]
             }
         );
         if (typeof fileName == 'undefined') return;
         f(function(s) {
             try {
-                w.moeditorWindow.window.webContents.send('pop-message', { type: 'info', content: 'Exporting as HTML, please wait ...' });
+                w.moeditorWindow.window.webContents.send('pop-message', { type: 'info', content: __('Exporting as HTML, please wait ...') });
                 MoeditorFile.write(fileName, s);
                 const {shell} = require('electron');
                 shell.openItem(fileName);
             } catch (e) {
+                w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: __('Can\'t export as HTML') + ', ' + e.toString() });
                 console.log('Can\'t export as HTML: ' + e.toString());
-                w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: 'Can\'t export as HTML, ' + e.toString() });
             }
         });
     }
@@ -130,18 +130,18 @@ class MoeditorAction {
         const fileName = dialog.showSaveDialog(w,
             {
                 filters: [
-                    { name: moeApp.locale.get("pdfDocuments"), extensions: ['pdf'] },
+                    { name: __("PDF Documents"), extensions: ['pdf'] },
                 ]
             }
         );
         if (typeof fileName == 'undefined') return;
         f(function(s) {
             let errorHandler = (e) => {
+                w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: __('Can\'t export as PDF') + ', ' + e.toString() });
                 console.log('Can\'t export as PDF: ' + e.toString());
-                w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: 'Can\'t export as PDF, ' + e.toString() });
             }
             try {
-                w.moeditorWindow.window.webContents.send('pop-message', { type: 'info', content: 'Exporting as PDF, please wait ...' });
+                w.moeditorWindow.window.webContents.send('pop-message', { type: 'info', content: __('Exporting as PDF, please wait ...') });
                 const exportPDF = require('./moe-pdf');
                 exportPDF({ s: s, path: fileName }, errorHandler);
             } catch (e) {

@@ -71,9 +71,9 @@ class MoeditorWindow {
                     this,
                     {
                         type: 'question',
-                        buttons: [moeApp.locale.get("yes"), moeApp.locale.get("no"), moeApp.locale.get("cancel")],
-                        title: moeApp.locale.get("confirm"),
-                        message: moeApp.locale.get("savequestion")
+                        buttons: [__("Yes"), __("No"), __("Cancel")],
+                        title: __("Confirm"),
+                        message: __("Save changes to file?")
                     }
                 );
 

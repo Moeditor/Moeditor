@@ -26,17 +26,28 @@ class MoeditorLocale {
 		this.locale = "en";
 		osLocale((err, locale) => {
 			if (!err) {
-				var loc = locale.substr(0, locale.indexOf('_')); // Not location, only language (en_US => en)
-				if (strings[loc] != 'undefined') {
-					this.locale = loc;
-				}
+                let loc = locale;
+                if (typeof strings[loc] !== 'undefined') {
+                    this.locale = loc;
+                } else {
+                    loc = loc.substr(0, loc.indexOf('_'));
+    				if (typeof strings[loc] !== 'undefined') {
+    					this.locale = loc;
+    				}
+                }
 			}
 		});
 	}
 
 	get(str) {
-		if (typeof strings[this.locale] === 'undefined' || typeof strings[this.locale][str] === 'undefined') return strings['en'][str];
-		else return strings[this.locale][str];
+        let res;
+		if (typeof strings[this.locale] === 'undefined' || typeof strings[this.locale][str] === 'undefined') {
+            res = strings['en'][str];
+            console.log('Localization of "' + str + '" failed, falling back to English.');
+        } else {
+            res = strings[this.locale][str];
+        }
+        return res;
 	}
 }
 
@@ -44,43 +55,79 @@ module.exports = MoeditorLocale;
 
 const strings = {
 	"en": {
-		new: "NEW",
-		open: "OPEN",
-		save: "SAVE",
-		yes: "Yes",
-		no: "No",
-		cancel: "Cancel",
-		confirm: "Confirm",
-		savequestion: "Save changes to file?",
-		markdownDocuments: "Markdown Documents",
-		htmlDocuments: "HTML Documents",
-		pdfDocuments: "PDF Documents",
-		allFiles: "All Files"
+        "New": "New",
+        "Open": "Open",
+        "Save": "Save",
+        "Save as": "Save as",
+        "Export as HTML": "Export as HTML",
+        "Export as PDF": "Export as PDF",
+        "Settings": "Settings",
+        "About": "About",
+
+        "Menu": "Menu",
+        "Directory": "Directory",
+        "Toggle focus mode": "Toggle focus mode",
+        "Edit mode": "Edit mode",
+
+        "Write Mode": "Write Mode",
+        "Read Mode": "Read Mode",
+        "Preview Mode": "Preview Mode",
+        "Wide": "Wide",
+        "Medium": "Medium",
+        "Narrow": "Narrow",
+
+        "Yes": "Yes",
+        "No": "No",
+        "Cancel": "Cancel",
+        "Confirm": "Confirm",
+
+        "Save changes to file?": "Save changes to file?",
+
+        "Markdown Documents": "Markdown Documents",
+        "HTML Documents": "HTML Documents",
+        "PDF Documents": "PDF Documents",
+        "All Files": "All Files",
+        "Saved successfully.": "Saved successfully.",
+        "Can't save file": "Can't save file",
+        "Exporting as HTML, please wait ...": "Exporting as HTML, please wait ...",
+        "Exporting as PDF, please wait ...": "Exporting as PDF, please wait ...",
+        "Can't export as HTML": "Can't export as HTML",
+        "Can't export as PDF": "Can't export as PDF",
+
+        "Edit": "Edit",
+        "Appearance": "Appearance",
+        "Render": "Render",
+        "Font": "Editor Font",
+        "Font Size": "Font Size",
+        "Line Height": "Line Height",
+        "Color Theme": "Color Theme",
+        "TeX Math Expressions":"TeX Math Expressions",
+        "UML Diagrams": "UML Diagrams",
+
+        "version": "version"
 	},
 	"de": {
-		new: "NEU",
-		open: "ÖFFNEN",
-		save: "SPEICHERN",
-		yes: "Ja",
-		no: "Nein",
-		cancel: "Abbrechen",
-		confirm: "Bestätigen",
-		savequestion: "Änderungen speichern?",
-		markdownDocuments: "Markdown Dokumente",
-		allFiles: "Alle Dateien"
+        "Yes": "Ja",
+        "No": "Nein",
+        "Cancel": "Abbrechen",
+        "Confirm": "Bestätigen",
+
+        "Save changes to file?": "Änderungen speichern?",
+
+        "Markdown Documents": "Markdown Dokumente",
+        "All Files": "Alle Dateien"
 	},
 	"pt": {
-		new: "NOVO",
-		open: "ABRIR",
-		save: "SALVAR",
-		yes: "Sim",
-		no: "Não",
-		cancel: "Cancelar",
-		confirm: "Confirmar",
-		savequestion: "Salvar as alterações no arquivo?",
-		markdownDocuments: "Documentos Markdown",
-		htmlDocuments: "Documentos HTML",
-		pdfDocuments: "Documentos PDF",
-		allFiles: "Todos Arquivos"
+        "Yes": "Sim",
+        "No": "Não",
+        "Cancel": "Cancelar",
+        "Confirm": "Confirmar",
+
+        "Save changes to file?": "Salvar as alterações no arquivo?",
+
+        "Markdown Documents": "Documentos Markdown",
+        "HTML Documents": "Documentos HTML",
+        "PDF Documents": "Documentos PDF",
+        "All Files": "Todos Arquivos"
 	}
 }

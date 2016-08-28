@@ -34,6 +34,8 @@
         <link rel="stylesheet" href="fonts/moe-fonts.css">
         <link rel="stylesheet" href="titlebar/moe-titlebar.css">
         <script type="text/javascript" src="titlebar/moe-titlebar.js"></script>
+
+        <script type="text/javascript" src="moe-localize.js"></script>
     </head>
     <body>
         <div id="titlebar">
@@ -59,7 +61,7 @@
             </div>
             <div id="description">Your all-purpose markdown editor.</div>
             <div id="version">
-            version <script>
+            <span class="l10n">version</span> <script>
             document.write(require('../../package.json').version);
             </script>
             </div>

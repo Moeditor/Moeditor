@@ -72,13 +72,14 @@
         </script>
 
         <script type="text/javascript" src="main/moe-document.js"></script>
-        <script type="text/javascript" src="main/moe-localize.js"></script>
         <script type="text/javascript" src="main/moe-sidemenu.js"></script>
         <script type="text/javascript" src="main/moe-treeview.js"></script>
         <script type="text/javascript" src="main/moe-popmenu.js"></script>
         <script type="text/javascript" src='main/moe-mode.js'></script>
         <script type="text/javascript" src='main/moe-export.js'></script>
         <script type="text/javascript" src='main/moe-popmessage.js'></script>
+
+        <script type="text/javascript" src="moe-localize.js"></script>
 
         <link rel="stylesheet" href="fonts/moe-fonts.css">
         <link rel="stylesheet" href="main/moe-style.css">
@@ -112,16 +113,16 @@
         <div id="side-menu">
             <div id="logo">MOEDITOR</div>
             <ul>
-                <li data-action="new">New</li>
-                <li data-action="open">Open</li>
-                <li data-action="save">Save</li>
-                <li data-action="save-as">Save as</li>
+                <li data-action="new" class="l10n">New</li>
+                <li data-action="open" class="l10n">Open</li>
+                <li data-action="save" class="l10n">Save</li>
+                <li data-action="save-as" class="l10n">Save as</li>
                 <li class="break"></li>
-                <li data-action="export-as-html">Export as HTML</li>
-                <li data-action="export-as-pdf">Export as PDF</li>
+                <li data-action="export-as-html" class="l10n">Export as HTML</li>
+                <li data-action="export-as-pdf" class="l10n">Export as PDF</li>
                 <li class="break"></li>
-                <li data-action="settings">Settings</li>
-                <li data-action="about">About</li>
+                <li data-action="settings" class="l10n">Settings</li>
+                <li data-action="about" class="l10n">About</li>
             </ul>
         </div>
         <div id="file-tree" class="tree-view">
@@ -168,18 +169,18 @@
                 <div id="cover-bottom-background-left"></div>
                 <div id="cover-bottom-background-right"></div>
                 <div id="cover-bottom-left">
-                    <div class="button-bottom" id="button-bottom-menu" title="Menu">
+                    <div class="button-bottom l10n-title" id="button-bottom-menu" title="Menu">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </div>
-                    <div class="button-bottom" id="button-bottom-file-tree" title="Directory">
+                    <div class="button-bottom l10n-title" id="button-bottom-file-tree" title="Directory">
                         <i class="fa fa-folder-o" aria-hidden="true"></i>
                     </div>
                 </div>
                 <div id="cover-bottom-right">
-                    <div class="button-bottom" id="button-bottom-focus" title="Toggle focus mode">
+                    <div class="button-bottom l10n-title" id="button-bottom-focus" title="Toggle focus mode">
                         <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
                     </div>
-                    <div class="button-bottom" id="button-bottom-mode" title="Edit mode">
+                    <div class="button-bottom l10n-title" id="button-bottom-mode" title="Edit mode">
                         <i class="fa fa-eye" aria-hidden="true"></i>
                     </div>
                 </div>
@@ -188,13 +189,13 @@
         <div id="popup-layer">
             <div class="popup-menu" id="popup-menu-mode" tabindex="-1">
                 <ul>
-                    <li data-name="write-wide"><i class="fa fa-check" aria-hidden="true"></i>Write Mode (Wide)</li>
-                    <li data-name="write-medium"><i class="fa fa-check" aria-hidden="true"></i>Write Mode (Medium)</li>
-                    <li data-name="write-narrow"><i class="fa fa-check" aria-hidden="true"></i>Write Mode (Narrow)</li>
-                    <li data-name="read-wide"><i class="fa fa-check" aria-hidden="true"></i>Read Mode (Wide)</li>
-                    <li data-name="read-medium"><i class="fa fa-check" aria-hidden="true"></i>Read Mode (Medium)</li>
-                    <li data-name="read-narrow"><i class="fa fa-check" aria-hidden="true"></i>Read Mode (Narrow)</li>
-                    <li data-name="preview"><i class="fa fa-check" aria-hidden="true"></i>Preview Mode</li>
+                    <li data-name="write-wide"><i class="fa fa-check" aria-hidden="true"></i><span class="l10n">Write Mode</span> (<span class="l10n">Wide</span>)</li>
+                    <li data-name="write-medium"><i class="fa fa-check" aria-hidden="true"></i><span class="l10n">Write Mode</span> (<span class="l10n">Medium</span>)</li>
+                    <li data-name="write-narrow"><i class="fa fa-check" aria-hidden="true"></i><span class="l10n">Write Mode</span> (<span class="l10n">Narrow</span>)</li>
+                    <li data-name="read-wide"><i class="fa fa-check" aria-hidden="true"></i><span class="l10n">Read Mode</span> (<span class="l10n">Wide</span>)</li>
+                    <li data-name="read-medium"><i class="fa fa-check" aria-hidden="true"></i><span class="l10n">Read Mode</span> (<span class="l10n">Medium</span>)</li>
+                    <li data-name="read-narrow"><i class="fa fa-check" aria-hidden="true"></i><span class="l10n">Read Mode</span> (<span class="l10n">Narrow</span>)</li>
+                    <li data-name="preview"><i class="fa fa-check" aria-hidden="true"></i><span class="l10n">Preview Mode</span></li>
                 </ul>
             </div>
         </div>

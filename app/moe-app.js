@@ -34,6 +34,7 @@ class MoeditorApplication {
 		this.windows = new Array();
         this.newWindow = null;
         this.locale = new MoeditorLocale();
+        global.__ = str => this.locale.get(str);
 	}
 
 	open(fileName) {
