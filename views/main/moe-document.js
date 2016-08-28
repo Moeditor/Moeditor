@@ -25,25 +25,11 @@ window.w = moeApp.newWindow;
 $(function() {
     const MoeditorPreview = require('./moe-preview');
 
-    CodeMirror.defineMode('mathdown', function(config) {
-        var options = [];
-        var ref = [['$$', '$$'], ['$', '$'], ['\\[', '\\]'], ['\\(', '\\)']];
-        for (var i = 0, len = ref.length; i < len; i++) {
-            var x = ref[i];
-            options.push({
-                open: x[0],
-                close: x[1],
-                mode: CodeMirror.getMode(config, 'stex')
-            });
-        }
-        return CodeMirror.multiplexingMode.apply(CodeMirror, [CodeMirror.getMode(config, 'gfm')].concat([].slice.call(options)));
-    });
-
     document.querySelector('#editor textarea').innerText = w.content;
 
     var editor = CodeMirror.fromTextArea(document.querySelector('#editor textarea'), {
         lineNumbers: false,
-        mode: 'mathdown',
+        mode: 'gfm_math',
         matchBrackets: true,
         // scrollbarStyle: "simple",
         theme: moeApp.config.get('editor-theme'),

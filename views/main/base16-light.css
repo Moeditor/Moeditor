@@ -33,6 +33,9 @@
 .cm-s-base16-light span.cm-tag {color: #ac4142;}
 .cm-s-base16-light span.cm-link {color: #aa759f;}
 .cm-s-base16-light span.cm-error {background: #ac4142; color: #505050;}
+.cm-s-base16-light span.cm-math {color: #603d7b;}
+.cm-s-base16-light span.cm-math {color: #603d7b;}
+.cm-s-base16-light span.cm-formatting-math {color: #777;}
 
 /*.cm-s-base16-light .CodeMirror-activeline-background {background: #DDDCDC !important;}*/
 .cm-s-base16-light .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}
