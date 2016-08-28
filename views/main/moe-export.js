@@ -30,7 +30,8 @@ function render(s, type, cb) {
     var math = new Array(), rendering = true, mathCnt = 0, mathID = 0, rendered = null, haveMath = false, haveCode = false;
 
     MoeMark.setOptions({
-        math: true,
+        math: moeApp.config.get('math'),
+        umlchart: moeApp.config.get('uml-diagrams'),
         highlight: function(code, lang) {
             haveCode = true;
             return MoeditorHighlight(code, lang);
