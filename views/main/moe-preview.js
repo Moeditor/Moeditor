@@ -55,7 +55,7 @@ module.exports = (cm, force, cb) => {
             w.window.setDocumentEdited(true);
         }
 
-        if (!window.editMode.startsWith('preview') && !window.editMode.startsWith('read')) {
+        if (window.editMode && !window.editMode.startsWith('preview') && !window.editMode.startsWith('read')) {
             updatePreviewRunning = false;
             if (updatePreview) setTimeout(updateAsync, 0);
             cb();
@@ -110,8 +110,8 @@ module.exports = (cm, force, cb) => {
                 });
                 window.scrollMap = undefined;
 
-                document.getElementById('previewer').innerHTML = rendered.innerHTML;
-                SVGFixer(document.getElementById('previewer'));
+                document.getElementById('container').innerHTML = rendered.innerHTML;
+                SVGFixer(document.getElementById('container'));
 
                 if (!window.xyz) window.xyz = rendered.innerHTML;
 

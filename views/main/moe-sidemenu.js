@@ -28,14 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showMenu() {
         sideMenu.style.marginLeft = '0';
+        document.getElementById('main').classList.remove('notransition');
         sideMenuCover.style.opacity = '1';
         sideMenuCover.style.pointerEvents = 'all';
+        setTimeout(() => {
+            document.getElementById('main').classList.add('notransition');
+        }, 500);
     }
 
     function hideMenu() {
         sideMenu.style.marginLeft = '-300px';
+        document.getElementById('main').classList.remove('notransition');
         sideMenuCover.style.opacity = '0';
         sideMenuCover.style.pointerEvents = 'none';
+        setTimeout(() => {
+            document.getElementById('main').classList.add('notransition');
+        }, 500);
     }
 
     sideMenuCover.addEventListener('click', hideMenu);

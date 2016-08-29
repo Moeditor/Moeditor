@@ -75,6 +75,18 @@ function setHighlightTheme(val) {
     link.href = path.resolve(path.dirname(path.dirname(require.resolve('highlight.js'))), `styles/${val}.css`);
 }
 
+function setRenderTheme(val) {
+    let link = document.getElementById('render-theme');
+    if (!link) {
+        link = document.createElement('link');
+        document.head.appendChild(link);
+        link.rel = 'stylesheet';
+        link.id = 'render-theme';
+    }
+    const container = document.getElementById('container');
+    link.href = `${app.getAppPath()}/themes/${val}/style.css`;
+}
+
 function setTabSize(val) {
     window.editor.setOption('tabSize', parseInt(val));
     window.editor.setOption('indentUnit', parseInt(val));
@@ -86,6 +98,7 @@ setEditorTheme(moeApp.config.get('editor-theme'));
 setEditorFontSize(moeApp.config.get('editor-font-size'));
 setEditorLineHeight(moeApp.config.get('editor-line-height'));
 setHighlightTheme(moeApp.config.get('highlight-theme'));
+setRenderTheme(moeApp.config.get('render-theme'));
 
 const ipcRenderer = require('electron').ipcRenderer;
 ipcRenderer.on('setting-changed', (e, arg) => {
@@ -103,6 +116,8 @@ ipcRenderer.on('setting-changed', (e, arg) => {
         setUMLDiagrams(arg.val);
     } else if (arg.key === 'highlight-theme') {
         setHighlightTheme(arg.val);
+    } else if (arg.key === 'render-theme') {
+        setRenderTheme(arg.val);
     } else if (arg.key === 'tab-size') {
         setTabSize(arg.val);
     }

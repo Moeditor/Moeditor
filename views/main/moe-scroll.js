@@ -30,11 +30,11 @@ function lookup(a, x) {
     return l;
 }
 
-var previewer = document.getElementById('previewer'), previewerWrapper = document.getElementById('previewer-wrapper');
-var editorScroll = $('.CodeMirror-vscrollbar')[0], previewerScroll = previewerWrapper;
+var container = document.getElementById('container'), containerWrapper = document.getElementById('container-wrapper');
+var editorScroll = $('.CodeMirror-vscrollbar')[0], containerScroll = containerWrapper;
 function getLineNumberTags() {
     // from http://stackoverflow.com/questions/9496427/get-elements-by-attribute-when-queryselectorall-is-not-available-without-using-l
-    var a = previewer.getElementsByTagName('moemark-linenumber');
+    var a = container.getElementsByTagName('moemark-linenumber');
     window.lineNumberTags = new Array(window.lineNumbers.length);
 
     for (var i = 0; i < a.length; i++) {
@@ -50,13 +50,13 @@ function buildScrollMap() {
     window.scrollMap = new Array(2);
     window.scrollMap[0] = new Array(window.lineNumbers.length + 1);
     window.scrollMap[1] = new Array(window.lineNumbers.length + 1);
-    const topOffset = previewer.getBoundingClientRect().top;
+    const topOffset = container.getBoundingClientRect().top;
     for (var i = 0; i < window.lineNumbers.length; i++) {
         window.scrollMap[0][i] = window.editor.heightAtLine(window.lineNumbers[i], 'local');
         window.scrollMap[1][i] = window.lineNumberTags[window.lineNumbers[i]].getBoundingClientRect().top - topOffset;
     }
     window.scrollMap[0][window.lineNumbers.length] = editorScroll.scrollHeight - editorScroll.clientHeight;
-    window.scrollMap[1][window.lineNumbers.length] = previewerWrapper.scrollHeight - previewerWrapper.clientHeight;
+    window.scrollMap[1][window.lineNumbers.length] = containerWrapper.scrollHeight - containerWrapper.clientHeight;
     window.scrollMap[0][0] = window.scrollMap[1][0] = 0;
 }
 
@@ -83,10 +83,10 @@ function editorToPreviewer() {
     if (window.lineNumbers.length == 0) return;
     if (window.scrollMap === undefined) buildScrollMap();
 
-    if (checkScrollToBottom(editorScroll, previewerScroll)) return;
+    if (checkScrollToBottom(editorScroll, containerScroll)) return;
 
     var target = mapValue(editorScroll.scrollTop, window.scrollMap[0], window.scrollMap[1]);
-    previewerScroll.scrollTop = target;
+    containerScroll.scrollTop = target;
 }
 
 function previewerToEditor() {
@@ -97,9 +97,9 @@ function previewerToEditor() {
     if (window.lineNumbers.length == 0) return;
     if (window.scrollMap === undefined) buildScrollMap();
 
-    if (checkScrollToBottom(previewerScroll, editorScroll)) return;
+    if (checkScrollToBottom(containerScroll, editorScroll)) return;
 
-    var target = mapValue(previewerScroll.scrollTop, window.scrollMap[1], window.scrollMap[0]);
+    var target = mapValue(containerScroll.scrollTop, window.scrollMap[1], window.scrollMap[0]);
     editorScroll.scrollTop = target;
 }
 
@@ -108,7 +108,7 @@ $('.CodeMirror-vscrollbar').on('scroll', function(e) {
     if (editor.is(':hover')) editorToPreviewer();
 });
 
-$('#previewer-wrapper').on('scroll', function(e) {
+$('#container-wrapper').on('scroll', function(e) {
     if ($(this).is(':hover')) previewerToEditor();
 });
 

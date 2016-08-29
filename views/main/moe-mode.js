@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modeMenu = document.getElementById('popup-menu-mode');
     const modeMenuItems = modeMenu.getElementsByTagName('li');
     const editor = document.getElementById('editor');
-    const previewer = document.getElementById('previewer');
+    const container = document.getElementById('container');
 
     function setMode(m) {
         function setBaseMode(bm) {
@@ -42,7 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        main.className = '';
+        [
+            'write-mode',
+            'read-mode',
+            'write-mode-wide',
+            'write-mode-medium',
+            'write-mode-thin',
+            'read-mode-wide',
+            'read-mode-medium',
+            'read-mode-thin'
+        ].forEach(x => main.classList.remove(x));
 
         if (m === 'write-wide') {
             setBaseMode('write');
@@ -55,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
             main.classList.add('write-mode-thin');
         } else if (m === 'preview') {
             setBaseMode('preview');
-            m = 'preview';
         } else if (m === 'read-wide') {
             setBaseMode('read');
             main.classList.add('read-mode-wide');
@@ -73,6 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.editMode = m;
         moeApp.config.set('edit-mode', m);
+        document.getElementById('main').classList.remove('notransition');
+        setTimeout(() => {
+            document.getElementById('main').classList.add('notransition');
+        }, 500);
     }
 
     setMode(moeApp.config.get('edit-mode'));

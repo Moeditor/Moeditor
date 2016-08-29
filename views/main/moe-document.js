@@ -19,7 +19,8 @@
 
 'use strict';
 
-window.moeApp = require('electron').remote.app.moeApp;
+window.app = require('electron').remote.app;
+window.moeApp = app.moeApp;
 window.w = moeApp.newWindow;
 require('electron-titlebar');
 
@@ -79,7 +80,7 @@ $(() => {
 
     const s = require('electron').shell;
 
-    $("#previewer").on('click', 'a', function(e) {
+    $("#container").on('click', 'a', function(e) {
         e.preventDefault();
         s.openExternal(this.href);
     });

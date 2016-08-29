@@ -32,8 +32,6 @@
         </script>
 
         <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="main/base16-light.css">
-        <link rel="stylesheet" href="main/preview.css">
 
         <link rel="stylesheet" href="main/moe-scrollbar.css">
         <link rel="stylesheet" href="main/moe-popmenu.css">
@@ -110,6 +108,7 @@
 
         <link rel="stylesheet" href="fonts/moe-fonts.css">
         <link rel="stylesheet" href="main/moe-style.css">
+        <link rel="stylesheet" href="main/base16-light.css">
     </head>
     <body>
         <div id="electron-titlebar" class="inset" style="z-index: 1; ">
@@ -151,7 +150,7 @@
             <div class="tree-view-items">
             </div>
         </div>
-        <div id="main">
+        <div id="main" class="notransition">
             <div id="side-menu-cover"></div>
             <div id="file-tree-cover"></div>
             <div id="main-container">
@@ -163,10 +162,8 @@
                 </div>
 
                 <div id="right-panel">
-                    <div id="previewer-wrapper">
-                        <div id="previewer">
-                        <!--iframe src="previewer.html" frameBorder="0"></iframe-->
-                        </div>
+                    <div id="container-wrapper">
+                        <div id="container" class="preview"></div>
                     </div>
                     <div class="cover-top"></div>
                 </div>

@@ -25,7 +25,10 @@
 
 		<script>
 		window.$ = window.jQuery = require("jquery");
-        window.document.querySelector('html').classList.add(process.platform)
+        window.document.querySelector('html').classList.add(process.platform);
+        window.app = require('electron').remote.app;
+        const fs = require('fs');
+        const path = require('path');
         </script>
 
         <script type="text/javascript" src="moe-localize.js"></script>
@@ -148,11 +151,22 @@
                                 <td width="60%">
                                     <select class="settings-item" data-key="highlight-theme">
                                         <script>
-                                        const fs = require('fs');
-                                        const path = require('path');
                                         fs.readdirSync(path.resolve(path.dirname(path.dirname(require.resolve('highlight.js'))), 'styles'))
                                           .filter(s => s.endsWith('.css'))
                                           .map(s => s.substr(0, s.length - 4))
+                                          .forEach(s => {
+                                               document.write(`<option value="${s}">${s}</option>`)
+                                          });
+                                        </script>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="40%" class="l10n">Render Theme</td>
+                                <td width="60%">
+                                    <select class="settings-item" data-key="render-theme">
+                                        <script>
+                                        fs.readdirSync(`${app.getAppPath()}/themes`)
                                           .forEach(s => {
                                                document.write(`<option value="${s}">${s}</option>`)
                                           });

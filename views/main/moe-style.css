@@ -114,7 +114,6 @@ html, body {
     left: 0;
     width: 50%;
     height: calc(100% - 25px);
-    background-color: rgb(245, 245, 245);
     transition: all 500ms ease-in-out;
 }
 
@@ -123,7 +122,6 @@ html, body {
     right: 0;
     width: 50%;
     height: calc(100% - 25px);
-    background-color: #fff;
     transition: all 500ms ease-in-out;
 }
 
@@ -177,7 +175,7 @@ html, body {
 }
 
 #editor.focus .CodeMirror-line {
-    transition: opacity 150ms;
+    transition: opacity 150ms !important;
     opacity: 0.3;
 }
 
@@ -222,18 +220,6 @@ html, body {
     right: 0;
 }
 
-#right-panel .cover-top {
-    background: linear-gradient(to bottom, #fff 70%, transparent);
-}
-
-#left-panel .cover-top {
-    background: linear-gradient(to bottom, rgb(245, 245, 245) 70%, transparent);
-}
-
-#main.read-mode #right-panel .cover-top {
-    right: 6px;
-}
-
 .cover-nobackground {
     background: transparent !important;
 }
@@ -254,7 +240,6 @@ html, body {
     left: 0;
     width: 50%;
     height: 100%;
-    background: rgb(245, 245, 245);
     transition: all 500ms ease-in-out;
 }
 
@@ -263,7 +248,6 @@ html, body {
     right: 0;
     width: 50%;
     height: 100%;
-    background: #fff;
     transition: all 500ms ease-in-out;
 }
 
@@ -318,9 +302,9 @@ html, body {
     color: #dcdcdc;
 }
 
-#editor * {
+/*#editor * {
     transition: all 500ms ease-in-out;
-}
+}*/
 
 body[settings-editor-font="default"] #editor * {
     font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Liberation Mono', 'Dejavu Mans Mono', monospace !important;
@@ -351,15 +335,14 @@ body[settings-editor-font="sans"] #editor  * {
     height: 100%;
 }
 
-#previewer-wrapper {
+#container-wrapper {
     width: calc(100% + 6px);
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    background-color: #fff;
 }
 
-#previewer {
+#container {
     padding-top: 35px;
     padding-bottom: 30px;
     padding-left: 45px;
@@ -368,28 +351,28 @@ body[settings-editor-font="sans"] #editor  * {
     transition: all 500ms ease-in-out;
 }
 
-#main.read-mode #previewer {
+#main.read-mode #container {
     padding-left: 0;
     padding-right: 0;
 }
 
-#main.read-mode #previewer-wrapper {
+#main.read-mode #container-wrapper {
     width: calc(100%);
 }
 
-#main.read-mode.read-mode-thin #previewer {
+#main.read-mode.read-mode-thin #container {
     width: calc(100% / 3);
     margin-left: calc(100% / 3);
     margin-right: calc(100% / 3);
 }
 
-#main.read-mode.read-mode-medium #previewer {
+#main.read-mode.read-mode-medium #container {
     width: calc(100% / 2);
     margin-left: calc(100% / 4);
     margin-right: calc(100% / 4);
 }
 
-#main.read-mode.read-mode-wide #previewer {
+#main.read-mode.read-mode-wide #container {
     width: calc((100% / 3) * 2);
     margin-left: calc(100% / 6);
     margin-right: calc(100% / 6);
@@ -405,7 +388,6 @@ body[settings-editor-font="sans"] #editor  * {
 .cm-header-4 { font-size: 1.1em; }
 .cm-header-5 { font-size: 1.05em; }
 .cm-header-6 { font-size: 1em; }
-.cm-quote { color: #90a959; }
 
 .CodeMirror-scroll {
     overflow: hidden !important;
@@ -433,12 +415,8 @@ body[settings-editor-font="sans"] #editor  * {
     font-size: 14px;
 }
 
-.CodeMirror pre {
-    color: #373737;
-}
-
 .CodeMirror-cursors {
-    transition: opacity 500ms ease-in-out;
+    transition: opacity 500ms ease-in-out !important;
 }
 
 .CodeMirror-cursors[style="visibility: hidden;"] {
@@ -477,7 +455,7 @@ body[settings-mode=read] #drag-right, body[settings-mode=write] #drag-right {
     right: 0;
 }
 
-.notransition * {
+.notransition, .notransition *:not(.CodeMirror-cursors):not(.CodeMirror-lines) {
     transition: none !important;
 }
 
