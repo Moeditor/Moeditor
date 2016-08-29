@@ -154,6 +154,7 @@ const strings = {
         "Color Theme": "Color Theme",
         "TeX Math Expressions":"TeX Math Expressions",
         "UML Diagrams": "UML Diagrams",
+        "Highlight Theme": "Highlight Theme",
 
         "Default": "Default",
         "System Default": "System Default",
@@ -222,6 +223,7 @@ const strings = {
         "Color Theme": "颜色主题",
         "TeX Math Expressions": "TeX 数学表达式",
         "UML Diagrams": "UML 图表",
+        "Highlight Theme": "高亮主题",
 
         "Default": "默认",
         "System Default": "系统默认",

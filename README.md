@@ -12,6 +12,7 @@ Visit our [homepage](https://moeditor.github.io/) or download [releases](https:/
 * Code highlight in editor
 * Read/Write/Preview mode
 * Custom font / line height / font size
+* Code highlight themes (powered by [highlight.js](https://highlightjs.org/))
 * Auto reload
 * Localization
 * Focus mode

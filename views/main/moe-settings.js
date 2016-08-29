@@ -19,6 +19,7 @@
 
 'use strict';
 
+const path = require('path');
 const body = document.body;
 const codemirror = document.querySelector('#editor > .CodeMirror');
 
@@ -63,10 +64,22 @@ function setUMLDiagrams(val) {
     window.updatePreview(true);
 }
 
+function setHighlightTheme(val) {
+    let link = document.getElementById('highlight-theme');
+    if (!link) {
+        link = document.createElement('link');
+        document.head.appendChild(link);
+        link.rel = 'stylesheet';
+        link.id = 'highlight-theme';
+    }
+    link.href = path.resolve(path.dirname(path.dirname(require.resolve('highlight.js'))), `styles/${val}.css`);
+}
+
 setEditorFont(moeApp.config.get('editor-font'));
 setEditorTheme(moeApp.config.get('editor-theme'));
 setEditorFontSize(moeApp.config.get('editor-font-size'));
 setEditorLineHeight(moeApp.config.get('editor-line-height'));
+setHighlightTheme(moeApp.config.get('highlight-theme'));
 
 const ipcRenderer = require('electron').ipcRenderer;
 ipcRenderer.on('setting-changed', (e, arg) => {
@@ -82,5 +95,7 @@ ipcRenderer.on('setting-changed', (e, arg) => {
         setMath(arg.val);
     } else if (arg.key === 'uml-diagrams') {
         setUMLDiagrams(arg.val);
+    } else if (arg.key === 'highlight-theme') {
+        setHighlightTheme(arg.val);
     }
 });

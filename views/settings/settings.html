@@ -137,6 +137,23 @@
                                     <input type="checkbox" class="settings-item" data-key="uml-diagrams">
                                 </td>
                             </tr>
+                            <tr>
+                                <td width="40%" class="l10n">Highlight Theme</td>
+                                <td width="60%">
+                                    <select class="settings-item" data-key="highlight-theme">
+                                        <script>
+                                        const fs = require('fs');
+                                        const path = require('path');
+                                        fs.readdirSync(path.resolve(path.dirname(path.dirname(require.resolve('highlight.js'))), 'styles'))
+                                          .filter(s => s.endsWith('.css'))
+                                          .map(s => s.substr(0, s.length - 4))
+                                          .forEach(s => {
+                                               document.write(`<option value="${s}">${s}</option>`)
+                                          });
+                                        </script>
+                                    </select>
+                                </td>
+                            </tr>
                         </table>
                     </div>
                 </div>
