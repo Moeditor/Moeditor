@@ -24,6 +24,7 @@ const {BrowserWindow, ipcMain} = require('electron');
 var settingsWindow;
 
 function showSettingsWindow() {
+    const debug = (moeApp.flag.debug | moeApp.config.get('debug')) != 0;
     var conf = {
         icon: Const.path + "/icons/Moeditor.ico",
         autoHideMenuBar: true,
@@ -33,7 +34,7 @@ function showSettingsWindow() {
             zoomFactor: moeApp.config.get('scale-factor')
         },
         resizable: false,
-        show: false
+        show: debug
     };
 
     if (process.platform == 'darwin') conf.titleBarStyle = 'hidden-inset';
@@ -41,7 +42,7 @@ function showSettingsWindow() {
 
     settingsWindow = new BrowserWindow(conf);
     settingsWindow.loadURL('file://' + Const.path + '/views/settings/settings.html');
-    if (moeApp.flag.debug | moeApp.config.get('debug')) settingsWindow.webContents.openDevTools();
+    if (debug) settingsWindow.webContents.openDevTools();
     settingsWindow.webContents.on('dom-ready', () => {
         settingsWindow.show();
     });

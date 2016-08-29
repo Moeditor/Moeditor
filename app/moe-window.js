@@ -40,6 +40,7 @@ class MoeditorWindow {
         }
 
         this.changed = false;
+        const debug = (moeApp.flag.debug | moeApp.config.get('debug')) != 0;
         var conf = {
             icon: Const.path + "/icons/Moeditor.ico",
             autoHideMenuBar: true,
@@ -48,7 +49,7 @@ class MoeditorWindow {
             webPreferences: {
                 zoomFactor: moeApp.config.get('scale-factor')
             },
-			show: false
+			show: debug
         };
 
         if (process.platform == 'darwin') conf.titleBarStyle = 'hidden-inset';
@@ -60,7 +61,7 @@ class MoeditorWindow {
         this.registerEvents();
         this.window.loadURL('file://' + Const.path + '/views/main/index.html');
 
-        if (moeApp.flag.debug | moeApp.config.get('debug')) {
+        if (debug) {
             this.window.webContents.openDevTools();
         }
 	}
