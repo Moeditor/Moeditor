@@ -67,9 +67,9 @@ class MoeditorWindow {
 
     registerEvents() {
         this.window.on('close', (e) => {
-            if (this.moeditorWindow.changed) {
+            if (this.changed) {
                 const choice = dialog.showMessageBox(
-                    this,
+                    this.window,
                     {
                         type: 'question',
                         buttons: [__("Yes"), __("No"), __("Cancel")],
@@ -79,11 +79,11 @@ class MoeditorWindow {
                 );
 
                 if (choice == 0) {
-                    if (!MoeditorAction.save(this)) e.preventDefault();
+                    if (!MoeditorAction.save(this.window)) e.preventDefault();
                 } else if (choice == 2) e.preventDefault();
             }
 
-            const index = moeApp.windows.indexOf(this.moeditorWindow);
+            const index = moeApp.windows.indexOf(this);
             if (index !== -1) moeApp.windows.splice(index, 1);
         });
     }

@@ -20,7 +20,7 @@
 
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const titlebar = document.getElementById('electron-titlebar');
     const main = document.getElementById('main');
     const modeButton = document.getElementById('button-bottom-mode');
@@ -77,11 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setMode(moeApp.config.get('edit-mode'));
 
-    modeButton.addEventListener('click', function() {
+    modeButton.addEventListener('click', () => {
         window.toggleMenu(modeMenu);
     });
 
-    for (const it of modeMenuItems) it.addEventListener('click', function() {
+    for (const it of modeMenuItems) it.addEventListener('click', () => {
         setMode(it.attributes['data-name'].value);
         window.editor.focus();
     })
@@ -91,11 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
         else setMode('preview');
     });
 
-    editor.addEventListener('transitionend', function(e) {
+    editor.addEventListener('transitionend', (e) => {
         if (e.target === editor && e.propertyName === 'width') window.editor.refresh();
     });
 
-    rightPanel.addEventListener('transitionend', function(e) {
+    rightPanel.addEventListener('transitionend', (e) => {
         if (e.target === rightPanel && (window.editMode.startsWith('read') || window.editMode.startsWith('preview'))) window.updatePreview();
     });
 });

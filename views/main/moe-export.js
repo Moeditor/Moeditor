@@ -32,7 +32,7 @@ function render(s, type, cb) {
     MoeMark.setOptions({
         math: moeApp.config.get('math'),
         umlchart: moeApp.config.get('uml-diagrams'),
-        highlight: function(code, lang) {
+        highlight: (code, lang) => {
             haveCode = true;
             return MoeditorHighlight(code, lang);
         }
@@ -46,18 +46,18 @@ function render(s, type, cb) {
     }
 
     MoeMark(s, {
-        mathRenderer: function(s, display) {
+        mathRenderer: (s, display) => {
             haveMath = true;
             mathCnt++, mathID++;
             var id = 'math-' + mathID;
             var res = '<span id="' + id + '"></span>'
-            MoeditorMathRenderer.renderForExport(type, s, display, function(res, id) {
+            MoeditorMathRenderer.renderForExport(type, s, display, (res, id) => {
                 math[id] = res;
                 if (!--mathCnt && !rendering) finish();
             }, mathID);
             return res;
         }
-    }, function(err, val) {
+    }, (err, val) => {
         rendered = jQuery(jQuery.parseHTML('<span>' + val + '</span>'));
         rendering = false;
         if (!mathCnt) finish();
@@ -65,7 +65,7 @@ function render(s, type, cb) {
 }
 
 function html(cb) {
-    render(w.content, 'html', function(res, haveMath, haveCode) {
+    render(w.content, 'html', (res, haveMath, haveCode) => {
         res = res.split('moemark-linenumber').join('span');
         const doc = document.implementation.createHTMLDocument();
         const head = doc.querySelector('head');
@@ -87,7 +87,7 @@ function html(cb) {
 }
 
 function pdf(cb) {
-    render(w.content, 'pdf', function(res, haveMath, haveCode) {
+    render(w.content, 'pdf', (res, haveMath, haveCode) => {
         res = res.split('moemark-linenumber').join('span');
         const doc = document.implementation.createHTMLDocument();
         const head = doc.querySelector('head');
@@ -125,14 +125,14 @@ if (!flag) {
     flag = true;
     const ipcRenderer = require('electron').ipcRenderer;
     const MoeditorAction = require('electron').remote.require('./moe-action');
-    ipcRenderer.on('action-export-html', function() {
-        MoeditorAction.exportAsHTML(w.window, function(cb) {
+    ipcRenderer.on('action-export-html', () => {
+        MoeditorAction.exportAsHTML(w.window, (cb) => {
             html(cb);
         });
     });
 
-    ipcRenderer.on('action-export-pdf', function() {
-        MoeditorAction.exportAsPDF(w.window, function(cb) {
+    ipcRenderer.on('action-export-pdf', () => {
+        MoeditorAction.exportAsPDF(w.window, (cb) => {
             pdf(cb);
         });
     });

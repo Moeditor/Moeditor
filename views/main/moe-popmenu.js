@@ -19,12 +19,12 @@
 
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const popUpLayer = document.getElementById('popup-layer');
     const popUpMenus = popUpLayer.getElementsByClassName('popup-menu');
 
     var mouse = { x: 0, y: 0 };
-    document.addEventListener('mousemove', function(e) {
+    document.addEventListener('mousemove', (e) => {
         mouse.x = e.pageX;
         mouse.y = e.pageY;
     });
@@ -48,13 +48,13 @@ document.addEventListener('DOMContentLoaded', function() {
     window.toggleMenu = toggleMenu;
 
     for (const m of popUpMenus) {
-        m.addEventListener('blur', function() {
+        m.addEventListener('blur', () => {
             hideMenu(m);
         });
 
         const menuItems = m.getElementsByTagName('li');
         for (const it of menuItems) {
-            it.addEventListener('click', function() {
+            it.addEventListener('click', () => {
                 hideMenu(m);
             })
         }

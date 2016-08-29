@@ -21,7 +21,7 @@
 
 const MoeditorAction = require('electron').remote.require('./moe-action');
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const sideMenuButton = document.getElementById('button-bottom-menu');
     const sideMenu = document.getElementById('side-menu');
     const sideMenuCover = document.getElementById('side-menu-cover');
@@ -44,42 +44,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuItems = sideMenu.querySelectorAll('li:not(.break)');
     for (const e of menuItems) e.addEventListener('click', hideMenu);
 
-    sideMenu.querySelector('li[data-action=new]').addEventListener('click', function() {
+    sideMenu.querySelector('li[data-action=new]').addEventListener('click', () => {
         MoeditorAction.openNew();
     });
 
-    sideMenu.querySelector('li[data-action=open]').addEventListener('click', function() {
+    sideMenu.querySelector('li[data-action=open]').addEventListener('click', () => {
         MoeditorAction.open(w.window);
     });
 
-    sideMenu.querySelector('li[data-action=save]').addEventListener('click', function() {
+    sideMenu.querySelector('li[data-action=save]').addEventListener('click', () => {
         MoeditorAction.save(w.window);
     });
 
-    sideMenu.querySelector('li[data-action=save-as]').addEventListener('click', function() {
+    sideMenu.querySelector('li[data-action=save-as]').addEventListener('click', () => {
         MoeditorAction.saveAs(w.window);
     });
 
-    sideMenu.querySelector('li[data-action=export-as-html]').addEventListener('click', function() {
+    sideMenu.querySelector('li[data-action=export-as-html]').addEventListener('click', () => {
         const MoeditorExport = require('./moe-export');
-        MoeditorAction.exportAsHTML(w.window, function(cb) {
+        MoeditorAction.exportAsHTML(w.window, (cb) => {
             MoeditorExport.html(cb);
         });
     });
 
-    sideMenu.querySelector('li[data-action=export-as-pdf]').addEventListener('click', function() {
+    sideMenu.querySelector('li[data-action=export-as-pdf]').addEventListener('click', () => {
         const MoeditorExport = require('./moe-export');
-        MoeditorAction.exportAsPDF(w.window, function(cb) {
+        MoeditorAction.exportAsPDF(w.window, (cb) => {
             MoeditorExport.pdf(cb);
         });
     });
 
-    sideMenu.querySelector('li[data-action=about]').addEventListener('click', function() {
+    sideMenu.querySelector('li[data-action=about]').addEventListener('click', () => {
         const ipcRenderer = require('electron').ipcRenderer;
         ipcRenderer.send('show-about-window');
     });
 
-    sideMenu.querySelector('li[data-action=settings]').addEventListener('click', function() {
+    sideMenu.querySelector('li[data-action=settings]').addEventListener('click', () => {
         const ipcRenderer = require('electron').ipcRenderer;
         ipcRenderer.send('show-settings-window');
     });

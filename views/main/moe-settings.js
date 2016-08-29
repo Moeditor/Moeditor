@@ -69,7 +69,7 @@ setEditorFontSize(moeApp.config.get('editor-font-size'));
 setEditorLineHeight(moeApp.config.get('editor-line-height'));
 
 const ipcRenderer = require('electron').ipcRenderer;
-ipcRenderer.on('setting-changed', function(e, arg) {
+ipcRenderer.on('setting-changed', (e, arg) => {
     if (arg.key === 'editor-font') {
         setEditorFont(arg.val);
     } else if (arg.key === 'editor-theme') {

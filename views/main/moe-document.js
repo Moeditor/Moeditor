@@ -23,7 +23,7 @@ window.moeApp = require('electron').remote.app.moeApp;
 window.w = moeApp.newWindow;
 require('electron-titlebar');
 
-$(function() {
+$(() => {
     const MoeditorPreview = require('./moe-preview');
 
     document.querySelector('#editor textarea').innerText = w.content;
@@ -86,7 +86,7 @@ $(function() {
     });
 
     const leftPanel = document.getElementById('left-panel');
-    leftPanel.addEventListener('click', function(e) {
+    leftPanel.addEventListener('click', (e) => {
         if (e.target === leftPanel) editor.focus();
     });
 

@@ -60,9 +60,9 @@
         require('electron-titlebar');
         const s = require('electron').shell;
         const links = document.querySelectorAll('a');
-        for (var a of links) a.addEventListener('click', function(e) {
+        for (var a of links) a.addEventListener('click', (e) => {
             e.preventDefault();
-            if (this.href) s.openExternal(this.href);
+            if (a.href) s.openExternal(a.href);
         });
         </script>
     </body>
