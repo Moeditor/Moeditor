@@ -75,6 +75,12 @@ function setHighlightTheme(val) {
     link.href = path.resolve(path.dirname(path.dirname(require.resolve('highlight.js'))), `styles/${val}.css`);
 }
 
+function setTabSize(val) {
+    window.editor.setOption('tabSize', parseInt(val));
+    window.editor.setOption('indentUnit', parseInt(val));
+    window.editor.refresh();
+}
+
 setEditorFont(moeApp.config.get('editor-font'));
 setEditorTheme(moeApp.config.get('editor-theme'));
 setEditorFontSize(moeApp.config.get('editor-font-size'));
@@ -97,5 +103,7 @@ ipcRenderer.on('setting-changed', (e, arg) => {
         setUMLDiagrams(arg.val);
     } else if (arg.key === 'highlight-theme') {
         setHighlightTheme(arg.val);
+    } else if (arg.key === 'tab-size') {
+        setTabSize(arg.val);
     }
 });
