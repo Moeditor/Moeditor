@@ -32,7 +32,6 @@ $(() => {
         lineNumbers: false,
         mode: moeApp.config.get('math') ? 'gfm_math' : 'gfm',
         matchBrackets: true,
-        // scrollbarStyle: "simple",
         theme: moeApp.config.get('editor-theme'),
         lineWrapping: true,
         extraKeys: {
