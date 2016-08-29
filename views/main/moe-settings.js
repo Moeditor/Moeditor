@@ -56,11 +56,11 @@ function setMath(val) {
     if (val.toString() === 'true') window.editor.setOption('mode', 'gfm_math');
     else window.editor.setOption('mode', 'gfm');
     window.editor.refresh();
-    window.updatePreview();
+    window.updatePreview(true);
 }
 
 function setUMLDiagrams(val) {
-    window.updatePreview();
+    window.updatePreview(true);
 }
 
 setEditorFont(moeApp.config.get('editor-font'));

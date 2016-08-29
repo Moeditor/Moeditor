@@ -96,6 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     rightPanel.addEventListener('transitionend', (e) => {
-        if (e.target === rightPanel && (window.editMode.startsWith('read') || window.editMode.startsWith('preview'))) window.updatePreview();
+        if (e.target === rightPanel && (window.editMode.startsWith('read') || window.editMode.startsWith('preview'))) window.updatePreview(true);
     });
 });
