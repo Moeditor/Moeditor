@@ -14,7 +14,7 @@
  * but that is being removed from the platform: https://code.google.com/p/chromium/issues/detail?id=341854
  */
 
-module.exports = function(document) {
+module.exports = (document) => {
     var baseUrl = window.location.href
         .replace(window.location.hash, "");
 
@@ -32,7 +32,7 @@ module.exports = function(document) {
         *
         * Note: we're assuming the `xlink` prefix for the XLink namespace!
         */
-        .filter(function(element) {
+        .filter((element) => {
             if (element.getAttribute('href') !== null) {
                 element.setAttribute('xlink:href', element.getAttribute('href'));
             }
@@ -45,7 +45,7 @@ module.exports = function(document) {
         *
         * Note: we're assuming the `xlink` prefix for the XLink namespace!
         */
-        .forEach(function(element) {
+        .forEach((element) => {
             element.setAttribute("xlink:href", baseUrl + element.getAttribute("xlink:href"));
             if (element.getAttribute('href') !== null) {
                 element.setAttribute('href', element.getAttribute('xlink:href'));

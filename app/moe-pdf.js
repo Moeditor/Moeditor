@@ -53,9 +53,9 @@ function exportPDF(content, cb) {
     // workerWindow.webContents.openDevTools();
 }
 
-ipcMain.on('ready-export-pdf', function(event) {
-    workerWindow.webContents.printToPDF({}, function (error, data) {
-        MoeditorFile.writeAsync(fileName, data, function (error) {
+ipcMain.on('ready-export-pdf', (event) => {
+    workerWindow.webContents.printToPDF({}, (error, data) => {
+        MoeditorFile.writeAsync(fileName, data, (error) => {
             console.log(error);
             if (error) errorHandler(error);
             else {

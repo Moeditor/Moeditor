@@ -25,7 +25,7 @@ const app = require('electron').app,
 
 var moeApp = null, openFile = null;
 
-app.on("ready", function () {
+app.on("ready", () => {
     moeApp = new MoeditorApplication();
     if (openFile !== null) moeApp.osxOpenFile = openFile;
     global.moeApp = moeApp;
@@ -34,20 +34,20 @@ app.on("ready", function () {
 	moeApp.run();
 });
 
-app.on('window-all-closed', function () {
+app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
 		app.quit();
 	}
 });
 
-app.on('open-file', function(e, file) {
+app.on('open-file', (e, file) => {
     console.log(file);
     console.log(process.type);
     if (moeApp === null) openFile = file;
     else moeApp.open(file);
 });
 
-app.on('activate', function () {
+app.on('activate', () => {
     if (moeApp.windows.length == 0) {
         moeApp.open();
     }

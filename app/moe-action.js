@@ -113,7 +113,7 @@ class MoeditorAction {
             }
         );
         if (typeof fileName == 'undefined') return;
-        f(function(s) {
+        f((s) => {
             try {
                 w.moeditorWindow.window.webContents.send('pop-message', { type: 'info', content: __('Exporting as HTML, please wait ...') });
                 MoeditorFile.write(fileName, s);
@@ -138,7 +138,7 @@ class MoeditorAction {
             }
         );
         if (typeof fileName == 'undefined') return;
-        f(function(s) {
+        f((s) => {
             let errorHandler = (e) => {
                 w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: __('Can\'t export as PDF') + ', ' + e.toString() });
                 console.log('Can\'t export as PDF: ' + e.toString());

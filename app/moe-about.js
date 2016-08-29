@@ -42,10 +42,10 @@ function showAboutWindow() {
     aboutWindow = new BrowserWindow(conf);
     aboutWindow.loadURL('file://' + Const.path + '/views/about/about.html');
     if (moeApp.flag.debug | moeApp.config.get('debug')) aboutWindow.webContents.openDevTools();
-    aboutWindow.webContents.on('dom-ready', function() {
+    aboutWindow.webContents.on('dom-ready', () => {
         aboutWindow.show();
     });
-    aboutWindow.webContents.on('close', function() {
+    aboutWindow.webContents.on('close', () => {
         aboutWindow = undefined;
     })
 }

@@ -61,7 +61,7 @@ class MoeditorApplication {
         const a = process.argv;
         if (a[0].endsWith('electron') && a[1] == '.') a.shift(), a.shift();
         else a.shift();
-        var docs = a.filter(function (s) {
+        var docs = a.filter((s) => {
             if (s == '--debug') moeApp.flag.debug = true;
             else if (s == '--about') moeApp.flag.about = true;
             else if (s == '--settings') moeApp.flag.settings = true;
@@ -173,7 +173,7 @@ class MoeditorApplication {
 
     listenSettingChanges() {
         const ipcMain = require('electron').ipcMain;
-        ipcMain.on('setting-changed', function(e, arg) {
+        ipcMain.on('setting-changed', (e, arg) => {
             for (const window of require('electron').BrowserWindow.getAllWindows()) {
                 window.webContents.send('setting-changed', arg);
             }

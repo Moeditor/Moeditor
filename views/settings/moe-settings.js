@@ -19,7 +19,7 @@
 
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     window.moeApp = require('electron').remote.app.moeApp;
 
     window.localized.push(() => {
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (item.tagName === 'SELECT' || item.tagName === 'INPUT' || item.tagName === 'TEXTAREA') {
             if (item.tagName === 'INPUT' && item.type === 'checkbox') item.checked = oldVal;
             else item.value = oldVal;
-            item.addEventListener('change', function() {
+            item.addEventListener('change', () => {
                 let val;
                 if (item.tagName === 'INPUT' && item.type === 'checkbox') val = item.checked;
                 else val = item.value;

@@ -52,7 +52,7 @@ module.exports = class MoeditorPath {
             const x = new MoeditorPath(Path.join(this.path, name));
             this.list.push(x);
         }
-        this.list.sort(function(a, b) {
+        this.list.sort((a, b) => {
             if (a.isdir && !b.isdir) return -1;
             else if (!a.isdir && b.isdir) return 1;
             else return (a.name > b.name) - (a.name < b.name);

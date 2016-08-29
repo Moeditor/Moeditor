@@ -17,7 +17,7 @@
 *  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
 */
 
-module.exports = function(cb) {
+module.exports = (cb) => {
     const template = [
         {
             label: 'File',

@@ -24,7 +24,7 @@ const highlightjs = require('highlight.js');
 var LRUCache = require('lrucache');
 var cache = LRUCache(512);
 
-module.exports = function(code, lang) {
+module.exports = (code, lang) => {
     const key = lang + '|' + code;
     var res = cache.get(key);
     if (res === undefined) {

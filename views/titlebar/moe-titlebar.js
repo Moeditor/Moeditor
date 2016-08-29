@@ -17,10 +17,10 @@
  *  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
  */
 
-$(function() {
+$(() => {
     if (process.platform === 'darwin') return;
 
-    $('#titlebar .button, #titlebar img').on('dragstart', function(e) {
+    $('#titlebar .button, #titlebar img').on('dragstart', (e) => {
         e.preventDefault();
     });
 
@@ -28,34 +28,34 @@ $(function() {
 
     var w = remote.getCurrentWindow();
 
-    w.on('maximize', function() {
+    w.on('maximize', () => {
         $('#titlebar .button-img-maximize').hide();
         $('#titlebar .button-img-restore').show();
     });
 
-    w.on('unmaximize', function() {
+    w.on('unmaximize', () => {
         $('#titlebar .button-img-restore').hide();
         $('#titlebar .button-img-maximize').show();
     });
 
     // workaround for the .button is still :hover after maximize window
-    $('#titlebar .button').mouseover(function() {
+    $('#titlebar .button').mouseover(() => {
         $(this).addClass('hover');
-    }).mouseout(function() {
+    }).mouseout(() => {
         $(this).removeClass('hover');
     });
 
-    $('#titlebar .button-close').click(function () {
+    $('#titlebar .button-close').click(() => {
         var w = remote.getCurrentWindow();
         w.close();
     });
 
-    $('#titlebar .button-minimize').click(function () {
+    $('#titlebar .button-minimize').click(() => {
         var w = remote.getCurrentWindow();
         w.minimize();
     });
 
-    $('#titlebar .button-maximize').click(function () {
+    $('#titlebar .button-maximize').click(() => {
         var w = remote.getCurrentWindow();
         if (!w.isMaximized()) w.maximize();
         else w.unmaximize();

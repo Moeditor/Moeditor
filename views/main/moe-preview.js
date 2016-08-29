@@ -36,7 +36,7 @@ MoeMark.setOptions({
     umlRenderer: MoeditorUMLRenderer
 });
 
-module.exports = function (cm, force, cb) {
+module.exports = (cm, force, cb) => {
     function updateAsync() {
         updatePreview = false;
         updatePreviewRunning = true;
@@ -71,7 +71,7 @@ module.exports = function (cm, force, cb) {
         var rendering = true, rendered = null;
 
         MoeMark(content, {
-            mathRenderer: function(str, display) {
+            mathRenderer: (str, display) => {
                 var res = MoeditorMathRenderer.tryRender(str, display);
                 if (res !== undefined) {
                     return res;
@@ -83,7 +83,7 @@ module.exports = function (cm, force, cb) {
                     return res;
                 }
             }
-        }, function(err, val) {
+        }, (err, val) => {
             rendered = document.createElement('span');
             rendered.innerHTML = val;
             console.log(math);
@@ -107,7 +107,9 @@ module.exports = function (cm, force, cb) {
                     set.add(parseInt(elem.getAttribute('i')));
                 }
 
-                window.lineNumbers = (Array.from(set)).sort(function(a, b) { return a - b; });
+                window.lineNumbers = (Array.from(set)).sort((a, b) => {
+                    return a - b;
+                });
                 console.log(window.lineNumbers);
                 window.scrollMap = undefined;
 

@@ -66,7 +66,7 @@ class MoeditorWindow {
 	}
 
     registerEvents() {
-        this.window.on('close', function(e) {
+        this.window.on('close', (e) => {
             if (this.moeditorWindow.changed) {
                 const choice = dialog.showMessageBox(
                     this,

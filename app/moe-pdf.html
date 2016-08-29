@@ -3,9 +3,9 @@
 <body>
     <script>
         const ipcRenderer = require('electron').ipcRenderer;
-        ipcRenderer.on('export-pdf', function(e, content) {
+        ipcRenderer.on('export-pdf', (e, content) => {
             document.querySelector('html').innerHTML = content.s;
-            setTimeout(function() {
+            setTimeout(() => {
                 ipcRenderer.send('ready-export-pdf', content.path);
             }, 0);
         });

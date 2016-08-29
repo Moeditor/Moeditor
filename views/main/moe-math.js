@@ -33,7 +33,7 @@ module.exports = class MoeditorMathRenderer {
             html: type === 'pdf' ? true : false,
             svg: type === 'html' ? true : false,
             width: 0
-        }, function (data) {
+        }, (data) => {
             var res = data.errors ? data.errors.toString() : (type === 'pdf' ? data.html : data.svg);
             if (display) {
                 res = '<div style="width: 100%; text-align: center">' + res + '</div>';

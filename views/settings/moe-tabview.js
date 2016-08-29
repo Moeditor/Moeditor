@@ -17,7 +17,7 @@
  *  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const tabView = document.getElementsByClassName('tabview')[0];
     const tabs = tabView.getElementsByClassName('item');
     const panels = tabView.getElementsByClassName('panel');
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     for (const tab of tabs) {
         const s = tab.getAttribute('data-tab');
-        tab.addEventListener('click', function() {
+        tab.addEventListener('click', () => {
             if (tab.classList.contains('selected')) return;
             for (const panel of panels) {
                 if (panel.getAttribute('data-tab') === s) panel.style.display = 'block';

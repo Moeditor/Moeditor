@@ -19,7 +19,7 @@
 
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const treeView = document.getElementById('file-tree');
     function registerToggleTreeView() {
         const treeViewButton = document.getElementById('button-bottom-file-tree');
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function registerClickItem() {
-        treeView.addEventListener('click', function(event) {
+        treeView.addEventListener('click', (event) => {
             for (var e = event.target; !e.classList.contains('tree-view'); e = e.parentNode) {
                 if (e.classList.contains('tree-view-item')) {
                     clickItem(e);
