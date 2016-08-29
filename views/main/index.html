@@ -39,8 +39,6 @@
         <link rel="stylesheet" href="main/moe-scrollbar.css">
         <link rel="stylesheet" href="main/moe-popmenu.css">
         <link rel="stylesheet" href="main/moe-treeview.css">
-        <link rel="stylesheet" href="titlebar/moe-titlebar.css">
-        <script type="text/javascript" src="titlebar/moe-titlebar.js"></script>
 
         <script src="../node_modules/codemirror/lib/codemirror.js"></script>
         <script src="../node_modules/codemirror/mode/markdown/markdown.js"></script>
@@ -115,30 +113,9 @@
         <link rel="stylesheet" href="main/moe-style.css">
     </head>
     <body>
-        <div id="titlebar">
+        <div id="electron-titlebar" class="inset" style="z-index: 1; ">
             <div class="drag" id="drag-left"></div>
             <div class="drag" id="drag-right"></div>
-            <div class="button button-close">
-                <script>
-                if (process.platform === 'win32') document.write('<img src="titlebar/caption-buttons.svg#close">');
-                else if (process.platform === 'linux') document.write('<img src="titlebar/close.svg">');
-                </script>
-            </div>
-            <div class="button button-maximize">
-                <script>
-                if (process.platform === 'win32') document.write('<img class="button-img-maximize" src="titlebar/caption-buttons.svg#maximize">');
-                else if (process.platform === 'linux') document.write('<img class="button-img-maximize" src="titlebar/maximize.svg">');
-
-                if (process.platform === 'win32') document.write('<img style="display: none; " class="button-img-restore" src="titlebar/caption-buttons.svg#restore">');
-                else if (process.platform === 'linux') document.write('<img style="display: none; " class="button-img-restore" src="titlebar/restore.svg">');
-                </script>
-            </div>
-            <div class="button button-minimize">
-                <script>
-                if (process.platform === 'win32') document.write('<img src="titlebar/caption-buttons.svg#minimize">');
-                else if (process.platform === 'linux') document.write('<img src="titlebar/minimize.svg">');
-                </script>
-            </div>
         </div>
         <div id="side-menu">
             <div id="logo">MOEDITOR</div>

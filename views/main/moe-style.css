@@ -468,11 +468,11 @@ body[settings-editor-font="sans"] #editor  * {
     height: 100%;
 }
 
-#titlebar.read-mode #drag-left, #titlebar.write-mode #drag-left {
+body[settings-mode=read] #drag-left, body[settings-mode=write] #drag-left {
     width: calc(100% - 6px);
 }
 
-#titlebar.read-mode #drag-right, #titlebar.write-mode #drag-right {
+body[settings-mode=read] #drag-right, body[settings-mode=write] #drag-right {
     width: 0;
     right: 0;
 }

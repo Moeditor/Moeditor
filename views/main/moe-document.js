@@ -21,6 +21,7 @@
 
 window.moeApp = require('electron').remote.app.moeApp;
 window.w = moeApp.newWindow;
+require('electron-titlebar');
 
 $(function() {
     const MoeditorPreview = require('./moe-preview');

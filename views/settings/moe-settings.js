@@ -19,6 +19,8 @@
 
 'use strict';
 
+require('electron-titlebar');
+
 document.addEventListener('DOMContentLoaded', () => {
     window.moeApp = require('electron').remote.app.moeApp;
 
