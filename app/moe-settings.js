@@ -28,7 +28,7 @@ function showSettingsWindow() {
         icon: Const.path + "/icons/Moeditor.ico",
         autoHideMenuBar: true,
         width: 600 * moeApp.config.get('scale-factor'),
-        height: parseInt(275 * moeApp.config.get('scale-factor')),
+        height: parseInt(285 * moeApp.config.get('scale-factor')),
         webPreferences: {
             zoomFactor: moeApp.config.get('scale-factor')
         },
@@ -36,7 +36,7 @@ function showSettingsWindow() {
         show: false
     };
 
-    if (process.platform == 'darwin') conf.titleBarStyle = 'hidden';
+    if (process.platform == 'darwin') conf.titleBarStyle = 'hidden-inset';
     else conf.frame = false;
 
     settingsWindow = new BrowserWindow(conf);
