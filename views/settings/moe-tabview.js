@@ -22,8 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabs = tabView.getElementsByClassName('item');
     const panels = tabView.getElementsByClassName('panel');
 
-    console.log(tabs);
-
     for (const tab of tabs) {
         const s = tab.getAttribute('data-tab');
         tab.addEventListener('click', () => {

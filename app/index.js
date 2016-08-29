@@ -41,8 +41,6 @@ app.on('window-all-closed', () => {
 });
 
 app.on('open-file', (e, file) => {
-    console.log(file);
-    console.log(process.type);
     if (moeApp === null) openFile = file;
     else moeApp.open(file);
 });

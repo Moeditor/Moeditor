@@ -86,9 +86,7 @@ module.exports = (cm, force, cb) => {
         }, (err, val) => {
             rendered = document.createElement('span');
             rendered.innerHTML = val;
-            console.log(math);
             MoeditorMathRenderer.renderMany(math, (math) => {
-                console.log(math);
                 for (let id in math) rendered.querySelector('#' + id).innerHTML = math[id].res;
 
                 let imgs = rendered.querySelectorAll('img') || [];
@@ -110,7 +108,6 @@ module.exports = (cm, force, cb) => {
                 window.lineNumbers = (Array.from(set)).sort((a, b) => {
                     return a - b;
                 });
-                console.log(window.lineNumbers);
                 window.scrollMap = undefined;
 
                 document.getElementById('previewer').innerHTML = rendered.innerHTML;
