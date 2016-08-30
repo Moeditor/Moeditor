@@ -104,8 +104,15 @@ button.button-add-remove:not([disabled]):hover {
     border-color: #bbb;
 }
 
-button.button-add-remove:not([disabled]):hover ~ button.button-add-remove {
+select[data-key="render-theme"] ~ button.button-add-remove:not([disabled]):hover ~ button.button-add-remove,
+select[data-key="render-theme"]:hover ~ button.button-add,
+select#custom-csss:hover ~ div button.button-add-remove
+{
     border-left-color: #bbb;
+}
+
+select#custom-csss ~ div button.button-add-remove:not([disabled]):hover ~ button.button-add-remove {
+    border-top-color: #bbb;
 }
 
 button.button-add-remove:not([disabled]):active {

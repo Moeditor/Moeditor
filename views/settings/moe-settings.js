@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Save settings and send messages
     const ipcRenderer = require('electron').ipcRenderer;
 
-    const items = document.getElementsByClassName('settings-item');
+    const items = document.querySelectorAll('.settings-item[data-key]');
     for (const item of items) {
         const key = item.getAttribute('data-key');
         const oldVal = moeApp.config.get(key);
@@ -128,5 +128,60 @@ document.addEventListener('DOMContentLoaded', () => {
         let e = document.createEvent('HTMLEvents');
         e.initEvent('change', false, true);
         renderThemeSelect.dispatchEvent(e);
+    });
+
+    // Custom CSSs
+    let customCSSsSelect = document.querySelector('select#custom-csss');
+    function reloadCustomCSSsSelect() {
+        customCSSsSelect.innerHTML = '';
+        const custom = moeApp.config.get('custom-csss');
+        for (const x in custom) {
+            const option = document.createElement('option');
+            option.value = option.text = x;
+            option.selected = custom[x].selected;
+            customCSSsSelect.appendChild(option);
+        }
+    }
+    let customCSSsButtonAdd = document.querySelector('select#custom-csss ~ div button.button-add');
+    let customCSSsButtonRemove = document.querySelector('select#custom-csss ~ div button.button-remove');
+    function setCustomCSSsButtons() {
+        if (customCSSsSelect.selectedOptions.length === 0) {
+            customCSSsButtonRemove.setAttribute('disabled', null);
+        } else {
+            customCSSsButtonRemove.removeAttribute('disabled');
+        }
+    }
+    setCustomCSSsButtons();
+    customCSSsSelect.addEventListener('change', setCustomCSSsButtons);
+    customCSSsButtonAdd.addEventListener('click', () => {
+        dialog.showOpenDialog(window.w, { properties: ['multiSelections'] }, (fileNames) => {
+            if (!fileNames || fileNames.length === 0) return;
+            let csss = JSON.parse(JSON.stringify(moeApp.config.get('custom-csss')));
+            for (const s of fileNames) csss[path.basename(s)] = { fileName: s, selected: false };
+            moeApp.config.set('custom-csss', csss);
+            console.log(csss);
+            reloadCustomCSSsSelect();
+        });
+    });
+    customCSSsButtonRemove.addEventListener('click', () => {
+        if (customCSSsSelect.selectedOptions.length === 0) return;
+        let csss = JSON.parse(JSON.stringify(moeApp.config.get('custom-csss')));
+        for (let option of customCSSsSelect.selectedOptions) {
+            csss[option.value] = undefined;
+        }
+        moeApp.config.set('custom-csss', csss);
+        reloadCustomCSSsSelect();
+        let e = document.createEvent('HTMLEvents');
+        e.initEvent('change', false, true);
+        customCSSsSelect.dispatchEvent(e);
+    });
+    customCSSsSelect.addEventListener('change', () => {
+        let csss = JSON.parse(JSON.stringify(moeApp.config.get('custom-csss')));
+        for (let option of customCSSsSelect.querySelectorAll('option')) {
+            csss[option.value].selected = option.selected;
+        }
+        moeApp.config.set('custom-csss', csss);
+        console.log(csss);
+        ipcRenderer.send('setting-changed', { key: 'custom-csss', val: csss });
     });
 });

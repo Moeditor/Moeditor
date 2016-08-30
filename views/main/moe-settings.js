@@ -93,12 +93,26 @@ function setTabSize(val) {
     window.editor.refresh();
 }
 
+function setCustomCSSs(val) {
+    let a = document.getElementsByClassName('link-custom-csss');
+    if (a.length !== 0) for (let e of a) e.parentNode.removeChild(e);
+    console.log(val);
+    if (Object.getOwnPropertyNames(val).length !== 0) for (let x in val) if (val[x].selected) {
+        let link = document.createElement('link');
+        link.href = val[x].fileName;
+        link.rel = 'stylesheet';
+        link.className = 'link-custom-csss';
+        document.head.appendChild(link);
+    }
+}
+
 setEditorFont(moeApp.config.get('editor-font'));
 setEditorTheme(moeApp.config.get('editor-theme'));
 setEditorFontSize(moeApp.config.get('editor-font-size'));
 setEditorLineHeight(moeApp.config.get('editor-line-height'));
 setHighlightTheme(moeApp.config.get('highlight-theme'));
 setRenderTheme(moeApp.config.get('render-theme'));
+setCustomCSSs(moeApp.config.get('custom-csss'));
 
 const ipcRenderer = require('electron').ipcRenderer;
 ipcRenderer.on('setting-changed', (e, arg) => {
@@ -120,5 +134,7 @@ ipcRenderer.on('setting-changed', (e, arg) => {
         setRenderTheme(arg.val);
     } else if (arg.key === 'tab-size') {
         setTabSize(arg.val);
+    } else if (arg.key === 'custom-csss') {
+        setCustomCSSs(arg.val);
     }
 });

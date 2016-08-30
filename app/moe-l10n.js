@@ -157,6 +157,7 @@ const strings = {
         "UML Diagrams": "UML Diagrams",
         "Highlight Theme": "Highlight Theme",
         "Render Theme": "Render Theme",
+        "Custom CSSs": "Custom CSSs",
 
         "Default": "Default",
         "System Default": "System Default",
@@ -228,6 +229,7 @@ const strings = {
         "UML Diagrams": "UML 图表",
         "Highlight Theme": "高亮主题",
         "Render Theme": "渲染主题",
+        "Custom CSSs": "自定义 CSS",
 
         "Default": "默认",
         "System Default": "系统默认",

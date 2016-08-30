@@ -37,5 +37,6 @@ module.exports = {
     'auto-reload': 'auto',
     'highlight-theme': 'github',
     'render-theme': 'GitHub',
-    'custom-render-themes': {}
+    'custom-render-themes': {},
+    'custom-csss': {}
 };

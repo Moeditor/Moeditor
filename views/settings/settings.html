@@ -33,6 +33,7 @@
         const path = require('path');
         </script>
 
+        <link rel="stylesheet" href="moe-scrollbar.css">
         <script type="text/javascript" src="moe-localize.js"></script>
 
         <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
@@ -181,6 +182,24 @@
                                     </select>
                                     <button class="button-add-remove button-add" style="border-right: none; margin-left: -5px; "><i class="fa fa-plus" aria-hidden="true"></i></button>
                                     <button class="button-add-remove button-remove" style="margin-left: -4px; "><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                            <tr style="height: 75px; ">
+                                <td width="40%" class="l10n">Custom CSSs</td>
+                                <td width="60%">
+                                    <select class="settings-item" multiple size="5" id="custom-csss" style="height: 50px; width: calc(100% - 25px); font-size: 11px; ">
+                                        <script>
+                                        const a = moeApp.config.get('custom-csss');
+                                        for (const s in a) {
+                                            document.write(`<option value="${s}"${a[s].selected ? ' selected' : ''}>${s}</option>`);
+                                        }
+                                        </script>
+                                    </select>
+                                    <div style="display: inline-block; margin-left: -1px; position: absolute; ">
+                                        <button class="button-add-remove button-add" style="border-bottom: none; "><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <br>
+                                        <button class="button-add-remove button-remove"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
