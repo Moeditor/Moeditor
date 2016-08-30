@@ -34,6 +34,7 @@ function showSettingsWindow() {
             zoomFactor: moeApp.config.get('scale-factor')
         },
         resizable: false,
+        maximizable: false,
         show: debug
     };
 
