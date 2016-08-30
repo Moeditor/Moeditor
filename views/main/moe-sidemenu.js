@@ -44,15 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
         sideMenuCover.style.pointerEvents = 'none';
         setTimeout(() => {
             document.getElementById('main').classList.add('notransition');
-            if (clickedButton !== null) {
-                clickedButton.itemClicked();
-                clickedButton = null;
-            }
         }, 500);
     }
 
     sideMenuCover.addEventListener('click', hideMenu);
     sideMenuButton.addEventListener('click', showMenu);
+    sideMenu.addEventListener('transitionend', () => {
+        if (clickedButton !== null) {
+            setTimeout(clickedButton.itemClicked, 10);
+            clickedButton = null;
+        }
+    });
 
     const menuItems = sideMenu.querySelectorAll('li:not(.break)');
     for (const e of menuItems) e.addEventListener('click', () => {
