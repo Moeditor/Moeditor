@@ -208,7 +208,7 @@ html, body {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 45px;
+    height: 50px;
     z-index: 1000;
 }
 
@@ -344,7 +344,7 @@ body[settings-editor-font="sans"] #editor  * {
 }
 
 #container {
-    padding-top: 35px;
+    padding-top: 40px;
     padding-bottom: 30px;
     padding-left: 45px;
     padding-right: 40px;
@@ -397,8 +397,8 @@ body[settings-editor-font="sans"] #editor  * {
     overflow-y: scroll !important;
     padding-left: 45px;
     padding-right: 20px;
-    margin-top: 35px;
-    height: calc(100% - 35px);
+    padding-top: 35px;
+    height: calc(100% - 35px - 35px);
     width: calc(100% - 45px - 20px - 24px + 30px) !important;
     transition: all 500ms ease-in-out;
 }

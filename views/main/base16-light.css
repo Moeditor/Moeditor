@@ -32,7 +32,7 @@
 }
 
 #left-panel .cover-top {
-    background: linear-gradient(to bottom, rgb(245, 245, 245) 70%, transparent);
+    background: linear-gradient(to bottom, rgb(245, 245, 245) 40%, transparent);
 }
 
 #cover-bottom #cover-bottom-background-left {
