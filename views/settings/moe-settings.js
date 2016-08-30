@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             });
+            ipcRenderer.send('setting-changed', { key: 'locale', val: selectLocale.value });
         });
     });
 
