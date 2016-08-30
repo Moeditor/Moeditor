@@ -81,6 +81,12 @@ function html(cb) {
             styleHLJS.innerHTML = MoeditorFile.read(path.resolve(path.dirname(path.dirname(require.resolve('highlight.js'))), `styles/${moeApp.config.get('highlight-theme')}.css`), '').toString();
             head.appendChild(styleHLJS);
         }
+        const customCSSs = moeApp.config.get('custom-csss');
+        if (Object.getOwnPropertyNames(customCSSs).length !== 0) for (let x in customCSSs) if (customCSSs[x].selected) {
+            let style = doc.createElement('style');
+            style.innerHTML = MoeditorFile.read(customCSSs[x].fileName);
+            doc.head.appendChild(style);
+        }
         const body = doc.querySelector('body');
         body.id = 'container';
         body.className = 'export export-html';
@@ -110,6 +116,13 @@ function pdf(cb) {
             const styleMathJax = doc.createElement('style');
             styleMathJax.innerHTML = MoeditorFile.read(moeApp.Const.path + '/views/main/mathjax.css', '').toString().split('../node_modules').join('file://' + moeApp.Const.path + '/node_modules');
             head.appendChild(styleMathJax);
+        }
+        const customCSSs = moeApp.config.get('custom-csss');
+        if (Object.getOwnPropertyNames(customCSSs).length !== 0) for (let x in customCSSs) if (customCSSs[x].selected) {
+            let link = doc.createElement('link');
+            link.href = customCSSs[x].fileName;
+            link.rel = 'stylesheet';
+            doc.head.appendChild(link);
         }
         const body = doc.querySelector('body');
         body.id = 'container';
