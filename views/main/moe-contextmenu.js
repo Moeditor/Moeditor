@@ -50,8 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const remote = require('electron').remote;
     const {Menu, MenuItem} = remote;
     const menu = Menu.buildFromTemplate(template);
+    const editor = document.getElementById('editor'), containerWrapper = document.getElementById('container-wrapper');
     window.addEventListener('contextmenu', (e) => {
         e.preventDefault();
-        menu.popup(remote.getCurrentWindow());
+        if (editor.contains(e.target) || containerWrapper.contains(e.target)) {
+            menu.popup(remote.getCurrentWindow());
+        }
     });
 });
