@@ -156,7 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
     setCustomCSSsButtons();
     customCSSsSelect.addEventListener('change', setCustomCSSsButtons);
     customCSSsButtonAdd.addEventListener('click', () => {
-        dialog.showOpenDialog(window.w, { properties: ['multiSelections'] }, (fileNames) => {
+        dialog.showOpenDialog(window.w, {
+            properties: ['openFile', 'multiSelections'],
+            filters: [
+                { name: __('CSS Files'), extensions: ['css'] },
+                { name: __('All Files'), extensions: ['*'] }
+            ]
+        }, (fileNames) => {
             if (!fileNames || fileNames.length === 0) return;
             let csss = JSON.parse(JSON.stringify(moeApp.config.get('custom-csss')));
             for (const s of fileNames) csss[path.basename(s)] = { fileName: s, selected: false };
