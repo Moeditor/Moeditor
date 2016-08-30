@@ -171,7 +171,15 @@ const strings = {
 
         "Auto": "Auto",
         "Prompt": "Prompt",
-        "Never": "Never"
+        "Never": "Never",
+
+        "Undo": "Undo",
+        "Redo": "Redo",
+        "Cut": "Cut",
+        "Copy": "Copy",
+        "Paste": "Paste",
+        "Delete": "Delete",
+        "Select All": "Select All"
 	},
     "zh_CN": {
         "New": "新建",
@@ -243,7 +251,15 @@ const strings = {
 
         "Auto": "自动",
         "Prompt": "询问",
-        "Never": "从不"
+        "Never": "从不",
+
+        "Undo": "撤销",
+        "Redo": "重做",
+        "Cut": "剪切",
+        "Copy": "复制",
+        "Paste": "粘贴",
+        "Delete": "删除",
+        "Select All": "全选"
     },
 	"de": {
         "Yes": "Ja",

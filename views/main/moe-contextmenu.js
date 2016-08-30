@@ -20,41 +20,70 @@
 'use strict'
 
 document.addEventListener('DOMContentLoaded', () => {
-    const template = [
-        {
-            role: 'undo'
-        },
-        {
-            role: 'redo'
-        },
-        {
-            type: 'separator'
-        },
-        {
-            role: 'cut'
-        },
-        {
-            role: 'copy'
-        },
-        {
-            role: 'paste'
-        },
-        {
-            role: 'delete'
-        },
-        {
-            role: 'selectall'
-        }
-    ];
-
     const remote = require('electron').remote;
     const {Menu, MenuItem} = remote;
-    const menu = Menu.buildFromTemplate(template);
+
     const editor = document.getElementById('editor'), containerWrapper = document.getElementById('container-wrapper');
+
     window.addEventListener('contextmenu', (e) => {
         e.preventDefault();
         if (editor.contains(e.target) || containerWrapper.contains(e.target)) {
-            menu.popup(remote.getCurrentWindow());
+            const inEditor = editor.contains(e.target);
+            const template = [
+                {
+                    label: __('Undo'),
+                    enabled: window.editor.doc.historySize().undo !== 0,
+                    click(item, w) {
+                        window.editor.undo();
+                    }
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    label: __('Cut'),
+                    enabled: inEditor && window.editor.doc.somethingSelected(),
+                    click(item, w) {
+                        w.webContents.sendInputEvent({ type: 'keyDown', modifiers: ['control'], keyCode: 'X' });
+                        w.webContents.sendInputEvent({ type: 'keyUp', modifiers: ['control'], keyCode: 'X' });
+                    }
+                },
+                {
+                    label: __('Copy'),
+                    enabled: inEditor ? window.editor.doc.somethingSelected() : (document.getSelection().type === 'Range'),
+                    click(item, w) {
+                        w.webContents.sendInputEvent({ type: 'keyDown', modifiers: ['control'], keyCode: 'C' });
+                        w.webContents.sendInputEvent({ type: 'keyUp', modifiers: ['control'], keyCode: 'C' });
+                    }
+                },
+                {
+                    label: __('Paste'),
+                    enabled: inEditor && require('electron').clipboard.readText().length !== 0,
+                    click(item, w) {
+                        w.webContents.sendInputEvent({ type: 'keyDown', modifiers: ['control'], keyCode: 'V' });
+                        w.webContents.sendInputEvent({ type: 'keyUp', modifiers: ['control'], keyCode: 'V' });
+                    }
+                },
+                {
+                    label: __('Delete'),
+                    enabled: inEditor && window.editor.doc.somethingSelected(),
+                    click(item, w) {
+                        w.webContents.sendInputEvent({ type: 'keyDown', modifiers: [], keyCode: 'Delete' });
+                        w.webContents.sendInputEvent({ type: 'keyUp', modifiers: [], keyCode: 'Delete' });
+                    }
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    label: __('Select All'),
+                    click(item, w) {
+                        w.webContents.sendInputEvent({ type: 'keyDown', modifiers: ['control'], keyCode: 'A' });
+                        w.webContents.sendInputEvent({ type: 'keyUp', modifiers: ['control'], keyCode: 'A' });
+                    }
+                }
+            ];
+            Menu.buildFromTemplate(template).popup(remote.getCurrentWindow());
         }
     });
 });

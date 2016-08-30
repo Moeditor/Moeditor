@@ -19,10 +19,10 @@
 */
 
 window.localized = [];
-function localize() {
-    document.querySelector('html').setAttribute('lang', moeApp.locale.locale);
-	window.__ = moeApp.locale.get;
+document.querySelector('html').setAttribute('lang', moeApp.locale.locale);
+window.__ = moeApp.locale.get;
 
+function localize() {
     let elements;
 
     elements = document.getElementsByClassName('l10n') || [];
