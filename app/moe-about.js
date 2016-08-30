@@ -24,6 +24,7 @@ const {BrowserWindow, ipcMain} = require('electron');
 var aboutWindow;
 
 function showAboutWindow() {
+    if (typeof aboutWindow !== 'undefined') return;
     const debug = (moeApp.flag.debug | moeApp.config.get('debug')) != 0;
     var conf = {
         icon: Const.path + "/icons/Moeditor.ico",
