@@ -18,19 +18,19 @@
 */
 
 module.exports = (cb) => {
-    const template = [
+    let template = [
         {
-            label: __('File'),
+            localize() { this.label = __('File'); },
             submenu: [
                 {
-                    label: __('New'),
+                    localize() { this.label = __('New'); },
                     accelerator: 'Command + N',
                     click(item, w) {
                         cb.fileNew(w);
                     }
                 },
                 {
-                    label: __('Open') + '...',
+                    localize() { this.label = __('Open') + '...'; },
                     accelerator: 'Command + O',
                     click(item, w) {
                         cb.fileOpen(w);
@@ -40,13 +40,13 @@ module.exports = (cb) => {
                     type: 'separator'
                 },
                 {
-                    label: __('Save'),
+                    localize() { this.label = __('Save'); },
                     accelerator: 'Command + S',
                     click(item, w) {
                         cb.fileSave(w);
                     }
                 },{
-                    label: __('Save as'),
+                    localize() { this.label = __('Save as'); },
                     accelerator: 'Command + Option + S',
                     click(item, w) {
                         cb.fileSaveAs(w);
@@ -54,16 +54,16 @@ module.exports = (cb) => {
                 },{
                     type: 'separator'
                 },{
-                    label: __('Export'),
+                    localize() { this.label = __('Export'); },
                     submenu: [
                         {
-                            label: 'HTML...',
+                            localize() { this.label = 'HTML...'; },
                             accelerator: 'Command + Option + E',
                             click(item, w) {
                                 cb.fileExportHTML(w);
                             }
                         }, {
-                            label: 'PDF...',
+                            localize() { this.label = 'PDF...'; },
                             accelerator: 'Command + Option + P',
                             click(item, w) {
                                 cb.fileExportPDF(w);
@@ -74,61 +74,61 @@ module.exports = (cb) => {
             ]
         },
         {
-            label: __('Edit'),
+            localize() { this.label = __('Edit'); },
             submenu: [
                 {
-                    role: 'undo',
-                    label: __('Undo')
+                    localize() { this.label = __('Undo'); },
+                    role: 'undo'
                 },
                 {
-                    role: 'redo',
-                    label: __('Redo')
-                },
-                {
-                    type: 'separator'
-                },
-                {
-                    role: 'cut',
-                    label: __('Cut')
-                },
-                {
-                    role: 'copy',
-                    label: __('Copy')
-                },
-                {
-                    role: 'paste',
-                    label: __('Paste')
-                },
-                {
-                    role: 'delete',
-                    label: __('Delete')
-                },
-                {
-                    role: 'selectall',
-                    label: __('Select All')
+                    localize() { this.label = __('Redo'); },
+                    role: 'redo'
                 },
                 {
                     type: 'separator'
                 },
                 {
-                    label: __('Mode'),
+                    localize() { this.label = __('Cut'); },
+                    role: 'cut'
+                },
+                {
+                    localize() { this.label = __('Copy'); },
+                    role: 'copy'
+                },
+                {
+                    localize() { this.label = __('Paste'); },
+                    role: 'paste'
+                },
+                {
+                    localize() { this.label = __('Delete'); },
+                    role: 'delete'
+                },
+                {
+                    localize() { this.label = __('Select All'); },
+                    role: 'selectall'
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    localize() { this.label = __('Mode'); },
                     submenu: [
                         {
-                            label: __('Read Mode'),
+                            localize() { this.label = __('Read Mode'); },
                             accelerator: 'Command + Option + R',
                             click(item, focusedWindow) {
                                 if (focusedWindow) cb.modeToRead(focusedWindow);
                             }
                         },
                         {
-                            label: __('Write Mode'),
+                            localize() { this.label = __('Write Mode'); },
                             accelerator: 'Command + Option + G',
                             click(item, focusedWindow) {
                                 if (focusedWindow) cb.modeToWrite(focusedWindow);
                             }
                         },
                         {
-                            label: __('Preview Mode'),
+                            localize() { this.label = __('Preview Mode'); },
                             // accelerator: 'Command + Option + P', // It's been used for `Export PDF`.
                             click(item, focusedWindow) {
                                 if (focusedWindow) cb.modeToPreview(focusedWindow);
@@ -139,14 +139,14 @@ module.exports = (cb) => {
             ]
         },
         {
-            label: __('View'),
+            localize() { this.label = __('View'); },
             role: 'view',
             submenu: [
                 {
                     role: 'togglefullscreen'
                 },
                 {
-                    label: __('Toggle Developer Tools'),
+                    localize() { this.label = __('Toggle Developer Tools'); },
                     accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
                     click(item, focusedWindow) {
                         if (focusedWindow)
@@ -156,38 +156,38 @@ module.exports = (cb) => {
             ]
         },
         {
-            label: __('Window'),
+            localize() { this.label = __('Window'); },
             role: 'window',
             submenu: [
                 {
-                    label: __('Close'),
+                    localize() { this.label = __('Close'); },
                     accelerator: 'CmdOrCtrl+W',
                     role: 'close'
                 },
                 {
-                    label: __('Minimize'),
+                    localize() { this.label = __('Minimize'); },
                     accelerator: 'CmdOrCtrl+M',
                     role: 'minimize'
                 },
                 {
-                    label: __('Zoom'),
+                    localize() { this.label = __('Zoom'); },
                     role: 'zoom'
                 },
                 {
                     type: 'separator'
                 },
                 {
-                    label: __('Bring All to Front'),
+                    localize() { this.label = __('Bring All to Front'); },
                     role: 'front'
                 }
             ]
         },
         {
-            label: __('Help'),
+            localize() { this.label = __('Help'); },
             role: 'help',
             submenu: [
                 {
-                    label: 'Moeditor on GitHub',
+                    localize() { this.label = 'Moeditor on GitHub'; },
                     click() { require('electron').shell.openExternal('https://github.com/Moeditor/Moeditor'); }
                 },
             ]
@@ -200,7 +200,7 @@ module.exports = (cb) => {
             label: name,
             submenu: [
                 {
-                    label: __('About') + ' Moeditor',
+                    localize() { this.label = __('About') + ' Moeditor'; },
                     click() {
                         cb.about();
                     }
@@ -209,7 +209,7 @@ module.exports = (cb) => {
                     type: 'separator'
                 },
                 {
-                    label: __('Preference') + '...',
+                    localize() { this.label = __('Preference') + '...'; },
                     accelerator: 'Command + ,',
                     click() {
                         cb.settings();
@@ -220,36 +220,51 @@ module.exports = (cb) => {
                 },
                 {
                     role: 'services',
-                    label: __('Services'),
+                    localize() { this.label = __('Services'); },
                     submenu: []
                 },
                 {
                     type: 'separator'
                 },
                 {
-                    role: 'hide',
-                    label: __('Hide') + ' Moeditor'
+                    localize() { this.label = __('Hide') + ' Moeditor'; },
+                    role: 'hide'
                 },
                 {
-                    role: 'hideothers',
-                    label: __('Hide Others')
+                    localize() { this.label = __('Hide Others'); },
+                    role: 'hideothers'
                 },
                 {
-                    role: 'unhide',
-                    label: __('Show All')
+                    localize() { this.label = __('Show All'); },
+                    role: 'unhide'
                 },
                 {
                     type: 'separator'
                 },
                 {
-                    role: 'quit',
-                    label: __('Quit') + ' Moeditor'
+                    localize() { this.label = __('Quit') + ' Moeditor'; },
+                    role: 'quit'
                 },
             ]
         });
     }
 
-    const {Menu, MenuItem} = require('electron');
-    const menu = Menu.buildFromTemplate(template);
+    function localizeMenu(obj) {
+        if (obj == null || typeof obj !== 'object') return;
+        if (typeof obj.localize === 'function') obj.localize();
+        if (Object.getOwnPropertyNames(obj).length > 0) for (const key in obj) localizeMenu(obj[key]);
+    }
+    localizeMenu(template);
+
+    const {Menu, MenuItem, ipcMain} = require('electron');
+    let menu = Menu.buildFromTemplate(template);
     Menu.setApplicationMenu(menu);
+
+    ipcMain.on('setting-changed', (e, arg) => {
+        if (arg.key === 'locale') {
+            localizeMenu(template);
+            menu = Menu.buildFromTemplate(template);
+            Menu.setApplicationMenu(menu);
+        }
+    });
 };
