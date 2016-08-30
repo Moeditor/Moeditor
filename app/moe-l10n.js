@@ -179,7 +179,25 @@ const strings = {
         "Copy": "Copy",
         "Paste": "Paste",
         "Delete": "Delete",
-        "Select All": "Select All"
+        "Select All": "Select All",
+
+        "Services": "Services",
+        "Hide": "Hide",
+        "Hide Others": "Hide Others",
+        "Show All": "Show All",
+        "Quit": "Quit",
+        "Close": "Close",
+        "Minimize": "Minimize",
+        "Zoom": "Zoom",
+        "Bring All to Front": "Bring All to Front",
+        "File": "File",
+        "Export": "Export",
+        "Mode": "Mode",
+        "View": "View",
+        "Window": "Window",
+        "Help": "Help",
+        "Toggle Developer Tools": "Toggle Developer Tools",
+        "Preference": "Preference"
 	},
     "zh_CN": {
         "New": "新建",
@@ -259,7 +277,25 @@ const strings = {
         "Copy": "复制",
         "Paste": "粘贴",
         "Delete": "删除",
-        "Select All": "全选"
+        "Select All": "全选",
+
+        "Services": "服务",
+        "Hide": "隐藏",
+        "Hide Others": "隐藏其他",
+        "Show All": "显示全部",
+        "Quit": "退出",
+        "Close": "关闭",
+        "Minimize": "最小化",
+        "Zoom": "缩放",
+        "Bring All to Front": "前置全部窗口",
+        "File": "文件",
+        "Export": "导出",
+        "Mode": "模式",
+        "View": "查看",
+        "Window": "窗口",
+        "Help": "帮助",
+        "Toggle Developer Tools": "切换开发者工具",
+        "Preference": "偏好设置"
     },
 	"de": {
         "Yes": "Ja",

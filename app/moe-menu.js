@@ -20,17 +20,17 @@
 module.exports = (cb) => {
     const template = [
         {
-            label: 'File',
+            label: __('File'),
             submenu: [
                 {
-                    label: 'New',
+                    label: __('New'),
                     accelerator: 'Command + N',
                     click(item, w) {
                         cb.fileNew(w);
                     }
                 },
                 {
-                    label: 'Open...',
+                    label: __('Open') + '...',
                     accelerator: 'Command + O',
                     click(item, w) {
                         cb.fileOpen(w);
@@ -40,13 +40,13 @@ module.exports = (cb) => {
                     type: 'separator'
                 },
                 {
-                    label: 'Save',
+                    label: __('Save'),
                     accelerator: 'Command + S',
                     click(item, w) {
                         cb.fileSave(w);
                     }
                 },{
-                    label: 'Save As',
+                    label: __('Save as'),
                     accelerator: 'Command + Option + S',
                     click(item, w) {
                         cb.fileSaveAs(w);
@@ -54,7 +54,7 @@ module.exports = (cb) => {
                 },{
                     type: 'separator'
                 },{
-                    label: 'Export',
+                    label: __('Export'),
                     submenu: [
                         {
                             label: 'HTML...',
@@ -74,57 +74,61 @@ module.exports = (cb) => {
             ]
         },
         {
-            label: 'Edit',
+            label: __('Edit'),
             submenu: [
                 {
-                    role: 'undo'
+                    role: 'undo',
+                    label: __('Undo')
                 },
                 {
-                    role: 'redo'
-                },
-                {
-                    type: 'separator'
-                },
-                {
-                    role: 'cut'
-                },
-                {
-                    role: 'copy'
-                },
-                {
-                    role: 'paste'
-                },
-                {
-                    role: 'pasteandmatchstyle'
-                },
-                {
-                    role: 'delete'
-                },
-                {
-                    role: 'selectall'
+                    role: 'redo',
+                    label: __('Redo')
                 },
                 {
                     type: 'separator'
                 },
                 {
-                    label: 'Mode',
+                    role: 'cut',
+                    label: __('Cut')
+                },
+                {
+                    role: 'copy',
+                    label: __('Copy')
+                },
+                {
+                    role: 'paste',
+                    label: __('Paste')
+                },
+                {
+                    role: 'delete',
+                    label: __('Delete')
+                },
+                {
+                    role: 'selectall',
+                    label: __('Select All')
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    label: __('Mode'),
                     submenu: [
                         {
-                            label: 'Read',
+                            label: __('Read Mode'),
                             accelerator: 'Command + Option + R',
                             click(item, focusedWindow) {
                                 if (focusedWindow) cb.modeToRead(focusedWindow);
                             }
                         },
                         {
-                            label: 'Write',
+                            label: __('Write Mode'),
                             accelerator: 'Command + Option + G',
                             click(item, focusedWindow) {
                                 if (focusedWindow) cb.modeToWrite(focusedWindow);
                             }
                         },
                         {
-                            label: 'Preview',
+                            label: __('Preview Mode'),
                             // accelerator: 'Command + Option + P', // It's been used for `Export PDF`.
                             click(item, focusedWindow) {
                                 if (focusedWindow) cb.modeToPreview(focusedWindow);
@@ -135,20 +139,14 @@ module.exports = (cb) => {
             ]
         },
         {
-            label: 'View',
+            label: __('View'),
+            role: 'view',
             submenu: [
-                {
-                    label: 'Reload',
-                    accelerator: 'CmdOrCtrl+R',
-                    click(item, focusedWindow) {
-                        if (focusedWindow) focusedWindow.reload();
-                    }
-                },
                 {
                     role: 'togglefullscreen'
                 },
                 {
-                    label: 'Toggle Developer Tools',
+                    label: __('Toggle Developer Tools'),
                     accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
                     click(item, focusedWindow) {
                         if (focusedWindow)
@@ -158,22 +156,39 @@ module.exports = (cb) => {
             ]
         },
         {
+            label: __('Window'),
             role: 'window',
             submenu: [
                 {
+                    label: __('Close'),
+                    accelerator: 'CmdOrCtrl+W',
+                    role: 'close'
+                },
+                {
+                    label: __('Minimize'),
+                    accelerator: 'CmdOrCtrl+M',
                     role: 'minimize'
                 },
                 {
-                    role: 'close'
+                    label: __('Zoom'),
+                    role: 'zoom'
                 },
+                {
+                    type: 'separator'
+                },
+                {
+                    label: __('Bring All to Front'),
+                    role: 'front'
+                }
             ]
         },
         {
+            label: __('Help'),
             role: 'help',
             submenu: [
                 {
-                    label: 'Learn More',
-                    click() { require('electron').shell.openExternal('http://electron.atom.io'); }
+                    label: 'Moeditor on GitHub',
+                    click() { require('electron').shell.openExternal('https://github.com/Moeditor/Moeditor'); }
                 },
             ]
         },
@@ -185,7 +200,7 @@ module.exports = (cb) => {
             label: name,
             submenu: [
                 {
-                    label: 'About Moeditor',
+                    label: __('About') + ' Moeditor',
                     click() {
                         cb.about();
                     }
@@ -194,53 +209,44 @@ module.exports = (cb) => {
                     type: 'separator'
                 },
                 {
+                    label: __('Preference') + '...',
+                    accelerator: 'Command + ,',
+                    click() {
+                        cb.settings();
+                    }
+                },
+                {
+                    type: 'separator'
+                },
+                {
                     role: 'services',
+                    label: __('Services'),
                     submenu: []
                 },
                 {
                     type: 'separator'
                 },
                 {
-                    role: 'hide'
+                    role: 'hide',
+                    label: __('Hide') + ' Moeditor'
                 },
                 {
-                    role: 'hideothers'
+                    role: 'hideothers',
+                    label: __('Hide Others')
                 },
                 {
-                    role: 'unhide'
+                    role: 'unhide',
+                    label: __('Show All')
                 },
                 {
                     type: 'separator'
                 },
                 {
-                    role: 'quit'
+                    role: 'quit',
+                    label: __('Quit') + ' Moeditor'
                 },
             ]
         });
-        // Window menu.
-        template[3].submenu = [
-            {
-                label: 'Close',
-                accelerator: 'CmdOrCtrl+W',
-                role: 'close'
-            },
-            {
-                label: 'Minimize',
-                accelerator: 'CmdOrCtrl+M',
-                role: 'minimize'
-            },
-            {
-                label: 'Zoom',
-                role: 'zoom'
-            },
-            {
-                type: 'separator'
-            },
-            {
-                label: 'Bring All to Front',
-                role: 'front'
-            }
-        ];
     }
 
     const {Menu, MenuItem} = require('electron');

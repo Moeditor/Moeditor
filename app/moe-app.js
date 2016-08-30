@@ -131,6 +131,9 @@ class MoeditorApplication {
                 },
                 about: (w) => {
                     MoeditorAbout();
+                },
+                settings: (w) => {
+                    MoeditorSettings();
                 }
             }
         );
