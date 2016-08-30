@@ -88,7 +88,8 @@ class MoeditorLocale {
             "en": "English",
             "zh_CN": "Simplified Chinese",
             "de": "German",
-            "pt": "Portuguese"
+            "pt": "Portuguese",
+            "fr": "French"
         };
         for (let language in languages) {
             const localized = this.get(languages[language]);
@@ -322,5 +323,105 @@ const strings = {
         "HTML Documents": "Documentos HTML",
         "PDF Documents": "Documentos PDF",
         "All Files": "Todos Arquivos"
+	},
+	"fr": {
+        "New": "Nouveau",
+        "Open": "Ouvrir",
+        "Save": "Enregistrer",
+        "Save as": "Enregistrer sous",
+        "Export as HTML": "Exporter comme HTML",
+        "Export as PDF": "Exporter comme PDF",
+        "Settings": "Paramètres",
+        "About": "À propos",
+
+        "Menu": "Menu",
+        "Directory": "Répertoire",
+        "Toggle focus mode": "Baculer en mode focus",
+        "Edit mode": "Mode édition",
+
+        "Write Mode": "Mode écriture",
+        "Read Mode": "Mode lecture",
+        "Preview Mode": "Mode prévisualisation",
+        "Wide": "Large",
+        "Medium": "Moyen",
+        "Narrow": "Étroit",
+
+        "Yes": "Oui",
+        "No": "Non",
+        "Cancel": "Annuler",
+        "Confirm": "Confirmer",
+
+        "Save changes to file?": "Enregistrer les changements ?",
+        "File changed by another program, reload?": "Fichier modifié par un autre programme, recharger ?",
+
+        "Markdown Documents": "Documents Markdown",
+        "HTML Documents": "Documents HTML",
+        "PDF Documents": "Documents PDF",
+        "CSS Files": "Fichiers CSS",
+        "All Files": "Tous les fichiers",
+        "Saved successfully.": "Enregistrement réussi.",
+        "Can't save file": "Impossible d'enregistrer le fichier",
+        "Exporting as HTML, please wait ...": "Exportation comme HTML, veuillez patienter...",
+        "Exporting as PDF, please wait ...": "Exportation comme PDF, veuillez patienter...",
+        "Can't export as HTML": "Ne peut pas être exporté comme HTML",
+        "Can't export as PDF": "Ne peut pas être exporté comme PDF",
+
+        "General": "Général",
+        "Edit": "Édition",
+        "Appearance": "Apparence",
+        "Render": "Rendu",
+        "Language": "Langue",
+        "Reload when file changed": "Recharger quand le fichier est modifié",
+        "Font": "Police",
+        "Font Size": "Taille de la police",
+        "Line Height": "Hauteur de ligne",
+        "Tab Size": "Taille de tabulation",
+        "Color Theme": "Couleur du thème",
+        "TeX Math Expressions": "Expressions TeX Math",
+        "UML Diagrams": "Diagrammes UML",
+        "Highlight Theme": "Thème de coloration syntaxique",
+        "Render Theme": "Thème de rendu",
+        "Custom CSSs": "CSS personnalisés",
+
+        "Default": "Par défaut",
+        "System Default": "System Default",
+
+        "version": "version",
+
+        "English": "Anglais",
+        "Simplified Chinese": "Chinois simplifié",
+        "German": "Allemand",
+        "Portuguese": "Portuguais",
+        "French": "Français",
+
+        "Auto": "Auto",
+        "Prompt": "Demander",
+        "Never": "Jamais",
+
+        "Undo": "Annuler",
+        "Redo": "Refaire",
+        "Cut": "Coupper",
+        "Copy": "Copier",
+        "Paste": "Coller",
+        "Delete": "Supprimer",
+        "Select All": "Tout sélectionner",
+
+        "Services": "Services",
+        "Hide": "Cacher",
+        "Hide Others": "Cacher les autres",
+        "Show All": "Afficher tout",
+        "Quit": "Quitter",
+        "Close": "Fermer",
+        "Minimize": "Minimiser",
+        "Zoom": "Zoom",
+        "Bring All to Front": "Tout devant",
+        "File": "Fichier",
+        "Export": "Exportation",
+        "Mode": "Mode",
+        "View": "Voir",
+        "Window": "Fenêtre",
+        "Help": "Aide",
+        "Toggle Developer Tools": "Basculer les outils développeurs",
+        "Preference": "Préférence"
 	}
 }
