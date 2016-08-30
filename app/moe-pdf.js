@@ -54,18 +54,21 @@ function exportPDF(content, cb) {
 }
 
 ipcMain.on('ready-export-pdf', (event) => {
-    workerWindow.webContents.printToPDF({}, (error, data) => {
-        MoeditorFile.writeAsync(fileName, data, (error) => {
-            console.log(error);
-            if (error) errorHandler(error);
-            else {
-                shell.openItem(fileName);
-                workerWindow.destroy();
-                workerWindow = undefined;
-                MoeditorFile.remove(tmp);
-            }
+    setTimeout(() => {
+        workerWindow.webContents.printToPDF({
+            printBackground: true
+        }, (error, data) => {
+            MoeditorFile.writeAsync(fileName, data, (error) => {
+                if (error) errorHandler(error);
+                else {
+                    shell.openItem(fileName);
+                    workerWindow.destroy();
+                    workerWindow = undefined;
+                    MoeditorFile.remove(tmp);
+                }
+            })
         })
-    })
+    }, 1000);
 });
 
 module.exports = exportPDF;

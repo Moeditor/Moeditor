@@ -20,6 +20,7 @@
 'use strict'
 
 const MoeditorFile = require('../../app/moe-file');
+const path = require('path');
 
 function render(s, type, cb) {
     const MoeditorHighlight = require('./moe-highlight');
@@ -72,15 +73,17 @@ function html(cb) {
         const meta = doc.createElement('meta');
         meta.setAttribute('charset', 'utf-8');
         head.appendChild(meta);
-        const stylePreview = doc.createElement('style');
-        stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/views/main/preview.css', '').toString().split('#container').join('body');
-        head.appendChild(stylePreview);
+        const style = doc.createElement('style');
+        style.innerHTML = MoeditorFile.read(`${app.getAppPath()}/themes/${moeApp.config.get('render-theme')}/style.css`, '').toString();
+        head.appendChild(style);
         if (haveCode) {
             const styleHLJS = doc.createElement('style');
-            styleHLJS.innerHTML = MoeditorFile.read(moeApp.Const.path + '/node_modules/highlight.js/styles/github.css', '').toString();
+            styleHLJS.innerHTML = MoeditorFile.read(path.resolve(path.dirname(path.dirname(require.resolve('highlight.js'))), `styles/${moeApp.config.get('highlight-theme')}.css`), '').toString();
             head.appendChild(styleHLJS);
         }
         const body = doc.querySelector('body');
+        body.id = 'container';
+        body.className = 'export export-html';
         body.innerHTML = res;
         cb('<!doctype html>\n<html>\n' + doc.querySelector('html').innerHTML + '\n</html>');
     });
@@ -94,12 +97,13 @@ function pdf(cb) {
         const meta = doc.createElement('meta');
         meta.setAttribute('charset', 'utf-8');
         head.appendChild(meta);
-        const stylePreview = doc.createElement('style');
-        stylePreview.innerHTML = MoeditorFile.read(moeApp.Const.path + '/views/main/preview.css', '').toString().split('#container').join('body') + '*{overflow: visible !important;}';
-        head.appendChild(stylePreview);
+        const link = doc.createElement('link');
+        link.href = `${app.getAppPath()}/themes/${moeApp.config.get('render-theme')}/style.css`;
+        link.rel = 'stylesheet';
+        head.appendChild(link);
         if (haveCode) {
             const styleHLJS = doc.createElement('style');
-            styleHLJS.innerHTML = MoeditorFile.read(moeApp.Const.path + '/node_modules/highlight.js/styles/github.css', '').toString();
+            styleHLJS.innerHTML = MoeditorFile.read(path.resolve(path.dirname(path.dirname(require.resolve('highlight.js'))), `styles/${moeApp.config.get('highlight-theme')}.css`), '').toString();
             head.appendChild(styleHLJS);
         }
         if (haveMath) {
@@ -108,6 +112,8 @@ function pdf(cb) {
             head.appendChild(styleMathJax);
         }
         const body = doc.querySelector('body');
+        body.id = 'container';
+        body.className = 'export export-pdf';
         body.innerHTML = res + ' \
 <script> \
     const ipcRenderer = require(\'electron\').ipcRenderer; \
