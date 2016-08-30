@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 else val = item.value;
                 console.log(key + ': ' + val);
                 moeApp.config.set(key, val);
-                ipcRenderer.send('setting-changed', { key: key, val: val });
+                if (!item.classList.contains('dont-notify')) ipcRenderer.send('setting-changed', { key: key, val: val });
             });
         }
     }
