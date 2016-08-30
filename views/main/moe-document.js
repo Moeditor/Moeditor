@@ -80,6 +80,21 @@ $(() => {
 
     const s = require('electron').shell;
 
+    const containerWrapper = document.getElementById('container-wrapper');
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.keyCode == 65) {
+            if (document.getElementById('editor').contains(e.target)) {
+                return;
+            } else if (containerWrapper.contains(e.target)) {
+                let sel = window.getSelection();
+                let rg = document.createRange();
+                rg.selectNodeContents(containerWrapper);
+                sel.removeAllRanges();
+                sel.addRange(rg);
+            }
+            e.preventDefault();
+        }
+    });
     $("#container").on('click', 'a', function(e) {
         e.preventDefault();
         s.openExternal(this.href);

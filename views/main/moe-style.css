@@ -24,6 +24,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    -webkit-user-select: none;
 }
 
 #side-menu {
@@ -34,7 +35,6 @@ html, body {
     transition: all 500ms ease-in-out;
     padding-top: 45px;
     padding-bottom: 45px;
-    -webkit-user-select: none;
     cursor: default;
     z-index: 1;
     position: absolute;
@@ -148,6 +148,7 @@ html, body {
     height: 100%;
     overflow: auto;
     transition: all 500ms ease-in-out;
+    -webkit-user-select: initial;
 }
 
 #main.write-mode.write-mode-thin .CodeMirror-scroll {
@@ -199,7 +200,6 @@ html, body {
     top: 0;
     width: 50%;
     height: 100%;
-    -webkit-user-select: none;
     cursor: default;
     z-index: 1000;
 }
@@ -340,6 +340,7 @@ body[settings-editor-font="sans"] #editor  * {
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
+    outline: none;
 }
 
 #container {
@@ -349,6 +350,7 @@ body[settings-editor-font="sans"] #editor  * {
     padding-right: 40px;
     font-size: 14 !important;
     transition: all 500ms ease-in-out;
+    -webkit-user-select: initial;
 }
 
 #main.read-mode #container {
