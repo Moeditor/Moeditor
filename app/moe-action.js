@@ -94,6 +94,7 @@ class MoeditorAction {
             w.moeditorWindow.window.setDocumentEdited(false);
             w.moeditorWindow.window.setRepresentedFilename(fileName);
             w.moeditorWindow.window.webContents.send('pop-message', { type: 'success', content: __('Saved successfully.') });
+            w.moeditorWindow.window.webContents.send('set-title', fileName);
         } catch (e) {
             w.moeditorWindow.window.webContents.send('pop-message', { type: 'error', content: __('Can\'t save file') + ', ' + e.toString() });
             console.log('Can\'t save file: ' + e.toString());

@@ -27,6 +27,9 @@ require('electron-titlebar');
 $(() => {
     const MoeditorPreview = require('./moe-preview');
 
+    if (w.fileName !== '') {
+        document.getElementsByTagName('title')[0].innerText = 'Moeditor - ' + require('path').basename(w.fileName);
+    }
     document.querySelector('#editor textarea').innerText = w.content;
 
     var editor = CodeMirror.fromTextArea(document.querySelector('#editor textarea'), {
@@ -109,6 +112,10 @@ $(() => {
     document.getElementById('button-bottom-focus').addEventListener('click', function() {
         document.getElementById('editor').classList.toggle('focus');
         moeApp.config.set('focus-mode', document.getElementById('editor').classList.contains('focus'));
+    });
+
+    require('electron').ipcRenderer.on('set-title', (e, fileName) => {
+        document.getElementsByTagName('title')[0].innerText = 'Moeditor - ' + require('path').basename(fileName);
     });
 
     require('./moe-settings');
