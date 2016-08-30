@@ -43,26 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     label: __('Cut'),
                     enabled: inEditor && window.editor.doc.somethingSelected(),
-                    click(item, w) {
-                        w.webContents.sendInputEvent({ type: 'keyDown', modifiers: ['control'], keyCode: 'X' });
-                        w.webContents.sendInputEvent({ type: 'keyUp', modifiers: ['control'], keyCode: 'X' });
-                    }
+                    role: inEditor && window.editor.doc.somethingSelected() ? 'cut' : ''
                 },
                 {
                     label: __('Copy'),
                     enabled: inEditor ? window.editor.doc.somethingSelected() : (document.getSelection().type === 'Range'),
-                    click(item, w) {
-                        w.webContents.sendInputEvent({ type: 'keyDown', modifiers: ['control'], keyCode: 'C' });
-                        w.webContents.sendInputEvent({ type: 'keyUp', modifiers: ['control'], keyCode: 'C' });
-                    }
+                    role: (inEditor ? window.editor.doc.somethingSelected() : (document.getSelection().type === 'Range')) ? 'copy' : ''
                 },
                 {
                     label: __('Paste'),
                     enabled: inEditor && require('electron').clipboard.readText().length !== 0,
-                    click(item, w) {
-                        w.webContents.sendInputEvent({ type: 'keyDown', modifiers: ['control'], keyCode: 'V' });
-                        w.webContents.sendInputEvent({ type: 'keyUp', modifiers: ['control'], keyCode: 'V' });
-                    }
+                    role: (inEditor && require('electron').clipboard.readText().length !== 0) ? 'paste' : ''
                 },
                 {
                     label: __('Delete'),
@@ -78,8 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     label: __('Select All'),
                     click(item, w) {
-                        w.webContents.sendInputEvent({ type: 'keyDown', modifiers: ['control'], keyCode: 'A' });
-                        w.webContents.sendInputEvent({ type: 'keyUp', modifiers: ['control'], keyCode: 'A' });
+                        if (inEditor) {
+                            window.editor.execCommand('selectAll');
+                        } else {
+                            let sel = window.getSelection();
+                            let rg = document.createRange();
+                            rg.selectNodeContents(containerWrapper);
+                            sel.removeAllRanges();
+                            sel.addRange(rg);
+                        }
                     }
                 }
             ];

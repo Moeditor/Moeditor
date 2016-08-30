@@ -85,7 +85,7 @@ $(() => {
 
     const containerWrapper = document.getElementById('container-wrapper');
     document.addEventListener('keydown', (e) => {
-        if (e.ctrlKey && e.keyCode == 65) {
+        if ((process.platform === 'darwin' ? e.metaKey : e.ctrlKey) && e.keyCode == 65) {
             if (document.getElementById('editor').contains(e.target)) {
                 return;
             } else if (containerWrapper.contains(e.target)) {
