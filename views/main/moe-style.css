@@ -463,5 +463,6 @@ body[settings-mode=read] #drag-right, body[settings-mode=write] #drag-right {
 
 .biu-instance {
     -webkit-app-region: no-drag;
+    font-size: 14px;
     font-family: Roboto, Helvetica, 'Segoe UI', Arial, sans-serif;
 }
