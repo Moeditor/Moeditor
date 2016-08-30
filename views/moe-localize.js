@@ -18,7 +18,7 @@
 *  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
 */
 
-window.localized = [];
+if (typeof window.localized === 'undefined') window.localized = [];
 document.querySelector('html').setAttribute('lang', moeApp.locale.locale);
 window.__ = moeApp.locale.get;
 

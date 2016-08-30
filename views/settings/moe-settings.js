@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             ipcRenderer.send('setting-changed', { key: 'locale', val: selectLocale.value });
         });
+        require('electron').remote.getCurrentWindow().show();
     });
 
     // Save settings and send messages

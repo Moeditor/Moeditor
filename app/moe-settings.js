@@ -45,9 +45,6 @@ function showSettingsWindow() {
     settingsWindow = new BrowserWindow(conf);
     settingsWindow.loadURL('file://' + Const.path + '/views/settings/settings.html');
     if (debug) settingsWindow.webContents.openDevTools();
-    settingsWindow.webContents.on('dom-ready', () => {
-        settingsWindow.show();
-    });
     settingsWindow.webContents.on('close', () => {
         settingsWindow = undefined;
     })

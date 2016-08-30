@@ -45,9 +45,6 @@ function showAboutWindow() {
     aboutWindow = new BrowserWindow(conf);
     aboutWindow.loadURL('file://' + Const.path + '/views/about/about.html');
     if (debug) aboutWindow.webContents.openDevTools();
-    aboutWindow.webContents.on('dom-ready', () => {
-        aboutWindow.show();
-    });
     aboutWindow.webContents.on('close', () => {
         aboutWindow = undefined;
     })
