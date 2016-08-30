@@ -24,7 +24,7 @@ Visit our [homepage](https://moeditor.github.io/) or download [releases](https:/
 
 ![Moeditor About](screenshots/about.png)
 
-![Moeditor Zen Mode](screenshots/zen-mode.png)
+![Moeditor Write Mode](screenshots/write-mode.png)
 
 # Building
 ```bash
