@@ -74,7 +74,7 @@ function html(cb) {
         meta.setAttribute('charset', 'utf-8');
         head.appendChild(meta);
         const style = doc.createElement('style');
-        style.innerHTML = MoeditorFile.read(`${app.getAppPath()}/themes/${moeApp.config.get('render-theme')}/style.css`, '').toString();
+        style.innerHTML = MoeditorFile.read(require('./moe-rendertheme').getCSS(false), '').toString();
         head.appendChild(style);
         if (haveCode) {
             const styleHLJS = doc.createElement('style');
@@ -98,7 +98,7 @@ function pdf(cb) {
         meta.setAttribute('charset', 'utf-8');
         head.appendChild(meta);
         const link = doc.createElement('link');
-        link.href = `${app.getAppPath()}/themes/${moeApp.config.get('render-theme')}/style.css`;
+        link.href = require('./moe-rendertheme').getCSS(true);
         link.rel = 'stylesheet';
         head.appendChild(link);
         if (haveCode) {

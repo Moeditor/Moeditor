@@ -22,8 +22,6 @@
 require('electron-titlebar');
 
 document.addEventListener('DOMContentLoaded', () => {
-    window.moeApp = require('electron').remote.app.moeApp;
-
     window.localized.push(() => {
         const selectLocale = document.querySelector('select[data-key=locale]');
         const languages = moeApp.locale.getLanguages();
@@ -53,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Save settings and send messages
     const ipcRenderer = require('electron').ipcRenderer;
 
     const items = document.getElementsByClassName('settings-item');
@@ -72,4 +71,62 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // Custom render themes
+    let renderThemeSelect = document.querySelector('select[data-key="render-theme"]');
+    function reloadRenderThemeSelect() {
+        renderThemeSelect.querySelectorAll('option:not(.builtin)').forEach((a) => renderThemeSelect.removeChild(a));
+        const custom = moeApp.config.get('custom-render-themes');
+        for (const x in custom) {
+            const option = document.createElement('option');
+            option.value = option.text = x;
+            renderThemeSelect.appendChild(option);
+        }
+        renderThemeSelect.value = moeApp.config.get('render-theme');
+    }
+    let renderThemeButtonAdd = document.querySelector('select[data-key="render-theme"] ~ button.button-add');
+    let renderThemeButtonRemove = document.querySelector('select[data-key="render-theme"] ~ button.button-remove');
+    function setRenderThemeButtons() {
+        if (renderThemeSelect.selectedOptions[0].classList.contains('builtin')) {
+            renderThemeButtonRemove.setAttribute('disabled', null);
+        } else {
+            renderThemeButtonRemove.removeAttribute('disabled');
+        }
+    }
+    setRenderThemeButtons();
+    renderThemeSelect.addEventListener('change', setRenderThemeButtons);
+    const dialog = require('electron').remote.dialog;
+    renderThemeButtonAdd.addEventListener('click', () => {
+        dialog.showOpenDialog(window.w, { properties: ['openDirectory', 'multiSelections'] }, (fileNames) => {
+            if (!fileNames || fileNames.length === 0) return;
+            const a = fileNames.filter((s) => {
+                try {
+                    return fs.readdirSync(s).includes('style.css');
+                } catch (e) {
+                    return false;
+                }
+            });
+            let themes = JSON.parse(JSON.stringify(moeApp.config.get('custom-render-themes')));
+            for (const s of a) themes[path.basename(s)] = s;
+            moeApp.config.set('custom-render-themes', themes);
+            console.log(themes);
+            reloadRenderThemeSelect();
+        });
+    });
+    renderThemeButtonRemove.addEventListener('click', () => {
+        let option = renderThemeSelect.selectedOptions[0];
+        if (!option || option.classList.contains('builtin')) return;
+        let themes = JSON.parse(JSON.stringify(moeApp.config.get('custom-render-themes')));
+        themes[option.value] = undefined;
+        moeApp.config.set('custom-render-themes', themes);
+        reloadRenderThemeSelect();
+
+        // Reset to default
+        moeApp.config.set('render-theme', 'GitHub');
+        renderThemeSelect.value = 'GitHub';
+
+        let e = document.createEvent('HTMLEvents');
+        e.initEvent('change', false, true);
+        renderThemeSelect.dispatchEvent(e);
+    });
 });

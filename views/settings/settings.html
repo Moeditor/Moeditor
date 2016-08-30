@@ -27,6 +27,8 @@
 		window.$ = window.jQuery = require("jquery");
         window.document.querySelector('html').classList.add(process.platform);
         window.app = require('electron').remote.app;
+        window.moeApp = app.moeApp;
+        window.w = require('electron').remote.getCurrentWindow();
         const fs = require('fs');
         const path = require('path');
         </script>
@@ -164,14 +166,21 @@
                             <tr>
                                 <td width="40%" class="l10n">Render Theme</td>
                                 <td width="60%">
-                                    <select class="settings-item" data-key="render-theme">
+                                    <select class="settings-item" data-key="render-theme" style="width: calc(100% - 49px); ">
                                         <script>
                                         fs.readdirSync(`${app.getAppPath()}/themes`)
                                           .forEach(s => {
-                                               document.write(`<option value="${s}">${s}</option>`)
+                                               document.write(`<option value="${s}" class="builtin">${s}</option>`);
                                           });
+
+                                        const custom = moeApp.config.get('custom-render-themes');
+                                        for (const s in custom) {
+                                            document.write(`<option value="${s}">${s}</option>`);
+                                        }
                                         </script>
                                     </select>
+                                    <button class="button-add-remove button-add" style="border-right: none; margin-left: -5px; "><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                    <button class="button-add-remove button-remove" style="margin-left: -4px; "><i class="fa fa-minus" aria-hidden="true"></i></button>
                                 </td>
                             </tr>
                         </table>

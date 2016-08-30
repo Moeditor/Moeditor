@@ -84,7 +84,7 @@ function setRenderTheme(val) {
         link.id = 'render-theme';
     }
     const container = document.getElementById('container');
-    link.href = `${app.getAppPath()}/themes/${val}/style.css`;
+    link.href = require('./moe-rendertheme').getCSS(true);
 }
 
 function setTabSize(val) {

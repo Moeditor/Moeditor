@@ -60,6 +60,10 @@ body {
     height: 40px;
 }
 
+.panel tr td {
+    white-space: nowrap;
+}
+
 select, input {
     background-color: transparent;
     border: 1px solid #ddd;
@@ -79,6 +83,33 @@ input[type=checkbox] {
 
 select:hover, input:hover, select:active, input:active {
     border: 1px solid #bbb;
+}
+
+button.button-add-remove {
+    background: #fbfbfb;
+    border: 1px solid #ddd;
+    height: 25px;
+    width: 25px;
+    font-size: 9px;
+    vertical-align: top;
+    color: #666;
+    outline: none;
+}
+
+button.button-add-remove[disabled] {
+    color: #aaa;
+}
+
+button.button-add-remove:not([disabled]):hover {
+    border-color: #bbb;
+}
+
+button.button-add-remove:not([disabled]):hover ~ button.button-add-remove {
+    border-left-color: #bbb;
+}
+
+button.button-add-remove:not([disabled]):active {
+    background-color: #efefef;
 }
 
 input {
