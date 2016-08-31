@@ -4,6 +4,7 @@
 *  Copyright (c) 2016 Menci <huanghaorui301@gmail.com>
 *  Copyright (c) 2016 lucaschimweg
 *  Copyright (c) 2016 douglaseccker
+*  Copyright (c) 2016 PifyZ
 *
 *  Moeditor is free software: you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
@@ -23,6 +24,7 @@
 *   - zh_CN: Menci
 *   - de: lucaschimweg
 *   - pt: douglaseccker
+*   - fr: PifyZ
 *
 *  If you want to help translate this app, please copy the `en` items of the
 *  `strings` constant as the template, and fill each item with the translated
@@ -170,6 +172,7 @@ const strings = {
         "Simplified Chinese": "Simplified Chinese",
         "German": "German",
         "Portuguese": "Portuguese",
+        "French": "French",
 
         "Auto": "Auto",
         "Prompt": "Prompt",
@@ -269,6 +272,7 @@ const strings = {
         "Simplified Chinese": "简体中文",
         "German": "德语",
         "Portuguese": "葡萄牙语",
+        "French": "法语",
 
         "Auto": "自动",
         "Prompt": "询问",
