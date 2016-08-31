@@ -68,7 +68,7 @@
 }
 
 #popup-menu-mode {
-    width: 202px;
+    width: 232px;
     top: calc(100% - 320px);
-    left: calc(100% - 202px);
+    left: calc(100% - 232px);
 }
