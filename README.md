@@ -17,7 +17,7 @@ Visit our [homepage](https://moeditor.github.io/) or download [releases](https:/
 * Localization
 * Focus mode
 
-# Screenshot
+# Screenshots
 ![Moeditor Main](screenshots/main.png)
 
 ![Moeditor Side Menu](screenshots/side-menu.png)
@@ -62,7 +62,7 @@ Moeditor will auto detect your system language and use the localization.
 
 You can set language manually in the Settings window.
 
-Now the app supports English, Chinese and *incomplete* German, Portuguese.
+Now the app supports English, Chinese, French, German and *incomplete* Portuguese.
 
 **Help us** if you can translate this app. Please follow the guide in `app/moe-l10n.js`.
 
