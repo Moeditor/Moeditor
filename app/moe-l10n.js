@@ -277,7 +277,7 @@ const strings = {
         "German": "德语",
         "Portuguese": "葡萄牙语",
         "French": "法语",
-        "Spanish": "スペイン語",
+        "Spanish": "西班牙语",
 
         "Auto": "自动",
         "Prompt": "询问",
