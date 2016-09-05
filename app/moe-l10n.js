@@ -340,7 +340,7 @@ const strings = {
 
         "Menu": "Menu",
         "Directory": "Répertoire",
-        "Toggle focus mode": "Baculer en mode focus",
+        "Toggle focus mode": "Basculer en mode focus",
         "Edit mode": "Mode édition",
 
         "Write Mode": "Mode écriture",
@@ -355,8 +355,8 @@ const strings = {
         "Cancel": "Annuler",
         "Confirm": "Confirmer",
 
-        "Save changes to file?": "Enregistrer les changements ?",
-        "File changed by another program, reload?": "Fichier modifié par un autre programme, recharger ?",
+        "Save changes to file?": "Enregistrer les changements?",
+        "File changed by another program, reload?": "Fichier modifié par un autre programme, recharger?",
 
         "Markdown Documents": "Documents Markdown",
         "HTML Documents": "Documents HTML",
@@ -365,10 +365,10 @@ const strings = {
         "All Files": "Tous les fichiers",
         "Saved successfully.": "Enregistrement réussi.",
         "Can't save file": "Impossible d'enregistrer le fichier",
-        "Exporting as HTML, please wait ...": "Exportation comme HTML, veuillez patienter...",
-        "Exporting as PDF, please wait ...": "Exportation comme PDF, veuillez patienter...",
-        "Can't export as HTML": "Ne peut pas être exporté comme HTML",
-        "Can't export as PDF": "Ne peut pas être exporté comme PDF",
+        "Exporting as HTML, please wait ...": "Exportation au format HTML, veuillez patienter...",
+        "Exporting as PDF, please wait ...": "Exportation au format PDF, veuillez patienter...",
+        "Can't export as HTML": "Ne peut pas être exporté au format HTML",
+        "Can't export as PDF": "Ne peut pas être exporté au format PDF",
 
         "General": "Général",
         "Edit": "Édition",
@@ -388,7 +388,7 @@ const strings = {
         "Custom CSSs": "CSS personnalisés",
 
         "Default": "Par défaut",
-        "System Default": "System Default",
+        "System Default": "Par défaut du système",
 
         "version": "version",
 
@@ -398,13 +398,13 @@ const strings = {
         "Portuguese": "Portuguais",
         "French": "Français",
 
-        "Auto": "Auto",
+        "Auto": "Automatique",
         "Prompt": "Demander",
         "Never": "Jamais",
 
         "Undo": "Annuler",
         "Redo": "Refaire",
-        "Cut": "Coupper",
+        "Cut": "Couper",
         "Copy": "Copier",
         "Paste": "Coller",
         "Delete": "Supprimer",
@@ -418,14 +418,14 @@ const strings = {
         "Close": "Fermer",
         "Minimize": "Minimiser",
         "Zoom": "Zoom",
-        "Bring All to Front": "Tout devant",
+        "Bring All to Front": "Mettre tout à l'avant",
         "File": "Fichier",
         "Export": "Exportation",
         "Mode": "Mode",
         "View": "Voir",
         "Window": "Fenêtre",
         "Help": "Aide",
-        "Toggle Developer Tools": "Basculer les outils développeurs",
+        "Toggle Developer Tools": "Basculer vers les outils développeurs",
         "Preference": "Préférence"
 	}
 }
