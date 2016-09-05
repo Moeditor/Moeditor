@@ -26,7 +26,7 @@
 *   - de: lucaschimweg
 *   - pt: douglaseccker
 *   - fr: PifyZ
-    - es: Hyuchia
+*   - es: Hyuchia
 *
 *  If you want to help translate this app, please copy the `en` items of the
 *  `strings` constant as the template, and fill each item with the translated
