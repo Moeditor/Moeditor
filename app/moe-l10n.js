@@ -5,6 +5,7 @@
 *  Copyright (c) 2016 lucaschimweg
 *  Copyright (c) 2016 douglaseccker
 *  Copyright (c) 2016 PifyZ
+*  Copyright (c) 2016 Hyuchia
 *
 *  Moeditor is free software: you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
@@ -25,6 +26,7 @@
 *   - de: lucaschimweg
 *   - pt: douglaseccker
 *   - fr: PifyZ
+    - es: Hyuchia
 *
 *  If you want to help translate this app, please copy the `en` items of the
 *  `strings` constant as the template, and fill each item with the translated
@@ -91,7 +93,8 @@ class MoeditorLocale {
             "zh_CN": "Simplified Chinese",
             "de": "German",
             "pt": "Portuguese",
-            "fr": "French"
+            "fr": "French",
+            "es": "Spanish"
         };
         for (let language in languages) {
             const localized = this.get(languages[language]);
@@ -173,6 +176,7 @@ const strings = {
         "German": "German",
         "Portuguese": "Portuguese",
         "French": "French",
+        "Spanish": "Spanish",
 
         "Auto": "Auto",
         "Prompt": "Prompt",
@@ -273,6 +277,7 @@ const strings = {
         "German": "德语",
         "Portuguese": "葡萄牙语",
         "French": "法语",
+        "Spanish": "スペイン語",
 
         "Auto": "自动",
         "Prompt": "询问",
@@ -397,6 +402,7 @@ const strings = {
         "German": "Allemand",
         "Portuguese": "Portuguais",
         "French": "Français",
+        "Spanish": "Espagnol",
 
         "Auto": "Automatique",
         "Prompt": "Demander",
@@ -427,5 +433,106 @@ const strings = {
         "Help": "Aide",
         "Toggle Developer Tools": "Basculer vers les outils développeurs",
         "Preference": "Préférence"
+	},
+	"es": {
+        "New": "Nuevo",
+        "Open": "Abrir",
+        "Save": "Guardar",
+        "Save as": "Guardar como",
+        "Export as HTML": "Exportar como HTML",
+        "Export as PDF": "Exportar como PDF",
+        "Settings": "Configuración",
+        "About": "Acerca de",
+
+        "Menu": "Menú",
+        "Directory": "Directorio",
+        "Toggle focus mode": "Activar modo de concentración",
+        "Edit mode": "Modo de edición",
+
+        "Write Mode": "Modo de Escritura",
+        "Read Mode": "Modo de Lectura",
+        "Preview Mode": "Modo de Previsualización",
+        "Wide": "Amplio",
+        "Medium": "Medio",
+        "Narrow": "Estrecho",
+
+        "Yes": "Sí",
+        "No": "No",
+        "Cancel": "Cancelar",
+        "Confirm": "Confirmar",
+
+        "Save changes to file?": "¿Guardar cambios?",
+        "File changed by another program, reload?": "El Archivo ha sido modificado por otro programa, ¿desea recargarlo?",
+
+        "Markdown Documents": "Documentos Markdown",
+        "HTML Documents": "Documentos HTML",
+        "PDF Documents": "Documentos PDF",
+        "CSS Files": "Archivos CSS",
+        "All Files": "Todos los Archivos",
+        "Saved successfully.": "Guardado Exitosamente.",
+        "Can't save file": "El archivo no pudo ser guardado",
+        "Exporting as HTML, please wait ...": "Exportando como HTML, por favor espere...",
+        "Exporting as PDF, please wait ...": "Exportando como PDF, por favor espere...",
+        "Can't export as HTML": "No se puede exportar como HTML",
+        "Can't export as PDF": "No se puede exportar como PDF",
+
+        "General": "General",
+        "Edit": "Editar",
+        "Appearance": "Apariencia",
+        "Render": "Renderización",
+        "Language": "Lenguaje",
+        "Reload when file changed": "Recargar cuando el archivo haya sido modificado",
+        "Font": "Tipografía del Editor",
+        "Font Size": "Tamaño de la Letra",
+        "Line Height": "Interlineado",
+        "Tab Size": "Tamaño de Tabulación",
+        "Color Theme": "Tema de Color",
+        "TeX Math Expressions":"Expresiones de TeX Math",
+        "UML Diagrams": "Diagramas UML",
+        "Highlight Theme": "Tema de Syntaxis",
+        "Render Theme": "Tema de Renderización",
+        "Custom CSSs": "CSSs Personalizados",
+
+        "Default": "Predeterminado",
+        "System Default": "Predeterminado del Sistema",
+
+        "version": "versión",
+
+        "English": "Inglés",
+        "Simplified Chinese": "Chino Simplificado",
+        "German": "Alemán",
+        "Portuguese": "Portugués",
+        "French": "Francés",
+        "Spanish": "Español",
+
+        "Auto": "Auto",
+        "Prompt": "Mensaje",
+        "Never": "Nunca",
+
+        "Undo": "Deshacer",
+        "Redo": "Rehacer",
+        "Cut": "Cortar",
+        "Copy": "Copiar",
+        "Paste": "Pegar",
+        "Delete": "Borrar",
+        "Select All": "Seleccionar Todo",
+
+        "Services": "Servicios",
+        "Hide": "Esconder",
+        "Hide Others": "Esconder Otros",
+        "Show All": "Mostrar Todo",
+        "Quit": "Salir",
+        "Close": "Cerrar",
+        "Minimize": "Minimizar",
+        "Zoom": "Zoom",
+        "Bring All to Front": "Traer Todo al Frente",
+        "File": "Archivo",
+        "Export": "Exportar",
+        "Mode": "Modo",
+        "View": "Ver",
+        "Window": "Ventana",
+        "Help": "Ayuda",
+        "Toggle Developer Tools": "Activar Herramientas de Desarrollador",
+        "Preference": "Preferencias"
 	}
 }
