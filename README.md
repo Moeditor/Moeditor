@@ -73,5 +73,8 @@ Some node modules are licensed under other free software license.
 
 The `Raleway` font is licensed under the OFL open font license.
 
+# Credits
+The domain `moeditor.org` is sponsored by [Showfom](https://ttt.tt/).
+
 # Known Bug(s)
 Issue #31.
