@@ -62,7 +62,7 @@ Moeditor will auto detect your system language and use the localization.
 
 You can set language manually in the Settings window.
 
-Now the app supports English, Chinese, French, German and *incomplete* Portuguese.
+Now the app supports English, Chinese, French, German, Spanish and *incomplete* Portuguese.
 
 **Help us** if you can translate this app. Please follow the guide in `app/moe-l10n.js`.
 
