@@ -6,6 +6,7 @@
 *  Copyright (c) 2016 douglaseccker
 *  Copyright (c) 2016 PifyZ
 *  Copyright (c) 2016 Hyuchia
+*  Copyright (c) 2016 welksonramos
 *
 *  Moeditor is free software: you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
@@ -24,7 +25,7 @@
 *   - en: Menci
 *   - zh_CN: Menci
 *   - de: lucaschimweg
-*   - pt: douglaseccker
+*   - pt: douglaseccker & welksonramos
 *   - fr: PifyZ
 *   - es: Hyuchia
 *
@@ -410,17 +411,105 @@ const strings = {
         "Preference": "Einstellung"
 	},
 	"pt": {
+        "New": "Novo",
+        "Open": "Abrir",
+        "Save": "Salvar",
+        "Save as": "Salvar como",
+        "Export as HTML": "Exportar como HTML",
+        "Export as PDF": "Exportar como PDF",
+        "Settings": "Configurações",
+        "About": "Sobre",
+
+        "Menu": "Menu",
+        "Directory": "Diretório",
+        "Toggle focus mode": "Alternar para o modo foco",
+        "Edit mode": "Editar modo",
+
+        "Write Mode": "Modo Escrita",
+        "Read Mode": "Modo Leitura",
+        "Preview Mode": "Mode de Pré-visualização",
+        "Wide": "Largo",
+        "Medium": "Médio",
+        "Narrow": "Estreito",
+
         "Yes": "Sim",
         "No": "Não",
         "Cancel": "Cancelar",
         "Confirm": "Confirmar",
 
         "Save changes to file?": "Salvar as alterações no arquivo?",
+        "File changed by another program, reload?": "Arquivo modificado por outro programa, recarregar?",
 
         "Markdown Documents": "Documentos Markdown",
         "HTML Documents": "Documentos HTML",
         "PDF Documents": "Documentos PDF",
-        "All Files": "Todos Arquivos"
+        "CSS Files": "Arquivos CSS",
+        "All Files": "Todos os Arquivos",
+        "Saved successfully.": "Salvo com sucesso",
+        "Can't save file": "Não é possível salvar o arquivo",
+        "Exporting as HTML, please wait ...": "Exportando como HTML, aguarde ...",
+        "Exporting as PDF, please wait ...": "Exportando como PDF, aguarde...",
+        "Can't export as HTML": "Não é possível exportar como HTML",
+        "Can't export as PDF": "Não é possível exportar como PDF",
+
+        "General": "Geral",
+        "Edit": "Editar",
+        "Appearance": "Aparência",
+        "Render": "Renderização",
+        "Language": "Idioma",
+        "Reload when file changed": "Recarregar quando o arquivo for alterado",
+        "Font": "Fonte",
+        "Font Size": "Tamanho da Fonte",
+        "Line Height": "Altura da Linha",
+        "Tab Size": "Tamanho da Tabulação",
+        "Color Theme": "Tema",
+        "TeX Math Expressions":"Expressões TeX Math",
+        "UML Diagrams": "Diagramas UML",
+        "Highlight Theme": "Tema de Sintaxe",
+        "Render Theme": "Tema de Renderização",
+        "Custom CSSs": "CSSs Personalizados",
+
+        "Default": "Padrão",
+        "System Default": "Padrão do Sistema",
+
+        "version": "versão",
+
+        "English": "Inglês",
+        "Simplified Chinese": "Chinês Simplificado",
+        "German": "Alemão",
+        "Portuguese": "Português",
+        "French": "Francês",
+        "Spanish": "Espanhol",
+
+        "Auto": "Automático",
+        "Prompt": "Mensagem",
+        "Never": "Nunca",
+
+        "Undo": "Desfazer",
+        "Redo": "Refazer",
+        "Cut": "Cortar",
+        "Copy": "Copiar",
+        "Paste": "Colar",
+        "Delete": "Excluir",
+        "Select All": "Selecionar Tudo",
+
+        "Services": "Serviços",
+        "Hide": "Ocultar",
+        "Hide Others": "Ocultar Outros",
+        "Show All": "Exibir Tudo",
+        "Quit": "Sair",
+        "Close": "Fechar",
+        "Minimize": "Minimizar",
+        "Zoom": "Zoom",
+        "Bring All to Front": "Trazer todas para frente",
+        "File": "Arquivo",
+        "Export": "Exportar",
+        "Mode": "Modo",
+        "View": "Vizualiar",
+        "Window": "Janela",
+        "Help": "Ajuda",
+        "Toggle Developer Tools": "Alternar Ferramentas de Desenvolvimento",
+        "Preference": "Preferências"
 	},
 	"fr": {
         "New": "Nouveau",
