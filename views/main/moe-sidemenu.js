@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sideMenuCover.style.pointerEvents = 'all';
         setTimeout(() => {
             document.getElementById('main').classList.add('notransition');
-        }, 500);
+        }, 200);
     }
 
     function hideMenu() {
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sideMenuCover.style.pointerEvents = 'none';
         setTimeout(() => {
             document.getElementById('main').classList.add('notransition');
-        }, 500);
+        }, 200);
     }
 
     sideMenuCover.addEventListener('click', hideMenu);
