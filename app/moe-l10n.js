@@ -7,6 +7,7 @@
 *  Copyright (c) 2016 PifyZ
 *  Copyright (c) 2016 Hyuchia
 *  Copyright (c) 2016 welksonramos
+*  Copyright (c) 2016 caiocdasilva
 *
 *  Moeditor is free software: you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
@@ -25,7 +26,7 @@
 *   - en: Menci
 *   - zh_CN: Menci
 *   - de: lucaschimweg
-*   - pt: douglaseccker & welksonramos
+*   - pt: douglaseccker & welksonramos & caiocdasilva
 *   - fr: PifyZ
 *   - es: Hyuchia
 *
@@ -482,7 +483,7 @@ const strings = {
         "Spanish": "Espanhol",
 
         "Auto": "Automático",
-        "Prompt": "Mensagem",
+        "Prompt": "Perguntar",
         "Never": "Nunca",
 
         "Undo": "Desfazer",
@@ -505,7 +506,7 @@ const strings = {
         "File": "Arquivo",
         "Export": "Exportar",
         "Mode": "Modo",
-        "View": "Vizualiar",
+        "View": "Visualizar",
         "Window": "Janela",
         "Help": "Ajuda",
         "Toggle Developer Tools": "Alternar Ferramentas de Desenvolvimento",
