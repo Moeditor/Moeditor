@@ -8,6 +8,7 @@
 *  Copyright (c) 2016 Hyuchia
 *  Copyright (c) 2016 welksonramos
 *  Copyright (c) 2016 caiocdasilva
+*  Copyright (c) 2016 lawgsy <lawgsy@gmail.com>
 *
 *  Moeditor is free software: you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
@@ -29,6 +30,7 @@
 *   - pt: douglaseccker & welksonramos & caiocdasilva
 *   - fr: PifyZ
 *   - es: Hyuchia
+*   - nl: lawgsy
 *
 *  If you want to help translate this app, please copy the `en` items of the
 *  `strings` constant as the template, and fill each item with the translated
@@ -96,7 +98,8 @@ class MoeditorLocale {
             "de": "German",
             "pt": "Portuguese",
             "fr": "French",
-            "es": "Spanish"
+            "es": "Spanish",
+            "nl": "Dutch"
         };
         for (let language in languages) {
             const localized = this.get(languages[language]);
@@ -179,6 +182,7 @@ const strings = {
         "Portuguese": "Portuguese",
         "French": "French",
         "Spanish": "Spanish",
+        "Dutch": "Dutch",
 
         "Auto": "Auto",
         "Prompt": "Prompt",
@@ -280,6 +284,7 @@ const strings = {
         "Portuguese": "葡萄牙语",
         "French": "法语",
         "Spanish": "西班牙语",
+        "Dutch": "荷兰人",
 
         "Auto": "自动",
         "Prompt": "询问",
@@ -378,8 +383,10 @@ const strings = {
         "English": "Englisch",
         "Simplified Chinese": "Vereinfachtes Chinesisch",
         "German": "Deutsch",
-        "Portuguese": "Portugisisch",
+        "Portuguese": "Portugiesisch",
         "French": "Französisch",
+        "Spanish": "Espanhol",
+        "Dutch": "Niederländisch",
 
         "Auto": "Automatisch",
         "Prompt": "Fragen",
@@ -481,6 +488,7 @@ const strings = {
         "Portuguese": "Português",
         "French": "Francês",
         "Spanish": "Espanhol",
+        "Dutch": "Holandês",
 
         "Auto": "Automático",
         "Prompt": "Perguntar",
@@ -582,6 +590,7 @@ const strings = {
         "Portuguese": "Portuguais",
         "French": "Français",
         "Spanish": "Espagnol",
+        "Dutch": "Néerlandais",
 
         "Auto": "Automatique",
         "Prompt": "Demander",
@@ -683,6 +692,7 @@ const strings = {
         "Portuguese": "Portugués",
         "French": "Francés",
         "Spanish": "Español",
+        "Dutch": "Holandés",
 
         "Auto": "Auto",
         "Prompt": "Mensaje",
@@ -713,5 +723,107 @@ const strings = {
         "Help": "Ayuda",
         "Toggle Developer Tools": "Activar Herramientas de Desarrollador",
         "Preference": "Preferencias"
+  },
+	"nl": {
+        "New": "Nieuw",
+        "Open": "Open",
+        "Save": "Opslaan",
+        "Save as": "Opslaan als",
+        "Export as HTML": "Exporteren als HTML",
+        "Export as PDF": "Exporteren als PDF",
+        "Settings": "Instellingen",
+        "About": "Over",
+
+        "Menu": "Menu",
+        "Directory": "Map",
+        "Toggle focus mode": "Focus modus aan-/uitzetten",
+        "Edit mode": "Bewerk modus",
+
+        "Write Mode": "Schrijf Modus",
+        "Read Mode": "Lees Modus",
+        "Preview Mode": "Voorbeeld Modus",
+        "Wide": "Breed",
+        "Medium": "Gemiddeld",
+        "Narrow": "Smal",
+
+        "Yes": "Ja",
+        "No": "Nee",
+        "Cancel": "Annuleren",
+        "Confirm": "Bevestigen",
+
+        "Save changes to file?": "Wijzigingen aan bestand opslaan?",
+        "File changed by another program, reload?": "Bestand is gewijzigd door een ander programma, herladen?",
+
+        "Markdown Documents": "Markdown Documenten",
+        "HTML Documents": "HTML Documenten",
+        "PDF Documents": "PDF Documenten",
+        "CSS Files": "CSS Bestanden",
+        "All Files": "Alle Bestanden",
+        "Saved successfully.": "Succesvol opgeslagen.",
+        "Can't save file": "Kan bestand niet opslaan",
+        "Exporting as HTML, please wait ...": "Exporteren als HTML, even geduld alstublieft ...",
+        "Exporting as PDF, please wait ...": "Exporteren als PDF, even geduld alstublieft ...",
+        "Can't export as HTML": "Kan niet exporteren als HTML",
+        "Can't export as PDF": "Kan niet exporteren als PDF",
+
+        "General": "Algemeen",
+        "Edit": "Bewerken",
+        "Appearance": "Uiterlijk",
+        "Render": "Renderen",
+        "Language": "Taal",
+        "Reload when file changed": "Herladen wanneer het bestand is gewijzigd",
+        "Font": "Lettertype",
+        "Font Size": "Lettertypegrootte",
+        "Line Height": "Regelhoogte",
+        "Tab Size": "Tabbreedte",
+        "Color Theme": "Kleurthema",
+        "TeX Math Expressions":"TeX Math Expressies",
+        "UML Diagrams": "UML Diagrammen",
+        "Highlight Theme": "Highlight Thema",
+        "Render Theme": "Render Thema",
+        "Custom CSSs": "Aangepaste CSSen",
+
+        "Default": "Standaard",
+        "System Default": "Systeemstandaard",
+
+        "version": "versie",
+
+        "English": "Engels",
+        "Simplified Chinese": "Chinees (Vereenvoudigd)",
+        "German": "Duits",
+        "Portuguese": "Portuguees",
+        "French": "Frans",
+        "Spanish": "Spaans",
+        "Dutch": "Nederlands",
+
+        "Auto": "Automatisch",
+        "Prompt": "Vragen",
+        "Never": "Nooit",
+
+        "Undo": "Ongedaan maken",
+        "Redo": "Herhalen",
+        "Cut": "Knippen",
+        "Copy": "Kopiëren",
+        "Paste": "Plakken",
+        "Delete": "Verwijderen",
+        "Select All": "Alles Selecteren",
+
+        "Services": "Diensten",
+        "Hide": "Verstoppen",
+        "Hide Others": "Verstop Anderen",
+        "Show All": "Alles tonen",
+        "Quit": "Afsluiten",
+        "Close": "Sluiten",
+        "Minimize": "Minimaliseren",
+        "Zoom": "Zoom",
+        "Bring All to Front": "Alles naar Voren Brengen",
+        "File": "Bestand",
+        "Export": "Exporteer",
+        "Mode": "Modus",
+        "View": "Beeld",
+        "Window": "Venster",
+        "Help": "Help",
+        "Toggle Developer Tools": "Developer Tools aan-/uitzetten",
+        "Preference": "Voorkeur"
 	}
 }
