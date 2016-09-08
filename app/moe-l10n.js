@@ -284,7 +284,7 @@ const strings = {
         "Portuguese": "葡萄牙语",
         "French": "法语",
         "Spanish": "西班牙语",
-        "Dutch": "荷兰人",
+        "Dutch": "荷兰语",
 
         "Auto": "自动",
         "Prompt": "询问",
