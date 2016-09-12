@@ -31,6 +31,7 @@
 *   - fr: PifyZ
 *   - es: Hyuchia
 *   - nl: lawgsy
+*   - it: iamsisar
 *
 *  If you want to help translate this app, please copy the `en` items of the
 *  `strings` constant as the template, and fill each item with the translated
@@ -99,7 +100,8 @@ class MoeditorLocale {
             "pt": "Portuguese",
             "fr": "French",
             "es": "Spanish",
-            "nl": "Dutch"
+            "nl": "Dutch",
+            "it": "Italian"
         };
         for (let language in languages) {
             const localized = this.get(languages[language]);
@@ -825,5 +827,107 @@ const strings = {
         "Help": "Help",
         "Toggle Developer Tools": "Developer Tools aan-/uitzetten",
         "Preference": "Voorkeur"
-	}
+	},
+    "en": {
+        "New": "Nuovo",
+        "Open": "Apri",
+        "Save": "Salva",
+        "Save as": "Save con nome",
+        "Export as HTML": "Esporta come HTML",
+        "Export as PDF": "Esporta come PDF",
+        "Settings": "Impostazioni",
+        "About": "About",
+
+        "Menu": "Menu",
+        "Directory": "Directory",
+        "Toggle focus mode": "Attiva modalità concentrazione",
+        "Edit mode": "Modalità modifica",
+
+        "Write Mode": "Modalità scrittura",
+        "Read Mode": "Modalità lettura",
+        "Preview Mode": "Modalità anteprima",
+        "Wide": "Largo",
+        "Medium": "Medio",
+        "Narrow": "Stretto",
+
+        "Yes": "Sì",
+        "No": "No",
+        "Cancel": "Annulla",
+        "Confirm": "Conferma",
+
+        "Save changes to file?": "Salvare le modifiche apportate al file?",
+        "File changed by another program, reload?": "Il file è stato modificato da un altro programma, vuoi caricare le nuove modifiche",
+
+        "Markdown Documents": "Documenti Markdown",
+        "HTML Documents": "Documenti HTML",
+        "PDF Documents": "Documenti PDF",
+        "CSS Files": "File CSS",
+        "All Files": "Tutti i file",
+        "Saved successfully.": "Salvataggio eseguito",
+        "Can't save file": "Impossibile salvare il file",
+        "Exporting as HTML, please wait ...": "Esportazione HTML in corso, attendere...",
+        "Exporting as PDF, please wait ...": "Esportazione PDF in corso, attendere...",
+        "Can't export as HTML": "Impossibile esportare in HTML",
+        "Can't export as PDF": "Impossibile esportare in PDF",
+
+        "General": "Generale",
+        "Edit": "Modifica",
+        "Appearance": "Aspetto",
+        "Render": "Render",
+        "Language": "Lingua",
+        "Reload when file changed": "Ricarica quando il file cambia",
+        "Font": "Carattere dell'editor",
+        "Font Size": "Dimensione carattere",
+        "Line Height": "Interlinea",
+        "Tab Size": "Tabulazione",
+        "Color Theme": "Tema colori",
+        "TeX Math Expressions":"Espressioni Tex Math",
+        "UML Diagrams": "Diagrammi UML",
+        "Highlight Theme": "Highlight Theme",
+        "Render Theme": "Tema di render",
+        "Custom CSSs": "CSS personalizzato",
+
+        "Default": "Predefinito",
+        "System Default": "Predefinito dal Sistema",
+
+        "version": "versione",
+
+        "English": "Inglese",
+        "Simplified Chinese": "Cinese Semplificato",
+        "German": "Tedesco",
+        "Portuguese": "Portoghese",
+        "French": "Francese",
+        "Spanish": "Spagnolo",
+        "Dutch": "Olandese",
+
+        "Auto": "Automatico",
+        "Prompt": "Chiedi",
+        "Never": "Mai",
+
+        "Undo": "Undo",
+        "Redo": "Redo",
+        "Cut": "Taglia",
+        "Copy": "Copia",
+        "Paste": "Incolla",
+        "Delete": "Cancella",
+        "Select All": "Seleziona tutto",
+
+        "Services": "Servizi",
+        "Hide": "Nascondi",
+        "Hide Others": "Nascondi altri",
+        "Show All": "Visualizza tutti",
+        "Quit": "Esci",
+        "Close": "Chiudi",
+        "Minimize": "Riduci",
+        "Zoom": "Zoom",
+        "Bring All to Front": "Porta tutti in cima",
+        "File": "File",
+        "Export": "Esporta",
+        "Mode": "Modalità",
+        "View": "Vedi",
+        "Window": "Finestra",
+        "Help": "Aiuto",
+        "Toggle Developer Tools": "Attiva strumenti per sviluppatori",
+        "Preference": "Preferenza"
+    },
 }
