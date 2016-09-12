@@ -35,10 +35,7 @@
 *
 *  If you want to help translate this app, please copy the `en` items of the
 *  `strings` constant as the template, and fill each item with the translated
-*  string.
-*
-*  If you are translating this app to a new language, please add the language to
-*  `MoeditorLocale.getLanguages()`.
+*  string. The `_name` item in a language is the language's name.
 *
 *  You can translate for a language (e.g. en) or a language with specified
 *  region (e.g. zh_CN). The app will choose the language with specified region
@@ -93,20 +90,8 @@ class MoeditorLocale {
 	}
 
     getLanguages() {
-        let languages = {
-            "en": "English",
-            "zh_CN": "Simplified Chinese",
-            "de": "German",
-            "pt": "Portuguese",
-            "fr": "French",
-            "es": "Spanish",
-            "nl": "Dutch",
-            "it": "Italian"
-        };
-        for (let language in languages) {
-            const localized = this.get(languages[language]);
-            if (languages[language] !== localized) languages[language] = localized + ' (' + languages[language] + ')';
-        }
+        let languages = {};
+        for (let lang in strings) languages[lang] = strings[lang]._name;
         return languages;
     }
 }
@@ -115,6 +100,8 @@ module.exports = MoeditorLocale;
 
 const strings = {
 	"en": {
+        "_name": "English",
+
         "New": "New",
         "Open": "Open",
         "Save": "Save",
@@ -178,14 +165,6 @@ const strings = {
 
         "version": "version",
 
-        "English": "English",
-        "Simplified Chinese": "Simplified Chinese",
-        "German": "German",
-        "Portuguese": "Portuguese",
-        "French": "French",
-        "Spanish": "Spanish",
-        "Dutch": "Dutch",
-
         "Auto": "Auto",
         "Prompt": "Prompt",
         "Never": "Never",
@@ -217,6 +196,8 @@ const strings = {
         "Preference": "Preference"
 	},
     "zh_CN": {
+        "_name": "简体中文",
+
         "New": "新建",
         "Open": "打开",
         "Save": "保存",
@@ -280,14 +261,6 @@ const strings = {
 
         "version": "版本",
 
-        "English": "英文",
-        "Simplified Chinese": "简体中文",
-        "German": "德语",
-        "Portuguese": "葡萄牙语",
-        "French": "法语",
-        "Spanish": "西班牙语",
-        "Dutch": "荷兰语",
-
         "Auto": "自动",
         "Prompt": "询问",
         "Never": "从不",
@@ -319,6 +292,8 @@ const strings = {
         "Preference": "偏好设置"
     },
 	"de": {
+        "_name": "Deutsch",
+
         "New": "Neu",
         "Open": "Öffnen",
         "Save": "Speichern",
@@ -382,14 +357,6 @@ const strings = {
 
         "version": "Version",
 
-        "English": "Englisch",
-        "Simplified Chinese": "Vereinfachtes Chinesisch",
-        "German": "Deutsch",
-        "Portuguese": "Portugiesisch",
-        "French": "Französisch",
-        "Spanish": "Espanhol",
-        "Dutch": "Niederländisch",
-
         "Auto": "Automatisch",
         "Prompt": "Fragen",
         "Never": "Nie",
@@ -421,6 +388,8 @@ const strings = {
         "Preference": "Einstellung"
 	},
 	"pt": {
+        "_name": "Português",
+
         "New": "Novo",
         "Open": "Abrir",
         "Save": "Salvar",
@@ -484,14 +453,6 @@ const strings = {
 
         "version": "versão",
 
-        "English": "Inglês",
-        "Simplified Chinese": "Chinês Simplificado",
-        "German": "Alemão",
-        "Portuguese": "Português",
-        "French": "Francês",
-        "Spanish": "Espanhol",
-        "Dutch": "Holandês",
-
         "Auto": "Automático",
         "Prompt": "Perguntar",
         "Never": "Nunca",
@@ -523,6 +484,8 @@ const strings = {
         "Preference": "Preferências"
 	},
 	"fr": {
+        "_name": "Français",
+
         "New": "Nouveau",
         "Open": "Ouvrir",
         "Save": "Enregistrer",
@@ -586,14 +549,6 @@ const strings = {
 
         "version": "version",
 
-        "English": "Anglais",
-        "Simplified Chinese": "Chinois simplifié",
-        "German": "Allemand",
-        "Portuguese": "Portuguais",
-        "French": "Français",
-        "Spanish": "Espagnol",
-        "Dutch": "Néerlandais",
-
         "Auto": "Automatique",
         "Prompt": "Demander",
         "Never": "Jamais",
@@ -625,6 +580,8 @@ const strings = {
         "Preference": "Préférence"
 	},
 	"es": {
+        "_name": "Español",
+
         "New": "Nuevo",
         "Open": "Abrir",
         "Save": "Guardar",
@@ -688,14 +645,6 @@ const strings = {
 
         "version": "versión",
 
-        "English": "Inglés",
-        "Simplified Chinese": "Chino Simplificado",
-        "German": "Alemán",
-        "Portuguese": "Portugués",
-        "French": "Francés",
-        "Spanish": "Español",
-        "Dutch": "Holandés",
-
         "Auto": "Auto",
         "Prompt": "Mensaje",
         "Never": "Nunca",
@@ -725,8 +674,10 @@ const strings = {
         "Help": "Ayuda",
         "Toggle Developer Tools": "Activar Herramientas de Desarrollador",
         "Preference": "Preferencias"
-  },
+    },
 	"nl": {
+        "_name": "Nederlands",
+
         "New": "Nieuw",
         "Open": "Open",
         "Save": "Opslaan",
@@ -790,14 +741,6 @@ const strings = {
 
         "version": "versie",
 
-        "English": "Engels",
-        "Simplified Chinese": "Chinees (Vereenvoudigd)",
-        "German": "Duits",
-        "Portuguese": "Portuguees",
-        "French": "Frans",
-        "Spanish": "Spaans",
-        "Dutch": "Nederlands",
-
         "Auto": "Automatisch",
         "Prompt": "Vragen",
         "Never": "Nooit",
@@ -828,7 +771,9 @@ const strings = {
         "Toggle Developer Tools": "Developer Tools aan-/uitzetten",
         "Preference": "Voorkeur"
 	},
-    "en": {
+    "it": {
+        "_name": "Italian",
+
         "New": "Nuovo",
         "Open": "Apri",
         "Save": "Salva",
@@ -891,14 +836,6 @@ const strings = {
         "System Default": "Predefinito dal Sistema",
 
         "version": "versione",
-
-        "English": "Inglese",
-        "Simplified Chinese": "Cinese Semplificato",
-        "German": "Tedesco",
-        "Portuguese": "Portoghese",
-        "French": "Francese",
-        "Spanish": "Spagnolo",
-        "Dutch": "Olandese",
 
         "Auto": "Automatico",
         "Prompt": "Chiedi",
