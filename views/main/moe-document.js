@@ -100,7 +100,13 @@ $(() => {
     });
     $("#container").on('click', 'a', function(e) {
         e.preventDefault();
-        s.openExternal(this.href);
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+            const e = containerWrapper.querySelector(href);
+            if (e) containerWrapper.scrollTop = e.offsetTop - 50; // 50 is the height of the top cover
+        } else {
+            s.openExternal(this.href);
+        }
     });
 
     const leftPanel = document.getElementById('left-panel');
