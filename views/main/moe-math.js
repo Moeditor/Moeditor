@@ -49,7 +49,8 @@ module.exports = class MoeditorMathRenderer {
             return;
         }
         let div = document.createElement('div');
-        div.style.display = 'none';
+        div.style.width = div.style.height = 0;
+        div.style.visibility = 'hidden';
         document.body.appendChild(div);
         for (let id in a) {
             let span = document.createElement('span');
