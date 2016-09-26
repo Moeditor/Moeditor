@@ -132,10 +132,20 @@ html, body {
 
 #main.read-mode #right-panel {
     width: 100%;
+    padding-right: 4px;
+}
+
+#main.read-mode #right-panel .cover-top {
+    left: 0;
+    width: calc(100% - 10px);
 }
 
 #main.write-mode #left-panel {
     width: 100%;
+}
+
+#main.read-mode #left-panel .cover-top {
+    width: calc(100% - 10px);
 }
 
 #main.write-mode #right-panel {
@@ -409,7 +419,7 @@ body[settings-editor-font="sans"] #editor  * {
 
 #main.write-mode .CodeMirror-vscrollbar {
     position: fixed !important;
-    right: 0px !important;
+    right: 4px !important;
     bottom: 25px !important;
 }
 
