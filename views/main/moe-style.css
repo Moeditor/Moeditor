@@ -408,7 +408,7 @@ body[settings-editor-font="sans"] #editor  * {
     padding-left: 45px;
     padding-right: 20px;
     padding-top: 35px;
-    height: calc(100% - 35px - 35px);
+    height: calc(100% - 35px - 31px);
     width: calc(100% - 45px - 20px - 24px + 30px) !important;
     transition: all 500ms ease-in-out;
 }
