@@ -884,8 +884,8 @@ const strings = {
         "Toggle focus mode": "Переключить режим фокусировки",
         "Edit mode": "Выбрать режим",
 
-        "Write Mode": "Режим правки",
-        "Read Mode": "Режим чтения",
+        "Write Mode": "Правка",
+        "Read Mode": "Чтение",
         "Preview Mode": "Предпросмотр",
         "Wide": "Широкий",
         "Medium": "Средний",
@@ -894,7 +894,7 @@ const strings = {
         "Yes": "Да",
         "No": "Нет",
         "Cancel": "Отмена",
-        "Confirm": "Подтвердить",
+        "Confirm": "Подтверждение",
 
         "Save changes to file?": "Сохранить изменения?",
         "File changed by another program, reload?": "Файл был изменен в другой программе, обновить содержимое?",
@@ -943,7 +943,7 @@ const strings = {
         "Copy": "Копировать",
         "Paste": "Вставить",
         "Delete": "Удалить",
-        "Select All": "Выделить всё",
+        "Select All": "Выделить все",
 
         "Services": "Службы",
         "Hide": "Скрыть",
