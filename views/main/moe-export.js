@@ -67,7 +67,6 @@ function render(s, type, cb) {
 
 function html(cb) {
     render(w.content, 'html', (res, haveMath, haveCode) => {
-        res = res.split('moemark-linenumber').join('span');
         const doc = document.implementation.createHTMLDocument();
         const head = doc.querySelector('head');
         const meta = doc.createElement('meta');
@@ -97,7 +96,6 @@ function html(cb) {
 
 function pdf(cb) {
     render(w.content, 'pdf', (res, haveMath, haveCode) => {
-        res = res.split('moemark-linenumber').join('span');
         const doc = document.implementation.createHTMLDocument();
         const head = doc.querySelector('head');
         const meta = doc.createElement('meta');
