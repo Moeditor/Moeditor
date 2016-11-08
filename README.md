@@ -3,7 +3,7 @@ Your all-purpose markdown editor.
 
 Built with Electron.
 
-Visit our [homepage](https://moeditor.github.io/) or download [releases](https://github.com/Moeditor/Moeditor/releases).
+Visit our [homepage](https://moeditor.org/) or download [releases](https://github.com/Moeditor/Moeditor/releases).
 
 # Features
 * GitHub Flavored Markdown
