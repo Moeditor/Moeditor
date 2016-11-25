@@ -31,6 +31,7 @@ const url = require('url');
 MoeMark.setOptions({
     math: true,
     lineNumber: true,
+    breaks: false,
     highlight: MoeditorHighlight,
     umlchart: true,
     umlRenderer: MoeditorUMLRenderer
@@ -64,7 +65,8 @@ module.exports = (cm, force, cb) => {
 
         MoeMark.setOptions({
             math: moeApp.config.get('math'),
-            umlchart: moeApp.config.get('uml-diagrams')
+            umlchart: moeApp.config.get('uml-diagrams'),
+            breaks: moeApp.config.get('breaks')
         });
 
         var mathCnt = 0, mathID = 0, math = new Array();
