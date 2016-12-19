@@ -21,16 +21,16 @@
 
 const {BrowserWindow, ipcMain} = require('electron');
 
-var settingsWindow;
+let settingsWindow;
 
 function showSettingsWindow() {
     if (typeof settingsWindow !== 'undefined') return;
     const debug = (moeApp.flag.debug | moeApp.config.get('debug')) != 0;
-    var conf = {
+    const conf = {
         icon: Const.path + "/icons/Moeditor.ico",
         autoHideMenuBar: true,
         width: 600 * moeApp.config.get('scale-factor'),
-        height: parseInt(240 * moeApp.config.get('scale-factor')),
+        height: parseInt(275 * moeApp.config.get('scale-factor')),
         webPreferences: {
             zoomFactor: moeApp.config.get('scale-factor')
         },

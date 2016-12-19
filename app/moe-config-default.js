@@ -35,6 +35,7 @@ module.exports = {
     'math': true,
     'uml-diagrams': true,
     'auto-reload': 'auto',
+    'auto-save': 'on-blur',
     'highlight-theme': 'github',
     'render-theme': 'GitHub',
     'custom-render-themes': {},

@@ -19,6 +19,8 @@
 
 'use strict';
 
+let savedContent;
+
 document.addEventListener('DOMContentLoaded', () => {
     const fs = require('fs');
     const dialog = require('electron').remote.dialog;
@@ -62,6 +64,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 w.window.setDocumentEdited(false);
                 window.updatePreview(true);
             }
+        });
+    };
+
+    window.onblur = () => {
+        const option = moeApp.config.get('auto-save');
+        if (option === 'disabled') return;
+        if (w.fileName === '') return;
+        if (w.content === savedContent) return;
+
+        fs.writeFile(w.fileName, w.content, (err) => {
+            if (err) {
+                w.changed = true;
+                w.window.setDocumentEdited(true);
+                return;
+            }
+
+            savedContent = w.content;
+            w.changed = false;
+            w.window.setDocumentEdited(false);
         });
     };
 });
