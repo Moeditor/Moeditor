@@ -33,6 +33,7 @@ function render(s, type, cb) {
     MoeMark.setOptions({
         math: moeApp.config.get('math'),
         umlchart: moeApp.config.get('uml-diagrams'),
+        breaks: moeApp.config.get('breaks'),
         highlight: (code, lang) => {
             haveCode = true;
             return MoeditorHighlight(code, lang);
