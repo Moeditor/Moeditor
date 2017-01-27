@@ -476,3 +476,9 @@ body[settings-mode=read] #drag-right, body[settings-mode=write] #drag-right {
     font-size: 14px;
     font-family: Roboto, Helvetica, 'Segoe UI', Arial, sans-serif;
 }
+
+/* Fix#62: flowchart.js svg (line-break) positioning */
+svg {
+  display: block;
+  margin: 0 auto;
+}
