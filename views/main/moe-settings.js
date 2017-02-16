@@ -96,7 +96,7 @@ function setTabSize(val) {
 function setCustomCSSs(val) {
     let a = document.getElementsByClassName('link-custom-csss');
     if (a.length !== 0) for (let e of a) e.parentNode.removeChild(e);
-    console.log(val);
+    // console.log(val);
     if (Object.getOwnPropertyNames(val).length !== 0) for (let x in val) if (val[x].selected) {
         let link = document.createElement('link');
         link.href = val[x].fileName;

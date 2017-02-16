@@ -23,10 +23,11 @@ window.app = require('electron').remote.app;
 window.moeApp = app.moeApp;
 window.w = moeApp.newWindow;
 require('electron-titlebar');
+const ipcRenderer = require('electron').ipcRenderer;
+
 
 $(() => {
     const MoeditorPreview = require('./moe-preview');
-
     if (w.fileName !== '') {
         document.getElementsByTagName('title')[0].innerText = 'Moeditor - ' + require('path').basename(w.fileName);
     }
@@ -65,6 +66,28 @@ $(() => {
         window.updatePreview(false)
     });
 
+    const fs = require('fs');
+    const path = require('path');
+    editor.on("paste",function(editor,e){
+        for (let i = 0, len = e.clipboardData.items.length; i < len; i++) {
+            let item = e.clipboardData.items[i];
+            if (item.kind === "file" && item.type.match(/^image/)) {
+                let pasteFile = item.getAsFile();
+                let reader = new FileReader();
+                let fileName = Date.now() + '.' + item.type.split("/")[1];
+                let filePath = path.resolve(app.moeApp.tmpDir, fileName);
+
+                reader.onloadend = function() {
+                    fs.writeFile(filePath, new Buffer(new Uint8Array(reader.result)), function (err) {
+                        if(!err){
+                            editor.doc.replaceSelection("![](blob:" + fileName + ")")
+                        }
+                    })
+                };
+                reader.readAsArrayBuffer(pasteFile);
+            }
+        }
+    });
     setTimeout(() => {
         window.updatePreview(true);
     }, 0);
@@ -120,8 +143,13 @@ $(() => {
         moeApp.config.set('focus-mode', document.getElementById('editor').classList.contains('focus'));
     });
 
-    require('electron').ipcRenderer.on('set-title', (e, fileName) => {
+    ipcRenderer.on('set-title', (e, fileName) => {
         document.getElementsByTagName('title')[0].innerText = 'Moeditor - ' + require('path').basename(fileName);
+    });
+
+    ipcRenderer.on('update-doc', (e) => {
+        editor.doc.setValue(w.content);
+        window.updatePreview(true);
     });
 
     require('./moe-settings');

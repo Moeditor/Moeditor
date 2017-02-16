@@ -95,8 +95,13 @@ module.exports = (cm, force, cb) => {
                 for (let img of imgs) {
                     let src = img.getAttribute('src');
                     if (url.parse(src).protocol === null) {
-                        if (!path.isAbsolute(src)) src = path.resolve(w.directory, src);
+                        if (!path.isAbsolute(src)){
+                            let dir = w.fileName ? path.dirname(w.fileName) : w.directory;
+                            src = path.resolve(dir, src)
+                        }
                         src = url.resolve('file://', src);
+                    } else if (url.parse(src).protocol === "blob:") {
+                        src = path.resolve(moeApp.tmpDir, src.replace("blob:", ''));
                     }
                     img.setAttribute('src', src);
                 }

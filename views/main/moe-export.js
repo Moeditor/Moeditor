@@ -44,6 +44,20 @@ function render(s, type, cb) {
         for (var i in math) {
             rendered.find('#math-' + i).html(math[i]);
         }
+
+        // tmp img to base64 src
+        let imgs = rendered.find('img') || [];
+        for (let img of imgs) {
+            let src = img.getAttribute('src');
+            if (/blob:/.test(src)) {
+                src = src.replace("blob:", '');
+                let mime = src.match(/png|jpg|jpeg|gif/)[0];
+                let data = MoeditorFile.read(path.resolve(moeApp.tmpDir, src));
+                src = 'data:image/' + mime + ';base64,' + new Buffer(data).toString('base64');
+                img.setAttribute('src', src);
+            }
+        }
+
         cb(rendered.html(), haveMath, haveCode);
     }
 
