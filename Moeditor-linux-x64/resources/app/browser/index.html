@@ -1,0 +1,98 @@
+<!--
+  This file is part of Moeditor.
+
+  Copyright (c) 2016 Menci <huanghaorui301@gmail.com>
+
+  Moeditor is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Moeditor is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Moeditor</title>
+
+		<script>
+		window.$ = window.jQuery = require("jquery");
+		</script>
+
+        <link rel="stylesheet" href="../node_modules/highlight.js/styles/github.css">
+        <link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="../node_modules/katex/dist/katex.min.css">
+        <link rel="stylesheet" href="base16-light.css">
+        <link rel="stylesheet" href="preview.css">
+
+        <link rel="stylesheet" href="moe-style.css">
+
+        <link rel="stylesheet" href="moe-scrollbar.css">
+        <link rel="stylesheet" href="moe-titlebar.css">
+        <script type="text/javascript" src="moe-titlebar.js"></script>
+
+        <script src="../node_modules/codemirror/lib/codemirror.js"></script>
+        <script src="../node_modules/codemirror/mode/markdown/markdown.js"></script>
+        <script src="../node_modules/codemirror/mode/stex/stex.js"></script>
+        <script src="../node_modules/codemirror/mode/gfm/gfm.js"></script>
+        <script src="../node_modules/codemirror/addon/mode/overlay.js"></script>
+        <script src="../node_modules/codemirror/addon/mode/multiplex.js"></script>
+        <script src="../node_modules/codemirror/addon/scroll/simplescrollbars.js"></script>
+        <script src="CodeMirror/continuelist.js"></script>
+
+        <script src="../node_modules/marked/lib/marked.js"></script>
+
+        <script src="../node_modules/katex/dist/katex.min.js"></script>
+
+        <script type="text/javascript" src="moe-document.js"></script>
+        <script type="text/javascript" src="moe-math.js"></script>
+    </head>
+    <body>
+        <div id="titlebar">
+            <div id="drag-left"></div>
+            <div id="drag-right"></div>
+            <div class="button button-close">
+                <img src="titlebar/close.svg">
+            </div>
+            <div class="button button-maximize">
+                <img class="button-img-maximize" src="titlebar/maximize.svg">
+                <img style="display: none; " class="button-img-restore" src="titlebar/restore.svg">
+            </div>
+            <div class="button button-minimize">
+                <img src="titlebar/minimize.svg">
+            </div>
+        </div>
+        <div id="left-panel">
+            <div id="editor">
+                <textarea></textarea>
+            </div>
+            <div class="cover">
+                <div class="cover-top"></div>
+                <div class="cover-bottom">
+                    <div class="button-bottom" id="button-bottom-new" data-action="new">NEW</div>
+                    <div class="button-bottom" id="button-bottom-open" data-action="open">OPEN</div>
+                    <div class="button-bottom" id="button-bottom-save" data-action="save">SAVE</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="right-panel">
+            <div id="previewer-wrapper">
+                <div id="previewer">
+                <!--iframe src="previewer.html" frameBorder="0"></iframe-->
+                </div>
+            </div>
+            <div class="cover">
+                <div class="cover-top"></div>
+                <div class="cover-bottom"></div>
+            </div>
+        </div>
+    </body>
+</html>
