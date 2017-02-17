@@ -21,6 +21,7 @@
 
 const MoeditorFile = require('../../app/moe-file');
 const path = require('path');
+const url = require('url');
 
 function render(s, type, cb) {
     const MoeditorHighlight = require('./moe-highlight');
@@ -49,15 +50,22 @@ function render(s, type, cb) {
         let imgs = rendered.find('img') || [];
         for (let img of imgs) {
             let src = img.getAttribute('src');
-            if (/blob:/.test(src)) {
+            if (url.parse(src).protocol === null) {
+                if (!path.isAbsolute(src)){
+                    let dir = w.fileName ? path.dirname(w.fileName) : w.directory;
+                    src = path.resolve(dir, src)
+                }
+                let mime = src.match(/png|jpg|jpeg|gif/)[0];
+                let data = MoeditorFile.read(src);
+                src = 'data:image/' + mime + ';base64,' + new Buffer(data).toString('base64');
+            } else if (url.parse(src).protocol === "blob:") {
                 src = src.replace("blob:", '');
                 let mime = src.match(/png|jpg|jpeg|gif/)[0];
                 let data = MoeditorFile.read(path.resolve(moeApp.tmpDir, src));
                 src = 'data:image/' + mime + ';base64,' + new Buffer(data).toString('base64');
-                img.setAttribute('src', src);
             }
+            img.setAttribute('src', src);
         }
-
         cb(rendered.html(), haveMath, haveCode);
     }
 
