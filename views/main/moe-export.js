@@ -44,7 +44,32 @@ function render(s, type, cb) {
         for (var i in math) {
             rendered.find('#math-' + i).html(math[i]);
         }
-        cb(rendered.html(), haveMath, haveCode);
+
+        const url = require('url');
+        const idb = require('idb-keyval');
+        // tmp img to base64 src
+        let imgs = rendered.find('img') || [];
+        let imgResolves = Array.from(imgs).map(function (img) {
+            let src = img.getAttribute('src');
+            if (url.parse(src).protocol === null) {
+                if (!path.isAbsolute(src)){
+                    let dir = w.fileName ? path.dirname(w.fileName) : w.directory;
+                    src = path.resolve(dir, src)
+                }
+                let mime = src.match(/png|jpg|jpeg|gif/)[0];
+                let data = MoeditorFile.read(src);
+                src = 'data:image/' + mime + ';base64,' + new Buffer(data).toString('base64');
+                img.setAttribute('src', src);
+                return data;
+            } else if (url.parse(src).protocol === "blob:") {
+                return idb.get(src.replace("blob:", '')).then(function (val) {
+                    img.setAttribute('src', val);
+                })
+            }
+        });
+        Promise.all(imgResolves).then(function () {
+            cb(rendered.html(), haveMath, haveCode);
+        })
     }
 
     MoeMark(s, {

@@ -71,6 +71,7 @@ module.exports = (cm, force, cb) => {
 
         var mathCnt = 0, mathID = 0, math = new Array();
         var rendering = true, rendered = null;
+        const idb = require('idb-keyval');
 
         MoeMark(content, {
             mathRenderer: (str, display) => {
@@ -92,35 +93,47 @@ module.exports = (cm, force, cb) => {
                 for (let id in math) rendered.querySelector('#' + id).innerHTML = math[id].res;
 
                 let imgs = rendered.querySelectorAll('img') || [];
-                for (let img of imgs) {
-                    let src = img.getAttribute('src');
-                    if (url.parse(src).protocol === null) {
-                        if (!path.isAbsolute(src)) src = path.resolve(w.directory, src);
-                        src = url.resolve('file://', src);
-                    }
-                    img.setAttribute('src', src);
-                }
-
-                var set = new Set();
-                let lineNumbers = rendered.querySelectorAll('moemark-linenumber') || [];
-                for (let elem of lineNumbers) {
-                    set.add(parseInt(elem.getAttribute('i')));
-                }
-
-                window.lineNumbers = (Array.from(set)).sort((a, b) => {
-                    return a - b;
+                let imgResolves = Array.from(imgs).map(function (img) {
+                        let src = img.getAttribute('src');
+                        if (url.parse(src).protocol === null) {
+                            if (!path.isAbsolute(src)){
+                                let dir = w.fileName ? path.dirname(w.fileName) : w.directory;
+                                src = path.resolve(dir, src)
+                            }
+                            src = url.resolve('file://', src);
+                            img.setAttribute('src', src);
+                            return src;
+                        } else if (url.parse(src).protocol === "blob:") {
+                            return idb.get(src.replace("blob:", '')).then(function (val) {
+                                img.setAttribute('src', val);
+                            })
+                        }
                 });
-                window.scrollMap = undefined;
 
-                document.getElementById('container').innerHTML = rendered.innerHTML;
-                SVGFixer(document.getElementById('container'));
+                Promise.all(imgResolves).then(function () {
 
-                if (!window.xyz) window.xyz = rendered.innerHTML;
+                    var set = new Set();
+                    let lineNumbers = rendered.querySelectorAll('moemark-linenumber') || [];
+                    for (let elem of lineNumbers) {
+                        set.add(parseInt(elem.getAttribute('i')));
+                    }
 
-                cb();
+                    window.lineNumbers = (Array.from(set)).sort((a, b) => {
+                        return a - b;
+                    });
+                    window.scrollMap = undefined;
 
-                updatePreviewRunning = false;
-                if (updatePreview) setTimeout(updateAsync, 0);
+                    document.getElementById('container').innerHTML = rendered.innerHTML;
+                    SVGFixer(document.getElementById('container'));
+
+                    if (!window.xyz) window.xyz = rendered.innerHTML;
+
+                    cb();
+
+                    updatePreviewRunning = false;
+                    if (updatePreview) setTimeout(updateAsync, 0);
+                })
+
             });
         });
     }

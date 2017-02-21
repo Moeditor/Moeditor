@@ -47,6 +47,18 @@ class MoeditorAction {
         }
     }
 
+    static saveImg(fileName, w){
+        let imgs = [];
+        let content = w.moeditorWindow.content.replace(/\(blob:([0-9]+\.(png|jpg|jpeg|gif))\)/g, function (match, img) {
+            imgs.push(img);
+            return "(./" + img + ")";
+        });
+        if(imgs.length > 0){
+            w.moeditorWindow.content = content;
+            w.moeditorWindow.window.webContents.send('save-doc', {fileName: fileName, imgs: imgs});
+        }
+    }
+
     static save(w) {
         if (typeof w == 'undefined') w = require('electron').BrowserWindow.getFocusedWindow();
         if (typeof w.moeditorWindow == 'undefined') return false;
@@ -55,6 +67,7 @@ class MoeditorAction {
             MoeditorAction.saveAs(w);
         } else {
             try {
+                MoeditorAction.saveImg(w.moeditorWindow.fileName, w);
                 MoeditorFile.write(w.moeditorWindow.fileName, w.moeditorWindow.content);
                 w.moeditorWindow.fileContent = w.moeditorWindow.content;
                 w.moeditorWindow.changed = false;
@@ -86,9 +99,10 @@ class MoeditorAction {
         );
         if (typeof fileName == 'undefined') return false;
         try {
+            w.moeditorWindow.fileName = fileName;
+            MoeditorAction.saveImg(fileName, w);
             MoeditorFile.write(fileName, w.moeditorWindow.content);
             w.moeditorWindow.fileContent = w.moeditorWindow.content;
-            w.moeditorWindow.fileName = fileName;
             w.moeditorWindow.changed = false;
             moeApp.addRecentDocument(fileName);
             w.moeditorWindow.window.setDocumentEdited(false);
