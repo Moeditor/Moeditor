@@ -21,9 +21,7 @@
 'use strict';
 
 const {dialog} = require('electron'),
-      MoeditorFile = require('./moe-file'),
-      path = require('path'),
-      fs = require('fs');
+      MoeditorFile = require('./moe-file');
 
 class MoeditorAction {
     static openNew() {
@@ -49,23 +47,16 @@ class MoeditorAction {
         }
     }
 
-    static saveImg(filename, w){
+    static saveImg(fileName, w){
         let imgs = [];
         let content = w.moeditorWindow.content.replace(/\(blob:([0-9]+\.(png|jpg|jpeg|gif))\)/g, function (match, img) {
             imgs.push(img);
             return "(./" + img + ")";
         });
         if(imgs.length > 0){
-            for(let img of imgs){
-                let source = path.resolve(moeApp.tmpDir, img);
-                let target = path.resolve(filename, "../" + img);
-                fs.rename(source, target, function (err) {
-                    if (err) throw  err;
-                })
-            }
+            w.moeditorWindow.content = content;
+            w.moeditorWindow.window.webContents.send('save-doc', {fileName: fileName, imgs: imgs});
         }
-        w.moeditorWindow.content = content;
-        w.moeditorWindow.window.webContents.send('update-doc');
     }
 
     static save(w) {
@@ -77,7 +68,6 @@ class MoeditorAction {
         } else {
             try {
                 MoeditorAction.saveImg(w.moeditorWindow.fileName, w);
-
                 MoeditorFile.write(w.moeditorWindow.fileName, w.moeditorWindow.content);
                 w.moeditorWindow.fileContent = w.moeditorWindow.content;
                 w.moeditorWindow.changed = false;

@@ -52,7 +52,6 @@ class MoeditorApplication {
         const Configstore = require('configstore');
         this.config = new Configstore(Const.name, require('./moe-config-default'));
         this.Const = Const;
-        this.tmpDir = require('os').tmpdir();
 
         this.locale = new MoeditorLocale();
         global.__ = str => this.locale.get(str);

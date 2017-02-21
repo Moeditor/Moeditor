@@ -25,7 +25,6 @@ window.w = moeApp.newWindow;
 require('electron-titlebar');
 const ipcRenderer = require('electron').ipcRenderer;
 
-
 $(() => {
     const MoeditorPreview = require('./moe-preview');
     if (w.fileName !== '') {
@@ -66,25 +65,21 @@ $(() => {
         window.updatePreview(false)
     });
 
-    const fs = require('fs');
-    const path = require('path');
     editor.on("paste",function(editor,e){
+        const idb = require('idb-keyval');
         for (let i = 0, len = e.clipboardData.items.length; i < len; i++) {
             let item = e.clipboardData.items[i];
             if (item.kind === "file" && item.type.match(/^image/)) {
                 let pasteFile = item.getAsFile();
                 let reader = new FileReader();
                 let fileName = Date.now() + '.' + item.type.split("/")[1];
-                let filePath = path.resolve(app.moeApp.tmpDir, fileName);
 
-                reader.onloadend = function() {
-                    fs.writeFile(filePath, new Buffer(new Uint8Array(reader.result)), function (err) {
-                        if(!err){
-                            editor.doc.replaceSelection("![](blob:" + fileName + ")")
-                        }
-                    })
+                reader.onload = function(e) {
+                    idb.set(fileName, e.target.result).then(function () {
+                        editor.doc.replaceSelection("![](blob:" + fileName + ")")
+                    });
                 };
-                reader.readAsArrayBuffer(pasteFile);
+                reader.readAsDataURL(pasteFile);
             }
         }
     });
@@ -147,9 +142,24 @@ $(() => {
         document.getElementsByTagName('title')[0].innerText = 'Moeditor - ' + require('path').basename(fileName);
     });
 
-    ipcRenderer.on('update-doc', (e) => {
-        editor.doc.setValue(w.content);
-        window.updatePreview(true);
+    ipcRenderer.on('save-doc', (e, data) => {
+        const fs = require('fs');
+        const idb = require('idb-keyval');
+        let dir = path.dirname(data.fileName);
+
+        let imgsResolve = data.imgs.map(function (img) {
+            return idb.get(img).then(function (val) {
+                fs.writeFile(dir + "/" + img, val.replace(/^data:image\/(png|jpg|jpeg|gif);base64,/, ""), 'base64', function (err) {
+                    if(!err){
+                        idb.delete(img);
+                    }
+                });
+            });
+        });
+        Promise.all(imgsResolve).then(function () {
+            editor.doc.setValue(w.content);
+            window.updatePreview(true);
+        })
     });
 
     require('./moe-settings');

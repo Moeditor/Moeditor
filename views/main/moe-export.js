@@ -21,7 +21,6 @@
 
 const MoeditorFile = require('../../app/moe-file');
 const path = require('path');
-const url = require('url');
 
 function render(s, type, cb) {
     const MoeditorHighlight = require('./moe-highlight');
@@ -46,9 +45,11 @@ function render(s, type, cb) {
             rendered.find('#math-' + i).html(math[i]);
         }
 
+        const url = require('url');
+        const idb = require('idb-keyval');
         // tmp img to base64 src
         let imgs = rendered.find('img') || [];
-        for (let img of imgs) {
+        let imgResolves = Array.from(imgs).map(function (img) {
             let src = img.getAttribute('src');
             if (url.parse(src).protocol === null) {
                 if (!path.isAbsolute(src)){
@@ -58,15 +59,17 @@ function render(s, type, cb) {
                 let mime = src.match(/png|jpg|jpeg|gif/)[0];
                 let data = MoeditorFile.read(src);
                 src = 'data:image/' + mime + ';base64,' + new Buffer(data).toString('base64');
+                img.setAttribute('src', src);
+                return data;
             } else if (url.parse(src).protocol === "blob:") {
-                src = src.replace("blob:", '');
-                let mime = src.match(/png|jpg|jpeg|gif/)[0];
-                let data = MoeditorFile.read(path.resolve(moeApp.tmpDir, src));
-                src = 'data:image/' + mime + ';base64,' + new Buffer(data).toString('base64');
+                return idb.get(src.replace("blob:", '')).then(function (val) {
+                    img.setAttribute('src', val);
+                })
             }
-            img.setAttribute('src', src);
-        }
-        cb(rendered.html(), haveMath, haveCode);
+        });
+        Promise.all(imgResolves).then(function () {
+            cb(rendered.html(), haveMath, haveCode);
+        })
     }
 
     MoeMark(s, {
