@@ -9,6 +9,7 @@
 *  Copyright (c) 2016 welksonramos
 *  Copyright (c) 2016 caiocdasilva
 *  Copyright (c) 2016 lawgsy <lawgsy@gmail.com>
+*  Copyright (c) 2017 yumatsumura
 *
 *  Moeditor is free software: you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
@@ -32,6 +33,7 @@
 *   - es: Hyuchia
 *   - nl: lawgsy
 *   - it: iamsisar
+*   - ja: yumatsumura
 *
 *  If you want to help translate this app, please copy the `en` items of the
 *  `strings` constant as the template, and fill each item with the translated
