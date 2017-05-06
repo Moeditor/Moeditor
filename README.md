@@ -41,7 +41,7 @@ cnpm start
 ```
 
 # Debugging
-There's three ways to open the [Chromium Developer Tools](https://developer.chrome.com/devtools).
+There are three ways to open the [Chromium Developer Tools](https://developer.chrome.com/devtools).
 
 * Add `--debug` to the command line args:
 ```bash
