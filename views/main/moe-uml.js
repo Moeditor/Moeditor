@@ -26,7 +26,8 @@ const LRUCache = require('lrucache');
 var rendered = LRUCache(1024);
 
 const Flowchart = require('flowchart.js'),
-      Sequence = require('js-sequence-diagrams');
+      Sequence = require('js-sequence-diagrams'),
+      mermaidAPI = require('mermaid').mermaidAPI;
 
 var div = document.createElement('div');
 div.style.display = 'none';
@@ -48,6 +49,13 @@ function renderFlow(str) {
     return `<div>${res}</div>`;
 }
 
+var mermaidCount = 1;
+function renderMermaid(str) {
+    let res = mermaidAPI.render(`mermaid${mermaidCount}`, str);
+    mermaidCount += 1;
+    return `<div>${res}</div>`;
+}
+
 function render(str, type) {
     let res = rendered.get(type + str);
     if (typeof res === 'string') return res;
@@ -55,6 +63,7 @@ function render(str, type) {
     try {
         if (type === 'sequence') res = renderSequence(str);
         else if (type === 'flow') res = renderFlow(str);
+        else if (type === 'mermaid') res = renderMermaid(str);
     } catch(e) {
         res = e;
     }
