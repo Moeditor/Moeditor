@@ -71,3 +71,7 @@
 
 /*.cm-s-base16-light .CodeMirror-activeline-background {background: #DDDCDC !important;}*/
 .cm-s-base16-light .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}
+
+.cm-s-base16-light span.cm-em {color: #28d573;}
+.cm-s-base16-light span.cm-strong {color: #1a88d7;}
+.cm-s-base16-light span.cm-string.cm-url {color: #d57d34;}
