@@ -1,5 +1,4 @@
 # If you are a developer, please read [The future of Moeditor](https://github.com/Moeditor/Moeditor/issues/153)
-# If you are a developer, please read [The future of Moeditor](https://github.com/Moeditor/Moeditor/issues/153)
 
 # Moeditor
 Your all-purpose markdown editor.
