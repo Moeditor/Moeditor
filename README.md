@@ -1,14 +1,13 @@
 # If you are a developer, please read [The future of Moeditor](https://github.com/Moeditor/Moeditor/issues/153)
-# If you are a developer, please read [The future of Moeditor](https://github.com/Moeditor/Moeditor/issues/153)
 
-# Moeditor
+## Moeditor
 Your all-purpose markdown editor.
 
 Built with Electron.
 
 Visit our [homepage](https://moeditor.org/) or download [releases](https://github.com/Moeditor/Moeditor/releases).
 
-# Features
+## Features
 * GitHub Flavored Markdown
 * TeX math expressions
 * UML diagrams
@@ -20,7 +19,7 @@ Visit our [homepage](https://moeditor.org/) or download [releases](https://githu
 * Localization
 * Focus mode
 
-# Screenshots
+## Screenshots
 ![Moeditor Main](screenshots/main.png)
 
 ![Moeditor Side Menu](screenshots/side-menu.png)
@@ -29,7 +28,7 @@ Visit our [homepage](https://moeditor.org/) or download [releases](https://githu
 
 ![Moeditor Write Mode](screenshots/write-mode.png)
 
-# Building
+## Building
 ```bash
 npm install
 npm start
@@ -43,7 +42,7 @@ cnpm install
 cnpm start
 ```
 
-# Debugging
+## Debugging
 There's three ways to open the [Chromium Developer Tools](https://developer.chrome.com/devtools).
 
 * Add `--debug` to the command line args:
@@ -55,12 +54,12 @@ npm start -- --debug
 
 * `Ctrl` + `Shift` + `I` in Linux / Windows or `Command` + `Option` + `I` in OS X / macOS to toggle devtools for a window.
 
-# Todo
+## Todo
 * [ ] Custom themes
 * [ ] Spell check
 * [ ] UI/UX
 
-# Localization
+## Localization
 Moeditor will auto detect your system language and use the localization.
 
 You can set language manually in the Settings window.
@@ -69,15 +68,15 @@ Now the app supports English, Chinese, French, German, Spanish and *incomplete* 
 
 **Help us** if you can translate this app. Please follow the guide in `app/moe-l10n.js`.
 
-# License
+## License
 Moeditor itself is licensed under the **GPL v3** license.
 
 Some node modules are licensed under other free software license.
 
 The `Raleway` font is licensed under the OFL open font license.
 
-# Credits
+## Credits
 The domain `moeditor.org` is sponsored by [Showfom](https://ttt.tt/).
 
-# Known Bug(s)
+## Known Bug(s)
 Issue #31.
