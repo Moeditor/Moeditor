@@ -1,12 +1,11 @@
-# If you are a developer, please read [The future of Moeditor](https://github.com/Moeditor/Moeditor/issues/153)
-# If you are a developer, please read [The future of Moeditor](https://github.com/Moeditor/Moeditor/issues/153)
-
 # Moeditor
 Your all-purpose markdown editor.
 
 Built with Electron.
 
-Visit our [homepage](https://moeditor.org/) or download [releases](https://github.com/Moeditor/Moeditor/releases).
+**Discuss on Telegram: https://t.me/Moeditor and help me work on the new version!**
+
+Visit our [homepage](https://moeditor.github.io/) or download [releases](https://github.com/Moeditor/Moeditor/releases).
 
 # Features
 * GitHub Flavored Markdown
