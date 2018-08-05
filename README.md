@@ -3,8 +3,6 @@ Your all-purpose markdown editor.
 
 Built with Electron.
 
-**Discuss on Telegram: https://t.me/Moeditor and help me work on the new version!**
-
 Visit our [homepage](https://moeditor.github.io/) or download [releases](https://github.com/Moeditor/Moeditor/releases).
 
 # Features
