@@ -5,7 +5,9 @@
   "main": "app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "build -l snap",
+    "postinstall": "electron-builder install-app-deps"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,6 @@
     "biu.js": "^1.2.0",
     "codemirror": "^5.18.2",
     "configstore": "^2.1.0",
-    "electron": "^1.4.0",
     "electron-localshortcut": "^0.6.1",
     "electron-titlebar": "0.0.2",
     "flowchart.js": "^1.6.3",
@@ -42,5 +43,14 @@
     "moemark": "^0.3.8",
     "os-locale": "^1.4.0",
     "raphael": "^2.2.1"
+  },
+  "devDependencies": {
+    "electron": "^1.4.0",
+    "electron-builder": "^20.31.2"
+  },
+  "build": {
+    "linux": {
+      "icon": "icons/Moeditor.icns"
+    }
   }
 }
