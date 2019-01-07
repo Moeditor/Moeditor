@@ -9,6 +9,7 @@
 *  Copyright (c) 2016 welksonramos
 *  Copyright (c) 2016 caiocdasilva
 *  Copyright (c) 2016 lawgsy <lawgsy@gmail.com>
+*  Copyright (c) 2017 yumatsumura
 *
 *  Moeditor is free software: you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
@@ -32,6 +33,7 @@
 *   - es: Hyuchia
 *   - nl: lawgsy
 *   - it: iamsisar
+*   - ja: yumatsumura
 *
 *  If you want to help translate this app, please copy the `en` items of the
 *  `strings` constant as the template, and fill each item with the translated
@@ -972,4 +974,101 @@ const strings = {
         "Toggle Developer Tools": "Показать/скрыть инструменты разработчика",
         "Preference": "Настройка"
     },
+    "ja": {
+          "_name": "日本語",
+
+          "New": "新しいウィンドウ",
+          "Open": "開く",
+          "Save": "保存",
+          "Save as": "名前を付けて保存",
+          "Export as HTML": "HTMLとしてエクスポート",
+          "Export as PDF": "PDFとしてエクスポート",
+          "Settings": "環境設定",
+          "About": "About",
+
+          "Menu": "メニュー",
+          "Directory": "Directory",
+          "Toggle focus mode": "Toggle focus mode",
+          "Edit mode": "Edit mode",
+
+          "Write Mode": "編集モード",
+          "Read Mode": "閲覧モード",
+          "Preview Mode": "プレビューモード",
+          "Wide": "ワイド",
+          "Medium": "ミディアム",
+          "Narrow": "ナロー",
+
+          "Yes": "はい",
+          "No": "いいえ",
+          "Cancel": "キャンセル",
+          "Confirm": "確認",
+
+          "Save changes to file?": "変更を保存しますか?",
+          "File changed by another program, reload?": "別のプログラムによってファイルが変更されています。ファイルをリロードしますか?",
+
+          "Markdown Documents": "Markdown Documents",
+          "HTML Documents": "HTML Documents",
+          "PDF Documents": "PDF Documents",
+          "CSS Files": "CSS Files",
+          "All Files": "All Files",
+          "Saved successfully.": "正常に保存されました",
+          "Can't save file": "保存に失敗しました",
+          "Exporting as HTML, please wait ...": "HTMLにエクスポートしています...",
+          "Exporting as PDF, please wait ...": "PDFにエクスポートしています...",
+          "Can't export as HTML": "HTMLへのエクスポートに失敗しました",
+          "Can't export as PDF": "PDFへのエクスポートに失敗しました",
+
+          "General": "一般",
+          "Edit": "編集",
+          "Appearance": "外観",
+          "Render": "描画",
+          "Language": "言語",
+          "Reload when file changed": "ファイルが変更されたときに再読み込み",
+          "Font": "フォント",
+          "Font Size": "フォントサイズ",
+          "Line Height": "行の高さ",
+          "Tab Size": "タブサイズ",
+          "Color Theme": "カラーテーマ",
+          "TeX Math Expressions":"TeX数式",
+          "UML Diagrams": "UMLダイアグラム",
+          "Brakes": "Brakes",
+          "Highlight Theme": "ハイライトテーマ",
+          "Render Theme": "描画テーマ",
+          "Custom CSSs": "カスタムCSS",
+
+          "Default": "デフォルト",
+          "System Default": "システムのデフォルト",
+
+          "version": "バージョン",
+
+          "Auto": "自動",
+          "Prompt": "毎回尋ねる",
+          "Never": "しない",
+
+          "Undo": "取り消す",
+          "Redo": "やり直す",
+          "Cut": "切り取り",
+          "Copy": "コピー",
+          "Paste": "貼り付け",
+          "Delete": "削除",
+          "Select All": "すべてを選択",
+
+          "Services": "サービス",
+          "Hide": "Moeditorを隠す",
+          "Hide Others": "ほかを隠す",
+          "Show All": "全て表示",
+          "Quit": "Moeditorを終了する",
+          "Close": "閉じる",
+          "Minimize": "最小化",
+          "Zoom": "ズーム",
+          "Bring All to Front": "Moeditorを手前に表示",
+          "File": "ファイル",
+          "Export": "エクスポート",
+          "Mode": "モード",
+          "View": "表示",
+          "Window": "ウィンドウ",
+          "Help": "ヘルプ",
+          "Toggle Developer Tools": "Developer Tools",
+          "Preference": "環境設定"
+		},
 }
