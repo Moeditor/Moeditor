@@ -21,6 +21,7 @@ Visit our [homepage](https://moeditor.github.io/) or download [releases](https:/
 
 # Screenshots
 ![Moeditor Main](screenshots/main.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMoeditor%2FMoeditor.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FMoeditor%2FMoeditor?ref=badge_shield)
 
 ![Moeditor Side Menu](screenshots/side-menu.png)
 
@@ -74,6 +75,9 @@ Moeditor itself is licensed under the **GPL v3** license.
 Some node modules are licensed under other free software license.
 
 The `Raleway` font is licensed under the OFL open font license.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMoeditor%2FMoeditor.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FMoeditor%2FMoeditor?ref=badge_large)
 
 # Credits
 The domain `moeditor.org` is sponsored by [Showfom](https://ttt.tt/).
