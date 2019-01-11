@@ -62,7 +62,7 @@ $(() => {
     };
 
     editor.on('change', (editor, obj) => {
-        window.updatePreview(false)
+        window.updatePreview(false);
     });
 
     setTimeout(() => {
