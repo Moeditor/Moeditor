@@ -9,6 +9,7 @@
 *  Copyright (c) 2016 welksonramos
 *  Copyright (c) 2016 caiocdasilva
 *  Copyright (c) 2016 lawgsy <lawgsy@gmail.com>
+*  Copyright (c) 2019 ChungZH <chung.zh@qq.com>
 *
 *  Moeditor is free software: you can redistribute it and/or modify
 *  it under the terms of the GNU General Public License as published by
@@ -32,6 +33,8 @@
 *   - es: Hyuchia
 *   - nl: lawgsy
 *   - it: iamsisar
+*   - zh_HK: ChungZH
+*   - zh_TW: ChungZH
 *
 *  If you want to help translate this app, please copy the `en` items of the
 *  `strings` constant as the template, and fill each item with the translated
@@ -972,4 +975,198 @@ const strings = {
         "Toggle Developer Tools": "Показать/скрыть инструменты разработчика",
         "Preference": "Настройка"
     },
+    "zh_HK": {
+        "_name": "繁體中文",
+
+        "New": "新建",
+        "Open": "打開",
+        "Save": "保存",
+        "Save as": "另存為",
+        "Export as HTML": "匯出為 HTML",
+        "Export as PDF": "匯出為 PDF",
+        "Settings": "設定",
+        "About": "關於",
+
+        "Menu": "選單",
+        "Directory": "目錄",
+        "Toggle focus mode": "切換專注模式",
+        "Edit mode": "編輯模式",
+
+        "Write Mode": "寫作模式",
+        "Read Mode": "閱讀模式",
+        "Preview Mode": "預覽模式",
+        "Wide": "寬",
+        "Medium": "中等",
+        "Narrow": "窄",
+
+        "Yes": "是",
+        "No": "否",
+        "Cancel": "取消",
+        "Confirm": "詢問",
+
+        "Save changes to file?": "將修改保存到文件？",
+        "File changed by another program, reload?": "文件被另一程序修改，是否重新加載？",
+
+        "Markdown Documents": "Markdown 文檔",
+        "HTML Documents": "HTML 文檔",
+        "PDF Documents": "PDF 文檔",
+        "CSS Files": "CSS 文件",
+        "All Files": "所有文件",
+        "Saved successfully.": "保存成功。",
+        "Can't save file": "無法保存文件",
+        "Exporting as HTML, please wait ...": "正在導出為 HTML，請稍後 ...",
+        "Exporting as PDF, please wait ...": "正在導出為 PDF，請稍後 ...",
+        "Can't export as HTML": "無法導出為 HTML",
+        "Can't export as PDF": "無法導出為 PDF",
+
+        "General": "通用",
+        "Edit": "編輯",
+        "Appearance": "外觀",
+        "Render": "渲染",
+        "Language": "語言",
+        "Reload when file changed": "當文件被修改時，重新加載",
+        "Font": "字體",
+        "Font Size": "字體大小",
+        "Line Height": "行高",
+        "Tab Size": "Tab 大小",
+        "Color Theme": "顏色主題",
+        "TeX Math Expressions": "TeX 數學表達式",
+        "UML Diagrams": "UML 圖表",
+        "Brakes": "Brakes",
+        "Highlight Theme": "高亮主題",
+        "Render Theme": "渲染主題",
+        "Custom CSSs": "自定義 CSS",
+
+        "Default": "默認",
+        "System Default": "系統默認",
+
+        "version": "版本",
+
+        "Auto": "自動",
+        "Prompt": "詢問",
+        "Never": "從不",
+
+        "Undo": "撤銷",
+        "Redo": "重做",
+        "Cut": "剪切",
+        "Copy": "賦值",
+        "Paste": "粘貼",
+        "Delete": "刪除",
+        "Select All": "全選",
+
+        "Services": "服務",
+        "Hide": "隱藏",
+        "Hide Others": "隱藏其他",
+        "Show All": "顯示全部",
+        "Quit": "退出",
+        "Close": "關閉",
+        "Minimize": "最小化",
+        "Zoom": "縮放",
+        "Bring All to Front": "前置全部窗口",
+        "File": "文件",
+        "Export": "導出",
+        "Mode": "模式",
+        "View": "查看",
+        "Window": "窗口",
+        "Help": "幫助",
+        "Toggle Developer Tools": "切換開發者工具",
+        "Preference": "偏好設置"
+    },
+    "zh_TW": {
+        "_name": "繁體中文",
+
+        "New": "新建",
+        "Open": "打開",
+        "Save": "保存",
+        "Save as": "另存為",
+        "Export as HTML": "匯出為 HTML",
+        "Export as PDF": "匯出為 PDF",
+        "Settings": "設定",
+        "About": "關於",
+
+        "Menu": "選單",
+        "Directory": "目錄",
+        "Toggle focus mode": "切換專注模式",
+        "Edit mode": "編輯模式",
+
+        "Write Mode": "寫作模式",
+        "Read Mode": "閱讀模式",
+        "Preview Mode": "預覽模式",
+        "Wide": "寬",
+        "Medium": "中等",
+        "Narrow": "窄",
+
+        "Yes": "是",
+        "No": "否",
+        "Cancel": "取消",
+        "Confirm": "詢問",
+
+        "Save changes to file?": "將修改保存到文件？",
+        "File changed by another program, reload?": "文件被另一程序修改，是否重新加載？",
+
+        "Markdown Documents": "Markdown 文檔",
+        "HTML Documents": "HTML 文檔",
+        "PDF Documents": "PDF 文檔",
+        "CSS Files": "CSS 文件",
+        "All Files": "所有文件",
+        "Saved successfully.": "保存成功。",
+        "Can't save file": "無法保存文件",
+        "Exporting as HTML, please wait ...": "正在導出為 HTML，請稍後 ...",
+        "Exporting as PDF, please wait ...": "正在導出為 PDF，請稍後 ...",
+        "Can't export as HTML": "無法導出為 HTML",
+        "Can't export as PDF": "無法導出為 PDF",
+
+        "General": "通用",
+        "Edit": "編輯",
+        "Appearance": "外觀",
+        "Render": "渲染",
+        "Language": "語言",
+        "Reload when file changed": "當文件被修改時，重新加載",
+        "Font": "字體",
+        "Font Size": "字體大小",
+        "Line Height": "行高",
+        "Tab Size": "Tab 大小",
+        "Color Theme": "顏色主題",
+        "TeX Math Expressions": "TeX 數學表達式",
+        "UML Diagrams": "UML 圖表",
+        "Brakes": "Brakes",
+        "Highlight Theme": "高亮主題",
+        "Render Theme": "渲染主題",
+        "Custom CSSs": "自定義 CSS",
+
+        "Default": "默認",
+        "System Default": "系統默認",
+
+        "version": "版本",
+
+        "Auto": "自動",
+        "Prompt": "詢問",
+        "Never": "從不",
+
+        "Undo": "撤銷",
+        "Redo": "重做",
+        "Cut": "剪切",
+        "Copy": "賦值",
+        "Paste": "粘貼",
+        "Delete": "刪除",
+        "Select All": "全選",
+
+        "Services": "服務",
+        "Hide": "隱藏",
+        "Hide Others": "隱藏其他",
+        "Show All": "顯示全部",
+        "Quit": "退出",
+        "Close": "關閉",
+        "Minimize": "最小化",
+        "Zoom": "縮放",
+        "Bring All to Front": "前置全部窗口",
+        "File": "文件",
+        "Export": "導出",
+        "Mode": "模式",
+        "View": "查看",
+        "Window": "窗口",
+        "Help": "幫助",
+        "Toggle Developer Tools": "切換開發者工具",
+        "Preference": "偏好設置"
+    },	
 }
